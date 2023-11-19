@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3jnswub0ulkl"]
+
+[ext_resource type="PackedScene" uid="uid://bv8binjy2oxbh" path="res://Scenes/Components/Weapons/Weapon.tscn" id="1_1se62"]
+
+[node name="Boomerang" instance=ExtResource("1_1se62")]

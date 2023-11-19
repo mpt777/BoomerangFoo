@@ -12,6 +12,11 @@ var ACCELERATION := 0.8
 @export
 var FRICTION := 0.5
 
+@export
+var GRAVITY := 9.8
+
+signal MouseMovement
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	register_action("move_up", InputEventKey.new(), KEY_W)
@@ -28,25 +33,40 @@ func _physics_process(delta):
 	if not target:
 		return
 	# We create a local variable to store the input direction.
-	var direction = Vector3.ZERO
-	var target_velocity = Vector3.ZERO
+	var direction := Vector3.ZERO
+	var target_velocity := Vector3.ZERO
 
 	# We check for each move input and update the direction accordingly.
-	if Input.is_action_pressed(action("move_right")):
-		direction.x += 1
-	if Input.is_action_pressed(action("move_left")):
-		direction.x -= 1
-	if Input.is_action_pressed(action("move_down")):
-		direction.z += 1
-	if Input.is_action_pressed(action("move_up")):
-		direction.z -= 1
-		
+	direction.x = Input.get_axis(action("move_left"), action("move_right"))
+	direction.z = Input.get_axis(action("move_up"),action("move_down"))
 	direction = direction.normalized() * SPEED
 	
 	if direction.length() > 0:
 		target.velocity = target.velocity.lerp(direction, ACCELERATION)
 	else:
-	# If there's no input, slow down to (0, 0)
 		target.velocity = target.velocity.lerp(Vector3.ZERO, FRICTION)
+		
+	target.velocity.y -= GRAVITY
 
 	target.move_and_slide()
+	
+func _input(event):
+	if event is InputEventMouseMotion:
+		var pos = mouse_position()
+		if pos:
+			emit_signal("MouseMovement", pos)
+		
+func mouse_position():
+	var camera = get_tree().get_nodes_in_group("Camera")[0]
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 2000
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	ray_query.collide_with_areas = true
+	var raycast_result = space.intersect_ray(ray_query)
+	if !raycast_result.is_empty():
+		return raycast_result.position

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv8binjy2oxbh"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Weapons/Weapon.gd" id="1_6ok4c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5jna"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t3hwp"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_6ok4c")
+
+[node name="RigidBody" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody"]
+shape = SubResource("BoxShape3D_y5jna")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody"]
+mesh = SubResource("BoxMesh_t3hwp")

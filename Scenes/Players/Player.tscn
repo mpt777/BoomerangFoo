@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://nekxp4173ils"]
+[gd_scene load_steps=6 format=3 uid="uid://nekxp4173ils"]
 
 [ext_resource type="PackedScene" uid="uid://cm0w7a28t0la4" path="res://Scenes/Components/PlayerController.tscn" id="1_ht1ac"]
+[ext_resource type="PackedScene" uid="uid://c3jnswub0ulkl" path="res://Scenes/Components/Weapons/Boomerang.tscn" id="3_p5pyf"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Scenes/Components/Health.tscn" id="3_sqmiq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yfid"]
 
@@ -16,3 +18,12 @@ mesh = SubResource("CapsuleMesh_mapto")
 
 [node name="PlayerController" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_ht1ac")]
 target = NodePath("..")
+
+[node name="Health" parent="." instance=ExtResource("3_sqmiq")]
+
+[node name="Boomerang" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_p5pyf")]
+target = NodePath("..")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." groups=["FollowCamera"]]
+
+[connection signal="MouseMovement" from="PlayerController" to="Boomerang" method="_on_player_controller_mouse_movement"]
