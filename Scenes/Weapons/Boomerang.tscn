@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3jnswub0ulkl"]
+
+[ext_resource type="PackedScene" uid="uid://bv8binjy2oxbh" path="res://Scenes/Weapons/Weapon.tscn" id="1_5wa56"]
+[ext_resource type="PackedScene" uid="uid://dw7km8i2ybx15" path="res://Components/AttackComponent.tscn" id="2_4qpmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4klj"]
+size = Vector3(2, 2, 2)
+
+[node name="Boomerang" instance=ExtResource("1_5wa56")]
+
+[node name="AttackComponent" parent="." index="1" instance=ExtResource("2_4qpmk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
+shape = SubResource("BoxShape3D_l4klj")

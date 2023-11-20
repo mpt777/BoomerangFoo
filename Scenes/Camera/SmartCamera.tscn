@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp3krjl3ecopm"]
+
+[ext_resource type="Script" path="res://Scenes/Camera/SmartCamera.gd" id="1_v4yot"]
+
+[node name="Anchor" type="Node3D"]
+script = ExtResource("1_v4yot")
+
+[node name="SmartCamera" type="Camera3D" parent="." groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

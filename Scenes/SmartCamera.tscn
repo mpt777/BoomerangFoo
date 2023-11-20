@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp3krjl3ecopm"]
-
-[ext_resource type="Script" path="res://Scenes/SmartCamera.gd" id="1_mihaa"]
-
-[node name="SmartCamera" type="Camera3D" groups=["Camera"]]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-script = ExtResource("1_mihaa")

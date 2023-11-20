@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlb62y2do7mt"]
+
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="1_16r7x"]
+[ext_resource type="PackedScene" uid="uid://jb5v7c5pd4a0" path="res://Components/Hitbox.tscn" id="2_vmy4c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4r2dw"]
+albedo_color = Color(0.715685, 0.414968, 0.19665, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hhkww"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3lr3j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejk6d"]
+
+[node name="Box" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_4r2dw")
+mesh = SubResource("BoxMesh_hhkww")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_3lr3j")
+
+[node name="Health" parent="." instance=ExtResource("1_16r7x")]
+
+[node name="Hitbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_vmy4c")]
+health_component = NodePath("../Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_ejk6d")

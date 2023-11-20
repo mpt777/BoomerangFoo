@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://nekxp4173ils"]
+[gd_scene load_steps=7 format=3 uid="uid://nekxp4173ils"]
 
-[ext_resource type="PackedScene" uid="uid://cm0w7a28t0la4" path="res://Scenes/Components/PlayerController.tscn" id="1_ht1ac"]
-[ext_resource type="PackedScene" uid="uid://c3jnswub0ulkl" path="res://Scenes/Components/Weapons/Boomerang.tscn" id="3_p5pyf"]
-[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Scenes/Components/Health.tscn" id="3_sqmiq"]
+[ext_resource type="PackedScene" uid="uid://cm0w7a28t0la4" path="res://Components/PlayerController.tscn" id="1_s1rqm"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="2_wgly8"]
+[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="3_u4xir"]
+[ext_resource type="PackedScene" uid="uid://c3jnswub0ulkl" path="res://Scenes/Weapons/Boomerang.tscn" id="4_4nilv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yfid"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mapto"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["FollowCamera"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7yfid")
@@ -16,14 +17,14 @@ shape = SubResource("CapsuleShape3D_7yfid")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mapto")
 
-[node name="PlayerController" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_ht1ac")]
+[node name="PlayerController" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_s1rqm")]
 target = NodePath("..")
 
-[node name="Health" parent="." instance=ExtResource("3_sqmiq")]
+[node name="Health" parent="." instance=ExtResource("2_wgly8")]
 
-[node name="Boomerang" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_p5pyf")]
+[node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_u4xir")]
 target = NodePath("..")
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." groups=["FollowCamera"]]
+[node name="Boomerang" parent="Hand" instance=ExtResource("4_4nilv")]
 
-[connection signal="MouseMovement" from="PlayerController" to="Boomerang" method="_on_player_controller_mouse_movement"]
+[connection signal="MouseMovement" from="PlayerController" to="Hand" method="_on_player_controller_mouse_movement"]
