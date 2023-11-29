@@ -27,8 +27,4 @@ func _physics_process(delta):
 func set_positon_around_target() -> void:
 	var dir : Vector3 = (target_position - target.position).normalized()
 	position = (dir * RADIUS)
-	position.y = target.position.y
-
-	
-func _on_player_controller_mouse_movement(extra_arg_0):
-	target_position = extra_arg_0 
+	position.y = 0

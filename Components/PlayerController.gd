@@ -53,8 +53,8 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		var pos = mouse_position()
-		if pos:
-			emit_signal("MouseMovement", pos)
+#		if pos:
+#			emit_signal("MouseMovement", pos)
 		
 func mouse_position():
 	var camera = get_tree().get_nodes_in_group("Camera")[0]

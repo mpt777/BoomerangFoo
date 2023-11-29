@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://nekxp4173ils"]
+[gd_scene load_steps=8 format=3 uid="uid://nekxp4173ils"]
 
 [ext_resource type="PackedScene" uid="uid://cm0w7a28t0la4" path="res://Components/PlayerController.tscn" id="1_s1rqm"]
+[ext_resource type="Script" path="res://Scenes/Players/Player.gd" id="1_x8lru"]
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="2_wgly8"]
 [ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="3_u4xir"]
 [ext_resource type="PackedScene" uid="uid://c3jnswub0ulkl" path="res://Scenes/Weapons/Boomerang.tscn" id="4_4nilv"]
@@ -10,6 +11,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mapto"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["FollowCamera"]]
+script = ExtResource("1_x8lru")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7yfid")
@@ -27,4 +29,4 @@ target = NodePath("..")
 
 [node name="Boomerang" parent="Hand" instance=ExtResource("4_4nilv")]
 
-[connection signal="MouseMovement" from="PlayerController" to="Hand" method="_on_player_controller_mouse_movement"]
+[connection signal="MouseMovement" from="PlayerController" to="." method="_on_player_controller_mouse_movement"]

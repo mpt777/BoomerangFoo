@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ecja6p5vgqke"]
+
+[ext_resource type="Script" path="res://Utils/Draw3d.gd" id="1_6t403"]
+
+[node name="Draw3d" type="Node"]
+script = ExtResource("1_6t403")

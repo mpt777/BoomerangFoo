@@ -30,7 +30,6 @@ sky = SubResource("Sky_4sfdv")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_obi1e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -42,6 +41,7 @@ environment = SubResource("Environment_cxxfk")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999922, 0.00408569, -0.0118429, 0.00905517, -0.888978, 0.457859, -0.00865739, -0.457931, -0.888946, 0, 21.6531, 0)
 shadow_enabled = true
+directional_shadow_max_distance = 200.0
 
 [node name="Items" type="Node3D" parent="."]
 
