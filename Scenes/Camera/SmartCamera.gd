@@ -120,7 +120,6 @@ func debug() -> void:
 	debugger.draw_line()
 
 func _physics_process(delta):
-	return
 	_calculate_bounds()
 #	debug()
 	set_position_center()

@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://nekxp4173ils"]
+[gd_scene load_steps=9 format=3 uid="uid://nekxp4173ils"]
 
-[ext_resource type="PackedScene" uid="uid://cm0w7a28t0la4" path="res://Components/PlayerController.tscn" id="1_s1rqm"]
 [ext_resource type="Script" path="res://Scenes/Players/Player.gd" id="1_x8lru"]
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="2_wgly8"]
 [ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="3_u4xir"]
 [ext_resource type="PackedScene" uid="uid://c3jnswub0ulkl" path="res://Scenes/Weapons/Boomerang.tscn" id="4_4nilv"]
+[ext_resource type="PackedScene" uid="uid://dfpatgn7u3h84" path="res://Components/PickUpComponent.tscn" id="5_bu5la"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yfid"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mapto"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bf2dd"]
+size = Vector3(2, 2, 2)
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["FollowCamera"]]
 script = ExtResource("1_x8lru")
@@ -19,14 +22,17 @@ shape = SubResource("CapsuleShape3D_7yfid")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mapto")
 
-[node name="PlayerController" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_s1rqm")]
-target = NodePath("..")
-
 [node name="Health" parent="." instance=ExtResource("2_wgly8")]
 
 [node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_u4xir")]
 target = NodePath("..")
 
-[node name="Boomerang" parent="Hand" instance=ExtResource("4_4nilv")]
+[node name="Boomerang" parent="Hand" node_paths=PackedStringArray("hand") instance=ExtResource("4_4nilv")]
+hand = NodePath("..")
 
-[connection signal="MouseMovement" from="PlayerController" to="." method="_on_player_controller_mouse_movement"]
+[node name="PickUpComponent" parent="." instance=ExtResource("5_bu5la")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpComponent"]
+shape = SubResource("BoxShape3D_bf2dd")
+
+[connection signal="PickedUpArea" from="PickUpComponent" to="." method="_on_pick_up_component_picked_up_area"]
