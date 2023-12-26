@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Players/Player.gd" id="1_x8lru"]
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="2_wgly8"]
 [ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="3_u4xir"]
-[ext_resource type="PackedScene" uid="uid://c3jnswub0ulkl" path="res://Scenes/Weapons/Boomerang.tscn" id="4_4nilv"]
+[ext_resource type="PackedScene" uid="uid://dtvfkprd3w6rv" path="res://Scenes/Weapons/Wand.tscn" id="4_nbed0"]
 [ext_resource type="PackedScene" uid="uid://dfpatgn7u3h84" path="res://Components/PickUpComponent.tscn" id="5_bu5la"]
 [ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="6_37x6t"]
 
@@ -28,8 +28,7 @@ mesh = SubResource("CapsuleMesh_mapto")
 [node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_u4xir")]
 target = NodePath("..")
 
-[node name="Boomerang" parent="Hand" node_paths=PackedStringArray("hand") instance=ExtResource("4_4nilv")]
-hand = NodePath("..")
+[node name="Weapon" parent="Hand" instance=ExtResource("4_nbed0")]
 
 [node name="PickUpComponent" parent="." instance=ExtResource("5_bu5la")]
 

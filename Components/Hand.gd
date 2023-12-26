@@ -39,6 +39,7 @@ func set_positon_around_target() -> void:
 	position.y = 0
 	
 func throw():
+	return
 	for child in get_children():
 		if child is Weapon:
 			self.weapon = null

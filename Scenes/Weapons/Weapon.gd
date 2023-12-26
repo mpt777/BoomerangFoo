@@ -31,6 +31,8 @@ func pickup():
 	pass
 	
 func look_at_target():
+	
 	if target_position != Vector3.ZERO:
 		look_at(target_position)
+	rotation.x = 0
 
