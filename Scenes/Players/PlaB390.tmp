@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://nekxp4173ils"]
+
+[ext_resource type="Script" path="res://Scenes/Players/Player.gd" id="1_x8lru"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="2_wgly8"]
+[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="3_u4xir"]
+[ext_resource type="PackedScene" uid="uid://dtvfkprd3w6rv" path="res://Scenes/Weapons/Wand.tscn" id="4_nbed0"]
+[ext_resource type="PackedScene" uid="uid://dfpatgn7u3h84" path="res://Components/PickUpComponent.tscn" id="5_bu5la"]
+[ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="6_37x6t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yfid"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mapto"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bf2dd"]
+size = Vector3(2, 2, 2)
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["FollowCamera"]]
+script = ExtResource("1_x8lru")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_7yfid")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_mapto")
+
+[node name="Health" parent="." instance=ExtResource("2_wgly8")]
+
+[node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_u4xir")]
+target = NodePath("..")
+
+[node name="Weapon" parent="Hand" instance=ExtResource("4_nbed0")]
+
+[node name="PickUpComponent" parent="." instance=ExtResource("5_bu5la")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpComponent"]
+shape = SubResource("BoxShape3D_bf2dd")
+
+[node name="Movement" type="Node3D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("6_37x6t")
+body = NodePath("..")
+
+[node name="Dash" type="Node" parent="Movement"]
+
+[node name="DashTimer" type="Timer" parent="Movement/Dash"]
+wait_time = 0.1
+
+[node name="DashCooldown" type="Timer" parent="Movement/Dash"]
+
+[connection signal="PickedUpArea" from="PickUpComponent" to="." method="_on_pick_up_component_picked_up_area"]
+[connection signal="timeout" from="Movement/Dash/DashTimer" to="Movement" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Movement/Dash/DashCooldown" to="Movement" method="_on_dash_cooldown_timeout"]

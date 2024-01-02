@@ -44,6 +44,12 @@ func throw():
 		if child is Weapon:
 			self.weapon = null
 			child.throw()
+
+func attack():
+	for child in get_children():
+		if child is Weapon:
+			child.attack()
+			
 			
 func pickup(node):
 	if not node is Weapon:

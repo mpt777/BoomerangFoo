@@ -24,5 +24,7 @@ func register_action(action_name : String, input_event : InputEvent, button_inde
 		input_event.keycode = button_index
 	elif input_event is InputEventJoypadButton:
 		input_event.button_index = button_index
+	elif input_event is InputEventMouseButton:
+		input_event.button_index = button_index
 	
 	InputMap.action_add_event(action, input_event)

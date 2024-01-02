@@ -1,10 +1,4 @@
-extends Area3D
-
-class_name Projectile
-
-var direction: Vector3 = Vector3.ZERO
-var speed: float = 10.0
-
+extends Projectile
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +8,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
-	
-func _physics_process(delta):
-	position += -transform.basis.z * speed * delta
+
+
+func _on_attack_component_body_entered(body):
+	# todo, peircing, damage
+	queue_free()

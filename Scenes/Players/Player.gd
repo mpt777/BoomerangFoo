@@ -19,6 +19,7 @@ func _ready():
 	controller.register_action("move_right", InputEventKey.new(), KEY_D)
 	controller.register_action("thow_weapon", InputEventKey.new(), KEY_Q)
 	controller.register_action("dash", InputEventKey.new(), KEY_SPACE)
+	controller.register_action("attack", InputEventMouseButton.new(), MOUSE_BUTTON_LEFT)
 	
 func _physics_process(delta):
 	move_player()
@@ -40,6 +41,8 @@ func _input(event):
 		n_movement.dash()
 	if event.is_action_pressed(controller.action("thow_weapon")):
 		n_hand.throw()
+	if event.is_action_pressed(controller.action("attack")):
+		n_hand.attack()
 		
 func move_hand():
 	var pos = mouse_position()

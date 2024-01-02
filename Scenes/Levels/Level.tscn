@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://diidtkeefoxku"]
+[gd_scene load_steps=11 format=3 uid="uid://diidtkeefoxku"]
 
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Objects/Box.tscn" id="1_7t2de"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_xm1ef"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Objects/Wall.tscn" id="3_jrjor"]
+[ext_resource type="Script" path="res://Scenes/Levels/ProjectileSpawner.gd" id="4_knb8q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
 sky_top_color = Color(0.309804, 0.462745, 0.619608, 1)
@@ -46,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09797, -12.7459)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4611, 1.09797, -12.7459)
 
 [node name="Box3" parent="Items" instance=ExtResource("1_7t2de")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7131, 2.62826, -8.14262)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7131, 1.62826, -8.14262)
 
 [node name="CameraAnchor" parent="." instance=ExtResource("2_xm1ef")]
 
@@ -75,5 +76,8 @@ mesh = SubResource("BoxMesh_obi1e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Floor"]
 shape = SubResource("BoxShape3D_p8n8t")
+
+[node name="ProjectileSpawner" type="Node" parent="."]
+script = ExtResource("4_knb8q")
 
 [editable path="CameraAnchor"]
