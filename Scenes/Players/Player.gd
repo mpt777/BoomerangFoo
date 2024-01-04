@@ -25,7 +25,6 @@ func _physics_process(delta):
 	move_player()
 	move_hand()
 
-	
 func move_player():
 	var direction := Vector3.ZERO
 

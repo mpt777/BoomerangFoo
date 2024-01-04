@@ -23,8 +23,6 @@ var can_dash := true
 func setup(body): 
 	self.body = body
 	
-	
-	
 func move(direction : Vector3) -> void:
 	direction *= current_speed
 	if direction.length() > 0:
@@ -35,8 +33,6 @@ func move(direction : Vector3) -> void:
 	body.velocity.y -= GRAVITY
 
 	body.move_and_slide()
-
-
 
 func dash() -> void:
 	if not can_dash:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvg134x7f0mc0"]
+[gd_scene load_steps=5 format=3 uid="uid://cvg134x7f0mc0"]
 
 [ext_resource type="PackedScene" uid="uid://nekxp4173ils" path="res://Scenes/Players/Player.tscn" id="1_gb6ck"]
 [ext_resource type="PackedScene" uid="uid://diidtkeefoxku" path="res://Scenes/Levels/Level.tscn" id="2_h88pl"]
+[ext_resource type="PackedScene" uid="uid://cje1j5fia5yr1" path="res://Scenes/Enemies/Enemy.tscn" id="3_81q23"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mft51"]
 
@@ -29,3 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41416, 2.83932, -19.795)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VisibleOnScreenNotifier3D3"]
 mesh = SubResource("BoxMesh_mft51")
+
+[node name="Enemy" parent="." instance=ExtResource("3_81q23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.11292, 2.41336, 0)

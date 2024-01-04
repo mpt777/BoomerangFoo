@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://cje1j5fia5yr1"]
+
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="1_grke1"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_n83qt"]
+[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="2_w2efh"]
+[ext_resource type="PackedScene" uid="uid://dtvfkprd3w6rv" path="res://Scenes/Weapons/Wand.tscn" id="4_4po0w"]
+[ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="4_yfi17"]
+[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="6_e3roi"]
+[ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/Attack.gd" id="7_rgy71"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eguw8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goiss"]
+albedo_color = Color(0.67451, 0.168627, 0.627451, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mhm0u"]
+material = SubResource("StandardMaterial3D_goiss")
+
+[node name="Enemy" type="CharacterBody3D" groups=["FollowCamera", "Player"]]
+script = ExtResource("1_n83qt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_eguw8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_mhm0u")
+
+[node name="Health" parent="." instance=ExtResource("1_grke1")]
+
+[node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_w2efh")]
+target = NodePath("..")
+
+[node name="Weapon" parent="Hand" instance=ExtResource("4_4po0w")]
+
+[node name="Movement" type="Node3D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("4_yfi17")
+body = NodePath("..")
+
+[node name="Dash" type="Node" parent="Movement"]
+
+[node name="DashTimer" type="Timer" parent="Movement/Dash"]
+wait_time = 0.1
+
+[node name="DashCooldown" type="Timer" parent="Movement/Dash"]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("body", "initial_state")]
+script = ExtResource("6_e3roi")
+body = NodePath("..")
+initial_state = NodePath("Attack")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("7_rgy71")
+body = NodePath("../..")
+
+[connection signal="timeout" from="Movement/Dash/DashTimer" to="Movement" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Movement/Dash/DashCooldown" to="Movement" method="_on_dash_cooldown_timeout"]
