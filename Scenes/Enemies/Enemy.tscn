@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="1_grke1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_n83qt"]
 [ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand/Hand.tscn" id="2_w2efh"]
-[ext_resource type="PackedScene" uid="uid://dtvfkprd3w6rv" path="res://Scenes/Weapons/Wand.tscn" id="4_4po0w"]
+[ext_resource type="PackedScene" uid="uid://bqlhcyxpijyyv" path="res://Scenes/Weapons/Wand/Wand.tscn" id="4_4po0w"]
 [ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="4_yfi17"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="6_2qefy"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/StateMachine.gd" id="7_04g71"]
