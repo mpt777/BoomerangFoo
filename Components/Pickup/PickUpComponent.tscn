@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfpatgn7u3h84"]
 
-[ext_resource type="Script" path="res://Components/PickUpComponent.gd" id="1_atdge"]
+[ext_resource type="Script" path="res://Components/Pickup/PickUpComponent.gd" id="1_atdge"]
 
 [node name="PickUpComponent" type="Area3D"]
 collision_layer = 256

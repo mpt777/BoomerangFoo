@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://nekxp4173ils"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Player.gd" id="1_x8lru"]
-[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="2_wgly8"]
-[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="3_u4xir"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="2_wgly8"]
+[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand/Hand.tscn" id="3_u4xir"]
 [ext_resource type="PackedScene" uid="uid://dtvfkprd3w6rv" path="res://Scenes/Weapons/Wand.tscn" id="4_nbed0"]
 [ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="6_37x6t"]
 

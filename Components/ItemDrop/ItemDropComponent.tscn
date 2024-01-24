@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cw6s6ggs4358j"]
 
-[ext_resource type="Script" path="res://Components/ItemDropComponent.gd" id="1_cxf2s"]
+[ext_resource type="Script" path="res://Components/ItemDrop/ItemDropComponent.gd" id="1_cxf2s"]
 
 [node name="ItemDropComponent" type="Area3D"]
 collision_layer = 512

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dw7km8i2ybx15"]
 
-[ext_resource type="Script" path="res://Components/AttackComponent.gd" id="1_gneos"]
+[ext_resource type="Script" path="res://Components/Attack/AttackComponent.gd" id="1_gneos"]
 
 [node name="AttackComponent" type="Area3D"]
 script = ExtResource("1_gneos")

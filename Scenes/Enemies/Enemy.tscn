@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cje1j5fia5yr1"]
+[gd_scene load_steps=12 format=3 uid="uid://cje1j5fia5yr1"]
 
-[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health.tscn" id="1_grke1"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="1_grke1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_n83qt"]
-[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand.tscn" id="2_w2efh"]
+[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand/Hand.tscn" id="2_w2efh"]
 [ext_resource type="PackedScene" uid="uid://dtvfkprd3w6rv" path="res://Scenes/Weapons/Wand.tscn" id="4_4po0w"]
 [ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="4_yfi17"]
-[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="6_e3roi"]
+[ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="6_2qefy"]
+[ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/StateMachine.gd" id="7_04g71"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/Attack.gd" id="7_rgy71"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eguw8"]
@@ -43,8 +44,8 @@ wait_time = 0.1
 
 [node name="DashCooldown" type="Timer" parent="Movement/Dash"]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("body", "initial_state")]
-script = ExtResource("6_e3roi")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
+script = ExtResource("7_04g71")
 body = NodePath("..")
 initial_state = NodePath("Attack")
 

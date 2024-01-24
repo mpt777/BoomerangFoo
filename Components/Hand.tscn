@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://0jkq75hkjvgs"]
-
-[ext_resource type="Script" path="res://Components/Hand.gd" id="1_8ejnx"]
-
-[node name="Hand" type="Node3D"]
-script = ExtResource("1_8ejnx")

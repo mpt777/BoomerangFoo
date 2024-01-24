@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3jnswub0ulkl"]
 
 [ext_resource type="PackedScene" uid="uid://bv8binjy2oxbh" path="res://Scenes/Weapons/Weapon.tscn" id="1_5wa56"]
-[ext_resource type="PackedScene" uid="uid://dw7km8i2ybx15" path="res://Components/AttackComponent.tscn" id="2_4qpmk"]
-[ext_resource type="Script" path="res://Scenes/Weapons/Boomerang.gd" id="2_ee4nm"]
-[ext_resource type="PackedScene" uid="uid://cw6s6ggs4358j" path="res://Components/ItemDropComponent.tscn" id="4_hmn53"]
+[ext_resource type="PackedScene" uid="uid://dw7km8i2ybx15" path="res://Components/Attack/AttackComponent.tscn" id="2_4qpmk"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Boomerang/Boomerang.gd" id="2_ee4nm"]
+[ext_resource type="PackedScene" uid="uid://cw6s6ggs4358j" path="res://Components/ItemDrop/ItemDropComponent.tscn" id="4_hmn53"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4klj"]
 size = Vector3(2, 2, 2)
