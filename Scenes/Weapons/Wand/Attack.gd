@@ -1,0 +1,22 @@
+extends State
+
+var FireProjectile = preload("res://Scenes/Projectile/FireProjectile.tscn")
+
+@export
+var body : Node3D
+
+func enter():
+	pass
+	
+func exit():
+	pass
+	
+func update(delta : float):
+	pass
+	
+func physics_update(_delta : float):
+	var bullet = FireProjectile.instantiate()
+	bullet.position = body.global_position
+	bullet.rotation = body.rotation
+	$"/root/Signals".emit_signal("add_projectile", bullet)
+	Transitioned.emit(self, "Reloading")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqlhcyxpijyyv"]
+[gd_scene load_steps=10 format=3 uid="uid://bqlhcyxpijyyv"]
 
 [ext_resource type="PackedScene" uid="uid://bv8binjy2oxbh" path="res://Scenes/Weapons/Weapon.tscn" id="1_4bqml"]
 [ext_resource type="Script" path="res://Scenes/Weapons/Wand/Wand.gd" id="2_ohp87"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="3_mk3gm"]
 [ext_resource type="Script" path="res://Scenes/Weapons/Wand/Reloading.gd" id="4_b81xa"]
 [ext_resource type="Script" path="res://Scenes/Weapons/Wand/Idle.gd" id="4_n2wev"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Wand/Attack.gd" id="6_jef0n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5prxu"]
 albedo_color = Color(0.309804, 0.211765, 0.0823529, 1)
@@ -38,6 +39,10 @@ one_shot = true
 
 [node name="Idle" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("body")]
 script = ExtResource("4_n2wev")
+body = NodePath("../..")
+
+[node name="Attack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("body")]
+script = ExtResource("6_jef0n")
 body = NodePath("../..")
 
 [connection signal="timeout" from="StateMachine/Reloading/Timer" to="StateMachine/Reloading" method="_on_timer_timeout"]

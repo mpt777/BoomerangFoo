@@ -13,4 +13,6 @@ func _process(delta):
 	pass
 
 func attack():
-	can_attack = true
+	if ($StateMachine.current_state.has_method("attack")):
+		$StateMachine.current_state.attack()
+		

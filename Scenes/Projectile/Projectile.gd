@@ -3,7 +3,7 @@ extends Area3D
 class_name Projectile
 
 var direction: Vector3 = Vector3.ZERO
-var speed: float = 10.0
+var speed: float = 30.0
 
 
 # Called when the node enters the scene tree for the first time.

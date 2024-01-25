@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scenes/Projectile/Projectile.gd" id="1_8lgq1"]
 
-[node name="Projectile" type="Area3D"]
+[node name="Projectile" type="Area3D" groups=["Projectile"]]
 script = ExtResource("1_8lgq1")
