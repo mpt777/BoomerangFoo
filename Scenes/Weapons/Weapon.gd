@@ -3,7 +3,7 @@ extends RigidBody3D
 class_name Weapon
 
 @export
-var hand : HandComponent
+var derived_owner : Node = null;
 
 var target_position : Vector3 = Vector3.ZERO:
 	set(value):
@@ -31,7 +31,6 @@ func pickup():
 	pass
 	
 func look_at_target():
-	
 	if target_position != Vector3.ZERO:
 		look_at(target_position)
 	rotation.x = 0

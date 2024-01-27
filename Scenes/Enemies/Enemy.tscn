@@ -1,14 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cje1j5fia5yr1"]
+[gd_scene load_steps=18 format=3 uid="uid://cje1j5fia5yr1"]
 
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="1_grke1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_n83qt"]
 [ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand/Hand.tscn" id="2_w2efh"]
 [ext_resource type="PackedScene" uid="uid://bqlhcyxpijyyv" path="res://Scenes/Weapons/Wand/Wand.tscn" id="4_4po0w"]
-[ext_resource type="Script" path="res://Scenes/Players/Movement.gd" id="4_yfi17"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="6_2qefy"]
+[ext_resource type="PackedScene" uid="uid://cpy5im6mduxy6" path="res://Scenes/Movement/Movement.tscn" id="6_sxrvu"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/StateMachine.gd" id="7_04g71"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/Attack.gd" id="7_rgy71"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Dodge.gd" id="9_n20o2"]
+[ext_resource type="Script" path="res://Scenes/Enemies/DodgeArea.gd" id="10_fqswa"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Walk.gd" id="11_io5w5"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Dash.gd" id="12_vn0f7"]
+[ext_resource type="PackedScene" uid="uid://dug0djwlj8lba" path="res://Scenes/Movement/Dash.tscn" id="13_w3lyl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eguw8"]
 
@@ -17,6 +21,9 @@ albedo_color = Color(0.67451, 0.168627, 0.627451, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mhm0u"]
 material = SubResource("StandardMaterial3D_goiss")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jsind"]
+radius = 7.0
 
 [node name="Enemy" type="CharacterBody3D" groups=["FollowCamera", "Player"]]
 script = ExtResource("1_n83qt")
@@ -32,30 +39,45 @@ mesh = SubResource("CapsuleMesh_mhm0u")
 [node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_w2efh")]
 target = NodePath("..")
 
-[node name="Weapon" parent="Hand" instance=ExtResource("4_4po0w")]
+[node name="Weapon" parent="Hand" node_paths=PackedStringArray("derived_owner") instance=ExtResource("4_4po0w")]
+derived_owner = NodePath("../..")
 
-[node name="Movement" type="Node3D" parent="." node_paths=PackedStringArray("body")]
-script = ExtResource("4_yfi17")
+[node name="DodgeArea" type="Area3D" parent="."]
+collision_mask = 256
+script = ExtResource("10_fqswa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DodgeArea"]
+shape = SubResource("CylinderShape3D_jsind")
+
+[node name="Movement" parent="." node_paths=PackedStringArray("body") instance=ExtResource("6_sxrvu")]
 body = NodePath("..")
 
-[node name="Dash" type="Node" parent="Movement"]
-
-[node name="DashTimer" type="Timer" parent="Movement/Dash"]
-wait_time = 0.1
-
-[node name="DashCooldown" type="Timer" parent="Movement/Dash"]
-
-[node name="StateMachine" parent="." node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
+[node name="BehaviourFSM" parent="." node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
 script = ExtResource("7_04g71")
 body = NodePath("..")
 initial_state = NodePath("Attack")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+[node name="Attack" type="Node" parent="BehaviourFSM" node_paths=PackedStringArray("body")]
 script = ExtResource("7_rgy71")
 body = NodePath("../..")
 
-[node name="Dodge" type="Node" parent="StateMachine"]
+[node name="Dodge" type="Node" parent="BehaviourFSM"]
 script = ExtResource("9_n20o2")
 
-[connection signal="timeout" from="Movement/Dash/DashTimer" to="Movement" method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="Movement/Dash/DashCooldown" to="Movement" method="_on_dash_cooldown_timeout"]
+[node name="MovementFSM" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("6_2qefy")]
+initial_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="MovementFSM" node_paths=PackedStringArray("body")]
+script = ExtResource("11_io5w5")
+body = NodePath("../..")
+
+[node name="Dash" type="Node" parent="MovementFSM" node_paths=PackedStringArray("movement", "dash")]
+script = ExtResource("12_vn0f7")
+movement = NodePath("../../Movement")
+dash = NodePath("DashComponent")
+
+[node name="DashComponent" parent="MovementFSM/Dash" instance=ExtResource("13_w3lyl")]
+
+[connection signal="area_entered" from="DodgeArea" to="DodgeArea" method="_on_area_entered"]
+[connection signal="area_exited" from="DodgeArea" to="DodgeArea" method="_on_area_exited"]
+[connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_end_dash"]

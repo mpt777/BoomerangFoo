@@ -18,9 +18,7 @@ var GRAVITY := 9.8
 
 var current_speed := SPEED
 
-var can_dash := true
-
-func setup(body): 
+func constructor(body): 
 	self.body = body
 	
 func move(direction : Vector3) -> void:
@@ -35,15 +33,7 @@ func move(direction : Vector3) -> void:
 	body.move_and_slide()
 
 func dash() -> void:
-	if not can_dash:
-		return
 	current_speed = DASH_SPEED
-	can_dash = false
-	$Dash/DashTimer.start()
-	$Dash/DashCooldown.start()
 	
-func _on_dash_timer_timeout():
+func end_dash() -> void:
 	current_speed = SPEED
-
-func _on_dash_cooldown_timeout():
-	can_dash = true

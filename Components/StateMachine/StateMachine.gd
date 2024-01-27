@@ -36,5 +36,5 @@ func _on_child_transitioned(state, new_state_name: String):
 	if current_state:
 		current_state.exit()
 		
-	new_state.enter()
 	current_state = new_state
+	new_state.enter()

@@ -22,22 +22,15 @@ func _ready():
 	controller.register_action("attack", InputEventMouseButton.new(), MOUSE_BUTTON_LEFT)
 	
 func _physics_process(delta):
-	move_player()
 	move_hand()
-
-func move_player():
+	
+func get_input_direction() -> Vector3:
 	var direction := Vector3.ZERO
-
-	# We check for each move input and update the direction accordingly.
 	direction.x = Input.get_axis(controller.action("move_left"), controller.action("move_right"))
 	direction.z = Input.get_axis(controller.action("move_up"), controller.action("move_down"))
-	direction = direction.normalized()
-	
-	n_movement.move(direction)
+	return direction.normalized()
 	
 func _input(event):
-	if event.is_action_pressed(controller.action("dash")):
-		n_movement.dash()
 	if event.is_action_pressed(controller.action("thow_weapon")):
 		n_hand.throw()
 	if event.is_action_pressed(controller.action("attack")):

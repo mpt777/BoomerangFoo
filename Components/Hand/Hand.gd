@@ -50,7 +50,6 @@ func attack():
 		if child is Weapon:
 			child.attack()
 			
-			
 func pickup(node):
 	if not node is Weapon:
 		return
