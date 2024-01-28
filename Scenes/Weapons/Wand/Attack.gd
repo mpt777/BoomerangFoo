@@ -9,6 +9,8 @@ func enter():
 	var bullet = FireProjectile.instantiate()
 	bullet.position = body.global_position
 	bullet.rotation = body.rotation
+	bullet.weapon = body
+	bullet.weapon_owner = body.weapon_owner
 	$"/root/Signals".emit_signal("add_projectile", bullet)
 	Transitioned.emit(self, "Reloading")
 	

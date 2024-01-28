@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cje1j5fia5yr1"]
+[gd_scene load_steps=18 format=3 uid="uid://cje1j5fia5yr1"]
 
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="1_grke1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_n83qt"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/StateMachine.gd" id="7_04g71"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/Attack.gd" id="7_rgy71"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Dodge.gd" id="9_n20o2"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Idle.gd" id="9_wdm18"]
 [ext_resource type="Script" path="res://Scenes/Enemies/DodgeArea.gd" id="10_fqswa"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Walk.gd" id="11_io5w5"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Dash.gd" id="12_vn0f7"]
@@ -60,12 +59,7 @@ body = NodePath("..")
 [node name="BehaviourFSM" parent="." node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
 script = ExtResource("7_04g71")
 body = NodePath("..")
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="BehaviourFSM" node_paths=PackedStringArray("body", "movement")]
-script = ExtResource("9_wdm18")
-body = NodePath("../..")
-movement = NodePath("../../Movement")
+initial_state = NodePath("Attack")
 
 [node name="Attack" type="Node" parent="BehaviourFSM" node_paths=PackedStringArray("body")]
 script = ExtResource("7_rgy71")

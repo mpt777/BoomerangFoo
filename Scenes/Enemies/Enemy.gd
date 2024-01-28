@@ -7,7 +7,12 @@ var n_hand := $Hand
 @onready
 var n_movement := $Movement
 
-var target_player : CharacterBody3D = null;
+@onready
+var n_nav := $NavigationAgent3D
+
+var target_player : CharacterBody3D = null
+var target_direction : Vector3 = Vector3.ZERO
+var target_location : Vector3 = Vector3.ZERO
 
 	
 func _physics_process(delta):
@@ -18,9 +23,5 @@ func move_hand():
 	if target_player:
 		n_hand.target_position = target_player.global_position
 		
-
 func attack():
 	pass
-	
-	
-

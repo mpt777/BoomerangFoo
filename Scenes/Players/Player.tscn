@@ -28,7 +28,8 @@ mesh = SubResource("CapsuleMesh_mapto")
 [node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_u4xir")]
 target = NodePath("..")
 
-[node name="Weapon" parent="Hand" instance=ExtResource("4_nbed0")]
+[node name="Weapon" parent="Hand" node_paths=PackedStringArray("weapon_owner") instance=ExtResource("4_nbed0")]
+weapon_owner = NodePath("../..")
 
 [node name="Movement" parent="." node_paths=PackedStringArray("body") instance=ExtResource("5_cnygo")]
 body = NodePath("..")

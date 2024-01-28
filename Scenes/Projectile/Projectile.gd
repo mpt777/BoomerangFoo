@@ -4,8 +4,8 @@ class_name Projectile
 
 var direction: Vector3 = Vector3.ZERO
 var speed: float = 30.0
-var created_by = null
-var collision_layer_id = null
+var weapon: Weapon
+var weapon_owner: Node
 
 
 # Called when the node enters the scene tree for the first time.
