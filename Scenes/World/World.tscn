@@ -15,21 +15,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73338, 0)
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." groups=["FollowCamera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.83932, -12.795)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VisibleOnScreenNotifier3D"]
 mesh = SubResource("BoxMesh_mft51")
 
 [node name="VisibleOnScreenNotifier3D2" type="VisibleOnScreenNotifier3D" parent="." groups=["FollowCamera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4629, 2.83932, -8.17096)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VisibleOnScreenNotifier3D2"]
 mesh = SubResource("BoxMesh_mft51")
 
 [node name="VisibleOnScreenNotifier3D3" type="VisibleOnScreenNotifier3D" parent="." groups=["FollowCamera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41416, 2.83932, -19.795)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VisibleOnScreenNotifier3D3"]
 mesh = SubResource("BoxMesh_mft51")
 
 [node name="Enemy" parent="." instance=ExtResource("3_naa3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.11292, 2.41336, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_naa3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06467, 2.41336, 1.78611)

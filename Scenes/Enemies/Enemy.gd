@@ -25,3 +25,9 @@ func move_hand():
 		
 func attack():
 	pass
+	
+	
+func pick_random_position() -> Vector3:
+	var map : RID = get_world_3d().get_navigation_map()
+	return NavigationServer3D.map_get_random_point(map, 1, false)
+	

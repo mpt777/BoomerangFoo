@@ -40,6 +40,7 @@ shape = SubResource("CapsuleShape3D_eguw8")
 mesh = SubResource("CapsuleMesh_mhm0u")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
 
 [node name="Health" parent="." instance=ExtResource("1_grke1")]
 

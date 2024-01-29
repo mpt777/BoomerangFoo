@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cje1j5fia5yr1"]
+[gd_scene load_steps=19 format=3 uid="uid://cje1j5fia5yr1"]
 
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="1_grke1"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_n83qt"]
 [ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand/Hand.tscn" id="2_w2efh"]
 [ext_resource type="PackedScene" uid="uid://bqlhcyxpijyyv" path="res://Scenes/Weapons/Wand/Wand.tscn" id="4_4po0w"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="6_2qefy"]
-[ext_resource type="Script" path="res://Scenes/Enemies/PlayerArea.gd" id="6_g4c47"]
 [ext_resource type="PackedScene" uid="uid://cpy5im6mduxy6" path="res://Scenes/Movement/Movement.tscn" id="6_sxrvu"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/StateMachine.gd" id="7_04g71"]
 [ext_resource type="Script" path="res://Scenes/Enemies/SimpleAI/Attack.gd" id="7_rgy71"]
@@ -27,9 +26,6 @@ material = SubResource("StandardMaterial3D_goiss")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jsind"]
 radius = 7.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_bk08o"]
-radius = 10.0
-
 [node name="Enemy" type="CharacterBody3D" groups=["FollowCamera", "Player"]]
 script = ExtResource("1_n83qt")
 
@@ -40,6 +36,7 @@ shape = SubResource("CapsuleShape3D_eguw8")
 mesh = SubResource("CapsuleMesh_mhm0u")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
 
 [node name="Health" parent="." instance=ExtResource("1_grke1")]
 
@@ -56,13 +53,6 @@ body = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DodgeArea"]
 shape = SubResource("CylinderShape3D_jsind")
-
-[node name="PlayerArea" type="Area3D" parent="."]
-collision_mask = 256
-script = ExtResource("6_g4c47")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea"]
-shape = SubResource("CylinderShape3D_bk08o")
 
 [node name="Movement" parent="." node_paths=PackedStringArray("body") instance=ExtResource("6_sxrvu")]
 body = NodePath("..")
@@ -100,9 +90,6 @@ body = NodePath("../..")
 
 [node name="DashComponent" parent="MovementFSM/Dash" instance=ExtResource("13_w3lyl")]
 
-[connection signal="target_reached" from="NavigationAgent3D" to="BehaviourFSM/Idle" method="_on_navigation_agent_3d_target_reached"]
 [connection signal="area_entered" from="DodgeArea" to="DodgeArea" method="_on_area_entered"]
 [connection signal="area_exited" from="DodgeArea" to="DodgeArea" method="_on_area_exited"]
-[connection signal="area_entered" from="PlayerArea" to="PlayerArea" method="_on_area_entered"]
-[connection signal="area_exited" from="PlayerArea" to="PlayerArea" method="_on_area_exited"]
 [connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_end_dash"]
