@@ -36,6 +36,3 @@ mesh = SubResource("BoxMesh_mft51")
 
 [node name="Enemy" parent="." instance=ExtResource("3_naa3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.11292, 2.41336, 0)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_naa3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06467, 2.41336, 1.78611)

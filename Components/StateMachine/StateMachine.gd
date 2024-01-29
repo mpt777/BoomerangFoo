@@ -38,3 +38,6 @@ func _on_child_transitioned(state, new_state_name: String):
 		
 	current_state = new_state
 	new_state.enter()
+	
+func current_state_name() -> String:
+	return current_state.name.to_lower()

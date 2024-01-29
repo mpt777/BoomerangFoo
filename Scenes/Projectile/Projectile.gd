@@ -2,7 +2,7 @@ extends Area3D
 
 class_name Projectile
 
-var direction: Vector3 = Vector3.ZERO
+#var direction: Vector3 = Vector3.ZERO
 var speed: float = 30.0
 var weapon: Weapon
 var weapon_owner: Node
@@ -20,3 +20,6 @@ func _process(delta):
 	
 func _physics_process(delta):
 	position += -transform.basis.z * speed * delta
+	
+func direction() -> Vector3:
+	return rotation

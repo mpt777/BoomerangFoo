@@ -1,4 +1,5 @@
 extends Area3D
+class_name DodgeArea
 
 @export
 var body : CharacterBody3D
@@ -14,10 +15,8 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func process_dodge():
 	var best_direction = Vector3.ZERO
-
 
 func _on_area_entered(area):
 	if area is Projectile:

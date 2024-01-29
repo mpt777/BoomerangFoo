@@ -40,7 +40,6 @@ shape = SubResource("CapsuleShape3D_eguw8")
 mesh = SubResource("CapsuleMesh_mhm0u")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-max_speed = 50.0
 
 [node name="Health" parent="." instance=ExtResource("1_grke1")]
 
@@ -88,11 +87,10 @@ script = ExtResource("9_n20o2")
 [node name="MovementFSM" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("6_2qefy")]
 initial_state = NodePath("Walk")
 
-[node name="Walk" type="Node" parent="MovementFSM" node_paths=PackedStringArray("body", "movement", "dodge_area")]
+[node name="Walk" type="Node" parent="MovementFSM" node_paths=PackedStringArray("body", "movement")]
 script = ExtResource("11_io5w5")
 body = NodePath("../..")
 movement = NodePath("../../Movement")
-dodge_area = NodePath("../../DodgeArea")
 
 [node name="Dash" type="Node" parent="MovementFSM" node_paths=PackedStringArray("movement", "dash", "body")]
 script = ExtResource("12_vn0f7")

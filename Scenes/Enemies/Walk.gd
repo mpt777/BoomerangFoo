@@ -4,6 +4,8 @@ extends State
 var body : CharacterBody3D = null
 @export
 var movement : Movement
+@export
+var dodge_area : DodgeArea
 
 func enter():
 	pass
@@ -15,4 +17,5 @@ func update(delta : float):
 	pass
 		
 func physics_update(_delta : float):
-	pass
+	if dodge_area.other_projectiles_in_area:
+		Transitioned.emit(self, "Dash")

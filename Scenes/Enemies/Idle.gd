@@ -8,9 +8,7 @@ var movement : Movement
 const OFFSET := 5
 
 const distance_bounds = Vector2(10, 30)
-const distance_desired = 20
 
-var too_close := false
 
 func select_new_position() -> void:
 	var method := randi_range(0,2)
@@ -18,9 +16,9 @@ func select_new_position() -> void:
 	if method == 0:
 		position = body.pick_random_position()
 	if method == 1:
-		position = pick_point_around_player(3)
+		position = pick_point_around_player(7)
 	if method == 2:
-		position = pick_point_around_player(10)
+		position = pick_point_around_player(18)
 		
 	set_new_position(position)
 	
@@ -59,7 +57,8 @@ func update(delta : float):
 	
 		
 func physics_update(_delta : float):
-	body.target_direction = (body.n_nav.get_next_path_position() - body.global_position).normalized()
+	if body.current_movement_state() != "dash":
+		body.target_direction = (body.n_nav.get_next_path_position() - body.global_position).normalized()
 	movement.move(body.target_direction)
 	
 	if body.target_player:

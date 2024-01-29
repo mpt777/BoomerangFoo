@@ -21,7 +21,7 @@ func update(_delta : float):
 	pass
 	
 func physics_update(_delta : float):
-	movement.move(body.target_direction.normalized())
+	pass
 		
 func _on_dash_end_dash():
 	movement.end_dash()
