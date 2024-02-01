@@ -39,7 +39,9 @@ movie_writer/directional_shadow/soft_shadow_filter_quality=2
 [layer_names]
 
 3d_physics/layer_1="World"
+3d_physics/layer_2="Character"
 3d_physics/layer_9="Projectile"
+3d_physics/layer_10="Pickup"
 
 [rendering]
 

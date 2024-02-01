@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkq2bwb21srha"]
+
+[ext_resource type="PackedScene" uid="uid://dqipuvo1mt2lh" path="res://Scenes/Pickup/Pickup.tscn" id="1_kvhr7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y7ecu"]
+height = 1.0
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yhwf"]
+albedo_color = Color(0.305396, 0.55907, 0.752885, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_02b7i"]
+material = SubResource("StandardMaterial3D_8yhwf")
+height = 1.0
+radial_segments = 8
+
+[node name="ManaPickup" instance=ExtResource("1_kvhr7")]
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_y7ecu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_02b7i")

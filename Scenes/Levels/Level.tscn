@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://diidtkeefoxku"]
+[gd_scene load_steps=13 format=3 uid="uid://diidtkeefoxku"]
 
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Objects/Box.tscn" id="1_7t2de"]
+[ext_resource type="PackedScene" uid="uid://dkq2bwb21srha" path="res://Scenes/Pickup/ManaPickup/ManaPickup.tscn" id="2_pmspm"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_xm1ef"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Objects/Wall.tscn" id="3_jrjor"]
 [ext_resource type="Script" path="res://Scenes/Levels/ProjectileSpawner.gd" id="4_knb8q"]
@@ -17,6 +18,9 @@ sky_material = SubResource("ProceduralSkyMaterial_007d0")
 background_mode = 2
 background_color = Color(0.376471, 0.647059, 0.690196, 1)
 sky = SubResource("Sky_4sfdv")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_kryod"]
 vertices = PackedVector3Array(-9.5, 1, -18.75, -18.75, 1, -18.75, -18.75, 1, -9.5, -18.75, 1, 9.5, -18.75, 1, 19, -9.5, 1, 19, 19, 1, -9.5, 19, 1, -18.75, 9.5, 1, -18.75, 9.5, 1, 19, 19, 1, 19, 19, 1, 9.5, 0, 1, -18.75, -9.5, 1, -18.75, -18.75, 1, -9.5, -18.75, 1, 0, -18.75, 1, 9.5, -9.5, 1, 19, 0, 1, 19, 19, 1, 0, 19, 1, -9.5, 9.5, 1, -18.75, 0, 1, -18.75, 0, 1, 19, 9.5, 1, 19, 19, 1, 9.5, -18.75, 1, 0, -18.75, 1, 9.5, 0, 1, 19, 19, 1, 9.5, 19, 1, 0, 0, 1, -18.75)
@@ -60,9 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7131, 1.62826, -8.14262)
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 80, 20)
 size = 0.1
 
-[node name="ProjectileSpawner" type="Node" parent="."]
-script = ExtResource("4_knb8q")
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["Navmesh"]]
 navigation_mesh = SubResource("NavigationMesh_kryod")
 
@@ -87,5 +88,11 @@ mesh = SubResource("BoxMesh_obi1e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Floor"]
 shape = SubResource("BoxShape3D_p8n8t")
+
+[node name="ProjectileSpawner" type="Node" parent="."]
+script = ExtResource("4_knb8q")
+
+[node name="ManaPickup" parent="." instance=ExtResource("2_pmspm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5178, 0.80644, 14.0648)
 
 [editable path="CameraAnchor"]

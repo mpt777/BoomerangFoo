@@ -2,6 +2,8 @@ extends State
 
 var FireProjectile = preload("res://Scenes/Projectile/FireProjectile.tscn")
 
+signal Attacked
+
 @export
 var body : Node3D
 
@@ -13,6 +15,7 @@ func enter():
 	bullet.weapon_owner = body.weapon_owner
 	$"/root/Signals".emit_signal("add_projectile", bullet)
 	Transitioned.emit(self, "Reloading")
+	Attacked.emit()
 	
 func exit():
 	pass

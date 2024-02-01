@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Character
 
 class_name Player
 
