@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj7qfrnbrf332"]
-
-[ext_resource type="Script" path="res://Scenes/Projectile/Projectile.gd" id="1_8lgq1"]
-
-[node name="Projectile" type="Area3D" groups=["Projectile"]]
-collision_layer = 256
-script = ExtResource("1_8lgq1")
