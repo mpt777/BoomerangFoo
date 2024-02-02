@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://diidtkeefoxku"]
 
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Objects/Box.tscn" id="1_7t2de"]
-[ext_resource type="PackedScene" uid="uid://dkq2bwb21srha" path="res://Scenes/Pickup/ManaPickup/ManaPickup.tscn" id="2_pmspm"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_xm1ef"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Objects/Wall.tscn" id="3_jrjor"]
 [ext_resource type="Script" path="res://Scenes/Levels/ProjectileSpawner.gd" id="4_knb8q"]
+[ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/PickupSpawner/PickupSpawner.tscn" id="6_muvuk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
 sky_top_color = Color(0.309804, 0.462745, 0.619608, 1)
@@ -92,7 +92,6 @@ shape = SubResource("BoxShape3D_p8n8t")
 [node name="ProjectileSpawner" type="Node" parent="."]
 script = ExtResource("4_knb8q")
 
-[node name="ManaPickup" parent="." instance=ExtResource("2_pmspm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5178, 0.80644, 14.0648)
+[node name="PickupSpawner" parent="." instance=ExtResource("6_muvuk")]
 
 [editable path="CameraAnchor"]

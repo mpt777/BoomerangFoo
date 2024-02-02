@@ -56,6 +56,3 @@ func mouse_position():
 	if !raycast_result.is_empty():
 		return raycast_result.position
 
-func _on_pick_up_component_picked_up_area(area):
-	n_hand.pickup(area.get_parent())
-

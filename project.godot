@@ -36,6 +36,12 @@ movie_writer/positional_shadow/soft_shadow_filter_quality=2
 movie_writer/directional_shadow/soft_shadow_filter_quality.mobile=0
 movie_writer/directional_shadow/soft_shadow_filter_quality=2
 
+[global_group]
+
+Pickup=""
+Player=""
+FollowCamera=""
+
 [layer_names]
 
 3d_physics/layer_1="World"

@@ -12,7 +12,7 @@ var n_nav := $NavigationAgent3D
 
 var target_player : CharacterBody3D = null
 var target_direction : Vector3 = Vector3.ZERO
-var target_location : Vector3 = Vector3.ZERO
+#var target_location : Vector3 = Vector3.ZERO
 
 	
 func _physics_process(delta):

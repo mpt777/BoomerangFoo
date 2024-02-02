@@ -4,6 +4,7 @@ class_name Character
 
 ## The basic Character that stiches all components together
 
+var signals := SignalRegister.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

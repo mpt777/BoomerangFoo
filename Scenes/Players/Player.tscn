@@ -30,9 +30,6 @@ mesh = SubResource("CapsuleMesh_mapto")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_wgly8")]
 
-[node name="ManaComponent" parent="." instance=ExtResource("3_3mlui")]
-max_mana = 3.0
-
 [node name="Hand" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_u4xir")]
 target = NodePath("..")
 
@@ -45,6 +42,10 @@ character = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpComponent"]
 shape = SubResource("CylinderShape3D_qnaf7")
+
+[node name="ManaComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_3mlui")]
+character = NodePath("..")
+max_mana = 3.0
 
 [node name="Movement" parent="." node_paths=PackedStringArray("body") instance=ExtResource("5_cnygo")]
 body = NodePath("..")
