@@ -1,7 +1,5 @@
 extends State
 
-var FireProjectile = preload("res://Scenes/Things/Projectile/FireProjectile.tscn")
-
 @export
 var body : Node3D
 

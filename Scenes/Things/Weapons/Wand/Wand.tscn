@@ -41,9 +41,9 @@ one_shot = true
 script = ExtResource("4_n2wev")
 body = NodePath("../..")
 
-[node name="Attack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("body")]
+[node name="Attack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("weapon")]
 script = ExtResource("6_jef0n")
-body = NodePath("../..")
+weapon = NodePath("../..")
 
 [connection signal="timeout" from="StateMachine/Reloading/Timer" to="StateMachine/Reloading" method="_on_timer_timeout"]
 [connection signal="Attacked" from="StateMachine/Attack" to="." method="_on_attack_attacked"]

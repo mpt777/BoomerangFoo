@@ -12,11 +12,11 @@ func _ready():
 	character.signals.register("Mana.AddMana", add_mana)
 	mana = max_mana
 
-func is_able_to_cast(spell : SpellCast) -> bool:
+func is_able_to_cast(spell : Spell) -> bool:
 	return mana >= spell.cost
 	
-func cast(spell : SpellCast) -> void:
+func cast(spell : Spell) -> void:
 	mana -= spell.cost
 	
-func add_mana(spell : SpellCast) -> void:
+func add_mana(spell : Spell) -> void:
 	mana = min(mana + spell.cost, max_mana)

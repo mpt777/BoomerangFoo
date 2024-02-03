@@ -1,9 +1,13 @@
 extends Area3D
 class_name Pickup
 
+var SPELLS = {
+	"fire": FireSpell
+}
 
-func pickup(character : Character):
-	var spell := SpellCast.new()
-	spell.cost = 3
-	character.signals.emit_signal("Mana.AddMana", spell)
+func random_spell() -> Spell:
+	return SPELLS[SPELLS.keys()[randi() % SPELLS.size()]].new()
+
+func pickup(character : Character) -> void:
+	character.signals.emit_signal("Mana.AddMana", random_spell())
 	queue_free()
