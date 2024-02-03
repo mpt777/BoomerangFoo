@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjxmh3d4a8dob"]
+
+[ext_resource type="PackedScene" uid="uid://b2rffsava3sfb" path="res://Assets/Blender/Tree/tree.glb" id="1_au8nc"]
+
+[node name="tree" instance=ExtResource("1_au8nc")]

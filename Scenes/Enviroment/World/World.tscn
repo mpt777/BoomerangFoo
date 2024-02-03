@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvg134x7f0mc0"]
 
-[ext_resource type="PackedScene" uid="uid://diidtkeefoxku" path="res://Scenes/Enviroment/Levels/Level.tscn" id="1_ec84r"]
+[ext_resource type="PackedScene" uid="uid://diidtkeefoxku" path="res://Scenes/Enviroment/Stages/Stage.tscn" id="1_ec84r"]
 [ext_resource type="PackedScene" uid="uid://nekxp4173ils" path="res://Scenes/Entities/Players/Player.tscn" id="2_mp267"]
 [ext_resource type="PackedScene" uid="uid://cje1j5fia5yr1" path="res://Scenes/Entities/Enemies/Enemy.tscn" id="3_3pppy"]
 
@@ -32,4 +32,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41416, 2.83932, -19.795)
 mesh = SubResource("BoxMesh_mft51")
 
 [node name="Enemy" parent="." instance=ExtResource("3_3pppy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87898, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87898, 2.27822, 0)
