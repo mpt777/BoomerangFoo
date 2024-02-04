@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://diidtkeefoxku"]
+[gd_scene load_steps=17 format=3 uid="uid://diidtkeefoxku"]
 
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Enviroment/Objects/Box.tscn" id="1_7t2de"]
 [ext_resource type="PackedScene" uid="uid://cjxmh3d4a8dob" path="res://Scenes/Enviroment/Decorations/Tree/Tree.tscn" id="2_bw1bw"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scenes/Enviroment/Stages/ProjectileSpawner.gd" id="4_knb8q"]
 [ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Enviroment/PickupSpawner/PickupSpawner.tscn" id="6_muvuk"]
 [ext_resource type="Script" path="res://Scenes/Enviroment/Stages/MyScatter.gd" id="7_tilfs"]
-[ext_resource type="Script" path="res://Scenes/Enviroment/Stages/Placement.gd" id="8_aqna5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
 sky_top_color = Color(0.899258, 0.899258, 0.899258, 1)
@@ -44,10 +43,6 @@ agent_max_climb = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8n8t"]
 size = Vector3(50, 1, 50)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8e3xm"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ww4f8"]
 
 [node name="Stage" type="Node3D"]
 
@@ -427,21 +422,11 @@ script = ExtResource("4_knb8q")
 
 [node name="PickupSpawner" parent="." instance=ExtResource("6_muvuk")]
 
-[node name="MyScatter" type="Marker3D" parent="." node_paths=PackedStringArray("placement")]
+[node name="MyScatter" type="Marker3D" parent="."]
 script = ExtResource("7_tilfs")
-placement = NodePath("Placement")
-seed = 10
-run = false
-
-[node name="Cull" type="MeshInstance3D" parent="MyScatter"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0.0345637, -1.17613, -20.8396)
-visible = false
-mesh = SubResource("BoxMesh_8e3xm")
-
-[node name="Placement" type="MeshInstance3D" parent="MyScatter"]
-transform = Transform3D(150.294, 0, 0, 0, 1.78448, 0, 0, 0, 125.708, -3.20052, 0.302173, -4.90297)
-visible = false
-mesh = SubResource("BoxMesh_ww4f8")
-script = ExtResource("8_aqna5")
+instance_amount = 3000
+seed = -7943496694337007105
+placement_size = Vector3(150, 5, 150)
+cull_size = Vector3(40, 1, 40)
 
 [editable path="CameraAnchor"]

@@ -1,38 +1,47 @@
 @tool
 extends Marker3D
 
-@export var placement : Node3D
-@export var cull : Node3D
-
-@export var instance_amount := 100
+@export var instance_amount := 100:
+	set(value):
+		instance_amount = value
+		if Engine.is_editor_hint():
+			process()
+			
 @export var seed := 1:
-	get:
-		return seed
 	set(value):
 		if rng:
 			seed = value
 			rng.seed = seed
-		#process()
-		
+		if Engine.is_editor_hint():
+			process()
 		
 @export var run := true:
-	get:
-		return run
 	set(value):
 		run = value
-		if rng:
-			rng.randomize()
-			seed = rng.seed
-		#process()
-		
-		
-
+		if Engine.is_editor_hint():
+			if rng:
+				rng.randomize()
+				seed = rng.seed
+			process()
+			
+@export var placement_size : Vector3:
+	set(value):
+		placement_size = value
+		if Engine.is_editor_hint():
+			process()
+			render_placement()
+			
+@export var cull_size : Vector3:
+	set(value):
+		cull_size = value
+		if Engine.is_editor_hint():
+			process()
+			render_placement()
 		
 var multimesh: MultiMesh
 var mesh_library : MeshLibrary = preload("res://Assets/Blender/Tree/tree.meshlib")
 var TREE := preload("res://Scenes/Enviroment/Decorations/Tree/Tree.tscn")
 var transforms := []
-
 
 var rng : RandomNumberGenerator
 
@@ -40,7 +49,6 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	rng.seed = seed
 	process()
-	pass
 			
 func process():
 	print("process")
@@ -58,18 +66,41 @@ func clear():
 		if child is MultiMeshInstance3D:
 			remove_child(child)
 			
-func get_random_point(transform : Transform3D) -> Vector3:
-	var scale = transform.basis.get_scale()
-	return Vector3(
-		rng.randf_range(transform.origin.x - (scale.x/2), transform.origin.x + (scale.x/2)),
-		0,
-		rng.randf_range(transform.origin.z - (scale.z/2), transform.origin.z + (scale.z/2)),
+func get_random_point() -> Vector3:
+	if not cull_size:
+		return Vector3(
+			rng.randf_range(transform.origin.x - (placement_size.x/2), transform.origin.x + (placement_size.x/2)),
+			0,
+			rng.randf_range(transform.origin.z - (placement_size.z/2), transform.origin.z + (placement_size.z/2)),
+		)
+	return get_random_point_culled()
+
+func get_random_point_culled() -> Vector3:
+	var cull_bounds_x = Vector2(
+		transform.origin.x - (cull_size.x/2),
+		transform.origin.x + (cull_size.x/2)
 	)
+	var cull_bounds_z = Vector2(
+		transform.origin.z - (cull_size.z/2),
+		transform.origin.z + (cull_size.z/2)
+	)
+	var x := 0.0
+	var z := 0.0
+	for i in range(100):
+		x = rng.randf_range(transform.origin.x - (placement_size.x/2), transform.origin.x + (placement_size.x/2))
+		z = rng.randf_range(transform.origin.z - (placement_size.z/2), transform.origin.z + (placement_size.z/2))
+		print(x, z)
+		
+		if x > cull_bounds_x.x and x < cull_bounds_x.y and z > cull_bounds_z.x and z < cull_bounds_z.y:
+			pass
+		else:
+			break
+	return Vector3(x, 0, z)
 	
 func set_transforms():
 	var transform = Transform3D()
 	for i in range(instance_amount):
-		transform.origin = get_random_point(placement.transform)
+		transform.origin = get_random_point()
 		transform.basis = transform.basis.rotated(Vector3(0, 1, 0), rng.randf_range(-3, 3))
 		transforms.append(transform)
 
@@ -87,5 +118,24 @@ func process_mesh(mesh: Mesh, transform : Transform3D):
 	var multimesh_instance = MultiMeshInstance3D.new()
 	multimesh_instance.multimesh = multimesh
 	add_child(multimesh_instance)
+	
+	
+####################################################################################################
+func render_placement():
+	for child in get_children():
+		if child is MeshInstance3D:
+			remove_child(child)
+			
+	var mesh_instance := MeshInstance3D.new()
+	var mesh = BoxMesh.new()
+	var material := StandardMaterial3D.new()
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.albedo_color = Color(0.68,0.31,0.07,0.45)
+	mesh.size = placement_size
+	
+	mesh.material = material
+	mesh_instance.mesh = mesh
+	add_child(mesh_instance)
+	
 	
 	
