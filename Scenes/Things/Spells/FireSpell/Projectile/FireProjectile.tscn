@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://kny21vt2uvdv"]
+[gd_scene load_steps=10 format=3 uid="uid://kny21vt2uvdv"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Things/Projectile/Projectile.tscn" id="1_etn0s"]
 [ext_resource type="Script" path="res://Scenes/Things/Spells/FireSpell/Projectile/FireProjectile.gd" id="2_ycvgo"]
@@ -13,8 +13,6 @@ albedo_color = Color(0.670588, 0.180392, 0.0705882, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_qp3xy"]
 material = SubResource("StandardMaterial3D_b7qgy")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_b6t46"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_a1sca"]
 
 [node name="FireProjectile" instance=ExtResource("1_etn0s")]
@@ -25,16 +23,13 @@ speed = 50.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 mesh = SubResource("SphereMesh_qp3xy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-shape = SubResource("SphereShape3D_b6t46")
-
-[node name="AttackComponent" parent="." index="2" instance=ExtResource("3_wtubm")]
+[node name="AttackComponent" parent="." index="1" instance=ExtResource("3_wtubm")]
 damage = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
 shape = SubResource("SphereShape3D_a1sca")
 
-[node name="SmartGpuParticles3d" type="GPUParticles3D" parent="." index="3"]
+[node name="SmartGpuParticles3d" type="GPUParticles3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0256057, -0.0424739, 0.0113597)
 amount = 20
 lifetime = 0.5
