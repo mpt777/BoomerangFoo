@@ -2,7 +2,8 @@ extends Area3D
 class_name Pickup
 
 var SPELLS = {
-	"fire": FireSpell
+	"fire": FireSpell,
+	"rockwall": RockWallSpell,
 }
 
 func random_spell() -> Spell:

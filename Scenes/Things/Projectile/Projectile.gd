@@ -3,10 +3,13 @@ extends Area3D
 class_name Projectile
 
 #var direction: Vector3 = Vector3.ZERO
+@export
 var speed: float = 30.0
 var weapon: Weapon
 var weapon_owner: Node
 
+
+signal ToBeDeleted
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +26,6 @@ func _physics_process(delta):
 	
 func direction() -> Vector3:
 	return rotation
+	
+#func deleted():
+	#pass

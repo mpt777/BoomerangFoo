@@ -4,17 +4,32 @@ extends Marker3D
 @export var instance_amount := 100:
 	set(value):
 		instance_amount = value
-		if Engine.is_editor_hint():
-			process()
+		process_wrapper()
 			
 @export var seed := 1:
 	set(value):
 		if rng:
 			seed = value
 			rng.seed = seed
-		if Engine.is_editor_hint():
-			process()
-		
+		process_wrapper()
+			
+@export var placement_size : Vector3:
+	set(value):
+		placement_size = value
+		process_wrapper()
+		render_placement_wrapper()
+			
+@export var cull_size : Vector3:
+	set(value):
+		cull_size = value
+		process_wrapper()
+		render_placement_wrapper()
+			
+@export var show_placement := true:
+	set(value):
+		show_placement = value
+		render_placement_wrapper()
+			
 @export var run := true:
 	set(value):
 		run = value
@@ -22,23 +37,9 @@ extends Marker3D
 			if rng:
 				rng.randomize()
 				seed = rng.seed
-			process()
-			
-@export var placement_size : Vector3:
-	set(value):
-		placement_size = value
-		if Engine.is_editor_hint():
-			process()
-			render_placement()
-			
-@export var cull_size : Vector3:
-	set(value):
-		cull_size = value
-		if Engine.is_editor_hint():
-			process()
-			render_placement()
-		
-var multimesh: MultiMesh
+		process_wrapper()
+
+var multimesh : MultiMesh
 var mesh_library : MeshLibrary = preload("res://Assets/Blender/Tree/tree.meshlib")
 var TREE := preload("res://Scenes/Enviroment/Decorations/Tree/Tree.tscn")
 var transforms := []
@@ -51,7 +52,6 @@ func _ready():
 	process()
 			
 func process():
-	print("process")
 	clear()
 
 	set_transforms()
@@ -89,13 +89,12 @@ func get_random_point_culled() -> Vector3:
 	for i in range(100):
 		x = rng.randf_range(transform.origin.x - (placement_size.x/2), transform.origin.x + (placement_size.x/2))
 		z = rng.randf_range(transform.origin.z - (placement_size.z/2), transform.origin.z + (placement_size.z/2))
-		print(x, z)
 		
 		if x > cull_bounds_x.x and x < cull_bounds_x.y and z > cull_bounds_z.x and z < cull_bounds_z.y:
 			pass
 		else:
 			break
-	return Vector3(x, 0, z)
+	return Vector3(x, position.y, z)
 	
 func set_transforms():
 	var transform = Transform3D()
@@ -118,13 +117,25 @@ func process_mesh(mesh: Mesh, transform : Transform3D):
 	var multimesh_instance = MultiMeshInstance3D.new()
 	multimesh_instance.multimesh = multimesh
 	add_child(multimesh_instance)
-	
+
+####################################################################################################
+
+func render_placement_wrapper():
+	if Engine.is_editor_hint():
+		render_placement()
+		
+func process_wrapper():
+	if Engine.is_editor_hint():
+		process()
 	
 ####################################################################################################
 func render_placement():
 	for child in get_children():
 		if child is MeshInstance3D:
 			remove_child(child)
+			
+	if not show_placement:
+		return
 			
 	var mesh_instance := MeshInstance3D.new()
 	var mesh = BoxMesh.new()

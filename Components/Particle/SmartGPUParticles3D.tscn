@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfbog3ow5y1tk"]
+
+[ext_resource type="Script" path="res://Components/Particle/SmartGPUParticles3D.gd" id="1_orfuk"]
+
+[node name="SmartGpuParticles3d" type="GPUParticles3D"]
+script = ExtResource("1_orfuk")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

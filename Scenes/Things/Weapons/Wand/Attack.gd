@@ -6,7 +6,7 @@ signal Attacked
 var weapon : Wand
 
 func enter():
-	weapon.range_spell.cast(weapon)
+	weapon.current_spell.cast(weapon)
 	Transitioned.emit(self, "Reloading")
 	Attacked.emit()
 	

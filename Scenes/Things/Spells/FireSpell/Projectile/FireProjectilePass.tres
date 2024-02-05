@@ -1,0 +1,10 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://ddqcpkvcq1o3a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vb5ns"]
+albedo_color = Color(0.901511, 0.508135, 0.0704523, 1)
+grow_amount = 0.26
+
+[resource]
+material = SubResource("StandardMaterial3D_vb5ns")
+radial_segments = 8
+rings = 4

@@ -16,6 +16,8 @@ var target_position : Vector3 = Vector3.ZERO:
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	position = (Vector3(0,0,-1) * RADIUS)
+	position.y = 0
 	pickup(get_child(0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,8 +25,9 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	set_positon_around_target()
-	set_weapon_target_position()
+	pass
+	#set_positon_around_target()
+	#set_weapon_target_position()
 	
 	
 func set_weapon_target_position() -> void:
@@ -45,10 +48,11 @@ func throw():
 			self.weapon = null
 			child.throw()
 
-func attack():
+func use(type : String):
 	for child in get_children():
 		if child is Weapon:
-			child.attack()
+			child.use(type)
+			
 			
 func pickup(node):
 	if not node is Weapon:

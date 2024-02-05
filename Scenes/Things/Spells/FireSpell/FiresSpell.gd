@@ -1,7 +1,8 @@
 extends Spell
+
 class_name FireSpell
 
-const FIRE_PROJECTILE := preload("res://Scenes/Things/Projectile/FireProjectile.tscn")
+const FIRE_PROJECTILE := preload("res://Scenes/Things/Spells/FireSpell/Projectile/FireProjectile.tscn")
 
 func _ready():
 	pass

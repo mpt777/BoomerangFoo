@@ -10,4 +10,5 @@ func _process(delta):
 
 func _on_attack_component_body_entered(body):
 	# todo, peircing, damage
+	ToBeDeleted.emit()
 	queue_free()

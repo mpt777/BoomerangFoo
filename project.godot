@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*res://Scripts/Signals.gd"
 Utils="*res://Scripts/Utils.gd"
+Particles="*res://Scripts/Particles.gd"
 
 [debug]
 

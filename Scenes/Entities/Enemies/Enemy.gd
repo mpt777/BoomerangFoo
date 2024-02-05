@@ -24,8 +24,12 @@ func _physics_process(delta):
 	move_hand()
 	
 func move_hand():
+
 	if target_player:
 		n_hand.target_position = target_player.global_position
+		if target_player.global_position != Vector3.ZERO && abs(target_player.global_position.x) > 0.99:
+			look_at(target_player.global_position)
+		rotation.x = 0
 		
 func attack():
 	pass

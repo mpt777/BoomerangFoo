@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://blyee6oowmxyb"]
+
+[ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Things/Projectile/Projectile.tscn" id="1_iqdvg"]
+[ext_resource type="Script" path="res://Scenes/Things/Spells/RockWall/Projectile/RockWall.gd" id="2_oh702"]
+
+[sub_resource type="Animation" id="Animation_t8yvs"]
+resource_name = "Build"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete"
+}]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.1, 1, 0, 0.5, 0, 0.2, 1, 0, 1, 0, 4.8, 1, 0, 1, 0, 5, 1, 0, -1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lcmh"]
+_data = {
+"Build": SubResource("Animation_t8yvs")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8c4m6"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4bi5"]
+albedo_color = Color(0.28, 0.23716, 0.2296, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qno27"]
+material = SubResource("StandardMaterial3D_m4bi5")
+size = Vector3(2, 2, 1)
+
+[node name="RockWall" instance=ExtResource("1_iqdvg")]
+script = ExtResource("2_oh702")
+speed = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_8lcmh")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_8c4m6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" index="1"]
+mesh = SubResource("BoxMesh_qno27")
+skeleton = NodePath("../..")

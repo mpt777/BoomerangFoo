@@ -14,10 +14,13 @@ func spell_type() -> SPELL_TYPES:
 func projectile() -> Projectile:
 	return
 	
-func cast(weapon: Weapon) -> void:
+func initialize_projectile(weapon: Weapon) -> Projectile:
 	var bullet := projectile()
 	bullet.position = weapon.global_position
-	bullet.rotation = weapon.rotation
+	bullet.rotation = weapon.global_rotation
 	bullet.weapon = weapon
 	bullet.weapon_owner = weapon.weapon_owner
-	weapon.get_node("/root/Signals").emit_signal("add_projectile", bullet)
+	return bullet
+	
+func cast(weapon: Weapon) -> void:
+	weapon.get_node("/root/Signals").emit_signal("add_projectile", initialize_projectile(weapon))
