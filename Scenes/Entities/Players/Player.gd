@@ -11,16 +11,12 @@ var n_movement := $Movement
 @onready
 var controller := Controller.new()
 
+@onready
+var data := PlayerData.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	controller.register_action("move_up", InputEventKey.new(), KEY_W)
-	controller.register_action("move_down", InputEventKey.new(), KEY_S)
-	controller.register_action("move_left", InputEventKey.new(), KEY_A)
-	controller.register_action("move_right", InputEventKey.new(), KEY_D)
-	controller.register_action("thow_weapon", InputEventKey.new(), KEY_Q)
-	controller.register_action("dash", InputEventKey.new(), KEY_SPACE)
-	controller.register_action("attack_range", InputEventMouseButton.new(), MOUSE_BUTTON_LEFT)
-	controller.register_action("attack_melee", InputEventMouseButton.new(), MOUSE_BUTTON_RIGHT)
+	controller = data.default_controller()
 	
 func _physics_process(delta):
 	move_hand()
