@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Signals="*res://Scripts/Signals.gd"
 Utils="*res://Scripts/Utils.gd"
-Particles="*res://Scripts/Particles.gd"
+SceneManager="*res://Scripts/SceneManager.gd"
 
 [debug]
 
@@ -27,6 +27,8 @@ settings/stdout/print_fps=true
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/vsync/vsync_mode=0
 
 [editor]
@@ -49,6 +51,7 @@ FollowCamera=""
 3d_physics/layer_2="Character"
 3d_physics/layer_9="Projectile"
 3d_physics/layer_10="Pickup"
+3d_physics/layer_13="MouseRayLayer"
 
 [rendering]
 

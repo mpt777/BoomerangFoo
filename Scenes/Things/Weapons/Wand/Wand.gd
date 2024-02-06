@@ -11,7 +11,7 @@ var current_spell : Spell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	range_spell = FireSpell.new()
+	range_spell = IceSpell.new()
 	melee_spell = RockWallSpell.new()
 	
 	weapon_owner.signals.register("Wand.ChangeSpell", change_spell)

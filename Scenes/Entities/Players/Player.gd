@@ -59,6 +59,7 @@ func mouse_position():
 	ray_query.from = from
 	ray_query.to = to
 	ray_query.collide_with_areas = true
+	ray_query.collision_mask = 1 << 13 -1
 	var raycast_result = space.intersect_ray(ray_query)
 	if !raycast_result.is_empty():
 		return raycast_result.position
