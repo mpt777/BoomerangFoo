@@ -12,11 +12,25 @@ func _ready():
 
 func _joy_connection_changed(id, connected):
 	print(id, connected)
-	add_player(id)
+	if connected:
+		add_player(id)
+	else:
+		remove_player(id)
 	
 func add_player(id : int) -> void:
 	var character_circle = CHARACTER_CIRCLE.instantiate()
 	h_box_container.add_child(character_circle)
+	
+	var player_data = PlayerData.new()
+	player_data.controller = Controller.new()
+	player_data.controller.device_number = id
+	player_data.controller.controller_number = id
+	player_data.controller.is_joypad = true
+	
+	GameState.players.append(player_data)
+	
+func remove_player(id : int) -> void:
+	print("TODO")
 
 func _on_button_button_up():
 	SceneManager.switch_scene("game")

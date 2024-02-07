@@ -1,4 +1,6 @@
 extends Node
-class_name GameState
+#class_name GameState
 
 
+# List of Player Data Objects
+var players := []

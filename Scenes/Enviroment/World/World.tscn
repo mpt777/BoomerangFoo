@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvg134x7f0mc0"]
+[gd_scene load_steps=4 format=3 uid="uid://cvg134x7f0mc0"]
 
 [ext_resource type="PackedScene" uid="uid://diidtkeefoxku" path="res://Scenes/Enviroment/Stages/Stage.tscn" id="1_ec84r"]
-[ext_resource type="PackedScene" uid="uid://nekxp4173ils" path="res://Scenes/Entities/Players/Player.tscn" id="2_mp267"]
 [ext_resource type="PackedScene" uid="uid://cje1j5fia5yr1" path="res://Scenes/Entities/Enemies/Enemy.tscn" id="3_3pppy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mft51"]
@@ -9,9 +8,6 @@
 [node name="World" type="Node3D" groups=["World"]]
 
 [node name="Level" parent="." instance=ExtResource("1_ec84r")]
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_mp267")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73338, 0)
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." groups=["FollowCamera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.83932, -12.795)

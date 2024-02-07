@@ -120,6 +120,7 @@ func debug() -> void:
 	debugger.draw_line()
 
 func _physics_process(delta):
+	nodes = get_tree().get_nodes_in_group("FollowCamera")
 	_calculate_bounds()
 #	debug()
 	set_position_center()

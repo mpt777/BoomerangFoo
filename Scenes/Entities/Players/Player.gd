@@ -9,40 +9,56 @@ var n_hand := $Hand
 var n_movement := $Movement
 
 @onready
-var controller := Controller.new()
+var controller : Controller
 
 @onready
-var data := PlayerData.new()
+var data : PlayerData
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	controller = data.default_controller()
+
+func constructor(player_data : PlayerData):
+	data = player_data
+	controller = data.load_default_controller()
 	
 func _physics_process(delta):
-	move_hand()
+	rotate_character()
 	
 func get_input_direction() -> Vector3:
 	var direction := Vector3.ZERO
-	direction.x = Input.get_axis(controller.action("move_left"), controller.action("move_right"))
-	direction.z = Input.get_axis(controller.action("move_up"), controller.action("move_down"))
+	var velocity := Input.get_vector(
+		controller.action("move_left"), 
+		controller.action("move_right"), 
+		controller.action("move_up"),
+		controller.action("move_down")
+	)
+	direction.x = velocity.x
+	direction.z = velocity.y
 	return direction.normalized()
 	
 func _input(event):
-	if event.is_action_pressed(controller.action("thow_weapon")):
-		n_hand.throw()
+	#if event.is_action_pressed(controller.action("thow_weapon")):
+		#n_hand.throw()
 	if event.is_action_pressed(controller.action("attack_range")):
 		n_hand.use("range")
 	if event.is_action_pressed(controller.action("attack_melee")):
 		n_hand.use("melee")
 		
-func move_hand():
-	var pos = mouse_position()
-	if pos:
-		#n_hand.target_position = pos
 		
-		if pos != Vector3.ZERO && abs(pos.x) > 0.99:
-			look_at(pos)
-		rotation.x = 0
+func rotate_character():
+	var pos = null
+	if controller.is_joypad:
+		pos = Input.get_vector(
+			controller.action("look_left"), 
+			controller.action("look_right"), 
+			controller.action("look_up"),
+			controller.action("look_down")
+		) * 100000
+		pos = Vector3(global_position.x + pos.x, global_position.y, global_position.z + pos.y) 
+	else:
+		pos = mouse_position()
+	if pos != Vector3.ZERO && abs(pos.x) > 0.99 && pos != global_position:
+		look_at(pos)
+	rotation.x = 0
 	
 func mouse_position():
 	var camera = get_tree().get_nodes_in_group("Camera")[0]
