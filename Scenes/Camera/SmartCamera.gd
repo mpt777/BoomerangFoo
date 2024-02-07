@@ -32,11 +32,11 @@ func _ready():
 	
 	debugger = Draw3D.new()
 	add_child(debugger)
+	$"/root/Signals".connect("refresh_follow_camera", refresh_follow_camera)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func refresh_follow_camera() -> void:
+	nodes = get_tree().get_nodes_in_group("FollowCamera")
 		
 		
 func _calculate_bounds() -> void:
@@ -120,7 +120,6 @@ func debug() -> void:
 	debugger.draw_line()
 
 func _physics_process(delta):
-	nodes = get_tree().get_nodes_in_group("FollowCamera")
 	_calculate_bounds()
 #	debug()
 	set_position_center()

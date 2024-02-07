@@ -14,6 +14,7 @@ var target_player : CharacterBody3D = null
 var target_direction : Vector3 = Vector3.ZERO
 
 var ai : AI
+var rotation_speed := 10
 #var target_location : Vector3 = Vector3.ZERO
 
 func _ready():
@@ -21,14 +22,16 @@ func _ready():
 	
 func _physics_process(delta):
 	target_player = Utils.closest_node_in_group(global_position, "Player")
-	move_hand()
+	move_hand(delta)
 	
-func move_hand():
+func move_hand(delta):
 
 	if target_player:
 		n_hand.target_position = target_player.global_position
 		if target_player.global_position != Vector3.ZERO && abs(target_player.global_position.x) > 0.99:
-			look_at(target_player.global_position)
+			#look_at(target_player.global_position)
+			var new_transform = transform.looking_at(target_player.global_position, Vector3.UP)
+			transform = transform.interpolate_with(new_transform, rotation_speed * delta)
 		rotation.x = 0
 		
 func attack():

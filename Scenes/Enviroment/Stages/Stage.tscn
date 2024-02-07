@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Enviroment/Objects/Wall.tscn" id="3_jrjor"]
 [ext_resource type="Script" path="res://Scenes/Enviroment/Stages/ProjectileSpawner.gd" id="4_knb8q"]
 [ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Enviroment/PickupSpawner/PickupSpawner.tscn" id="6_muvuk"]
-[ext_resource type="Script" path="res://Scenes/Enviroment/Stages/CharacterSpawner.gd" id="7_a04rv"]
 [ext_resource type="Script" path="res://Scenes/Enviroment/Stages/MyScatter.gd" id="7_tilfs"]
+[ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Enviroment/Stages/character_spawner.tscn" id="8_vg2xa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -114,16 +114,15 @@ placement_size = Vector3(150, 5, 150)
 cull_size = Vector3(40, 1, 40)
 show_placement = false
 
-[node name="CharacterSpawner" type="Node3D" parent="."]
-script = ExtResource("7_a04rv")
+[node name="CharacterSpawner" parent="." instance=ExtResource("8_vg2xa")]
 
 [node name="Marker3D" type="Marker3D" parent="CharacterSpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1549, 1.60437, 15.2657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.526961, -17.4174)
 
 [node name="Marker3D2" type="Marker3D" parent="CharacterSpawner"]
-transform = Transform3D(0.999922, 0.0125137, 0, -0.0125137, 0.999922, 0, 0, 0, 1, 15.5727, 1.60437, 15.2657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9568, 0.928907, 0)
 
 [node name="Marker3D3" type="Marker3D" parent="CharacterSpawner"]
-transform = Transform3D(0.999922, 0.0125137, 0, -0.0125137, 0.999922, 0, 0, 0, 1, 15.5727, 1.60437, -12.4264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2288, 1.60839, 13.5873)
 
 [editable path="CameraAnchor"]

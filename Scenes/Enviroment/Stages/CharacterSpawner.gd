@@ -4,21 +4,18 @@ class_name CharacterSpawner
 enum MODE {Order, Random}
 var PLAYER = preload("res://Scenes/Entities/Players/Player.tscn")
 
-var spawn_index = 0
-
 func spawn(characters : Array):
+	var index = 0
 	for character in characters:
-		spawn_character(character)
+		spawn_character(character, get_child(index))
+		index += 1
+		
+	$"/root/Signals".emit_signal("refresh_follow_camera")
 	
-func spawn_character(character : PlayerData):
+func spawn_character(character : PlayerData, node : Node):
 	var player = PLAYER.instantiate()
 	player.constructor(character)
 	owner.add_child(player)
 	
-	var i = 0
-	for child in get_children():
-		if i == spawn_index:
-			player.global_position = child.global_position
-			spawn_index += 1
-		i += 1
+	player.global_position = node.global_position
 	

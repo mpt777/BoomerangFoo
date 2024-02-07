@@ -14,6 +14,8 @@ var controller : Controller
 @onready
 var data : PlayerData
 
+var rotation_speed := 10.0
+
 # Called when the node enters the scene tree for the first time.
 
 func constructor(player_data : PlayerData):
@@ -21,7 +23,7 @@ func constructor(player_data : PlayerData):
 	controller = data.load_default_controller()
 	
 func _physics_process(delta):
-	rotate_character()
+	rotate_character(delta)
 	
 func get_input_direction() -> Vector3:
 	var direction := Vector3.ZERO
@@ -44,23 +46,29 @@ func _input(event):
 		n_hand.use("melee")
 		
 		
-func rotate_character():
-	var pos = null
+func rotate_character(delta):
+	var pos := global_position
 	if controller.is_joypad:
-		pos = Input.get_vector(
+		pos = get_look_position()
+	else:
+		pos = get_mouse_position()
+	if pos == global_position:
+		pos = velocity.normalized() * 10000
+	if pos != Vector3.ZERO && abs(pos.x) > 0.99 && pos != global_position:
+		var new_transform = transform.looking_at(pos, Vector3.UP)
+		transform = transform.interpolate_with(new_transform, rotation_speed * delta)
+	rotation.x = 0
+	
+func get_look_position() -> Vector3:
+	var pos := Input.get_vector(
 			controller.action("look_left"), 
 			controller.action("look_right"), 
 			controller.action("look_up"),
 			controller.action("look_down")
-		) * 100000
-		pos = Vector3(global_position.x + pos.x, global_position.y, global_position.z + pos.y) 
-	else:
-		pos = mouse_position()
-	if pos != Vector3.ZERO && abs(pos.x) > 0.99 && pos != global_position:
-		look_at(pos)
-	rotation.x = 0
+	) * 100000
+	return Vector3(global_position.x + pos.x, global_position.y, global_position.z + pos.y) 
 	
-func mouse_position():
+func get_mouse_position() -> Vector3:
 	var camera = get_tree().get_nodes_in_group("Camera")[0]
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 2000
@@ -75,4 +83,5 @@ func mouse_position():
 	var raycast_result = space.intersect_ray(ray_query)
 	if !raycast_result.is_empty():
 		return raycast_result.position
+	return global_position
 
