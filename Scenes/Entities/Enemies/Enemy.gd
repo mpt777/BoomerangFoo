@@ -15,8 +15,12 @@ var target_direction : Vector3 = Vector3.ZERO
 
 var ai : AI
 var rotation_speed := 10
+var enemy_data : EnemyData
 #var target_location : Vector3 = Vector3.ZERO
 
+func constructor(enemy_data : EnemyData):
+	self.enemy_data = enemy_data
+	
 func _ready():
 	ai = AI.new().constructor(self)
 	

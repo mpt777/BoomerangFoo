@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvg134x7f0mc0"]
+[gd_scene load_steps=3 format=3 uid="uid://cvg134x7f0mc0"]
 
 [ext_resource type="PackedScene" uid="uid://diidtkeefoxku" path="res://Scenes/Enviroment/Stages/Stage.tscn" id="1_ec84r"]
-[ext_resource type="PackedScene" uid="uid://cje1j5fia5yr1" path="res://Scenes/Entities/Enemies/Enemy.tscn" id="3_3pppy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mft51"]
 
@@ -26,6 +25,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41416, 2.83932, -19.795)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VisibleOnScreenNotifier3D3"]
 mesh = SubResource("BoxMesh_mft51")
-
-[node name="Enemy" parent="." instance=ExtResource("3_3pppy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1944, 2.78071, 4.47655)

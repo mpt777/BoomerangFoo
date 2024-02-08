@@ -2,7 +2,6 @@ extends Node3D
 class_name CharacterSpawner
 
 enum MODE {Order, Random}
-var PLAYER = preload("res://Scenes/Entities/Players/Player.tscn")
 
 func spawn(characters : Array):
 	var index = 0
@@ -12,10 +11,10 @@ func spawn(characters : Array):
 		
 	$"/root/Signals".emit_signal("refresh_follow_camera")
 	
-func spawn_character(character : PlayerData, node : Node):
-	var player = PLAYER.instantiate()
-	player.constructor(character)
-	owner.add_child(player)
+func spawn_character(character_data : CharacterData, node : Node):
+	var character_scene = character_data.instantiate_scene()
+	character_scene.constructor(character_data)
+	owner.add_child(character_scene)
 	
-	player.global_position = node.global_position
+	character_scene.global_position = node.global_position
 	

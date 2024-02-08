@@ -1,9 +1,13 @@
-extends Node
+extends CharacterData
 class_name PlayerData
 
-var player_name : String
 var controller : Controller
 var actions : Array
+
+var PLAYER = preload("res://Scenes/Entities/Players/Player.tscn")
+
+func instantiate_scene() -> Character:
+	return PLAYER.instantiate()
 
 func default_controller():
 	var c = Controller.new()

@@ -20,7 +20,7 @@ var rotation_speed := 10.0
 
 func constructor(player_data : PlayerData):
 	data = player_data
-	controller = data.load_default_controller()
+	controller = data.controller
 	
 func _physics_process(delta):
 	rotate_character(delta)
