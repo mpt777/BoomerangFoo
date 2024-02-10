@@ -17,10 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Signals="*res://Scripts/Signals.gd"
-Utils="*res://Scripts/Utils.gd"
-SceneManager="*res://Scripts/SceneManager.gd"
-GameState="*res://Scripts/GameState.gd"
+Signals="*res://Scripts/Classes/Signals.gd"
+Utils="*res://Scripts/Classes/Utils.gd"
+SceneManager="*res://Scripts/Game/SceneManager.gd"
+GameState="*res://Scripts/Game/GameState.gd"
+Serializer="*res://Scripts/Game/Serializer.gd"
 
 [debug]
 

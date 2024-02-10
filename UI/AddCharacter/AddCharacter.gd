@@ -33,5 +33,6 @@ func remove_player(id : int) -> void:
 	print("TODO")
 
 func _on_button_button_up():
+	GameState.settings.save_to_disk()
 	SceneManager.switch_scene("game")
 	#get_tree().change_scene_to_file("res://Scenes/Enviroment/World/World.tscn")
