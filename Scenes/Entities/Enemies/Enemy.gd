@@ -27,7 +27,7 @@ func _ready():
 	ai = AI.new().constructor(self)
 	
 func _physics_process(delta):
-	target_player = Utils.closest_node_in_group(global_position, "Player")
+	target_player = Utils.closest_node_in_group(global_position, "Character")
 	move_hand(delta)
 	
 func move_hand(delta):

@@ -44,8 +44,8 @@ movie_writer/directional_shadow/soft_shadow_filter_quality=2
 [global_group]
 
 Pickup=""
-Player=""
 FollowCamera=""
+Character=""
 
 [input]
 

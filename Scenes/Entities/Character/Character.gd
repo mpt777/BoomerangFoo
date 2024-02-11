@@ -12,3 +12,4 @@ func _ready():
 func kill() -> void:
 	queue_free()
 	$"/root/Signals".emit_signal("refresh_follow_camera")
+	$"/root/Signals".emit_signal("update_character")

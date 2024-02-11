@@ -18,7 +18,7 @@ func update(delta : float):
 	pass
 		
 func physics_update(_delta : float):
-	target_player = Utils.closest_node_in_group(body.global_position, "Player")
+	target_player = Utils.closest_node_in_group(body.global_position, "Character")
 	
 	if target_player:
 		body.n_hand.target_position = target_player.global_position

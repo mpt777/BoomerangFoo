@@ -4,10 +4,10 @@ class_name PlayerData
 var controller : Controller
 var actions : Array
 
-var PLAYER = preload("res://Scenes/Entities/Players/Player.tscn")
+#var PLAYER = preload("res://Scenes/Entities/Players/Player.tscn")
 
 func instantiate_scene() -> Character:
-	return PLAYER.instantiate()
+	return load("res://Scenes/Entities/Players/Player.tscn").instantiate()
 
 func default_controller():
 	var c = Controller.new()

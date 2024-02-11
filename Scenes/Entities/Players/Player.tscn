@@ -25,7 +25,7 @@ radius = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_523wx"]
 size = Vector3(1, 0.1, 0.1)
 
-[node name="Player" type="CharacterBody3D" groups=["FollowCamera", "Player"]]
+[node name="Player" type="CharacterBody3D" groups=["Character", "FollowCamera"]]
 script = ExtResource("1_x8lru")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
