@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp3krjl3ecopm"]
+[gd_scene load_steps=3 format=3 uid="uid://bp3krjl3ecopm"]
 
 [ext_resource type="Script" path="res://Scenes/Camera/SmartCamera.gd" id="1_v4yot"]
 [ext_resource type="Script" path="res://Scenes/Camera/ShakeableCamera.gd" id="2_kjre6"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5bolc"]
 
 [node name="Anchor" type="Node3D"]
 script = ExtResource("1_v4yot")
@@ -11,7 +9,5 @@ script = ExtResource("1_v4yot")
 [node name="SmartCamera" type="Camera3D" parent="." groups=["Camera"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="ShakeableCamera" type="Area3D" parent="." node_paths=PackedStringArray("camera")]
+[node name="ShakeableCamera" type="Area3D" parent="."]
 script = ExtResource("2_kjre6")
-camera = NodePath("../SmartCamera")
-noise = SubResource("FastNoiseLite_5bolc")

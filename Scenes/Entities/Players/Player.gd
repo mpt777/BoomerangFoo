@@ -23,6 +23,8 @@ func constructor(player_data : PlayerData):
 	controller = data.controller
 	
 func _physics_process(delta):
+	if not can_move:
+		return
 	rotate_character(delta)
 	
 func get_input_direction() -> Vector3:
@@ -44,7 +46,6 @@ func _input(event):
 		n_hand.use("range")
 	if event.is_action_pressed(controller.action("attack_melee")):
 		n_hand.use("melee")
-		
 		
 func rotate_character(delta):
 	var pos := global_position
@@ -78,8 +79,8 @@ func get_mouse_position() -> Vector3:
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	ray_query.collide_with_areas = true
-	ray_query.collision_mask = 1 << 13 -1
+	ray_query.collide_with_areas = false
+	ray_query.set_collision_mask(1 << 13 - 1)
 	var raycast_result = space.intersect_ray(ray_query)
 	if !raycast_result.is_empty():
 		return raycast_result.position

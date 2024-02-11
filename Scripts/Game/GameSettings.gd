@@ -1,6 +1,9 @@
 extends Node
 class_name GameSettings
 
+
+var debug := true
+
 var settings_name := "Default Settings"
 var settings_index := 1
 var character_max_health := 1

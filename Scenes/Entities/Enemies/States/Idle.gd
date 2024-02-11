@@ -32,6 +32,11 @@ func set_new_position(desired_position: Vector3) -> void:
 	body.n_nav.target_location = desired_position
 	
 func update(delta : float):
+	pass
+	
+func physics_update(_delta : float):
+	if not body.can_move:
+		return
 	if body.velocity == Vector3.ZERO:
 		select_new_position()
 	if abs(body.global_position.distance_to(body.n_nav.target_location)) < 2:
@@ -39,8 +44,7 @@ func update(delta : float):
 		
 	if mana_component.mana == 0 and get_tree().get_first_node_in_group("Pickup"):
 		Transitioned.emit(self, "Pickup")
-	
-func physics_update(_delta : float):
+		
 	if body.current_movement_state() != "dash":
 		body.target_direction = (body.n_nav.get_next_path_position() - body.global_position).normalized()
 	movement.move(body.target_direction)

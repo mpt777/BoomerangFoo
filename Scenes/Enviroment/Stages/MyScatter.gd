@@ -104,6 +104,8 @@ func set_transforms():
 		transforms.append(transform)
 
 func process_mesh(mesh: Mesh, transform : Transform3D):
+	if not transforms:
+		return
 	multimesh = MultiMesh.new()
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
 	multimesh.mesh = mesh
