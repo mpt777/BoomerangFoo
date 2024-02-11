@@ -45,6 +45,8 @@ func _calculate_bounds() -> void:
 	_max_bound = Vector3(-INF, -INF, -INF)
 	
 	for node in nodes:
+		if not node:
+			continue
 		if node.is_visible():
 			_min_bound.x = min(_min_bound.x, node.global_position.x)
 			_min_bound.y = min(_min_bound.y, node.global_position.y)

@@ -3,14 +3,12 @@ extends CharacterBody3D
 class_name Character
 
 ## The basic Character that stiches all components together
-
 var signals := SignalRegister.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	signals.register("Character.Kill", kill)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func kill() -> void:
+	queue_free()
+	$"/root/Signals".emit_signal("refresh_follow_camera")

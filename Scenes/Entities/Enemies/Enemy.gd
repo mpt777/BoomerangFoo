@@ -20,8 +20,10 @@ var enemy_data : EnemyData
 
 func constructor(enemy_data : EnemyData):
 	self.enemy_data = enemy_data
+	$HealthComponent.max_health = enemy_data.max_health
 	
 func _ready():
+	super._ready()
 	ai = AI.new().constructor(self)
 	
 func _physics_process(delta):

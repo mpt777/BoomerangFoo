@@ -16,6 +16,14 @@ func deregister(signal_name : String, function : Callable) -> void:
 	disconnect(signal_name, function)
 	#signals.erases(signal_name)
 	
-#func emit(signal_name : String) -> Signal:
-	#return signals[signal_name]
+#func emit(signal_name : String, args : Array = []) -> void:
+	#if not is_connected(signal_name):
+		#return
+		#
+	#if args:
+		#callv("emit_signal", args)
+	#else:
+		#self.emit_signal(signal_name)
+	
+	#self.emit_signal(signal_name, *args)
 

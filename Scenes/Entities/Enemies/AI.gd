@@ -14,6 +14,8 @@ func pick_random_direction() -> Vector3:
 	return Vector3(randf_range(-1, 1), 0, randf_range(-1,1)).normalized()
 
 func pick_point_around_player(distance : float) -> Vector3:
+	if not character.target_player:
+		return Vector3.ZERO
 	return character.target_player.global_position + (pick_random_direction() * distance)
 
 func pick_random_position() -> Vector3:
