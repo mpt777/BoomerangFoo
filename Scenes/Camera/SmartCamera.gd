@@ -24,6 +24,8 @@ var _max_bound_margin := Vector3.ZERO
 @onready
 var _screen_size = get_viewport().size
 
+var active := true
+
 var debugger : Draw3D
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +35,7 @@ func _ready():
 	debugger = Draw3D.new()
 	add_child(debugger)
 	$"/root/Signals".connect("refresh_follow_camera", refresh_follow_camera)
+	$"/root/Signals".connect("set_follow_camera_active", set_active)
 
 
 func refresh_follow_camera() -> void:
@@ -120,8 +123,14 @@ func debug() -> void:
 	debugger.add_point((_min_bound + _max_bound) / 2)
 	
 	debugger.draw_line()
+	
+	
+func set_active(active: bool):
+	self.active = active
 
 func _physics_process(delta):
+	if not active: 
+		return
 	_calculate_bounds()
 #	debug()
 	set_position_center()

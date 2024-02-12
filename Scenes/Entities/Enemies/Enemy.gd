@@ -31,7 +31,6 @@ func _physics_process(delta):
 	move_hand(delta)
 	
 func move_hand(delta):
-
 	if target_player:
 		n_hand.target_position = target_player.global_position
 		if target_player.global_position != Vector3.ZERO && abs(target_player.global_position.x) > 0.99:

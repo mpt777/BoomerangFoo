@@ -23,8 +23,6 @@ func constructor(player_data : PlayerData):
 	controller = data.controller
 	
 func _physics_process(delta):
-	if not can_move:
-		return
 	rotate_character(delta)
 	
 func get_input_direction() -> Vector3:

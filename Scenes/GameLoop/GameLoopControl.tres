@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://cnofh8t57n6sf"]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_e8wtl"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_i0jjb"]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_hkcp6"]
+parameter_name = "Vector2Parameter"
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_m0054"]
+function = 2
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec2 Vector2Parameter;
+
+
+
+void fragment() {
+// Input:4
+	vec2 n_out4p0 = SCREEN_UV;
+
+
+// Vector2Parameter:5
+	vec2 n_out5p0 = Vector2Parameter;
+
+
+// Distance:3
+	float n_out3p0 = distance(n_out4p0, n_out5p0);
+
+
+// Compare:6
+	float n_in6p1 = 0.00000;
+	bool n_out6p0 = n_out3p0 > n_in6p1;
+
+
+// Output:0
+	COLOR.a = (n_out6p0 ? 1.0 : 0.0);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(980, 300)
+nodes/fragment/3/node = SubResource("VisualShaderNodeVectorDistance_e8wtl")
+nodes/fragment/3/position = Vector2(480, 300)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_i0jjb")
+nodes/fragment/4/position = Vector2(40, 260)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVec2Parameter_hkcp6")
+nodes/fragment/5/position = Vector2(0, 400)
+nodes/fragment/6/node = SubResource("VisualShaderNodeCompare_m0054")
+nodes/fragment/6/position = Vector2(688.693, 366.227)
+nodes/fragment/connections = PackedInt32Array(4, 0, 3, 0, 5, 0, 3, 1, 3, 0, 6, 0, 6, 0, 0, 1)

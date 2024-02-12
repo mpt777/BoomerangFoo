@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctq0aptk8du4j"]
+
+[ext_resource type="Script" path="res://Scenes/GameLoop/GameLoop.gd" id="1_tt455"]
+[ext_resource type="Material" uid="uid://dwujm54y0tast" path="res://Scenes/GameLoop/GameLoopCircle.tres" id="2_ne20n"]
+[ext_resource type="Script" path="res://Scenes/GameLoop/Vignette.gd" id="3_7bncb"]
+
+[node name="GameLoop" type="Node3D"]
+script = ExtResource("1_tt455")
+
+[node name="StageContainer" type="Node3D" parent="."]
+
+[node name="UIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette" type="ColorRect" parent="UIContainer"]
+material = ExtResource("2_ne20n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14368, 0.1408, 0.16, 1)
+script = ExtResource("3_7bncb")

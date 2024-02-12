@@ -81,6 +81,8 @@ shape = SubResource("CylinderShape3D_jsind")
 
 [node name="Movement" parent="." node_paths=PackedStringArray("body") instance=ExtResource("6_sxrvu")]
 body = NodePath("..")
+SPEED = 0
+ACCELERATION = 0.0
 
 [node name="BehaviourFSM" parent="." node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
 script = ExtResource("7_04g71")

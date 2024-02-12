@@ -17,4 +17,5 @@ func spawn_character(character_data : CharacterData, node : Node):
 	owner.add_child(character_scene)
 	
 	character_scene.global_position = node.global_position
+	character_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	

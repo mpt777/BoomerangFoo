@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwujm54y0tast"]
+
+[ext_resource type="Shader" path="res://Scenes/GameLoop/Circle.gdshader" id="1_gla62"]
+
+[resource]
+shader = ExtResource("1_gla62")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/diameter_factor = 100.0
+shader_parameter/softness = 0.0
+shader_parameter/vignette_color = Color(0.664593, 0.701428, 0.947364, 1)

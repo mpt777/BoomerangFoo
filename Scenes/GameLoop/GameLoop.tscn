@@ -1,16 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctq0aptk8du4j"]
+[gd_scene load_steps=8 format=3 uid="uid://ctq0aptk8du4j"]
 
 [ext_resource type="Script" path="res://Scenes/GameLoop/GameLoop.gd" id="1_tt455"]
+[ext_resource type="Material" uid="uid://dwujm54y0tast" path="res://Scenes/GameLoop/GameLoopCircle.tres" id="2_ne20n"]
+[ext_resource type="Script" path="res://Scenes/GameLoop/Vignette.gd" id="3_7bncb"]
+
+[sub_resource type="Animation" id="Animation_qd4cb"]
+resource_name = "CircleIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/diameter_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q6jwp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/diameter_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_3ff3u"]
+resource_name = "CircleOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/diameter_factor")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00c56"]
+_data = {
+"CircleIn": SubResource("Animation_qd4cb"),
+"CircleOut": SubResource("Animation_3ff3u"),
+"RESET": SubResource("Animation_q6jwp")
+}
 
 [node name="GameLoop" type="Node3D"]
 script = ExtResource("1_tt455")
 
-[node name="StageContainer" type="Node3D" parent="."]
-
 [node name="UIContainer" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Vignette" type="ColorRect" parent="UIContainer"]
+material = ExtResource("2_ne20n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_7bncb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIContainer/Vignette"]
+libraries = {
+"": SubResource("AnimationLibrary_00c56")
+}
+
+[node name="StageContainer" type="Node3D" parent="."]
