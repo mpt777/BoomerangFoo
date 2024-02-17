@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://bflucv20w8cym"]
+
+[ext_resource type="Script" path="res://UI/Points/point_row.gd" id="1_neboo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3rip"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 180.0
+offset_bottom = 35.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_neboo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Main" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Main"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="Points" type="HBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel2" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel3" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel4" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel5" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel6" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel7" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel8" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel9" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel10" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel11" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel12" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")
+
+[node name="Panel13" type="Panel" parent="MarginContainer/Main/Points"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3rip")

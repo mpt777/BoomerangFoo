@@ -37,9 +37,10 @@ func start_round() -> void:
 	
 func end_round() -> void:
 	end_vignette()
-	#call_deferred("start_round")
+	
 
-
+func _on_vignette_end_vignette_end():
+	SceneManager.switch_scene("points")
 
 
 
@@ -54,6 +55,8 @@ func end_vignette():
 	if characters:
 		var position := get_viewport().get_camera_3d().unproject_position(characters[0].global_position) as Vector2
 		ui_vignette.circle_in(ui_vignette.screen_to_uv(position))
+	else:
+		ui_vignette.circle_in(ui_vignette.screen_center())
 		
 func start_count_down():
 	var count_down := load("res://UI/Countdown/CountDown.tscn").instantiate() as CountDown
@@ -91,3 +94,6 @@ func start_game() -> void:
 	
 func end_game() -> void:
 	pass
+
+
+

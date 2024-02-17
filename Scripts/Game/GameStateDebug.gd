@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name GameStateDebug
 
 static func default_player_data() -> PlayerData:

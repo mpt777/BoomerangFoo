@@ -3,7 +3,8 @@ extends Node
 
 @export 
 var scenes : Dictionary = {
-	"game": "res://Scenes/Enviroment/World/World.tscn"
+	"game": "res://Scenes/GameLoop/GameLoop.tscn",
+	"points": "res://UI/Points/points.tscn",
 }
 
 # Description: Add a new scene to the scene collection

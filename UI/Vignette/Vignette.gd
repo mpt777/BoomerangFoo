@@ -8,8 +8,13 @@ class_name Vingette
 
 @onready var animation_player := $AnimationPlayer
 
+signal end_vignette_end
+
 func screen_to_uv(center : Vector2) -> Vector2:
 	return center / get_viewport_rect().size
+	
+func screen_center(center : Vector2) -> Vector2:
+	return get_viewport_rect().size / 2
 
 func set_center(center: Vector2 = Vector2(0.5, 0.5)) -> void:
 	self.center = center
@@ -23,3 +28,6 @@ func circle_out(center: Vector2 = Vector2(0.5, 0.5)) -> void:
 	self.set_center(center)
 	animation_player.play("CircleOut")
 
+func _on_animation_player_animation_finished(anim_name : String) -> void:
+	if anim_name == "CircleIn":
+		end_vignette_end.emit()

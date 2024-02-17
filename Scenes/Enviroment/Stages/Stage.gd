@@ -8,6 +8,4 @@ class_name Stage
 func _ready():
 	if GameState.players:
 		character_spawner.spawn(GameState.players)
-	else:
-		character_spawner.spawn(GameStateDebug.default_character_data())
 		

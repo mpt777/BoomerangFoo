@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name Spell
 
 var cost := 1.0

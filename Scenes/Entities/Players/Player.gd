@@ -21,6 +21,7 @@ var rotation_speed := 10.0
 func constructor(player_data : PlayerData):
 	data = player_data
 	controller = data.controller
+	$MeshInstance3D.mesh.material.albedo_color = player_data.color
 	
 func _physics_process(delta):
 	rotate_character(delta)

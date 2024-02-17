@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nekxp4173ils"]
+[gd_scene load_steps=19 format=3 uid="uid://nekxp4173ils"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Players/Player.gd" id="1_x8lru"]
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="2_wgly8"]
@@ -15,7 +15,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yfid"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3bfy"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mapto"]
+material = SubResource("StandardMaterial3D_y3bfy")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vvs73"]
 

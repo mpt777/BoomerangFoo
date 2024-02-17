@@ -21,6 +21,7 @@ var enemy_data : EnemyData
 func constructor(enemy_data : EnemyData):
 	self.enemy_data = enemy_data
 	$HealthComponent.max_health = enemy_data.max_health
+	$MeshInstance3D.mesh.material.albedo_color = enemy_data.color
 	
 func _ready():
 	super._ready()
