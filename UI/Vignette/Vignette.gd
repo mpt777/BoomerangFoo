@@ -10,6 +10,14 @@ class_name Vingette
 
 signal end_vignette_end
 
+func _ready():
+	color = GameState.settings.background_color
+	self.set_shader_color(GameState.settings.background_color)
+	
+func set_shader_color(color : Color):
+	color = GameState.settings.background_color
+	get_material().set_shader_parameter("color", color)
+
 func screen_to_uv(center : Vector2) -> Vector2:
 	return center / get_viewport_rect().size
 	

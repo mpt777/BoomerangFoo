@@ -1,6 +1,8 @@
 extends Node
 #class_name SceneManager
 
+var VIGNETTE = preload("res://UI/Vignette/vignette.tscn")
+
 @export 
 var scenes : Dictionary = {
 	"game": "res://Scenes/GameLoop/GameLoop.tscn",
@@ -21,7 +23,17 @@ func remove_scene(scene_alias : String) -> void:
 # Description: Switch to the requested scene based on its alias
 # Parameter sceneAlias: The scene alias of the scene to switch to
 func switch_scene(scene_alias : String) -> void:
+	# Todo, some transition class that gets passed in through dependency injection?
+	# transition start?
+	# Tranision end?
+	var vignette = VIGNETTE.instantiate()
+	get_tree().get_root().add_child(vignette)
+	
 	get_tree().call_deferred("change_scene_to_file", scenes[scene_alias])
+	
+	await get_tree().process_frame
+	vignette.queue_free()
+	
 	#get_tree().change_scene_to_file(scenes[scene_alias])
  
 # Description: Restart the current scene

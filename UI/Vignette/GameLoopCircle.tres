@@ -5,6 +5,6 @@
 [resource]
 shader = ExtResource("1_2y641")
 shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/diameter_factor = 1.0
+shader_parameter/diameter_factor = 100.0
 shader_parameter/softness = 0.0
 shader_parameter/vignette_color = Color(0.14, 0.14, 0.14, 1)

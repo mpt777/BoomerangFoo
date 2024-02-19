@@ -8,6 +8,8 @@ var settings_name := "Default Settings"
 var settings_index := 1
 var character_max_health := 1
 
+var background_color : Color = Color(0.14, 0.14, 0.14)
+
 func ready():
 	save_to_disk()
 
