@@ -14,9 +14,9 @@ func pick_random_position() -> Vector3:
 	
 	
 func create_new_mana_pickup():
-	var position = pick_random_position()
+	var pos = pick_random_position()
 	var pickup := MANA_PICKUP.instantiate()
-	pickup.position = position
+	pickup.position = pos
 	add_child(pickup)
 	
 func _on_spawn_timer_timeout():
@@ -26,9 +26,9 @@ func _on_spawn_timer_timeout():
 
 
 func create_new_spell_pickup():
-	var position = pick_random_position()
+	var pos = pick_random_position()
 	var pickup := SPELL_PICKUP.instantiate()
-	pickup.position = position
+	pickup.position = pos
 	add_child(pickup)
 	
 func _on_spell_timer_timeout():

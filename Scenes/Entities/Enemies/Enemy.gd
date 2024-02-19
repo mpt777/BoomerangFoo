@@ -15,11 +15,10 @@ var target_direction : Vector3 = Vector3.ZERO
 
 var ai : AI
 var rotation_speed := 10
-var enemy_data : EnemyData
 #var target_location : Vector3 = Vector3.ZERO
 
 func constructor(enemy_data : EnemyData):
-	self.enemy_data = enemy_data
+	self.data = enemy_data
 	$HealthComponent.max_health = enemy_data.max_health
 	$MeshInstance3D.mesh.material.albedo_color = enemy_data.color
 	

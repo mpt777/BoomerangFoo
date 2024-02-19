@@ -31,7 +31,7 @@ func select_new_position() -> void:
 func set_new_position(desired_position: Vector3) -> void:
 	body.n_nav.target_location = desired_position
 	
-func update(delta : float):
+func update(_delta : float):
 	if body.velocity == Vector3.ZERO:
 		select_new_position()
 	if abs(body.global_position.distance_to(body.n_nav.target_location)) < 2:

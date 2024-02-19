@@ -21,10 +21,10 @@ func _ready():
 	pickup(get_child(0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 	#set_positon_around_target()
 	#set_weapon_target_position()
@@ -43,10 +43,10 @@ func set_positon_around_target() -> void:
 	
 func throw():
 	return
-	for child in get_children():
-		if child is Weapon:
-			self.weapon = null
-			child.throw()
+	#for child in get_children():
+		#if child is Weapon:
+			#self.weapon = null
+			#child.throw()
 
 func use(type : String):
 	for child in get_children():

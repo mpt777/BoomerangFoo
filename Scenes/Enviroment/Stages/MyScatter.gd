@@ -97,13 +97,13 @@ func get_random_point_culled() -> Vector3:
 	return Vector3(x, position.y, z)
 	
 func set_transforms():
-	var transform = Transform3D()
+	var transform_3d = Transform3D()
 	for i in range(instance_amount):
-		transform.origin = get_random_point()
-		transform.basis = transform.basis.rotated(Vector3(0, 1, 0), rng.randf_range(-3, 3))
-		transforms.append(transform)
+		transform_3d.origin = get_random_point()
+		transform_3d.basis = transform_3d.basis.rotated(Vector3(0, 1, 0), rng.randf_range(-3, 3))
+		transforms.append(transform_3d)
 
-func process_mesh(mesh: Mesh, transform : Transform3D):
+func process_mesh(mesh: Mesh, transform_3d : Transform3D):
 	if not transforms:
 		return
 	multimesh = MultiMesh.new()
@@ -113,7 +113,7 @@ func process_mesh(mesh: Mesh, transform : Transform3D):
 
 	# Populate the multimesh with instances
 	for i in range(instance_amount): # Example: 100
-		multimesh.set_instance_transform(i, transforms[i] * transform)
+		multimesh.set_instance_transform(i, transforms[i] * transform_3d)
 
 	# Create a MultimeshInstance3D and assign the multimesh
 	var multimesh_instance = MultiMeshInstance3D.new()

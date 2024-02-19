@@ -21,11 +21,11 @@ func attack(weapon : Weapon) -> Attack:
 	return a
 	
 func initialize_projectile(weapon: Weapon) -> Projectile:
-	var projectile := projectile()
-	projectile.position = weapon.global_position
-	projectile.rotation = weapon.global_rotation
-	projectile.attack = attack(weapon)
-	return projectile
+	var p := projectile()
+	p.position = weapon.global_position
+	p.rotation = weapon.global_rotation
+	p.attack = attack(weapon)
+	return p
 	
 func cast(weapon: Weapon) -> void:
 	weapon.get_node("/root/Signals").emit_signal("add_projectile", initialize_projectile(weapon))

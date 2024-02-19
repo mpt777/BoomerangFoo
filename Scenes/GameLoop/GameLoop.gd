@@ -5,7 +5,6 @@ class_name GameLoop
 	"dev": "res://Scenes/Enviroment/Stages/Stage.tscn"
 }
 
-var played_stages : Array = []
 var current_stage : String
 
 @onready var stage_container := $StageContainer
@@ -15,6 +14,7 @@ var current_stage : String
 func _ready():
 	start_round()
 	$"/root/Signals".connect("update_character", update_character)
+	
 
 func random_stage() -> String:
 	return stages[stages.keys()[randi() % stages.size()]]
@@ -34,6 +34,7 @@ func start_round() -> void:
 	set_stage()
 	start_count_down()
 	start_vignette()
+	$"/root/Signals".emit_signal("start_round")
 	
 func end_round() -> void:
 	end_vignette()
@@ -43,9 +44,8 @@ func _on_vignette_end_vignette_end():
 	SceneManager.switch_scene("points")
 
 
-
-
 func start_vignette() -> void:
+	ui_vignette.blank_screen()
 	ui_vignette.circle_out()
 	
 func end_vignette():

@@ -16,5 +16,5 @@ func update(_delta : float):
 func physics_update(_delta : float):
 	pass
 
-func _input(event):
+func _input(_event):
 	pass

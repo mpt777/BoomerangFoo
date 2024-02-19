@@ -10,5 +10,4 @@ func instantiate_scene() -> Character:
 	return 
 
 func _init():
-	print(color)
 	self.max_health = GameState.settings.character_max_health

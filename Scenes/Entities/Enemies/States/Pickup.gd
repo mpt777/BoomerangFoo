@@ -29,7 +29,7 @@ func exit():
 	pass
 	
 	
-func update(delta : float):
+func update(_delta : float):
 	self.find_pickup_location()
 	
 	if pickup_location != Vector3(-1,-1,-1):

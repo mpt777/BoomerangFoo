@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqpf86ecum285"]
+
+[ext_resource type="Script" path="res://UI/Points/point_row_point.gd" id="1_gvvkk"]
+[ext_resource type="Shader" path="res://UI/Points/point_row_point.gdshader" id="2_50fwa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alscx"]
+shader = ExtResource("2_50fwa")
+shader_parameter/angle_step = 45.0
+shader_parameter/initial_velocity = 800.0
+shader_parameter/velocity_decay = 0.6
+shader_parameter/size_decay = 0.85
+shader_parameter/scale = Vector3(25, 25, 25)
+shader_parameter/color = Color(0.750001, 0, 0.120364, 1)
+
+[node name="PointRowPoint" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gvvkk")
+
+[node name="PointRowPoint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 99
+z_as_relative = false
+emitting = false
+process_material = SubResource("ShaderMaterial_alscx")
+one_shot = true
+explosiveness = 1.0

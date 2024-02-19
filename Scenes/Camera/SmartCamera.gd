@@ -34,9 +34,9 @@ func _ready():
 	
 	debugger = Draw3D.new()
 	add_child(debugger)
-	$"/root/Signals".connect("refresh_follow_camera", refresh_follow_camera)
+	$"/root/Signals".connect("update_character", refresh_follow_camera)
 	$"/root/Signals".connect("set_follow_camera_active", set_active)
-
+	
 
 func refresh_follow_camera() -> void:
 	nodes = get_tree().get_nodes_in_group("FollowCamera")

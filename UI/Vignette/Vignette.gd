@@ -20,6 +20,10 @@ func set_center(center: Vector2 = Vector2(0.5, 0.5)) -> void:
 	self.center = center
 	get_material().set_shader_parameter("center", center)
 	
+func blank_screen(center: Vector2 = Vector2(0.5, 0.5)) -> void:
+	self.set_center(center)
+	get_material().set_shader_parameter("diameter_factor", 0)
+
 func circle_in(center: Vector2 = Vector2(0.5, 0.5)) -> void:
 	self.set_center(center)
 	animation_player.play("CircleIn")

@@ -11,8 +11,8 @@ func projectile() -> Projectile:
 func cast(weapon: Weapon) -> void:
 	var bullet_count = 3
 	var spread_angle_degrees = 20
-	var start_angle = -spread_angle_degrees / 2
-	var angle_increment = spread_angle_degrees / (bullet_count - 1)
+	var start_angle = -spread_angle_degrees / 2.0
+	var angle_increment = spread_angle_degrees / (bullet_count - 1.0)
 
 	
 	for i in range(bullet_count):

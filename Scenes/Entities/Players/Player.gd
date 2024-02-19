@@ -11,9 +11,6 @@ var n_movement := $Movement
 @onready
 var controller : Controller
 
-@onready
-var data : PlayerData
-
 var rotation_speed := 10.0
 
 # Called when the node enters the scene tree for the first time.
@@ -28,14 +25,14 @@ func _physics_process(delta):
 	
 func get_input_direction() -> Vector3:
 	var direction := Vector3.ZERO
-	var velocity := Input.get_vector(
+	var axis := Input.get_vector(
 		controller.action("move_left"), 
 		controller.action("move_right"), 
 		controller.action("move_up"),
 		controller.action("move_down")
 	)
-	direction.x = velocity.x
-	direction.z = velocity.y
+	direction.x = axis.x
+	direction.z = axis.y
 	return direction.normalized()
 	
 func _input(event):

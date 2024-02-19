@@ -9,7 +9,7 @@ func spawn(characters : Array):
 		spawn_character(character, get_child(index))
 		index += 1
 		
-	$"/root/Signals".emit_signal("refresh_follow_camera")
+	$"/root/Signals".emit_signal("update_character")
 	
 func spawn_character(character_data : CharacterData, node : Node):
 	var character_scene = character_data.instantiate_scene()

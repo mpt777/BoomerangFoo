@@ -10,11 +10,11 @@ var health := 1.0
 func _ready():
 	health = max_health
 	
-
 func damage(attack : Attack):
 	health -= attack.damage
 	if health <= 0:
 		if "signals" in owner:
+			$"/root/Signals".emit_signal("add_event", KillEvent.new().constructor(owner.data, attack.owner.data))
 			owner.signals.emit_signal("Character.Kill")
 		else:
 			kill()

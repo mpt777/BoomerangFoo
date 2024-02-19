@@ -17,7 +17,7 @@ func _ready():
 	weapon_owner.signals.register("Wand.ChangeSpell", change_spell)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 
