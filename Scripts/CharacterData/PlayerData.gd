@@ -22,10 +22,10 @@ func default_controller():
 	
 func load_default_controller():
 	controller.is_joypad = true
-	ControllerAction.new().constructor("move_up", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_Y, -1).register(controller)
-	ControllerAction.new().constructor("move_down", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_Y, 1).register(controller)
-	ControllerAction.new().constructor("move_left", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, -1).register(controller)
-	ControllerAction.new().constructor("move_right", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, 1).register(controller)
+	ControllerAction.new().constructor("move_up", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_Y, -1, 0.1).register(controller)
+	ControllerAction.new().constructor("move_down", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_Y, 1, 0.1).register(controller)
+	ControllerAction.new().constructor("move_left", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, -1, 0.1).register(controller)
+	ControllerAction.new().constructor("move_right", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, 1, 0.1).register(controller)
 	
 	ControllerAction.new().constructor("look_up", InputEventJoypadMotion.new(), JOY_AXIS_RIGHT_Y, -1, 0.1).register(controller)
 	ControllerAction.new().constructor("look_down", InputEventJoypadMotion.new(), JOY_AXIS_RIGHT_Y, 1, 0.1).register(controller)

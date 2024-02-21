@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqpf86ecum285"]
+[gd_scene load_steps=4 format=3 uid="uid://forc84u3sqwp"]
 
-[ext_resource type="Script" path="res://UI/Points/point_row_point.gd" id="1_gvvkk"]
-[ext_resource type="Shader" path="res://UI/Points/point_row_point.gdshader" id="2_50fwa"]
+[ext_resource type="Script" path="res://UI/Scenes/Points/point_row_point.gd" id="1_bqod8"]
+[ext_resource type="Shader" path="res://UI/Scenes/Points/point_row_point.gdshader" id="2_6d3wl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_alscx"]
-shader = ExtResource("2_50fwa")
+shader = ExtResource("2_6d3wl")
 shader_parameter/angle_step = 45.0
 shader_parameter/initial_velocity = 800.0
 shader_parameter/velocity_decay = 0.6
@@ -18,7 +18,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_gvvkk")
+script = ExtResource("1_bqod8")
 
 [node name="PointRowPoint" type="ColorRect" parent="."]
 layout_mode = 1

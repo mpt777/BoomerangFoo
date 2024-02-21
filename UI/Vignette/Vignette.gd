@@ -1,10 +1,10 @@
 extends ColorRect
 class_name Vingette
 
-@export var center : Vector2
-@export var radius : float
-@export var softness : int
-@export var vignette_color : Color
+#@export var center : Vector2
+#@export var radius : float
+#@export var softness : int
+#@export var vignette_color : Color
 
 @onready var animation_player := $AnimationPlayer
 
@@ -25,7 +25,7 @@ func screen_center(center : Vector2) -> Vector2:
 	return get_viewport_rect().size / 2
 
 func set_center(center: Vector2 = Vector2(0.5, 0.5)) -> void:
-	self.center = center
+	#self.center = center
 	get_material().set_shader_parameter("center", center)
 	
 func blank_screen(center: Vector2 = Vector2(0.5, 0.5)) -> void:

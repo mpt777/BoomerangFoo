@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dft55eomhqlrc"]
+
+[ext_resource type="Script" path="res://UI/Scenes/Points/point_row.gd" id="1_5s67n"]
+[ext_resource type="PackedScene" uid="uid://forc84u3sqwp" path="res://UI/Scenes/Points/point_row_point.tscn" id="2_7sru1"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 180.0
+offset_bottom = 35.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_5s67n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Main" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Main"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Points" type="HBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+
+[node name="PointRowPoint" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2
+
+[node name="PointRowPoint2" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2
+
+[node name="PointRowPoint3" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2
+
+[node name="PointRowPoint4" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2
+
+[node name="PointRowPoint5" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2
+
+[node name="PointRowPoint6" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2
+
+[node name="PointRowPoint7" parent="MarginContainer/Main/Points" instance=ExtResource("2_7sru1")]
+layout_mode = 2

@@ -1,6 +1,6 @@
 extends Control
 
-var POINT_ROW := preload("res://UI/Points/point_row.tscn")
+var POINT_ROW := preload("res://UI/Scenes/Points/point_row.tscn")
 @onready var v_box_container = $VBoxContainer
 @onready var color_rect = $ColorRect
 

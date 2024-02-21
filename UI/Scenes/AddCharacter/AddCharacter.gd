@@ -1,6 +1,6 @@
 extends Control
 
-var CHARACTER_CIRCLE := preload("res://UI/AddCharacter/CharacterCircle.tscn")
+var CHARACTER_CIRCLE := preload("res://UI/Scenes/AddCharacter/CharacterCircle.tscn")
 @onready var h_box_container = $MarginContainer/VBoxContainer/HBoxContainer
 
 func _ready():
@@ -8,6 +8,7 @@ func _ready():
 	#var joypads = Input.get_connected_joypads()
 	#for item in joypads:
 		#add_player(item)
+	GameState.players = []
 	Input.connect("joy_connection_changed", _joy_connection_changed)
 
 func _joy_connection_changed(id, connected):
@@ -26,7 +27,8 @@ func add_player(id : int) -> void:
 	player_data.controller.device_number = id
 	player_data.controller.controller_number = id
 	player_data.controller.is_joypad = true
-	
+	player_data.controller = player_data.load_default_controller()
+
 	GameState.players.append(player_data)
 	
 func remove_player(id : int) -> void:

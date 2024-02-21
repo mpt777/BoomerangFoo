@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctbijeuq2vi17"]
+
+[ext_resource type="Texture2D" uid="uid://divgl04q66p38" path="res://Assets/Inkscape/circle.svg" id="1_fssxn"]
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/CharacterCircle.gd" id="2_nry7l"]
+
+[node name="TextureRect" type="TextureRect"]
+size_flags_vertical = 4
+texture = ExtResource("1_fssxn")
+stretch_mode = 2
+script = ExtResource("2_nry7l")

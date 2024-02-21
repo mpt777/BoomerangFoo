@@ -6,7 +6,10 @@ var VIGNETTE = preload("res://UI/Vignette/vignette.tscn")
 @export 
 var scenes : Dictionary = {
 	"game": "res://Scenes/GameLoop/GameLoop.tscn",
-	"points": "res://UI/Points/points.tscn",
+	"points": "res://UI/Scenes/Points/points.tscn",
+	"add_character": "res://UI/Scenes/AddCharacter/AddCharacter.tscn",
+	"settings": "",
+	"credits": "",
 }
 
 # Description: Add a new scene to the scene collection
