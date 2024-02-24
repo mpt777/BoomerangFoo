@@ -85,8 +85,8 @@ size_flags_horizontal = 8
 theme = ExtResource("2_dagfb")
 text = "Quit"
 
-[connection signal="button_down" from="VBoxContainer/Debug" to="." method="_on_debug_button_down"]
+[connection signal="pressed" from="VBoxContainer/Debug" to="." method="_on_debug_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="button_down" from="VBoxContainer/Credits" to="." method="_on_credits_button_down"]
-[connection signal="button_down" from="VBoxContainer/Quit" to="." method="_on_quit_button_down"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

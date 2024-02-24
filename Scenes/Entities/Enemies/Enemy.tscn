@@ -24,6 +24,7 @@
 albedo_color = Color(0.67451, 0.168627, 0.627451, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mhm0u"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_goiss")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ct8g"]
@@ -51,6 +52,7 @@ character = NodePath("..")
 max_mana = 3.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_grke1")]
+max_health = null
 
 [node name="Hitbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ypcu6")]
 health_component = NodePath("../HealthComponent")

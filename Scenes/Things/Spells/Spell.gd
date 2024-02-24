@@ -17,7 +17,7 @@ func projectile() -> Projectile:
 func attack(weapon : Weapon) -> Attack:
 	var a := Attack.new()
 	a.damage = 1
-	a.owner = weapon.weapon_owner
+	a.character = weapon.weapon_owner.data
 	return a
 	
 func initialize_projectile(weapon: Weapon) -> Projectile:

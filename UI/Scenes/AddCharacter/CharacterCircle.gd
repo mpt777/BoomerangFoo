@@ -1,15 +1,11 @@
 extends TextureRect
 class_name CharacterCircle
 
+var character_data : CharacterData
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func constructor(character_data : CharacterData):
+	self.character_data = character_data
+	self.set_color(character_data.color)
 	
 func set_color(color : Color) -> void:
 	print(material)

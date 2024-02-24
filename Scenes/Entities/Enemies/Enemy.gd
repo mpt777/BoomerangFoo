@@ -20,6 +20,7 @@ var rotation_speed := 10
 func constructor(enemy_data : EnemyData):
 	self.data = enemy_data
 	$HealthComponent.max_health = enemy_data.max_health
+	$MeshInstance3D.mesh.material = StandardMaterial3D.new()
 	$MeshInstance3D.mesh.material.albedo_color = enemy_data.color
 	
 func _ready():

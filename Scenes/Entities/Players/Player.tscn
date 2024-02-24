@@ -39,6 +39,7 @@ shape = SubResource("CapsuleShape3D_7yfid")
 mesh = SubResource("CapsuleMesh_mapto")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_wgly8")]
+max_health = null
 
 [node name="Hitbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_f8p7s")]
 health_component = NodePath("../HealthComponent")

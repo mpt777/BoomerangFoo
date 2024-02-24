@@ -24,12 +24,12 @@ func kill_events() -> Array:
 func initial_points() -> int:
 	return len(kill_events().filter(func(event): 
 		return event.killer_character == self.character_data and event.round_index < GameState.round_index
-	)) * 2
+	))
 	
 func new_points() -> int:
 	return len(kill_events().filter(func(event): 
 		return event.killer_character == self.character_data and event.round_index >= GameState.round_index
-	)) * 2
+	))
 	
 func add_initial_points() -> void:
 	var initial_points = self.initial_points()
@@ -49,5 +49,5 @@ func add_new_points() -> void:
 		elif index < new_points:
 			child.set_color(self.character_data.color)
 			child.emit()
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.5).timeout
 		index += 1

@@ -34,14 +34,16 @@ func load_default_controller():
 	
 	ControllerAction.new().constructor("dash", InputEventJoypadButton.new(), JOY_BUTTON_LEFT_SHOULDER).register(controller)
 	ControllerAction.new().constructor("dash", InputEventJoypadButton.new(), JOY_BUTTON_LEFT_STICK).register(controller)
+	ControllerAction.new().constructor("dash", InputEventJoypadButton.new(), JOY_BUTTON_A).register(controller)
 	#ControllerAction.new().constructor("dash", InputEventJoypadButton.new(), JOY_BUTTON_B).register(controller)
 	
 	
-	ControllerAction.new().constructor("attack_range", InputEventJoypadButton.new(), JOY_BUTTON_B).register(controller)
+	ControllerAction.new().constructor("attack_range", InputEventJoypadButton.new(), JOY_BUTTON_Y).register(controller)
 	#ControllerAction.new().constructor("attack_range", InputEventJoypadButton.new(), JOY_BUTTON_RIGHT_SHOULDER ).register(controller)
 	ControllerAction.new().constructor("attack_range", InputEventJoypadMotion.new(), JOY_AXIS_TRIGGER_RIGHT ).register(controller)
 	
-	ControllerAction.new().constructor("attack_melee", InputEventJoypadButton.new(), JOY_BUTTON_Y).register(controller)
+	ControllerAction.new().constructor("attack_melee", InputEventJoypadButton.new(), JOY_BUTTON_X).register(controller)
+	ControllerAction.new().constructor("attack_melee", InputEventJoypadButton.new(), JOY_BUTTON_B).register(controller)
 	#ControllerAction.new().constructor("attack_melee", InputEventJoypadButton.new(), JOY_BUTTON_LEFT_SHOULDER ).register(controller)
 	ControllerAction.new().constructor("attack_melee", InputEventJoypadButton.new(), JOY_BUTTON_RIGHT_SHOULDER ).register(controller)
 	#ControllerAction.new().constructor("attack_melee", InputEventJoypadMotion.new(), JOY_AXIS_TRIGGER_LEFT  ).register(controller)

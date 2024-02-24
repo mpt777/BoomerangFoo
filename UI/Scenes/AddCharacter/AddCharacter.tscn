@@ -23,7 +23,19 @@ grow_vertical = 2
 theme = ExtResource("1_gdsw6")
 script = ExtResource("2_k76w2")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.499684, 0.270455, 0.165558, 1)
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 43.0
 offset_bottom = 42.0
@@ -41,20 +53,82 @@ theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Container" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Ready" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/Ready"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Ready" type="Button" parent="MarginContainer/VBoxContainer/Ready"]
+layout_mode = 2
+text = "Ready"
+
+[node name="Bots" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/Bots"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Bots"]
+layout_mode = 2
+alignment = 1
+
+[node name="RemoveBot" type="Button" parent="MarginContainer/VBoxContainer/Bots/HBoxContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Bots/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_gdsw6")
+text = "0"
+
+[node name="AddBot" type="Button" parent="MarginContainer/VBoxContainer/Bots/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="AddBots" type="Button" parent="MarginContainer/VBoxContainer/Bots"]
+layout_mode = 2
+text = "Add Bots"
+
+[node name="GameSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Ready" type="Button" parent="MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+text = "Ready"
+
+[node name="StartGame" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/StartGame"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/StartGame"]
 layout_mode = 2
 text = "Start Game"
 
-[connection signal="button_up" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Ready/Ready" to="." method="_on_ready_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/HBoxContainer/RemoveBot" to="." method="_on_remove_bot_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/HBoxContainer/AddBot" to="." method="_on_add_bot_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/AddBots" to="." method="_on_add_bots_pressed"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/StartGame/StartGame" to="." method="_on_button_button_up"]
