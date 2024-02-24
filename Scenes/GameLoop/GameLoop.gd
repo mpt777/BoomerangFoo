@@ -39,6 +39,12 @@ func start_round() -> void:
 func end_round() -> void:
 	end_vignette()
 	
+func _input(event):
+	print(event)
+	#
+#func _unhandled_input(event):
+	#print(event)
+	
 
 func _on_vignette_end_vignette_end():
 	SceneManager.switch_scene("points")

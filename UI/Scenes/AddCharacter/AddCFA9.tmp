@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cft8qo4snyk1j"]
+
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/Theme.tres" id="1_gdsw6"]
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AddCharacter.gd" id="2_k76w2"]
+
+[sub_resource type="Gradient" id="Gradient_pyc2h"]
+colors = PackedColorArray(0.637843, 0.637843, 0.637843, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yutof"]
+gradient = SubResource("Gradient_pyc2h")
+width = 1920
+height = 1080
+fill_from = Vector2(0.29745, 1)
+fill_to = Vector2(0.388102, 0)
+
+[node name="AddCharacter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gdsw6")
+script = ExtResource("2_k76w2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 43.0
+offset_bottom = 42.0
+theme = ExtResource("1_gdsw6")
+texture = SubResource("GradientTexture2D_yutof")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_button_up"]

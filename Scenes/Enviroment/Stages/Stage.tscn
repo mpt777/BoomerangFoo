@@ -124,6 +124,12 @@ show_placement = false
 [node name="Marker3D" type="Marker3D" parent="CharacterSpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3948, 0.526961, 4.43503)
 
+[node name="Marker3D4" type="Marker3D" parent="CharacterSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88551, 0.526961, -15.699)
+
+[node name="Marker3D5" type="Marker3D" parent="CharacterSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7114, 0.526961, -15.699)
+
 [node name="Marker3D2" type="Marker3D" parent="CharacterSpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9568, 0.928907, 0)
 
