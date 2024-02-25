@@ -5,6 +5,9 @@ var character_name : String
 var max_health := 1
 var color : Color = Color(randf(),randf(),randf(),1)
 
+var melee_spell : Spell = RockWallSpell.new()
+var range_spell : Spell = IceSpell.new()
+
 
 func instantiate_scene() -> Character:
 	return 

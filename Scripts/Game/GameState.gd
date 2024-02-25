@@ -50,6 +50,17 @@ func _input(event):
 			ui.emit_signal("pressed")
 		
 		
+func add_character(character_data : CharacterData) -> void:
+	self.players.append(character_data)
+	
+func remove_character(character_data : CharacterData) -> void:
+	var to_remove := -1
+	for index in len(self.players):
+		if self.players[index] == character_data:
+			to_remove = index
+			break
+	if to_remove > -1:
+		self.players.remove_at(to_remove)
 		
 func add_event(event : Event) -> void:
 	event.round_index = round_index

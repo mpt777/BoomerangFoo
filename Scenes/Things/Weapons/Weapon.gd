@@ -3,7 +3,7 @@ extends RigidBody3D
 class_name Weapon
 
 @export
-var weapon_owner : Node = null;
+var weapon_owner : Character = null;
 
 var target_position : Vector3 = Vector3.ZERO
 	#set(value):

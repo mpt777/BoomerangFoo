@@ -8,5 +8,4 @@ func constructor(character_data : CharacterData):
 	self.set_color(character_data.color)
 	
 func set_color(color : Color) -> void:
-	print(material)
 	material.set_shader_parameter("color", color)

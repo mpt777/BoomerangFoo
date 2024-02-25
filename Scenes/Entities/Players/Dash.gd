@@ -3,7 +3,7 @@ extends State
 @export
 var movement : Movement
 @export
-var body : Player
+var body : Character
 @export
 var dash : Dash
 
@@ -21,7 +21,7 @@ func update(_delta : float):
 	pass
 	
 func physics_update(_delta : float):
-	movement.move(body.get_input_direction())
+	pass
 		
 func _on_dash_component_end_dash():
 	movement.end_dash()

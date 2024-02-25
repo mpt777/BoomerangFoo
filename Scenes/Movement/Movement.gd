@@ -8,7 +8,7 @@ var body : CharacterBody3D
 @export
 var SPEED := 10
 @export
-var DASH_SPEED := 100
+var DASH_SPEED := 50
 @export
 var ACCELERATION := 0.8
 @export

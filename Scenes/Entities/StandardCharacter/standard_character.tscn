@@ -1,0 +1,83 @@
+[gd_scene load_steps=19 format=3 uid="uid://dr436lni2ke1x"]
+
+[ext_resource type="PackedScene" uid="uid://krjr1lv4wprt" path="res://Scenes/Entities/Character/Character.tscn" id="1_3nbfc"]
+[ext_resource type="Script" path="res://Scenes/Entities/StandardCharacter/standard_character.gd" id="2_5anm4"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="3_d01ft"]
+[ext_resource type="PackedScene" uid="uid://jb5v7c5pd4a0" path="res://Components/Hitbox/Hitbox.tscn" id="4_nks4u"]
+[ext_resource type="PackedScene" uid="uid://0jkq75hkjvgs" path="res://Components/Hand/Hand.tscn" id="5_0xwon"]
+[ext_resource type="PackedScene" uid="uid://bqlhcyxpijyyv" path="res://Scenes/Things/Weapons/Wand/Wand.tscn" id="6_vgmne"]
+[ext_resource type="PackedScene" uid="uid://dfpatgn7u3h84" path="res://Components/Pickup/PickUpComponent.tscn" id="7_6aj05"]
+[ext_resource type="PackedScene" uid="uid://qifyvdfu5u8" path="res://Components/Mana/ManaComponent.tscn" id="8_5chou"]
+[ext_resource type="PackedScene" uid="uid://cpy5im6mduxy6" path="res://Scenes/Movement/Movement.tscn" id="9_wa3o3"]
+[ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="10_uxf17"]
+[ext_resource type="Script" path="res://Scenes/Entities/Players/States/Walk.gd" id="11_mtqwl"]
+[ext_resource type="Script" path="res://Scenes/Entities/Players/Dash.gd" id="12_5hbh3"]
+[ext_resource type="PackedScene" uid="uid://dug0djwlj8lba" path="res://Scenes/Movement/Dash.tscn" id="13_0wu5i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lhf71"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3bfy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ueqat"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_y3bfy")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ldlm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jsy4v"]
+radius = 1.0
+
+[node name="StandardCharacter" groups=["Character", "FollowCamera"] instance=ExtResource("1_3nbfc")]
+script = ExtResource("2_5anm4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_lhf71")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("CapsuleMesh_ueqat")
+
+[node name="HealthComponent" parent="." index="3" instance=ExtResource("3_d01ft")]
+
+[node name="Hitbox" parent="." index="4" node_paths=PackedStringArray("health_component") instance=ExtResource("4_nks4u")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape3D_3ldlm")
+
+[node name="Hand" parent="." index="5" instance=ExtResource("5_0xwon")]
+
+[node name="Wand" parent="Hand" index="0" node_paths=PackedStringArray("mana_component", "weapon_owner") instance=ExtResource("6_vgmne")]
+mana_component = NodePath("../../ManaComponent")
+weapon_owner = NodePath("../..")
+
+[node name="PickUpComponent" parent="." index="6" node_paths=PackedStringArray("character") instance=ExtResource("7_6aj05")]
+character = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpComponent" index="0"]
+shape = SubResource("CylinderShape3D_jsy4v")
+
+[node name="ManaComponent" parent="." index="7" node_paths=PackedStringArray("character") instance=ExtResource("8_5chou")]
+character = NodePath("..")
+max_mana = 3.0
+
+[node name="Movement" parent="." index="8" node_paths=PackedStringArray("body") instance=ExtResource("9_wa3o3")]
+body = NodePath("..")
+
+[node name="MovementFSM" parent="." index="9" node_paths=PackedStringArray("initial_state") instance=ExtResource("10_uxf17")]
+initial_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
+script = ExtResource("11_mtqwl")
+movement = NodePath("../../Movement")
+body = NodePath("../..")
+
+[node name="Dash" type="Node" parent="MovementFSM" index="1" node_paths=PackedStringArray("movement", "body", "dash")]
+script = ExtResource("12_5hbh3")
+movement = NodePath("../../Movement")
+body = NodePath("../..")
+dash = NodePath("DashComponent")
+
+[node name="DashComponent" parent="MovementFSM/Dash" index="0" instance=ExtResource("13_0wu5i")]
+
+[connection signal="area_shape_entered" from="PickUpComponent" to="PickUpComponent" method="_on_area_shape_entered"]
+[connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_component_end_dash"]

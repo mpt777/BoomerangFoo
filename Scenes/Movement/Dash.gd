@@ -8,8 +8,8 @@ signal EndDashCooldown
 
 func start_dash() -> void:
 	$DashTimer.start()
-	$DashCooldown.start()
-	can_dash = false
+	#$DashCooldown.start()
+	#can_dash = false
 
 func _on_dash_timer_timeout():
 	EndDash.emit()

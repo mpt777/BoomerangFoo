@@ -40,8 +40,6 @@ func update(_delta : float):
 	if mana_component.mana == 0 and get_tree().get_first_node_in_group("Pickup"):
 		Transitioned.emit(self, "Pickup")
 		
-
-	
 func physics_update(_delta : float):
 	if body.current_movement_state() != "dash":
 		body.target_direction = (body.n_nav.get_next_path_position() - body.global_position).normalized()

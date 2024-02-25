@@ -1,4 +1,4 @@
-extends Character
+extends StandardCharacter
 
 class_name Player
 
@@ -7,6 +7,9 @@ var n_hand := $Hand
 
 @onready
 var n_movement := $Movement
+
+@onready
+var n_wand := $Hand/Wand
 
 @onready
 var controller : Controller
@@ -21,8 +24,14 @@ func constructor(player_data : PlayerData):
 	$MeshInstance3D.mesh.material = StandardMaterial3D.new()
 	$MeshInstance3D.mesh.material.albedo_color = player_data.color
 	
+func _ready():
+	super._ready()
+	n_wand.change_spell(data.range_spell)
+	n_wand.change_spell(data.melee_spell)
+	
 func _physics_process(delta):
 	rotate_character(delta)
+	n_movement.move(get_input_direction())
 	
 func get_input_direction() -> Vector3:
 	var direction := Vector3.ZERO
@@ -43,6 +52,8 @@ func _input(event):
 		n_hand.use("range")
 	if event.is_action_pressed(controller.action("attack_melee")):
 		n_hand.use("melee")
+	if event.is_action_pressed(controller.action("dash")):
+		signals.emit_signal("Movement.dash")
 		
 func rotate_character(delta):
 	var pos := global_position

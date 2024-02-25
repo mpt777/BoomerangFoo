@@ -48,13 +48,14 @@ func add_character(character_data : CharacterData) -> void:
 	var character_circle = CHARACTER_CIRCLE.instantiate() as CharacterCircle
 	character_circle.constructor(character_data)
 	h_box_container.add_child(character_circle)
-	GameState.players.append(character_data)
+	GameState.add_character(character_data)
 
-func remove_character(character_data):
+func remove_character(character_data : CharacterData):
 	for child in h_box_container.get_children():
 		child = child as CharacterCircle
 		if child.character_data == character_data:
 			child.queue_free()
+			GameState.remove_character(character_data)
 
 func _on_button_button_up():
 	GameState.settings.save_to_disk()

@@ -10,10 +10,7 @@ var melee_spell : Spell
 var current_spell : Spell
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	range_spell = IceSpell.new()
-	melee_spell = RockWallSpell.new()
-	
+func _ready():	
 	weapon_owner.signals.register("Wand.ChangeSpell", change_spell)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,5 +37,7 @@ func spell_lookup(lookup_string : String) -> Spell:
 func change_spell(spell : Spell):
 	if spell.spell_type() == spell.SPELL_TYPES.RANGE:
 		range_spell = spell
+		weapon_owner.data.range_spell = spell
 	else:
 		melee_spell = spell
+		weapon_owner.data.melee_spell = spell
