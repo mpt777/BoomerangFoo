@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0bwtxur4gqo6"]
+
+[ext_resource type="PackedScene" uid="uid://cnarxpmnwnk4f" path="res://Assets/Blender/Decorations/Gravestone/large_gravestone.glb" id="1_e313m"]
+
+[node name="large_gravestone" instance=ExtResource("1_e313m")]

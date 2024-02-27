@@ -2,7 +2,8 @@ extends Node3D
 class_name GameLoop
 
 @export var stages : Dictionary = {
-	"dev": "res://Scenes/Enviroment/Stages/Stage.tscn"
+	"dev": "res://Scenes/Enviroment/StageElements/Stage.tscn",
+	"graveyard": "res://Scenes/Enviroment/Stages/Graveyard/GraveyardStage.tscn"
 }
 
 var current_stage : String

@@ -6,6 +6,7 @@ func _ready():
 	$VBoxContainer/Debug.grab_focus()
 
 func _on_debug_pressed():
+	GameState.players = GameStateDebug.default_character_data()
 	SceneManager.switch_scene("game")
 	
 func _on_start_pressed():
