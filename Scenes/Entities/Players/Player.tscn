@@ -42,3 +42,5 @@ body = NodePath("../..")
 movement = NodePath("../../Movement")
 body = NodePath("../..")
 dash = NodePath("DashComponent")
+
+[connection signal="ManaChanged" from="ManaComponent" to="Ammo" method="_on_mana_component_mana_changed"]

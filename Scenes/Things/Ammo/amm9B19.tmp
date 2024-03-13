@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://buvsahgmf73dx"]
+
+[ext_resource type="Script" path="res://Scenes/Things/Ammo/AmmoItem.gd" id="1_p0v87"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tw048"]
+
+[node name="AmmoItem" type="Node3D"]
+script = ExtResource("1_p0v87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.56149)
+mesh = SubResource("SphereMesh_tw048")
+skeleton = NodePath("../..")

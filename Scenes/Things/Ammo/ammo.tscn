@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3036qp4hmjcv"]
+
+[ext_resource type="Script" path="res://Scenes/Things/Ammo/Ammo.gd" id="1_hsdvi"]
+[ext_resource type="PackedScene" uid="uid://buvsahgmf73dx" path="res://Scenes/Things/Ammo/ammo_item.tscn" id="2_ucv6c"]
+
+[node name="Ammo" type="Node3D"]
+script = ExtResource("1_hsdvi")
+
+[node name="AmmoItem" parent="." instance=ExtResource("2_ucv6c")]
+
+[node name="AmmoItem2" parent="." instance=ExtResource("2_ucv6c")]
+
+[node name="AmmoItem3" parent="." instance=ExtResource("2_ucv6c")]
