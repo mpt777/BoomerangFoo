@@ -19,8 +19,9 @@ func is_able_to_cast(spell : Spell) -> bool:
 	
 func cast(spell : Spell) -> void:
 	mana -= spell.cost
+	character.signals.emit_signal("Mana.ChangeMana", mana)
 	ManaChanged.emit(mana)
 	
 func add_mana(spell : Spell) -> void:
 	mana = min(mana + spell.cost, max_mana)
-	ManaChanged.emit(mana)
+	character.signals.emit_signal("Mana.ChangeMana", mana)

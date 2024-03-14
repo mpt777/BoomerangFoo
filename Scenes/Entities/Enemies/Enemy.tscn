@@ -83,5 +83,8 @@ body = NodePath("../..")
 movement = NodePath("../../Movement")
 mana_component = NodePath("../../ManaComponent")
 
+[node name="Ammo" parent="." index="13" node_paths=PackedStringArray("character")]
+character = NodePath("..")
+
 [connection signal="area_entered" from="DodgeArea" to="DodgeArea" method="_on_area_entered"]
 [connection signal="area_exited" from="DodgeArea" to="DodgeArea" method="_on_area_exited"]

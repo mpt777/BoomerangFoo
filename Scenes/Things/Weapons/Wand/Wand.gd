@@ -26,6 +26,10 @@ func use(type : String):
 		
 func _on_attack_attacked():
 	mana_component.cast(current_spell)
+	weapon_owner.signals.emit_signal("Wand.Reloading")
+	
+func _on_reloading_reloaded():
+	weapon_owner.signals.emit_signal("Wand.Reloaded")
 	
 func spell_lookup(lookup_string : String) -> Spell:
 	var lookup := {

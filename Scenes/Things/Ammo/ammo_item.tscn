@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://buvsahgmf73dx"]
+[gd_scene load_steps=4 format=3 uid="uid://buvsahgmf73dx"]
 
 [ext_resource type="Script" path="res://Scenes/Things/Ammo/AmmoItem.gd" id="1_p0v87"]
+[ext_resource type="Material" uid="uid://vh8w0teflk71" path="res://Scenes/Things/Ammo/ammo_item_reload.tres" id="2_uewup"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_tw048"]
+resource_local_to_scene = true
+material = ExtResource("2_uewup")
+radius = 0.3
+height = 0.6
 
 [node name="AmmoItem" type="Node3D"]
 script = ExtResource("1_p0v87")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.56149)
 mesh = SubResource("SphereMesh_tw048")
 skeleton = NodePath("../..")

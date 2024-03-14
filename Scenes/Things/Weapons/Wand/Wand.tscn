@@ -45,5 +45,6 @@ body = NodePath("../..")
 script = ExtResource("6_jef0n")
 weapon = NodePath("../..")
 
+[connection signal="Reloaded" from="StateMachine/Reloading" to="." method="_on_reloading_reloaded"]
 [connection signal="timeout" from="StateMachine/Reloading/Timer" to="StateMachine/Reloading" method="_on_timer_timeout"]
 [connection signal="Attacked" from="StateMachine/Attack" to="." method="_on_attack_attacked"]

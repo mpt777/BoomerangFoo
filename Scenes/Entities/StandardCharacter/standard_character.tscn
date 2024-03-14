@@ -80,7 +80,9 @@ dash = NodePath("DashComponent")
 
 [node name="DashComponent" parent="MovementFSM/Dash" index="0" instance=ExtResource("13_0wu5i")]
 
-[node name="Ammo" parent="." index="10" instance=ExtResource("14_e5rh7")]
+[node name="Ammo" parent="." index="10" node_paths=PackedStringArray("character") instance=ExtResource("14_e5rh7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465, 0)
+character = NodePath("..")
 
 [connection signal="area_shape_entered" from="PickUpComponent" to="PickUpComponent" method="_on_area_shape_entered"]
 [connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_component_end_dash"]
