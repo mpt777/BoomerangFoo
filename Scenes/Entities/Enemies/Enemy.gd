@@ -1,4 +1,4 @@
-extends Character
+extends StandardCharacter
 class_name Enemy
 
 @onready

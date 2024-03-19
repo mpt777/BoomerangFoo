@@ -20,7 +20,8 @@ func get_attack() -> Attack:
 func _on_area_entered(area):
 	if area is HitboxComponent:
 		var a := get_attack()
-		#print(area.owner, a.owner, area.owner==a.owner)
+		#print(area.owner.data, a.character, area.owner.data==a.character)
+		var x = area.owner
 		if area.owner is Character:
 			if area.owner.data != a.character:
 				area.damage(a)
