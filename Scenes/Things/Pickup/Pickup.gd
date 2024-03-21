@@ -18,16 +18,16 @@ var PROJECTILES = [
 	#
 	#queue_free()
 	
-func random_projectile() -> Projectile:
-	return PROJECTILES[randi() % PROJECTILES.size()].instantiate()
+func random_projectile() -> PackedScene:
+	return PROJECTILES[randi() % PROJECTILES.size()]
 	
 func pickup(character : Character) -> void:
 	var new_spell : ResourceSpell = character.range_spell()
 	
-	if randi() % 1:
+	if randi() % 2:
 		new_spell.spell_cast.count = (randi() % 3) + 1
 	else:
-		new_spell.spell_projectile.my_projectile = random_projectile()
+		new_spell.spell_projectile = random_projectile()
 	character.signals.emit_signal("Wand.ChangeSpell", new_spell)
 	
 	var spell := Spell.new()

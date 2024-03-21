@@ -32,21 +32,21 @@ func new_points() -> int:
 	))
 	
 func add_initial_points() -> void:
-	var initial_points = self.initial_points()
+	var _initial_points = self.initial_points()
 	var index := 0
 	for child in point_nodes.get_children():
-		if index < initial_points:
+		if index < _initial_points:
 			child.set_color(self.character_data.color)
 		index += 1
 
 func add_new_points() -> void:
-	var initial_points = self.initial_points()
-	var new_points = initial_points + self.new_points()
+	var _initial_points = self.initial_points()
+	var _new_points = _initial_points + self.new_points()
 	var index := 0
 	for child in point_nodes.get_children():
-		if index < initial_points:
+		if index < _initial_points:
 			pass
-		elif index < new_points:
+		elif index < _new_points:
 			child.set_color(self.character_data.color)
 			child.emit()
 			await get_tree().create_timer(0.5).timeout

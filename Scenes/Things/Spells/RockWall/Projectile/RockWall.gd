@@ -3,7 +3,7 @@ extends Projectile
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.y = 0.5 # TODO, add raycast to bottom of stage
+	position.y = 0 # TODO, add raycast to bottom of stage
 	$AnimationPlayer.play("Build")
 	
 

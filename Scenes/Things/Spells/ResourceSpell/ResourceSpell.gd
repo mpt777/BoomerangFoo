@@ -2,13 +2,13 @@ extends Spell
 class_name ResourceSpell
 
 var spell_cast : SpellCast
-var spell_projectile : SpellProjectile
+var spell_projectile : PackedScene
 
 func constructor() -> Spell:
 	return self
 	
 func projectile() -> Projectile:
-	return self.spell_projectile.projectile()
+	return self.spell_projectile.instantiate()
 	
 func attack(weapon : Weapon) -> Attack:
 	var a := Attack.new()
