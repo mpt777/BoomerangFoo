@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://krjr1lv4wprt"]
+[gd_scene load_steps=4 format=3 uid="uid://krjr1lv4wprt"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Character/Character.gd" id="1_iqhb0"]
 [ext_resource type="Script" path="res://Scenes/Entities/Character/Statistics.gd" id="2_fi10n"]
+[ext_resource type="PackedScene" uid="uid://dq14756wa0bxi" path="res://Scenes/Enviroment/CharaterMessage/character_message.tscn" id="3_uquwn"]
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_iqhb0")
 
 [node name="Statistics" type="Node" parent="."]
 script = ExtResource("2_fi10n")
+
+[node name="CharacterMessage" parent="." instance=ExtResource("3_uquwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.02622, 0)
