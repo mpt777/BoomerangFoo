@@ -126,19 +126,19 @@ visible = false
 mesh = SubResource("PlaneMesh_rnh2m")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="World" groups=["FollowCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.83932, -12.795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05227, 2.51519, 4.2894)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/VisibleOnScreenNotifier3D"]
 mesh = SubResource("BoxMesh_hsmej")
 
 [node name="VisibleOnScreenNotifier3D2" type="VisibleOnScreenNotifier3D" parent="World" groups=["FollowCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4629, 2.83932, -8.17096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5371, 2.83932, -9.17096)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/VisibleOnScreenNotifier3D2"]
 mesh = SubResource("BoxMesh_hsmej")
 
 [node name="VisibleOnScreenNotifier3D3" type="VisibleOnScreenNotifier3D" parent="World" groups=["FollowCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41416, 2.83932, -19.795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41416, 2.83932, 1.84214)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/VisibleOnScreenNotifier3D3"]
 mesh = SubResource("BoxMesh_hsmej")

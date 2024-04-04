@@ -45,6 +45,7 @@ func physics_update(_delta : float):
 		body.target_direction = (body.n_nav.get_next_path_position() - body.global_position).normalized()
 	movement.move(body.target_direction)
 	
+	return 
 	if body.target_player:
 		body.n_hand.target_position = body.target_player.global_position
 		body.n_hand.use("range")

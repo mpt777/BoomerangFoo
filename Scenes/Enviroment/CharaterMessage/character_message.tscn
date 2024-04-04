@@ -1,28 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq14756wa0bxi"]
+[gd_scene load_steps=2 format=3 uid="uid://dq14756wa0bxi"]
 
 [ext_resource type="Script" path="res://Scenes/Enviroment/CharaterMessage/character_message.gd" id="1_x8xxn"]
 
-[sub_resource type="Gradient" id="Gradient_epq4o"]
-colors = PackedColorArray(0.889758, 0.330475, 0.756776, 1, 0.661226, 0.448822, 0.611851, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_701a0"]
-gradient = SubResource("Gradient_epq4o")
-width = 3
-
-[node name="CharacterMessage" type="Label3D"]
-pixel_size = 0.05
-billboard = 1
-text = "Debug"
+[node name="CharacterMessage" type="MarginContainer"]
 script = ExtResource("1_x8xxn")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-pixel_size = 2.5
-billboard = 1
-transparent = false
-texture = SubResource("GradientTexture1D_701a0")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
