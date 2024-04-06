@@ -21,7 +21,7 @@ func _ready():
 	
 func _process(delta):
 	position_message()
-	
+
 func position_message() -> void:
 	n_control.position = Vector2(camera.unproject_position(global_position))
 	offset = Vector2(0, -10)

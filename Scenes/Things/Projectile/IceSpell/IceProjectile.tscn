@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bfvydv0ig7eqr"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Things/Projectile/Projectile.tscn" id="1_gsrc0"]
-[ext_resource type="Script" path="res://Scenes/Things/Spells/IceSpell/Projectile/IceProjectile.gd" id="2_8la0v"]
+[ext_resource type="Script" path="res://Scenes/Things/Projectile/IceSpell/IceProjectile.gd" id="2_8la0v"]
 [ext_resource type="PackedScene" uid="uid://dw7km8i2ybx15" path="res://Components/Attack/AttackComponent.tscn" id="3_4s2wa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uewg"]

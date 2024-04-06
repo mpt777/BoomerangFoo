@@ -1,7 +1,24 @@
 [gd_scene load_steps=8 format=3 uid="uid://blyee6oowmxyb"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Things/Projectile/Projectile.tscn" id="1_iqdvg"]
-[ext_resource type="Script" path="res://Scenes/Things/Spells/RockWall/Projectile/RockWall.gd" id="2_oh702"]
+
+[sub_resource type="GDScript" id="GDScript_hhr6k"]
+script/source = "extends Projectile
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	position.y = 0 # TODO, add raycast to bottom of stage
+	$AnimationPlayer.play(\"Build\")
+	
+
+func position_elements(pos : Vector3) -> void:
+	$MeshInstance3D.position = pos
+	$CollisionShape3D.position = pos
+
+func delete():
+	queue_free()
+"
 
 [sub_resource type="Animation" id="Animation_t8yvs"]
 resource_name = "Build"
@@ -44,7 +61,7 @@ material = SubResource("StandardMaterial3D_m4bi5")
 size = Vector3(2, 2, 1)
 
 [node name="RockWall" instance=ExtResource("1_iqdvg")]
-script = ExtResource("2_oh702")
+script = SubResource("GDScript_hhr6k")
 speed = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
