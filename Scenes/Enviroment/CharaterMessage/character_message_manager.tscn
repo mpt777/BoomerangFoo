@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://0jxcydlgsw6n"]
+[gd_scene load_steps=2 format=3 uid="uid://0jxcydlgsw6n"]
 
 [ext_resource type="Script" path="res://Scenes/Enviroment/CharaterMessage/character_message_manager.gd" id="1_j7qcp"]
-[ext_resource type="PackedScene" uid="uid://cc75lgf464fw6" path="res://Scenes/Enviroment/CharaterMessage/character_message_text.tscn" id="2_l6oqq"]
 
 [node name="CharacterMessageManager" type="Node3D"]
 process_mode = 3
@@ -31,15 +30,3 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="CharacterMessage" parent="Control/HBoxContainer" instance=ExtResource("2_l6oqq")]
-layout_mode = 2
-
-[node name="CharacterMessage2" parent="Control/HBoxContainer" instance=ExtResource("2_l6oqq")]
-layout_mode = 2
-
-[node name="CharacterMessage3" parent="Control/HBoxContainer" instance=ExtResource("2_l6oqq")]
-layout_mode = 2
-
-[node name="CharacterMessage4" parent="Control/HBoxContainer" instance=ExtResource("2_l6oqq")]
-layout_mode = 2

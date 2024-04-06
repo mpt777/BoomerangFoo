@@ -86,7 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465, 0)
 character = NodePath("..")
 
 [node name="CharacterMessageManager" parent="." index="11" instance=ExtResource("15_5x71x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [connection signal="area_shape_entered" from="PickUpComponent" to="PickUpComponent" method="_on_area_shape_entered"]
 [connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_component_end_dash"]

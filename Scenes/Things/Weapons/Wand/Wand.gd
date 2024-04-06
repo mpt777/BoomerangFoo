@@ -23,6 +23,8 @@ func initialize():
 	emit_message(melee_spell.spell_projectile)
 
 func emit_message(spell_resource : SpellResource):
+	if !spell_resource.name:
+		return
 	var message : CharacterMessageText = CHARACTER_MESSAGE.instantiate()
 	message.constructor(spell_resource.name, spell_resource.color)
 	weapon_owner.signals.emit_signal("Message.AddMessage", message)

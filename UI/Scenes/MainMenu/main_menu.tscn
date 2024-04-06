@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cw1n407ockhoc" path="res://Assets/Fonts/Frijole-Regular.ttf" id="1_kfqpt"]
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/main_menu.gd" id="1_w4qpc"]
-[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/Theme.tres" id="2_dagfb"]
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="2_dagfb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iqtwc"]
 font = ExtResource("1_kfqpt")

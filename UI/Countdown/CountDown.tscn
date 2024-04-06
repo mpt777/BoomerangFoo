@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk28b5tie8c26"]
+[gd_scene load_steps=3 format=3 uid="uid://dk28b5tie8c26"]
 
 [ext_resource type="Script" path="res://UI/Countdown/CountDown.gd" id="1_2h63n"]
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="2_gu81j"]
 
 [node name="CountDown" type="Control"]
 layout_mode = 3
@@ -20,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_gu81j")
 text = "asdf"
 horizontal_alignment = 1
 vertical_alignment = 1

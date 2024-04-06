@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bixhckho7hwcg"]
+
+[ext_resource type="FontFile" uid="uid://b2a6b6x5b6ieq" path="res://Assets/Fonts/BalsamiqSans/BalsamiqSans-Regular.ttf" id="1_88ey4"]
+
+[resource]
+default_font = ExtResource("1_88ey4")
+Button/font_sizes/font_size = 24
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_88ey4")

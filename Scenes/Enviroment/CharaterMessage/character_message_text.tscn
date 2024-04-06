@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc75lgf464fw6"]
+[gd_scene load_steps=5 format=3 uid="uid://cc75lgf464fw6"]
 
 [ext_resource type="PackedScene" uid="uid://dq14756wa0bxi" path="res://Scenes/Enviroment/CharaterMessage/character_message.tscn" id="1_4wpgj"]
 [ext_resource type="Script" path="res://Scenes/Enviroment/CharaterMessage/character_message_text.gd" id="2_3vbbg"]
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="2_htfht"]
+[ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/GameTheme.tres" id="4_5n5id"]
 
 [node name="CharacterMessage" instance=ExtResource("1_4wpgj")]
+theme = ExtResource("2_htfht")
 script = ExtResource("2_3vbbg")
 
-[node name="Label" type="Label" parent="." index="0"]
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
 layout_mode = 2
-text = "Test"
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("4_5n5id")
+text = "Hello
+"
