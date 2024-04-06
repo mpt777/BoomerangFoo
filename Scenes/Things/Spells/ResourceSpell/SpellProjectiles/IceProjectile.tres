@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellProjectile" load_steps=3 format=3 uid="uid://cm5jiodi0vjps"]
+
+[ext_resource type="PackedScene" uid="uid://bfvydv0ig7eqr" path="res://Scenes/Things/Spells/IceSpell/Projectile/IceProjectile.tscn" id="1_akdom"]
+[ext_resource type="Script" path="res://Scenes/Things/Spells/ResourceSpell/SpellProjectile.gd" id="2_0amnc"]
+
+[resource]
+script = ExtResource("2_0amnc")
+PROJECTILE = ExtResource("1_akdom")
+name = "Ice Shard"
+color = Color(0.53956, 0.768106, 0.932445, 1)

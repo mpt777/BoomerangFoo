@@ -174,5 +174,5 @@ func _physics_process(delta):
 	_set_bounds()
 	_set_position_center()
 	_set_fov()
-	debug()
+	#debug()
 

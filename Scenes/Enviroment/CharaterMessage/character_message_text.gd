@@ -1,10 +1,20 @@
 extends CharacterMessage
+class_name CharacterMessageText
 
 @onready
 var n_label : Label = $Label
 
+var _text := ""
+var _color : Color = Color.REBECCA_PURPLE
+
+func constructor(text: String, color : Color):
+	self._text = text
+	self._color = color
+
 func _ready():
-	set_color(Color.REBECCA_PURPLE)
+	self.set_color(self._color)
+	self.set_text(self._text)
+	self.start_timer()
 	
 func set_text(text: String) -> void:
 	n_label.set_text(text)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpellCast" load_steps=2 format=3 uid="uid://djt1g4ma4c8hr"]
+
+[ext_resource type="Script" path="res://Scenes/Things/Spells/ResourceSpell/SpellCast.gd" id="1_w8beh"]
+
+[resource]
+script = ExtResource("1_w8beh")
+count = 3
+name = "Multi Spell"
+color = Color(0.895883, 0.782404, 0.213455, 1)

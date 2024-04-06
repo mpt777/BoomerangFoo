@@ -17,6 +17,7 @@ func _ready():
 	position_message()
 	
 	$"/root/Signals".connect("start_round", start_messages)
+	owner.signals.register("Message.AddMessage", add_message)
 	
 func _process(delta):
 	position_message()
