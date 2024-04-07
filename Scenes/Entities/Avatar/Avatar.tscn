@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kxqu0dxlyeb3"]
+
+[ext_resource type="PackedScene" uid="uid://ckoepvi4bqde5" path="res://Scenes/Entities/Avatar/robot.tscn" id="1_ps86s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ectaq"]
+
+[node name="Avatar" type="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ectaq")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="robot" parent="Node3D" instance=ExtResource("1_ps86s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

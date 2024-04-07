@@ -1,37 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci8nhfuwyfmxg"]
+[gd_scene load_steps=3 format=3 uid="uid://ci8nhfuwyfmxg"]
 
 [ext_resource type="PackedScene" uid="uid://dr436lni2ke1x" path="res://Scenes/Entities/StandardCharacter/standard_character.tscn" id="1_n1jng"]
 [ext_resource type="Script" path="res://Scenes/Entities/Players/Player.gd" id="1_x8lru"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3bfy"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_o040y"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_y3bfy")
-
 [node name="Player" instance=ExtResource("1_n1jng")]
 script = ExtResource("1_x8lru")
 
-[node name="MeshInstance3D" parent="." index="2"]
-mesh = SubResource("CapsuleMesh_o040y")
-
-[node name="Hitbox" parent="." index="4" node_paths=PackedStringArray("health_component")]
+[node name="Hitbox" parent="." index="3" node_paths=PackedStringArray("health_component")]
 health_component = NodePath("../HealthComponent")
 
 [node name="Wand" parent="Hand" index="0" node_paths=PackedStringArray("mana_component", "weapon_owner")]
 mana_component = NodePath("../../ManaComponent")
 weapon_owner = NodePath("../..")
 
-[node name="PickUpComponent" parent="." index="6" node_paths=PackedStringArray("character")]
+[node name="PickUpComponent" parent="." index="5" node_paths=PackedStringArray("character")]
 character = NodePath("..")
 
-[node name="ManaComponent" parent="." index="7" node_paths=PackedStringArray("character")]
+[node name="ManaComponent" parent="." index="6" node_paths=PackedStringArray("character")]
 character = NodePath("..")
 
-[node name="Movement" parent="." index="8" node_paths=PackedStringArray("body")]
+[node name="Movement" parent="." index="7" node_paths=PackedStringArray("body")]
 body = NodePath("..")
 
-[node name="MovementFSM" parent="." index="9" node_paths=PackedStringArray("initial_state")]
+[node name="MovementFSM" parent="." index="8" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Walk")
 
 [node name="Walk" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
@@ -43,7 +34,7 @@ movement = NodePath("../../Movement")
 body = NodePath("../..")
 dash = NodePath("DashComponent")
 
-[node name="Ammo" parent="." index="10" node_paths=PackedStringArray("character")]
+[node name="Ammo" parent="." index="9" node_paths=PackedStringArray("character")]
 character = NodePath("..")
 
 [connection signal="ManaChanged" from="ManaComponent" to="Ammo" method="_on_mana_component_mana_changed"]
