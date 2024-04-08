@@ -66,6 +66,7 @@ func rotate_character(delta):
 	if pos != Vector3.ZERO && abs(pos.x) > 0.99 && pos != global_position:
 		var new_transform = transform.looking_at(pos, Vector3.UP)
 		transform = transform.interpolate_with(new_transform, rotation_speed * delta)
+		#signals.emit_signal("Rotate", pos)
 	rotation.x = 0
 	
 func get_look_position() -> Vector3:
