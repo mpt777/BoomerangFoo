@@ -3,9 +3,13 @@ extends RigidBody3D
 class_name Weapon
 
 @export
-var weapon_owner : Character = null;
+var weapon_owner : Character
 
-var target_position : Vector3 = Vector3.ZERO
+@export
+var spawn_point : Node3D
+
+@export
+var anchor : String
 	#set(value):
 		#target_position = value
 		#look_at_target()
@@ -21,7 +25,7 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 
-func attack():
+func attack() -> void:
 	pass
 	
 func throw():
@@ -29,6 +33,9 @@ func throw():
 	
 func pickup():
 	pass
+	
+func spawn_node() -> Node3D:
+	return spawn_point
 	
 #func look_at_target():
 	#if target_position != Vector3.ZERO && abs(target_position.x) > 0.99:

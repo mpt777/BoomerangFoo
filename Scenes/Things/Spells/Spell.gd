@@ -22,8 +22,8 @@ func attack(weapon : Weapon) -> Attack:
 	
 func initialize_projectile(weapon: Weapon) -> Projectile:
 	var p := projectile()
-	p.position = weapon.global_position
-	p.rotation = weapon.global_rotation
+	p.position = weapon.spawn_node().global_position
+	p.rotation = weapon.spawn_node().global_rotation
 	p.attack = attack(weapon)
 	return p
 	

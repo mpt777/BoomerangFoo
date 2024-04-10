@@ -26,7 +26,7 @@ mesh = SubResource("PrismMesh_it2ru")
 shape = SubResource("SphereShape3D_xfj30")
 
 [node name="Timer" type="Timer" parent="." index="2"]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true
 autostart = true
 

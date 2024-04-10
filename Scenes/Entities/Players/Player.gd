@@ -3,13 +3,7 @@ extends StandardCharacter
 class_name Player
 
 @onready
-var n_hand := $Hand
-
-@onready
 var n_movement := $Movement
-
-@onready
-var n_wand := $Hand/Wand
 
 @onready
 var controller : Controller
@@ -26,8 +20,10 @@ func constructor(player_data : PlayerData):
 	
 func _ready():
 	super._ready()
-	n_wand.change_spell(data.range_spell)
-	n_wand.change_spell(data.melee_spell)
+	signals.emit_signal("Wand.ChangeSpell", data.range_spell)
+	signals.emit_signal("Wand.ChangeSpell", data.melee_spell)
+	#n_wand.change_spell(data.range_spell)
+	#n_wand.change_spell(data.melee_spell)
 	
 func _physics_process(delta):
 	rotate_character(delta)
@@ -49,9 +45,11 @@ func _input(event):
 	#if event.is_action_pressed(controller.action("thow_weapon")):
 		#n_hand.throw()
 	if event.is_action_pressed(controller.action("attack_range")):
-		n_hand.use("range")
+		#n_hand.use("range")
+		signals.emit_signal("Wand.Attack", "range")
 	if event.is_action_pressed(controller.action("attack_melee")):
-		n_hand.use("melee")
+		#n_hand.use("melee")
+		signals.emit_signal("Wand.Attack", "melee")
 	if event.is_action_pressed(controller.action("dash")):
 		signals.emit_signal("Movement.dash")
 		
@@ -64,8 +62,9 @@ func rotate_character(delta):
 	if pos == global_position:
 		pos = velocity.normalized() * 10000
 	if pos != Vector3.ZERO && abs(pos.x) > 0.99 && pos != global_position:
+		target_position = pos
 		var new_transform = transform.looking_at(pos, Vector3.UP)
-		transform = transform.interpolate_with(new_transform, rotation_speed * delta)
+		transform = transform.interpolate_with(new_transform, rotation_speed * delta) 
 		#signals.emit_signal("Rotate", pos)
 	rotation.x = 0
 	

@@ -17,10 +17,10 @@ size = Vector3(0.1, 0.1, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p1yv8"]
 points = PackedVector3Array(0.05, 0.05, 0.5, 0.05, -0.05, 0.5, 0.05, 0.05, -0.5, -0.05, 0.05, 0.5, -0.05, -0.05, 0.5, 0.05, -0.05, -0.5, -0.05, 0.05, -0.5, -0.05, -0.05, -0.5)
 
-[node name="Wand" node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_4bqml")]
+[node name="Wand" instance=ExtResource("1_4bqml")]
 freeze = true
 script = ExtResource("2_ohp87")
-spawn_point = NodePath("SpawnPoint")
+anchor = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -43,12 +43,13 @@ script = ExtResource("4_b81xa")
 [node name="Timer" type="Timer" parent="StateMachine/Reloading" index="0"]
 one_shot = true
 
-[node name="Idle" type="Node" parent="StateMachine" index="1"]
+[node name="Idle" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("body")]
 script = ExtResource("4_n2wev")
+body = NodePath("../..")
 
-[node name="Attack" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("weapon")]
+[node name="Attack" type="Node" parent="StateMachine" index="2"]
 script = ExtResource("6_jef0n")
-weapon = NodePath("../..")
+weapon = null
 
 [connection signal="Reloaded" from="StateMachine/Reloading" to="." method="_on_reloading_reloaded"]
 [connection signal="timeout" from="StateMachine/Reloading/Timer" to="StateMachine/Reloading" method="_on_timer_timeout"]

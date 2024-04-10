@@ -1,8 +1,5 @@
 extends State
 
-@export
-var body : Node3D
-
 func enter():
 	pass
 	

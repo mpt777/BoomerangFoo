@@ -15,12 +15,19 @@ var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/charact
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	weapon_owner.signals.register("Wand.ChangeSpell", change_spell)
+	weapon_owner.signals.register("Wand.Attack", use)
 	$"/root/Signals".connect("start_round", initialize)
 	
 func initialize():
 	emit_message(range_spell.spell_projectile)
 	emit_message(range_spell.spell_cast)
 	emit_message(melee_spell.spell_projectile)
+	
+
+func _physics_process(delta):
+	global_transform = weapon_owner.anchors.anchor("RightHand").global_transform
+	#global_rotation = weapon_owner.anchors.anchor("RightHand").global_rotation
+	#
 
 func emit_message(spell_resource : SpellResource):
 	if !spell_resource.name:
@@ -34,8 +41,9 @@ func use(type : String):
 	if mana_component.is_able_to_cast(current_spell):
 		if ($StateMachine.current_state.has_method("attack")):
 			$StateMachine.current_state.attack()
-		
-func _on_attack_attacked():
+			
+func attack() -> void:
+	current_spell.cast(self)
 	mana_component.cast(current_spell)
 	weapon_owner.signals.emit_signal("Wand.Reloading")
 	

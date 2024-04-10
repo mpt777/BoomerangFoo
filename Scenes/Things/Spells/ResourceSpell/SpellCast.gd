@@ -14,8 +14,8 @@ func process(spell : Spell, weapon : Weapon):
 	for i in range(count):
 		var bullet := spell.projectile()
 		
-		bullet.position = weapon.global_position
-		bullet.rotation = weapon.global_rotation
+		bullet.position = weapon.spawn_node().global_position
+		bullet.rotation = weapon.spawn_node().global_rotation
 		bullet.attack = spell.attack(weapon)
 
 		if count > 1:

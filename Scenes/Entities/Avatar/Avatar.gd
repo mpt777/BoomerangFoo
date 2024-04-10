@@ -1,27 +1,40 @@
-extends CollisionShape3D
+extends Node3D
+class_name Avatar
+
+var character : Character
 
 @onready
-var n_avatar = $Pivot/robot
+var n_pivot = $Avatar/Body
 
 @onready
-var n_pivot = $Pivot
+var n_body = $Avatar/Body/robot_body
 
-var camera : Camera3D
+@onready
+var r_hand = $Avatar/Right
+
+@onready
+var r_hand_remote = $Avatar/Right/RemoteTransform3D
 
 var original_rotation : Vector3
 
 func _ready():
-	camera = get_viewport().get_camera_3d()
-	#owner.signals.register("Rotate", update_rotation)
-	original_rotation = n_pivot.global_rotation
+	var n = self
+	while not n is Character:
+		n = n.get_parent()
+	character = n
+	character.anchors.register("RightHand", r_hand_remote)
 	
-#func update_rotation(new_position : Vector3) -> void:	
-	##print(n_avatar.global_position.direction_to(new_position))
-	#n_pivot.look_at(new_position, Vector3.UP)
-	##n_avatar.rotation.y = target_vector * 360
-	
+	n_pivot.rotation.x = deg_to_rad(-30)
+	original_rotation = n_body.global_rotation
+
 func _physics_process(delta):
+	position_hand()
+	r_hand.rotation.x = 0
+	
 	n_pivot.global_rotation = original_rotation
-	n_avatar.rotation.y = owner.rotation.y + PI
-	#n_avatar.rotation.y += 1 * delta
-	#n_pivot.look_at(camera.global_position)
+	n_body.rotation.y = character.rotation.y
+	
+func position_hand():
+	if character.target_position:
+		r_hand.look_at(character.target_position,  Vector3.UP)
+		
