@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://krjr1lv4wprt"]
+[gd_scene load_steps=5 format=3 uid="uid://krjr1lv4wprt"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Character/Character.gd" id="1_iqhb0"]
 [ext_resource type="Script" path="res://Scenes/Entities/Character/Statistics.gd" id="2_fi10n"]
+[ext_resource type="PackedScene" uid="uid://dyi4r3fgtmin" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="3_mty11"]
+[ext_resource type="PackedScene" uid="uid://bb6phq8qwtqcr" path="res://Scenes/Entities/Avatar/Meta/Avatar/Robot.tscn" id="4_wy11o"]
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_iqhb0")
 
 [node name="Statistics" type="Node" parent="."]
 script = ExtResource("2_fi10n")
+
+[node name="Avatar" parent="." instance=ExtResource("3_mty11")]
+
+[node name="Avatar2" parent="." instance=ExtResource("4_wy11o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29958, 0, 0)

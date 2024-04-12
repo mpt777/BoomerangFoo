@@ -29,6 +29,25 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Accent": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Accent.tres"
+},
+"BlueAccent": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Robot/BlueAccent.tres"
+},
+"Body": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Body.tres"
+},
+"Lights": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Lights.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

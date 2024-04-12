@@ -5,12 +5,36 @@
       <author>Blender User</author>
       <authoring_tool>Blender 3.3.1 commit date:2022-10-04, commit time:18:35, hash:b292cfe5a936</authoring_tool>
     </contributor>
-    <created>2024-04-08T18:32:29</created>
-    <modified>2024-04-08T18:32:29</modified>
+    <created>2024-04-11T20:20:09</created>
+    <modified>2024-04-11T20:20:09</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
+  <library_effects>
+    <effect id="Body-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
   <library_images/>
+  <library_materials>
+    <material id="Body-material" name="Body">
+      <instance_effect url="#Body-effect"/>
+    </material>
+  </library_materials>
   <library_geometries>
     <geometry id="Cylinder_005-mesh" name="Cylinder.005">
       <mesh>
@@ -46,7 +70,7 @@
         <vertices id="Cylinder_005-mesh-vertices">
           <input semantic="POSITION" source="#Cylinder_005-mesh-positions"/>
         </vertices>
-        <triangles count="60">
+        <triangles material="Body-material" count="60">
           <input semantic="VERTEX" source="#Cylinder_005-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cylinder_005-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cylinder_005-mesh-map-0" offset="2" set="0"/>
@@ -59,7 +83,15 @@
     <visual_scene id="Scene" name="Scene">
       <node id="Legs" name="Legs" type="NODE">
         <matrix sid="transform">0.2423676 7.3193e-8 0 -0.009972185 -7.3193e-8 0.2423676 0 -0.002249122 0 0 0.2989051 0.1922999 0 0 0 1</matrix>
-        <instance_geometry url="#Cylinder_005-mesh" name="Legs"/>
+        <instance_geometry url="#Cylinder_005-mesh" name="Legs">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Body-material" target="#Body-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
     </visual_scene>
   </library_visual_scenes>

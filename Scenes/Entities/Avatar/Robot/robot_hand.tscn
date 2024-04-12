@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://lrpt5dpwmmpj"]
+[gd_scene load_steps=3 format=3 uid="uid://dikyssyxdda2y"]
 
-[ext_resource type="PackedScene" uid="uid://jkd5le8367af" path="res://Assets/Blender/Avatars/Robot/robot_hand.dae" id="1_wui4r"]
+[ext_resource type="PackedScene" uid="uid://jkd5le8367af" path="res://Assets/Blender/Avatars/Robot/robot_hand.dae" id="1_r0p3e"]
+[ext_resource type="Material" uid="uid://cjhmfaifqe58u" path="res://Assets/Blender/Avatars/Robot/Materials/Body.tres" id="2_xfgdr"]
 
-[node name="robot_hand" instance=ExtResource("1_wui4r")]
+[node name="robot_hand" instance=ExtResource("1_r0p3e")]
+
+[node name="Hand" parent="." index="0"]
+material_override = ExtResource("2_xfgdr")

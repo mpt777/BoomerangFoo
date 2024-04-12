@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://begefrj48hsuq"]
+[gd_scene load_steps=3 format=3 uid="uid://begefrj48hsuq"]
 
 [ext_resource type="PackedScene" uid="uid://dij0oou0hjxij" path="res://Assets/Blender/Avatars/Robot/robot_foot.dae" id="1_78w23"]
+[ext_resource type="Material" uid="uid://cjhmfaifqe58u" path="res://Assets/Blender/Avatars/Robot/Materials/Body.tres" id="2_bl0kq"]
 
 [node name="robot_foot" instance=ExtResource("1_78w23")]
+
+[node name="Legs" parent="." index="0"]
+material_override = ExtResource("2_bl0kq")

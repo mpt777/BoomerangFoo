@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx6k0tyu2yyrd"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/Avatar/AvatarWrapper.gd" id="1_bvias"]
-[ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Avatar.tscn" id="2_hl1mt"]
+[ext_resource type="Script" path="res://Scenes/Entities/Avatar/Meta/Wrapper/AvatarWrapper.gd" id="1_bvias"]
+[ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="2_hl1mt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mktf4"]
 

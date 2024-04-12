@@ -5,12 +5,96 @@
       <author>Blender User</author>
       <authoring_tool>Blender 3.3.1 commit date:2022-10-04, commit time:18:35, hash:b292cfe5a936</authoring_tool>
     </contributor>
-    <created>2024-04-08T18:33:17</created>
-    <modified>2024-04-08T18:33:17</modified>
+    <created>2024-04-11T20:20:27</created>
+    <modified>2024-04-11T20:20:27</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
+  <library_effects>
+    <effect id="Body-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.03158424 0.3002764 0.420027 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Accent-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8000001 0.007635295 0.02505371 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="BlueAccent-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.03930871 0.07598138 0.6421728 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Lights-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">1 0.8667516 0.2774887 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
   <library_images/>
+  <library_materials>
+    <material id="Body-material" name="Body">
+      <instance_effect url="#Body-effect"/>
+    </material>
+    <material id="Accent-material" name="Accent">
+      <instance_effect url="#Accent-effect"/>
+    </material>
+    <material id="BlueAccent-material" name="BlueAccent">
+      <instance_effect url="#BlueAccent-effect"/>
+    </material>
+    <material id="Lights-material" name="Lights">
+      <instance_effect url="#Lights-effect"/>
+    </material>
+  </library_materials>
   <library_geometries>
     <geometry id="Cylinder_002-mesh" name="Cylinder.002">
       <mesh>
@@ -46,7 +130,7 @@
         <vertices id="Cylinder_002-mesh-vertices">
           <input semantic="POSITION" source="#Cylinder_002-mesh-positions"/>
         </vertices>
-        <triangles count="20">
+        <triangles material="Body-material" count="20">
           <input semantic="VERTEX" source="#Cylinder_002-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cylinder_002-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cylinder_002-mesh-map-0" offset="2" set="0"/>
@@ -88,7 +172,7 @@
         <vertices id="Cube-mesh-vertices">
           <input semantic="POSITION" source="#Cube-mesh-positions"/>
         </vertices>
-        <triangles count="28">
+        <triangles material="Body-material" count="28">
           <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cube-mesh-map-0" offset="2" set="0"/>
@@ -134,7 +218,7 @@
           <input semantic="VERTEX" source="#Cylinder-mesh-vertices" offset="0"/>
           <p>49 33 67 64 127 111 145 142</p>
         </lines>
-        <triangles count="288">
+        <triangles material="Accent-material" count="288">
           <input semantic="VERTEX" source="#Cylinder-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cylinder-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cylinder-mesh-map-0" offset="2" set="0"/>
@@ -176,7 +260,7 @@
         <vertices id="Circle_004-mesh-vertices">
           <input semantic="POSITION" source="#Circle_004-mesh-positions"/>
         </vertices>
-        <triangles count="1080">
+        <triangles material="BlueAccent-material" count="1080">
           <input semantic="VERTEX" source="#Circle_004-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Circle_004-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Circle_004-mesh-map-0" offset="2" set="0"/>
@@ -218,7 +302,7 @@
         <vertices id="Cube_003-mesh-vertices">
           <input semantic="POSITION" source="#Cube_003-mesh-positions"/>
         </vertices>
-        <triangles count="96">
+        <triangles material="Body-material" count="96">
           <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
@@ -260,7 +344,7 @@
         <vertices id="Sphere_006-mesh-vertices">
           <input semantic="POSITION" source="#Sphere_006-mesh-positions"/>
         </vertices>
-        <triangles count="308">
+        <triangles material="Lights-material" count="308">
           <input semantic="VERTEX" source="#Sphere_006-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Sphere_006-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Sphere_006-mesh-map-0" offset="2" set="0"/>
@@ -293,7 +377,7 @@
         <vertices id="Circle_006-mesh-vertices">
           <input semantic="POSITION" source="#Circle_006-mesh-positions"/>
         </vertices>
-        <triangles count="192">
+        <triangles material="Accent-material" count="192">
           <input semantic="VERTEX" source="#Circle_006-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Circle_006-mesh-normals" offset="1"/>
           <p>3 0 6 0 2 0 77 1 2 1 64 1 65 2 8 2 4 2 7 3 9 3 6 3 4 4 7 4 3 4 5 1 6 1 65 1 66 5 11 5 8 5 10 6 12 6 9 6 8 4 10 4 7 4 65 1 9 1 66 1 67 7 14 7 11 7 13 8 15 8 12 8 11 9 13 9 10 9 66 1 12 1 67 1 68 10 17 10 14 10 16 11 18 11 15 11 14 12 16 12 13 12 67 13 15 13 68 13 70 14 20 14 69 14 19 15 21 15 18 15 68 1 18 1 70 1 22 16 25 16 21 16 70 1 21 1 72 1 73 17 27 17 23 17 26 18 28 18 25 18 23 4 26 4 22 4 24 1 25 1 73 1 29 19 32 19 28 19 73 1 28 1 75 1 77 20 1 20 76 20 0 21 2 21 32 21 31 22 32 22 77 22 79 23 37 23 34 23 33 24 34 24 78 24 81 25 40 25 37 25 39 26 41 26 38 26 36 4 37 4 39 4 38 1 81 1 79 1 82 27 43 27 40 27 42 28 44 28 41 28 39 4 40 4 42 4 41 1 82 1 81 1 83 29 46 29 43 29 45 30 47 30 44 30 42 4 43 4 45 4 44 31 83 31 82 31 84 32 49 32 46 32 48 33 50 33 47 33 45 34 46 34 48 34 47 35 84 35 83 35 85 36 52 36 49 36 51 37 53 37 86 37 48 4 49 4 51 4 88 38 55 38 52 38 51 4 52 4 87 4 4 39 64 39 5 39 90 40 58 40 55 40 57 41 59 41 56 41 54 42 55 42 57 42 56 1 90 1 88 1 92 43 61 43 58 43 57 44 58 44 91 44 94 45 34 45 61 45 33 46 35 46 95 46 60 47 61 47 33 47 3 48 63 48 4 48 64 1 6 1 5 1 0 49 63 49 3 49 63 50 77 50 64 50 16 51 69 51 19 51 0 52 3 52 2 52 7 4 4 4 8 4 6 53 9 53 65 53 5 54 65 54 4 54 3 55 7 55 6 55 10 4 8 4 11 4 9 56 12 56 66 56 65 57 66 57 8 57 7 58 10 58 9 58 13 59 11 59 14 59 12 60 15 60 67 60 66 61 67 61 11 61 10 62 13 62 12 62 16 63 14 63 17 63 15 1 18 1 68 1 67 64 68 64 14 64 13 65 16 65 15 65 19 66 69 66 20 66 18 67 21 67 70 67 69 68 68 68 70 68 23 69 72 69 24 69 16 70 19 70 18 70 22 4 71 4 23 4 72 1 25 1 24 1 19 71 71 71 22 71 71 72 70 72 72 72 30 73 75 73 31 73 19 74 22 74 21 74 26 75 23 75 27 75 25 67 28 67 73 67 24 76 73 76 23 76 22 77 26 77 25 77 29 4 74 4 30 4 75 78 32 78 31 78 26 4 74 4 29 4 74 79 73 79 75 79 29 4 76 4 0 4 26 80 29 80 28 80 0 81 76 81 1 81 32 1 2 1 77 1 76 82 31 82 77 82 78 83 37 83 36 83 29 84 0 84 32 84 38 85 78 85 36 85 79 86 80 86 38 86 94 87 80 87 79 87 94 88 79 88 34 88 80 89 33 89 78 89 84 90 86 90 85 90 37 91 40 91 39 91 81 1 38 1 41 1 79 92 81 92 37 92 36 93 39 93 38 93 40 94 43 94 42 94 82 1 41 1 44 1 81 95 82 95 40 95 39 96 42 96 41 96 43 97 46 97 45 97 83 98 44 98 47 98 82 99 83 99 43 99 42 100 45 100 44 100 46 4 49 4 48 4 84 101 47 101 50 101 83 102 84 102 46 102 45 103 48 103 47 103 49 104 52 104 51 104 85 105 86 105 53 105 84 106 85 106 49 106 86 107 48 107 51 107 87 4 55 4 54 4 56 108 87 108 54 108 88 109 89 109 56 109 85 110 89 110 88 110 85 111 88 111 52 111 89 112 51 112 87 112 91 4 61 4 60 4 55 113 58 113 57 113 90 1 56 1 59 1 88 114 90 114 55 114 54 115 57 115 56 115 62 116 91 116 60 116 92 117 93 117 62 117 90 118 93 118 92 118 90 119 92 119 58 119 93 120 57 120 91 120 92 121 95 121 94 121 61 4 34 4 33 4 94 122 95 122 35 122 92 123 94 123 61 123 95 124 60 124 33 124 4 125 63 125 64 125 64 126 2 126 6 126 0 127 1 127 63 127 63 128 1 128 77 128 16 129 17 129 69 129 69 130 17 130 68 130 23 131 71 131 72 131 72 1 21 1 25 1 19 132 20 132 71 132 71 133 20 133 70 133 30 134 74 134 75 134 75 1 28 1 32 1 26 4 27 4 74 4 74 135 27 135 73 135 29 136 30 136 76 136 76 137 30 137 31 137 78 138 34 138 37 138 38 139 80 139 78 139 94 140 35 140 80 140 80 141 35 141 33 141 84 142 50 142 86 142 86 143 50 143 48 143 87 4 52 4 55 4 56 144 89 144 87 144 85 145 53 145 89 145 89 146 53 146 51 146 91 147 58 147 61 147 62 148 93 148 91 148 90 1 59 1 93 1 93 149 59 149 57 149 92 150 62 150 95 150 95 151 62 151 60 151</p>
@@ -334,7 +418,7 @@
         <vertices id="Cube_001-mesh-vertices">
           <input semantic="POSITION" source="#Cube_001-mesh-positions"/>
         </vertices>
-        <triangles count="12">
+        <triangles material="BlueAccent-material" count="12">
           <input semantic="VERTEX" source="#Cube_001-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cube_001-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cube_001-mesh-map-0" offset="2" set="0"/>
@@ -376,7 +460,7 @@
         <vertices id="Sphere_001-mesh-vertices">
           <input semantic="POSITION" source="#Sphere_001-mesh-positions"/>
         </vertices>
-        <triangles count="35">
+        <triangles material="Lights-material" count="35">
           <input semantic="VERTEX" source="#Sphere_001-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Sphere_001-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Sphere_001-mesh-map-0" offset="2" set="0"/>
@@ -389,39 +473,109 @@
     <visual_scene id="Scene" name="Scene">
       <node id="Neck" name="Neck" type="NODE">
         <matrix sid="transform">0.2645907 5.09667e-8 0 -0.009972185 -7.99042e-8 0.1687687 0 -0.002249122 0 0 0.05522665 0.8804576 0 0 0 1</matrix>
-        <instance_geometry url="#Cylinder_002-mesh" name="Neck"/>
+        <instance_geometry url="#Cylinder_002-mesh" name="Neck">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Body-material" target="#Body-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Body" name="Body" type="NODE">
         <matrix sid="transform">0.2423676 7.3193e-8 0 -0.009972185 -7.3193e-8 0.2423676 0 -0.002249122 0 0 0.2423676 0.5801383 0 0 0 1</matrix>
-        <instance_geometry url="#Cube-mesh" name="Body"/>
+        <instance_geometry url="#Cube-mesh" name="Body">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Body-material" target="#Body-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Ears" name="Ears" type="NODE">
         <matrix sid="transform">3.37063e-8 -3.37111e-9 0.2423676 -0.009972364 0.2423676 -7.22311e-9 -3.37063e-8 -0.4869845 7.22312e-9 0.2423676 3.37111e-9 1.307241 0 0 0 1</matrix>
-        <instance_geometry url="#Cylinder-mesh" name="Ears"/>
+        <instance_geometry url="#Cylinder-mesh" name="Ears">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Accent-material" target="#Accent-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Spring" name="Spring" type="NODE">
         <matrix sid="transform">-2.63674e-9 -0.02058371 2.01626e-10 0.3573458 -0.007249423 7.3993e-10 -0.01926488 -0.002249211 0.01926488 -2.5388e-9 -0.007249423 1.757067 0 0 0 1</matrix>
-        <instance_geometry url="#Circle_004-mesh" name="Spring"/>
+        <instance_geometry url="#Circle_004-mesh" name="Spring">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="BlueAccent-material" target="#BlueAccent-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Head" name="Head" type="NODE">
         <matrix sid="transform">0.2423676 7.3193e-8 0 -0.009972185 -7.3193e-8 0.2423676 0 -0.002249122 0 0 0.2423676 1.307241 0 0 0 1</matrix>
-        <instance_geometry url="#Cube_003-mesh" name="Head"/>
+        <instance_geometry url="#Cube_003-mesh" name="Head">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Body-material" target="#Body-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Sphere" name="Sphere" type="NODE">
         <matrix sid="transform">0.1579521 4.59646e-15 4.77002e-8 -0.009972066 -4.77002e-8 1.6319e-8 0.1579521 0.2401185 -3.31733e-16 -0.1579521 1.6319e-8 1.307241 0 0 0 1</matrix>
-        <instance_geometry url="#Sphere_006-mesh" name="Sphere"/>
+        <instance_geometry url="#Sphere_006-mesh" name="Sphere">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Lights-material" target="#Lights-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Circle" name="Circle" type="NODE">
         <matrix sid="transform">0.08201406 2.38664e-15 -3.72741e-8 -0.009972066 -2.47676e-8 8.47337e-9 -0.1234274 0.2401185 0 0.08201406 1.2752e-8 1.210294 0 0 0 1</matrix>
-        <instance_geometry url="#Circle_006-mesh" name="Circle"/>
+        <instance_geometry url="#Circle_006-mesh" name="Circle">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Accent-material" target="#Accent-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Mouth" name="Mouth" type="NODE">
         <matrix sid="transform">0.2423676 7.3193e-8 0 -0.009972185 -7.3193e-8 0.2423676 0 -0.002249122 0 0 0.2423676 -0.1469644 0 0 0 1</matrix>
-        <instance_geometry url="#Cube_001-mesh" name="Mouth"/>
+        <instance_geometry url="#Cube_001-mesh" name="Mouth">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="BlueAccent-material" target="#BlueAccent-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
       <node id="Lights" name="Lights" type="NODE">
         <matrix sid="transform">0.2423676 -2.13438e-8 -7.31028e-8 0.2134305 -7.3148e-8 -5.15287e-4 -0.242367 -0.2610993 2.11883e-8 0.242367 -5.15287e-4 1.510639 0 0 0 1</matrix>
-        <instance_geometry url="#Sphere_001-mesh" name="Lights"/>
+        <instance_geometry url="#Sphere_001-mesh" name="Lights">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Lights-material" target="#Lights-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
     </visual_scene>
   </library_visual_scenes>

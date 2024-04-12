@@ -5,12 +5,36 @@
       <author>Blender User</author>
       <authoring_tool>Blender 3.3.1 commit date:2022-10-04, commit time:18:35, hash:b292cfe5a936</authoring_tool>
     </contributor>
-    <created>2024-04-08T18:30:38</created>
-    <modified>2024-04-08T18:30:38</modified>
+    <created>2024-04-11T20:20:00</created>
+    <modified>2024-04-11T20:20:00</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
+  <library_effects>
+    <effect id="Body-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
   <library_images/>
+  <library_materials>
+    <material id="Body-material" name="Body">
+      <instance_effect url="#Body-effect"/>
+    </material>
+  </library_materials>
   <library_geometries>
     <geometry id="Torus_001-mesh" name="Torus.001">
       <mesh>
@@ -46,7 +70,7 @@
         <vertices id="Torus_001-mesh-vertices">
           <input semantic="POSITION" source="#Torus_001-mesh-positions"/>
         </vertices>
-        <triangles count="86">
+        <triangles material="Body-material" count="86">
           <input semantic="VERTEX" source="#Torus_001-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Torus_001-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Torus_001-mesh-map-0" offset="2" set="0"/>
@@ -59,7 +83,15 @@
     <visual_scene id="Scene" name="Scene">
       <node id="Hand" name="Hand" type="NODE">
         <matrix sid="transform">1.82982e-8 0.2423676 2.89021e-9 -0.009972185 0 2.89021e-9 -0.2423676 -0.002249122 -0.2423676 1.82982e-8 0 0.0464803 0 0 0 1</matrix>
-        <instance_geometry url="#Torus_001-mesh" name="Hand"/>
+        <instance_geometry url="#Torus_001-mesh" name="Hand">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Body-material" target="#Body-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
     </visual_scene>
   </library_visual_scenes>
