@@ -2,8 +2,7 @@ extends Node3D
 
 class_name HealthComponent
 
-@export 
-var max_health := 1.0
+@export var max_health := 1.0
 var health := 1.0
 
 var dead = false

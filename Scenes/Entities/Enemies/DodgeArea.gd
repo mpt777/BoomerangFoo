@@ -1,8 +1,7 @@
 extends Area3D
 class_name DodgeArea
 
-@export
-var body : CharacterBody3D
+@export var body : CharacterBody3D
 
 var projectiles_in_area : Dictionary = {}
 var other_projectiles_in_area : Dictionary = {}

@@ -1,11 +1,8 @@
 extends State
 
-@export
-var body : CharacterBody3D = null
-@export
-var movement : Movement
-@export
-var dodge_area : DodgeArea
+@export var body : CharacterBody3D = null
+@export var movement : Movement
+@export var dodge_area : DodgeArea
 
 func enter():
 	pass

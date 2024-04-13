@@ -3,8 +3,7 @@ extends Area3D
 class_name Projectile
 
 #var direction: Vector3 = Vector3.ZERO
-@export
-var speed: float = 30.0
+@export var speed: float = 30.0
 var weapon: Weapon
 var weapon_owner: Node
 var attack : Attack

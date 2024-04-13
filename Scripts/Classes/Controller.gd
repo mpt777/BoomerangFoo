@@ -2,19 +2,29 @@ extends Node3D
 
 class_name Controller
 
-@export
-var controller_number := 0
-
-@export
-var device_number := 0
+@export var controller_number := 0
+@export var device_number := 0
 
 #List of controller actions
 var actions := {}
 var is_joypad = false
 	
+
+func constructor(id: int, is_joypad: bool = false) -> Controller:
+	self.device_number = id
+	self.controller_number = id
+	self.is_joypad = is_joypad
+	return self
+
 # Description, public API to expose namespaced action
 func action(action_name : String) -> String:
-	return "{0}__{1}".format([controller_number, action_name])
+	return "{0}__{1}".format([self.get_controller_number(), action_name])
+	
+#used to allow for controllers and keyboards to share device indexes
+func get_controller_number() -> int:
+	if not self.is_joypad:
+		return self.controller_number
+	return self.controller_number + 64
 	
 # Description: Initialize internal dictionary of actions.. Should never be needed
 #func initialize_actions() -> void:

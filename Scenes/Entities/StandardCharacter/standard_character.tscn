@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dug0djwlj8lba" path="res://Scenes/Movement/Dash.tscn" id="13_0wu5i"]
 [ext_resource type="PackedScene" uid="uid://b3036qp4hmjcv" path="res://Scenes/Things/Ammo/ammo.tscn" id="14_e5rh7"]
 [ext_resource type="PackedScene" uid="uid://0jxcydlgsw6n" path="res://Scenes/Enviroment/CharaterMessage/character_message_manager.tscn" id="15_5x71x"]
-[ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="15_vdaap"]
+[ext_resource type="PackedScene" uid="uid://dx6k0tyu2yyrd" path="res://Scenes/Entities/Avatar/Meta/Wrapper/AvatarWrapper.tscn" id="15_6ieq7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ldlm"]
 
@@ -30,7 +30,6 @@ script = ExtResource("2_5anm4")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
-visible = false
 shape = SubResource("CapsuleShape3D_3ldlm")
 
 [node name="PickUpComponent" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_6aj05")]
@@ -75,7 +74,7 @@ weapon_owner = NodePath("..")
 spawn_point = NodePath("SpawnPoint")
 anchor = "RightHand"
 
-[node name="Avatar" parent="." index="10" instance=ExtResource("15_vdaap")]
+[node name="AvatarWrapper" parent="." index="10" instance=ExtResource("15_6ieq7")]
 
 [connection signal="area_shape_entered" from="PickUpComponent" to="PickUpComponent" method="_on_area_shape_entered"]
 [connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_component_end_dash"]

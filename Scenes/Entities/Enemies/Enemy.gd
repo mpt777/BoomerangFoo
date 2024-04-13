@@ -17,6 +17,7 @@ var rotation_speed := 10
 func constructor(enemy_data : EnemyData):
 	self.data = enemy_data
 	$HealthComponent.max_health = enemy_data.max_health
+	
 	#$MeshInstance3D.mesh.material = StandardMaterial3D.new()
 	#$MeshInstance3D.mesh.material.albedo_color = enemy_data.color
 	
@@ -25,6 +26,7 @@ func _ready():
 	ai = AI.new().constructor(self)
 	signals.emit_signal("Wand.ChangeSpell", self.data.range_spell)
 	signals.emit_signal("Wand.ChangeSpell", self.data.melee_spell)
+	$AvatarWrapper.constructor(self)
 	
 func _physics_process(delta):
 	target_player = Utils.closest_node_in_group(global_position, "Character")

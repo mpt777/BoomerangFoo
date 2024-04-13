@@ -3,4 +3,4 @@
 [resource]
 resource_name = "Eyes"
 cull_mode = 2
-albedo_color = Color(0.0671972, 0.399808, 0.8, 1)
+albedo_color = Color(0, 0, 0, 1)

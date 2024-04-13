@@ -1,9 +1,9 @@
 extends Control
 
-var CHARACTER_CIRCLE := preload("res://UI/Scenes/AddCharacter/CharacterCircle.tscn")
-@onready var h_box_container = $MarginContainer/VBoxContainer/HBoxContainer
+var CHARACTER_CIRCLE := preload("res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.tscn")
+@onready var character_list = $MarginContainer/VBoxContainer/CharacterList
 
-@onready var ready_container = $MarginContainer/VBoxContainer/Ready
+@onready var ready_container = $MarginContainer/VBoxContainer/AvatarSelect
 @onready var bots_container = $MarginContainer/VBoxContainer/Bots
 @onready var settings_container = $MarginContainer/VBoxContainer/GameSettings
 @onready var start_container = $MarginContainer/VBoxContainer/StartGame
@@ -12,7 +12,7 @@ var containers := []
 
 func _ready():
 	#GameState.players = []
-	$MarginContainer/VBoxContainer/Ready/Ready.grab_focus()
+	$MarginContainer/VBoxContainer/AvatarSelect/Ready.grab_focus()
 	containers = [
 		ready_container,
 		bots_container,
@@ -21,24 +21,36 @@ func _ready():
 	]
 
 	$"/root/Signals".connect("controllers_changed", modify_player)
+	add_player(0, false)
 	for controller in GameState.controllers:
 		add_player(GameState.controllers[controller].device_number)
-	
-	
+
+
 func modify_player(id : int, connected : bool) -> void:
 	if connected:
 		add_player(id)
-	#else:
-		#remove_player()
+	else:
+		remove_player(id)
+		
+#func _input(event):
+	#if event is InputEventMouseButton:
+		#print("mouse button event at ", event.position)
+	#if event is InputEventKey and event.pressed:
+		#if event.keycode == KEY_T:
+			#print("T was pressed")
 	
-func add_player(id : int) -> void:
+func add_player(id : int, is_joypad: bool = true) -> void:
 	var player_data = PlayerData.new()
-	player_data.controller = Controller.new()
-	player_data.controller.device_number = id 
-	player_data.controller.controller_number = id
-	player_data.controller.is_joypad = true
-	player_data.controller = player_data.load_default_controller()
+	player_data.controller = Controller.new().constructor(id, is_joypad)
+	player_data.register_controller()
 	add_character(player_data)
+	
+func remove_player(id: int) -> void:
+	for child in character_list.get_children():
+		if child.character_data.controller.device_number == id:
+			GameState.remove_character(child.character_data)
+			child.queue_free()
+			return
 	
 func add_bot() -> void:
 	var enemy_data = EnemyData.new()
@@ -47,11 +59,11 @@ func add_bot() -> void:
 func add_character(character_data : CharacterData) -> void:
 	var character_circle = CHARACTER_CIRCLE.instantiate() as CharacterCircle
 	character_circle.constructor(character_data)
-	h_box_container.add_child(character_circle)
+	character_list.add_child(character_circle)
 	GameState.add_character(character_data)
 
 func remove_character(character_data : CharacterData):
-	for child in h_box_container.get_children():
+	for child in character_list.get_children():
 		child = child as CharacterCircle
 		if child.character_data == character_data:
 			child.queue_free()
@@ -75,7 +87,7 @@ func _on_ready_pressed():
 	bots_container.visible=true
 	
 func _on_remove_bot_pressed():
-	var last_child_data = h_box_container.get_child(h_box_container.get_child_count() - 1) as CharacterCircle
+	var last_child_data = character_list.get_child(character_list.get_child_count() - 1) as CharacterCircle
 	if last_child_data.character_data is EnemyData:
 		remove_character(last_child_data.character_data)
 

@@ -2,24 +2,18 @@ extends Node3D
 
 var nodes : Array
 
-@export
-var MOVE_SPEED := 0.1
-@export
-var RESIZE_SPEED := 0.1
-@export
-var ZOOM_SPEED : float = 0.1
+@export var MOVE_SPEED := 0.1
+@export var RESIZE_SPEED := 0.1
+@export var ZOOM_SPEED : float = 0.1
 
-@export
-var MARGIN := Vector4(3, 5, 5, 5)
-@export
-var _minimum_distance := Vector2(20,20)
+@export var MARGIN := Vector4(3, 5, 5, 5)
+@export var _minimum_distance := Vector2(20,20)
 
 var minFOV : float = 1.0
 var maxFOV : float = 60.0
 
 
-@onready
-var camera = $SmartCamera
+@onready var camera = $SmartCamera
 
 var _min_bound := Vector3.ZERO
 var _max_bound := Vector3.ZERO
@@ -30,8 +24,7 @@ var _max_bound_curr := Vector3(-INF, -INF, -INF)
 var _min_bound_margin := Vector3.ZERO
 var _max_bound_margin := Vector3.ZERO
 
-@onready
-var _screen_size = get_viewport().size
+@onready var _screen_size = get_viewport().size
 
 var active := true
 

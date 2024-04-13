@@ -1,4 +1,3 @@
 extends StateMachine
 
-@export
-var body : CharacterBody3D
+@export var body : CharacterBody3D

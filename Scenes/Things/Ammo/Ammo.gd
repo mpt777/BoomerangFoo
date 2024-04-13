@@ -8,17 +8,10 @@ var RELOAD_TRES = preload("res://Scenes/Things/Ammo/ammo_item_reload.tres")
 
 var current_tres : Resource
 
-@export
-var ammo : int = 3
-
-@export
-var rotation_speed : float = -4.0
-
-@export
-var radius : float = 1.0
-
-@export
-var character : Character
+@export var ammo : int = 3
+@export var rotation_speed : float = -4.0
+@export var radius : float = 1.0
+@export var character : Character
 
 var current_rotation := 0.0
 var pi2 := 2 * PI

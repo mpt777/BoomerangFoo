@@ -33,19 +33,19 @@ _subresources={
 "materials": {
 "Accent": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Blender/Avatars/Robot/Accent.tres"
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Materials/Accent.tres"
 },
 "BlueAccent": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Blender/Avatars/Robot/BlueAccent.tres"
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Materials/BlueAccent.tres"
 },
 "Body": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Blender/Avatars/Robot/Body.tres"
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Materials/Body.tres"
 },
 "Lights": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Blender/Avatars/Robot/Lights.tres"
+"use_external/path": "res://Assets/Blender/Avatars/Robot/Materials/Lights.tres"
 }
 }
 }

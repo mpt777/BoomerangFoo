@@ -20,8 +20,9 @@ config/icon="res://Assets/favicon-4.png"
 Signals="*res://Scripts/Classes/Signals.gd"
 Utils="*res://Scripts/Classes/Utils.gd"
 SceneManager="*res://Scripts/Game/SceneManager.gd"
-GameState="*res://Scripts/Game/GameState.gd"
 Serializer="*res://Scripts/Game/Serializer.gd"
+GameState="*res://Scripts/Game/GameState.gd"
+GameProfile="*res://Scripts/Game/GameProfile.gd"
 
 [debug]
 
@@ -31,7 +32,6 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/vsync/vsync_mode=0
 
 [editor]
 

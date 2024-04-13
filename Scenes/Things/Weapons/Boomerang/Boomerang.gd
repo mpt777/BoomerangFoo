@@ -1,7 +1,6 @@
 extends Weapon
 
-@export
-var VELOCITY := 20.0
+@export var VELOCITY := 20.0
 
 @onready
 var collision_shape = $CollisionShape3D

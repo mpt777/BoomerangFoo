@@ -1,11 +1,8 @@
 extends State
 
-@export
-var body : Character = null
-@export
-var mana_component : ManaComponent = null
-@export
-var movement : Movement
+@export var body : Character = null
+@export var mana_component : ManaComponent = null
+@export var movement : Movement
 
 
 

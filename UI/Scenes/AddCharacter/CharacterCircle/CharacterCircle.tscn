@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctbijeuq2vi17"]
+
+[ext_resource type="Shader" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gdshader" id="1_wdrc3"]
+[ext_resource type="Texture2D" uid="uid://divgl04q66p38" path="res://Assets/Inkscape/circle.svg" id="2_qb8ug"]
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gd" id="3_387nu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25lxc"]
+resource_local_to_scene = true
+shader = ExtResource("1_wdrc3")
+shader_parameter/color = Color(0.7914, 0.719943, 0.972415, 1)
+
+[node name="TextureRect" type="TextureRect"]
+material = SubResource("ShaderMaterial_25lxc")
+size_flags_vertical = 4
+texture = ExtResource("2_qb8ug")
+stretch_mode = 2
+script = ExtResource("3_387nu")

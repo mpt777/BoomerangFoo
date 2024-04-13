@@ -2,11 +2,8 @@ extends StandardCharacter
 
 class_name Player
 
-@onready
-var n_movement := $Movement
-
-@onready
-var controller : Controller
+@onready var n_movement := $Movement
+@onready var controller : Controller
 
 var rotation_speed := 10.0
 
@@ -15,6 +12,7 @@ var rotation_speed := 10.0
 func constructor(player_data : PlayerData):
 	data = player_data
 	controller = data.controller
+	
 	#$MeshInstance3D.mesh.material = StandardMaterial3D.new()
 	#$MeshInstance3D.mesh.material.albedo_color = player_data.color
 	
@@ -22,6 +20,7 @@ func _ready():
 	super._ready()
 	signals.emit_signal("Wand.ChangeSpell", data.range_spell)
 	signals.emit_signal("Wand.ChangeSpell", data.melee_spell)
+	$AvatarWrapper.constructor(self)
 	#n_wand.change_spell(data.range_spell)
 	#n_wand.change_spell(data.melee_spell)
 	

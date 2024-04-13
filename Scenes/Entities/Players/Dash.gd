@@ -1,11 +1,8 @@
 extends State
 
-@export
-var movement : Movement
-@export
-var body : Character
-@export
-var dash : Dash
+@export var movement : Movement
+@export var body : Character
+@export var dash : Dash
 
 func enter():
 	if dash.can_dash:

@@ -1,9 +1,7 @@
 extends State
 
-@export
-var movement : Movement
-@export
-var body : Character
+@export var movement : Movement
+@export var body : Character
 
 func _ready():
 	body.signals.register("Movement.dash", func(): Transitioned.emit(self, "dash"))

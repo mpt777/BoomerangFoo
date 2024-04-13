@@ -2,14 +2,9 @@ extends RigidBody3D
 
 class_name Weapon
 
-@export
-var weapon_owner : Character
-
-@export
-var spawn_point : Node3D
-
-@export
-var anchor : String
+@export var weapon_owner : Character
+@export var spawn_point : Node3D
+@export var anchor : String
 	#set(value):
 		#target_position = value
 		#look_at_target()

@@ -1,10 +1,7 @@
 extends Resource
+class_name AvatarData
 
-@export
-var body : PackedScene
+@export var name : String
+@export var color: Color
+@export var avatar : PackedScene
 
-@export
-var foot : PackedScene
-
-@export
-var hand : PackedScene

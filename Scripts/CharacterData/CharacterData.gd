@@ -4,12 +4,14 @@ class_name CharacterData
 var character_name : String
 var max_health := 1
 var color : Color = Color(randf(),randf(),randf(),1)
+var avatar : AvatarData = preload("res://Scenes/Entities/Avatar/Witch/witch_data.tres")
 
 var melee_spell : ResourceSpell
 var range_spell : ResourceSpell
 
 var RANGE = preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/IceProjectile.tres")
 var MELEE = preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/RockWallProjectile.tres")
+
 func instantiate_scene() -> Character:
 	return 
 

@@ -2,19 +2,13 @@ extends Node3D
 
 class_name Movement
 
-@export
-var body : CharacterBody3D
+@export var body : CharacterBody3D
 
-@export
-var SPEED := 10
-@export
-var DASH_SPEED := 50
-@export
-var ACCELERATION := 0.8
-@export
-var FRICTION := 0.5
-@export
-var GRAVITY := 9.8
+@export var SPEED := 10
+@export var DASH_SPEED := 50
+@export var ACCELERATION := 0.8
+@export var FRICTION := 0.5
+@export var GRAVITY := 9.8
 
 var current_speed := SPEED
 

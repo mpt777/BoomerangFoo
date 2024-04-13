@@ -15,19 +15,19 @@ radius = 7.0
 [node name="Enemy" instance=ExtResource("1_g18f2")]
 script = ExtResource("1_n83qt")
 
-[node name="Hitbox" parent="." index="3" node_paths=PackedStringArray("health_component")]
+[node name="Hitbox" parent="." index="2" node_paths=PackedStringArray("health_component")]
 health_component = NodePath("../HealthComponent")
 
-[node name="PickUpComponent" parent="." index="4" node_paths=PackedStringArray("character")]
+[node name="PickUpComponent" parent="." index="3" node_paths=PackedStringArray("character")]
 character = NodePath("..")
 
-[node name="ManaComponent" parent="." index="5" node_paths=PackedStringArray("character")]
+[node name="ManaComponent" parent="." index="4" node_paths=PackedStringArray("character")]
 character = NodePath("..")
 
-[node name="Movement" parent="." index="6" node_paths=PackedStringArray("body")]
+[node name="Movement" parent="." index="5" node_paths=PackedStringArray("body")]
 body = NodePath("..")
 
-[node name="MovementFSM" parent="." index="7" node_paths=PackedStringArray("initial_state")]
+[node name="MovementFSM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Walk")
 
 [node name="Walk" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
@@ -39,8 +39,13 @@ movement = NodePath("../../Movement")
 body = NodePath("../..")
 dash = NodePath("DashComponent")
 
-[node name="Ammo" parent="." index="8" node_paths=PackedStringArray("character")]
+[node name="Ammo" parent="." index="7" node_paths=PackedStringArray("character")]
 character = NodePath("..")
+
+[node name="Wand" parent="." index="9" node_paths=PackedStringArray("mana_component", "weapon_owner", "spawn_point")]
+mana_component = NodePath("../ManaComponent")
+weapon_owner = NodePath("..")
+spawn_point = NodePath("SpawnPoint")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="10"]
 max_speed = 50.0
@@ -72,10 +77,6 @@ script = ExtResource("11_jyepa")
 body = NodePath("../..")
 movement = NodePath("../../Movement")
 mana_component = NodePath("../../ManaComponent")
-
-[node name="Wand" parent="." index="13" node_paths=PackedStringArray("mana_component", "weapon_owner")]
-mana_component = NodePath("../ManaComponent")
-weapon_owner = NodePath("..")
 
 [connection signal="area_entered" from="DodgeArea" to="DodgeArea" method="_on_area_entered"]
 [connection signal="area_exited" from="DodgeArea" to="DodgeArea" method="_on_area_exited"]

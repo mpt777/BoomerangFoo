@@ -1,8 +1,7 @@
 extends SpellResource
 class_name SpellCast
 
-@export
-var count : int = 1
+@export var count : int = 1
 
 func process(spell : Spell, weapon : Weapon):
 	

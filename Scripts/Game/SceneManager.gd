@@ -3,8 +3,7 @@ extends Node
 
 var VIGNETTE = preload("res://UI/Vignette/vignette.tscn")
 
-@export 
-var scenes : Dictionary = {
+@export var scenes : Dictionary = {
 	"game": "res://Scenes/GameLoop/GameLoop.tscn",
 	"points": "res://UI/Scenes/Points/points.tscn",
 	"add_character": "res://UI/Scenes/AddCharacter/AddCharacter.tscn",

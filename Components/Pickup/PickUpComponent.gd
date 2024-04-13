@@ -3,8 +3,7 @@ extends Area3D
 class_name PickUpComponent
 signal PickedUpArea
 
-@export
-var character : Character
+@export var character : Character
 	
 func _on_body_entered(body):
 	pass # Replace with function body.

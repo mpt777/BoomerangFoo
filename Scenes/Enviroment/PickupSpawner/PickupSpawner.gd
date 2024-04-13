@@ -1,8 +1,7 @@
 extends Node3D
 class_name PickupSpawner
 
-@export
-var max_concurrent_pickups := 5
+@export var max_concurrent_pickups := 5
 
 const MANA_PICKUP = preload("res://Scenes/Things/Pickup/ManaPickup/ManaPickup.tscn")
 const SPELL_PICKUP = preload("res://Scenes/Things/Pickup/SpellPickup/SpellPickup.tscn")

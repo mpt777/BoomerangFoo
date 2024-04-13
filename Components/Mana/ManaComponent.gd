@@ -1,11 +1,9 @@
 extends Node
 class_name ManaComponent
 
-@export 
-var character : Character
+@export var character : Character
+@export var max_mana := 1.0
 
-@export 
-var max_mana := 1.0
 var mana := 1.0
 
 signal ManaChanged

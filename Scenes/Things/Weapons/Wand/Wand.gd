@@ -1,8 +1,7 @@
 extends Weapon
 class_name Wand
 
-@export 
-var mana_component : ManaComponent
+@export var mana_component : ManaComponent
 
 var range_spell : Spell
 var melee_spell : Spell
@@ -25,6 +24,7 @@ func initialize():
 	
 
 func _physics_process(delta):
+	return
 	global_transform = weapon_owner.anchors.anchor("RightHand").global_transform
 	#global_rotation = weapon_owner.anchors.anchor("RightHand").global_rotation
 	#

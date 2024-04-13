@@ -2,8 +2,7 @@ extends State
 
 signal Attacked
 
-@export
-var weapon : Wand
+@export var weapon : Wand
 
 func enter():
 	weapon.attack()

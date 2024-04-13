@@ -2,11 +2,9 @@ extends Node3D
 
 class_name HandComponent
 
-@export
-var target : CharacterBody3D
+@export var target : CharacterBody3D
 
-@export
-var RADIUS := 2
+@export var RADIUS := 2
 
 var weapon : Weapon
 

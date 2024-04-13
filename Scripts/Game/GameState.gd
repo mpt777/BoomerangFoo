@@ -39,6 +39,7 @@ func remove_controller(id : int) -> void:
 	controllers.erase(id)
 	
 func initialize_controller():
+	## This allows for controllers to interact with the main menu
 	controller.device_number = 0
 	controller.controller_number = 0
 	ControllerAction.new().constructor("ui_accept", InputEventJoypadButton.new(), JOY_BUTTON_B).register(controller)

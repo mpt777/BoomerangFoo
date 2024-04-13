@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AvatarData" load_steps=3 format=3 uid="uid://cfgs6v8cnd6ep"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Avatar/AvatarData.gd" id="1_358hc"]
+[ext_resource type="PackedScene" uid="uid://bb6phq8qwtqcr" path="res://Scenes/Entities/Avatar/Robot/Robot.tscn" id="1_b5e3n"]
+
+[resource]
+script = ExtResource("1_358hc")
+name = "Robot"
+color = Color(0.201594, 0.707221, 0.780156, 1)
+avatar = ExtResource("1_b5e3n")

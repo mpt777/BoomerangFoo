@@ -1,7 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ltqp4220s3oh"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://8c5ar4qbas8e"]
 
 [resource]
 resource_name = "BlueAccent"
 cull_mode = 2
 albedo_color = Color(0.0393087, 0.0759814, 0.642173, 1)
-roughness = 0.0764706

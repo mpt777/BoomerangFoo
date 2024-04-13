@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://gfjepopki4k2"]
+
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelectCircle/avatar_select_circle.gd" id="1_xb5t3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wsvb0"]
+size = Vector2(10, 10)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsf1p"]
+sky_top_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.258824, 0.560784, 0.729412, 1)
+
+[sub_resource type="Sky" id="Sky_4sfdv"]
+sky_material = SubResource("ProceduralSkyMaterial_wsf1p")
+
+[sub_resource type="Environment" id="Environment_jxvoy"]
+resource_local_to_scene = true
+background_mode = 2
+background_color = Color(0.376471, 0.647059, 0.690196, 1)
+sky = SubResource("Sky_4sfdv")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+
+[node name="AvatarSelectCircle" type="PanelContainer"]
+offset_right = 512.0
+offset_bottom = 512.0
+script = ExtResource("1_xb5t3")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.988)
+
+[node name="Background" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.999999, -0.000375507, 0.00134832, -0.0013484, -0.00019884, 0.999999, -0.000375235, -1, -0.000199354, 0, 0, 2)
+mesh = SubResource("PlaneMesh_wsvb0")
+
+[node name="Ground" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_wsvb0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_jxvoy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.926548, 0.0973615, 0.363358, 0, -0.965926, 0.258819, 0.376176, -0.239808, -0.894977, 0, 0, 0)
+light_color = Color(0.584025, 0.499413, 0.377072, 1)
+shadow_enabled = true
+
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]

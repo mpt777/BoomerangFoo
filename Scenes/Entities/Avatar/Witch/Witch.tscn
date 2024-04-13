@@ -5,5 +5,5 @@
 
 [node name="Avatar" instance=ExtResource("1_i7bvu")]
 
-[node name="witch" parent="Avatar/Body" index="0" instance=ExtResource("2_xe3eo")]
+[node name="witch" parent="Body" index="0" instance=ExtResource("2_xe3eo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.219262, 0)

@@ -1,7 +1,6 @@
 extends State
 
-@export
-var body : CharacterBody3D = null
+@export var body : CharacterBody3D = null
 
 var target_player : CharacterBody3D = null;
 var wander_time : float = 0.0

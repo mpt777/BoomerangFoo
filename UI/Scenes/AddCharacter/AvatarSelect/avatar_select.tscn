@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6oxb2keq06f5"]
+
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelect/avatar_select.gd" id="1_rkpr2"]
+
+[node name="AvatarSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+script = ExtResource("1_rkpr2")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2

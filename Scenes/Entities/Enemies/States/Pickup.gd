@@ -1,13 +1,8 @@
 extends State
 
-@export
-var body : CharacterBody3D = null
-
-@export
-var movement : Movement
-
-@export
-var mana_component : ManaComponent = null
+@export var body : CharacterBody3D = null
+@export var movement : Movement
+@export var mana_component : ManaComponent = null
 
 var pickup_location := Vector3(-1,-1,-1)
 

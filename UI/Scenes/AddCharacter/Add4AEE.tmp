@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cft8qo4snyk1j"]
+[gd_scene load_steps=5 format=3 uid="uid://cft8qo4snyk1j"]
 
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_gdsw6"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AddCharacter.gd" id="2_k76w2"]
-[ext_resource type="PackedScene" uid="uid://c6oxb2keq06f5" path="res://UI/Scenes/AddCharacter/AvatarSelect/avatar_select.tscn" id="3_npwls"]
 
 [sub_resource type="Gradient" id="Gradient_pyc2h"]
 colors = PackedColorArray(0.637843, 0.637843, 0.637843, 1, 1, 1, 1, 1)
@@ -55,25 +54,20 @@ theme_override_constants/margin_bottom = 100
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="CharacterList" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="AvatarSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Ready" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/AvatarSelect"]
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/Ready"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AvatarSelect" parent="MarginContainer/VBoxContainer/AvatarSelect/Container" instance=ExtResource("3_npwls")]
-layout_mode = 1
-
-[node name="Ready" type="Button" parent="MarginContainer/VBoxContainer/AvatarSelect"]
+[node name="Ready" type="Button" parent="MarginContainer/VBoxContainer/Ready"]
 layout_mode = 2
 text = "Ready"
 
@@ -133,7 +127,7 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Start Game"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/AvatarSelect/Ready" to="." method="_on_ready_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Ready/Ready" to="." method="_on_ready_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/HBoxContainer/RemoveBot" to="." method="_on_remove_bot_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/HBoxContainer/AddBot" to="." method="_on_add_bot_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/AddBots" to="." method="_on_add_bots_pressed"]
