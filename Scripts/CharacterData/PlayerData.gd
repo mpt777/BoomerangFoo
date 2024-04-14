@@ -33,6 +33,12 @@ func register_joypad():
 	ControllerAction.new().constructor("move_left", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, -1, 0.1).register(controller)
 	ControllerAction.new().constructor("move_right", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, 1, 0.1).register(controller)
 	
+	ControllerAction.new().constructor("ui_up", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_Y, -1, 0.1).register(controller)
+	ControllerAction.new().constructor("ui_down", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_Y, 1, 0.1).register(controller)
+	ControllerAction.new().constructor("ui_left", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, -1, 0.1).register(controller)
+	ControllerAction.new().constructor("ui_right", InputEventJoypadMotion.new(), JOY_AXIS_LEFT_X, 1, 0.1).register(controller)
+	ControllerAction.new().constructor("ui_accept", InputEventJoypadButton.new(), JOY_BUTTON_B).register(controller)
+	
 	ControllerAction.new().constructor("look_up", InputEventJoypadMotion.new(), JOY_AXIS_RIGHT_Y, -1, 0.1).register(controller)
 	ControllerAction.new().constructor("look_down", InputEventJoypadMotion.new(), JOY_AXIS_RIGHT_Y, 1, 0.1).register(controller)
 	ControllerAction.new().constructor("look_left", InputEventJoypadMotion.new(), JOY_AXIS_RIGHT_X, -1, 0.1).register(controller)

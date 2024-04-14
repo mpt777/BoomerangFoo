@@ -14,5 +14,6 @@ func constructor(avatar_data) -> AvatarSelectCircle:
 func _ready():
 	viewport.add_child(self.avatar_data.avatar.instantiate())
 
-func _on_button_gui_input(event):
-	print(event)
+func _on_multi_layer_button_gui_input(event):
+	pass
+	#print(event)
