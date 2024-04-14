@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://gfjepopki4k2"]
+[gd_scene load_steps=6 format=3 uid="uid://gfjepopki4k2"]
 
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelectCircle/avatar_select_circle.gd" id="1_xb5t3"]
 [ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="2_3krrv"]
+[ext_resource type="Shader" path="res://UI/MultiLayerButton/border.gdshader" id="3_dfsw4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anoc3"]
+resource_local_to_scene = true
+shader = ExtResource("3_dfsw4")
+shader_parameter/color = Color(0.779, 0.49, 1, 0)
+shader_parameter/width = 11.662
+shader_parameter/pattern = 2
+shader_parameter/add_margins = true
 
 [sub_resource type="ImageTexture" id="ImageTexture_cgtp4"]
 
@@ -11,6 +20,7 @@ offset_bottom = 512.0
 script = ExtResource("1_xb5t3")
 
 [node name="MultiLayerButton" parent="." instance=ExtResource("2_3krrv")]
+material = SubResource("ShaderMaterial_anoc3")
 layout_mode = 2
 icon = SubResource("ImageTexture_cgtp4")
 
@@ -30,4 +40,5 @@ transform = Transform3D(0.926548, 0.0973615, 0.363358, 0, -0.965926, 0.258819, 0
 directional_shadow_mode = 0
 sky_mode = 1
 
+[connection signal="ControllerPressed" from="MultiLayerButton" to="." method="_on_multi_layer_button_controller_pressed"]
 [connection signal="gui_input" from="MultiLayerButton" to="." method="_on_multi_layer_button_gui_input"]

@@ -5,6 +5,7 @@ var controllers := []
 
 signal ControllerAdded
 signal ControllerRemoved
+signal ControllerPressed
 
 func add_controller(controller : Controller) -> void:
 	controller.current_button = self
@@ -33,36 +34,39 @@ func render_state():
 	
 		
 func _input(event):
-	if not GameState.controllers[0].current_button:
-		GameState.controllers[0].current_button = self
-		set_color(Color.WEB_GREEN)
-	if GameState.controllers[0].current_button != self:
-		return
-	if event.is_action_pressed(GameState.controllers[0].action("ui_accept")):
-		print(event)
-	if event.is_action_pressed(GameState.controllers[0].action("ui_left")):
-		move_focus(SIDE_LEFT)
-	if event.is_action_pressed(GameState.controllers[0].action("ui_right")):
-		move_focus(SIDE_RIGHT)
-	if event.is_action_pressed(GameState.controllers[0].action("ui_up")):
-		move_focus(SIDE_TOP)
-	if event.is_action_pressed(GameState.controllers[0].action("ui_down")):
-		move_focus(SIDE_BOTTOM)
+	for controller in self.controllers:
+		if event.is_action_pressed(controller.action("ui_accept")):
+			emit_signal("ControllerPressed", controller)
+		if event.is_action_pressed(controller.action("ui_left")):
+			move_focus(SIDE_LEFT, controller)
+		if event.is_action_pressed(controller.action("ui_right")):
+			move_focus(SIDE_RIGHT, controller)
+		if event.is_action_pressed(controller.action("ui_up")):
+			move_focus(SIDE_TOP, controller)
+		if event.is_action_pressed(controller.action("ui_down")):
+			move_focus(SIDE_BOTTOM, controller)
 		
-func move_focus(side : int):
+	#if not GameState.controllers[0].current_button:
+		#GameState.controllers[0].current_button = self
+		#set_color(Color.WEB_GREEN)
+	#if GameState.controllers[0].current_button != self:
+		#return
+		
+func move_focus(side : int, controller : Controller):
 	var node = find_valid_focus_neighbor(side)
 	if not node:
 		return
+	if not node is MultiLayerButton:
+		return
 	print(self, node)
-	node.emit_signal("ControllerAdded", GameState.controllers[0])
-	emit_signal("ControllerRemoved", GameState.controllers[0])
+	node.emit_signal("ControllerAdded", controller)
+	emit_signal("ControllerRemoved", controller)
 
 
 func _on_controller_added(controller : Controller):
 	self.add_controller(controller)
 	self.render_state()
-
-
+	
 func _on_controller_removed(controller : Controller):
 	self.remove_controller(controller)
 	self.render_state()

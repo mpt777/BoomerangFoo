@@ -4,6 +4,7 @@ class_name AvatarSelectCircle
 #@onready var background = $SubViewportContainer/SubViewport/Background
 #@onready var ground = $SubViewportContainer/SubViewport/Background
 @onready var viewport = $SubViewportContainer/SubViewport
+@onready var button = $MultiLayerButton
 
 var avatar_data : AvatarData
 
@@ -14,6 +15,5 @@ func constructor(avatar_data) -> AvatarSelectCircle:
 func _ready():
 	viewport.add_child(self.avatar_data.avatar.instantiate())
 
-func _on_multi_layer_button_gui_input(event):
-	pass
-	#print(event)
+func _on_multi_layer_button_controller_pressed(controller : Controller):
+	print(controller)

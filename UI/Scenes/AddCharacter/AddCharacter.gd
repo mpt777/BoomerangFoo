@@ -7,6 +7,7 @@ var CHARACTER_CIRCLE := preload("res://UI/Scenes/AddCharacter/CharacterCircle/Ch
 @onready var bots_container = $MarginContainer/VBoxContainer/Bots
 @onready var settings_container = $MarginContainer/VBoxContainer/GameSettings
 @onready var start_container = $MarginContainer/VBoxContainer/StartGame
+@onready var avatar_select = $MarginContainer/VBoxContainer/AvatarSelect/Container/AvatarSelect
 
 var containers := []
 
@@ -44,6 +45,10 @@ func add_player(id : int, is_joypad: bool = true) -> void:
 	player_data.controller = Controller.new().constructor(id, is_joypad)
 	player_data.register_controller()
 	add_character(player_data)
+	
+	if player_data.controller.is_joypad:
+		var avatar_select_circle : AvatarSelectCircle = avatar_select.random_avatar()
+		avatar_select_circle.button.emit_signal("ControllerAdded", player_data.controller)
 	
 func remove_player(id: int) -> void:
 	for child in character_list.get_children():
