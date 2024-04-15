@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cft8qo4snyk1j"]
+[gd_scene load_steps=7 format=3 uid="uid://cft8qo4snyk1j"]
 
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_gdsw6"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AddCharacter.gd" id="2_k76w2"]
 [ext_resource type="PackedScene" uid="uid://c6oxb2keq06f5" path="res://UI/Scenes/AddCharacter/AvatarSelect/avatar_select.tscn" id="3_npwls"]
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/CharacterList.gd" id="3_y17mx"]
 
 [sub_resource type="Gradient" id="Gradient_pyc2h"]
 colors = PackedColorArray(0.637843, 0.637843, 0.637843, 1, 1, 1, 1, 1)
@@ -61,6 +62,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 theme_override_constants/separation = 20
 alignment = 1
+script = ExtResource("3_y17mx")
 
 [node name="AvatarSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

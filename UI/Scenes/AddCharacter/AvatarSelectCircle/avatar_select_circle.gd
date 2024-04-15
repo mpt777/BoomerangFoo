@@ -15,5 +15,5 @@ func constructor(avatar_data) -> AvatarSelectCircle:
 func _ready():
 	viewport.add_child(self.avatar_data.avatar.instantiate())
 
-func _on_multi_layer_button_controller_pressed(controller : Controller):
-	print(controller)
+func _on_multi_layer_button_controller_pressed(controller : Controller) -> void:
+	$"/root/Signals".emit_signal("select_avatar", controller, self.avatar_data)

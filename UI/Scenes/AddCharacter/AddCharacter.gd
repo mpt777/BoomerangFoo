@@ -32,13 +32,6 @@ func modify_player(id : int, connected : bool) -> void:
 		add_player(id)
 	else:
 		remove_player(id)
-		
-#func _input(event):
-	#if event is InputEventMouseButton:
-		#print("mouse button event at ", event.position)
-	#if event is InputEventKey and event.pressed:
-		#if event.keycode == KEY_T:
-			#print("T was pressed")
 	
 func add_player(id : int, is_joypad: bool = true) -> void:
 	var player_data = PlayerData.new()
@@ -74,12 +67,6 @@ func remove_character(character_data : CharacterData):
 			child.queue_free()
 			GameState.remove_character(character_data)
 
-func _on_button_button_up():
-	GameState.settings.save_to_disk()
-	SceneManager.switch_scene("game")
-	#get_tree().change_scene_to_file("res://Scenes/Enviroment/World/World.tscn")
-
-
 func hide_containers():
 	for container in containers:
 		container.visible = false
@@ -101,3 +88,9 @@ func _on_add_bot_pressed():
 
 func _on_add_bots_pressed():
 	SceneManager.switch_scene("game")
+	
+#####################################################################################
+func _on_button_button_up():
+	GameState.settings.save_to_disk()
+	SceneManager.switch_scene("game")
+

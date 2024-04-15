@@ -9,3 +9,7 @@ func constructor(character_data : CharacterData):
 	
 func set_color(color : Color) -> void:
 	material.set_shader_parameter("color", color)
+	
+func set_avatar(avatar_data : AvatarData):
+	print("Do Avatar Update THings")
+	self.character_data.avatar = avatar_data

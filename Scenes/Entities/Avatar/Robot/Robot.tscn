@@ -1,25 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb6phq8qwtqcr"]
+[gd_scene load_steps=3 format=3 uid="uid://bapgytw43wq6u"]
 
 [ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_7ymbf"]
 [ext_resource type="PackedScene" uid="uid://d00b4u3r04iyd" path="res://Scenes/Entities/Avatar/Robot/robot_body.tscn" id="2_wmvdc"]
-[ext_resource type="PackedScene" uid="uid://dikyssyxdda2y" path="res://Scenes/Entities/Avatar/Robot/robot_hand.tscn" id="3_n1vqy"]
-[ext_resource type="PackedScene" uid="uid://begefrj48hsuq" path="res://Scenes/Entities/Avatar/Robot/robot_foot.tscn" id="4_rtpc3"]
 
 [node name="Avatar" instance=ExtResource("1_7ymbf")]
 
-[node name="robot_body" parent="Avatar/Body" index="0" instance=ExtResource("2_wmvdc")]
-
-[node name="robot_hand" parent="Avatar/Right" index="1" instance=ExtResource("3_n1vqy")]
-
-[node name="robot_hand" parent="Avatar/Left" index="0" instance=ExtResource("3_n1vqy")]
-
-[node name="LeftFoot" parent="Avatar" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18554, 0, 0)
-
-[node name="robot_foot" parent="Avatar/LeftFoot" index="0" instance=ExtResource("4_rtpc3")]
-
-[node name="RightFoot" parent="Avatar" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018192, 0, -5.96046e-08)
-
-[node name="robot_foot" parent="Avatar/RightFoot" index="0" instance=ExtResource("4_rtpc3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201583, 0, 5.96046e-08)
+[node name="robot_body" parent="Body" index="0" instance=ExtResource("2_wmvdc")]
