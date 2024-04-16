@@ -25,7 +25,7 @@ func throw():
 	collision_shape.disabled = false
 	freeze = false
 	reparent(get_tree().get_first_node_in_group("World"))
-	apply_impulse(position.direction_to(target_position).normalized() * VELOCITY)
+	#apply_impulse(position.direction_to(target_position).normalized() * VELOCITY)
 	item_drop.start_timer()
 
 func pickup():

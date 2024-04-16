@@ -19,8 +19,13 @@ func register(controller) -> void:
 	var action : String = controller.action(action_name)
 	#if InputMap.has_action(action):
 		#InputMap.erase_action(action)
+	if action == "64__ui_accept":
+		print(action)
 	if not InputMap.has_action(action):
 		InputMap.add_action(action)
+		print("added")
+	else:
+		print("BAD")
 
 	input_event.device = controller.device_number
 	

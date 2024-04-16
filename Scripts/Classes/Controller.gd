@@ -23,7 +23,7 @@ func action(action_name : String) -> String:
 	
 #used to allow for controllers and keyboards to share device indexes
 func get_controller_number() -> int:
-	if not self.is_joypad:
+	if self.is_joypad:
 		return self.controller_number
 	return self.controller_number + 64
 

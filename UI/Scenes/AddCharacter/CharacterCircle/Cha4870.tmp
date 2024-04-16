@@ -30,5 +30,3 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(0.926548, 0.0973615, 0.363358, 0, -0.965926, 0.258819, 0.376176, -0.239808, -0.894977, 0, 0, 0)
 directional_shadow_mode = 0
 sky_mode = 1
-
-[node name="AvatarContainer" type="Node3D" parent="SubViewportContainer/SubViewport"]

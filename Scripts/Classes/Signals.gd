@@ -17,7 +17,7 @@ signal camera_shake(camera_shake : CameraShake)
 
 #Usually when a new controller is added or removed
 signal players_changed()
-signal controllers_changed(id : int, connected : bool)
+signal controllers_changed(controller : Controller, connected : bool)
 
 
 signal select_avatar(controller : Controller, avatar_data: AvatarData)

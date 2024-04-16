@@ -22,7 +22,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 theme = ExtResource("1_gdsw6")
 script = ExtResource("2_k76w2")
 
@@ -35,7 +34,6 @@ offset_top = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 color = Color(0.499684, 0.270455, 0.165558, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -10,13 +10,12 @@ var settings := GameSettings.new()
 var played_stages : Array
 var round_index := 0
 
-var controller := Controller.new()
-
 
 func _ready():
 	#players = GameStateDebug.default_character_data()
 	
-	initialize_controller()
+	#initialize_controller()
+	add_controller(0, false)
 	$"/root/Signals".connect("add_event", add_event)
 	$"/root/Signals".connect("start_round", start_round)
 	
@@ -27,26 +26,29 @@ func _joy_connection_changed(id, connected):
 		add_controller(id)
 	else:
 		remove_controller(id)
-	$"/root/Signals".emit_signal("controllers_changed", id, connected)
+	$"/root/Signals".emit_signal("controllers_changed", self.controllers[id], connected)
 	
-func add_controller(id : int) -> void:
-	controllers[id] = Controller.new().constructor(id, true)
-	register_joypad(controllers[id])
+	
+func add_controller(id : int, is_joypad: bool = true) -> void:
+	var controller := Controller.new().constructor(id, is_joypad)
+	controllers[controller.get_controller_number()] = controller 
+	if is_joypad:
+		register_joypad(controller)
+	else:
+		register_keyboard(controller)
 	
 func remove_controller(id : int) -> void:
 	controllers.erase(id)
 	
-func initialize_controller():
-	## This allows for controllers to interact with the main menu
-	controller.device_number = 0
-	controller.controller_number = 0
-	ControllerAction.new().constructor("ui_accept", InputEventJoypadButton.new(), JOY_BUTTON_B).register(controller)
-	
 func _input(event):
-	if event.is_action_pressed(controller.action("ui_accept")):
-		var ui = get_viewport().gui_get_focus_owner()
-		if get_viewport().gui_get_focus_owner():
-			ui.emit_signal("pressed")
+	for index in controllers:
+		var controller : Controller = controllers[index]
+		if not controller.is_joypad:
+			continue
+		if event.is_action_pressed(controller.action("ui_accept")):
+			var ui = get_viewport().gui_get_focus_owner()
+			if get_viewport().gui_get_focus_owner():
+				ui.emit_signal("pressed")
 		
 		
 func add_character(character_data : CharacterData) -> void:
@@ -73,6 +75,31 @@ func start_round() -> void:
 	
 	
 	
+	
+	
+func register_controller(controller=null) -> Controller:
+	if not controller:
+		controller = Controller.new()
+	if controller.is_joypad:
+		return register_joypad(controller)
+	return register_keyboard(controller)
+
+func register_keyboard(controller : Controller):
+	ControllerAction.new().constructor("move_up", InputEventKey.new(), KEY_W).register(controller)
+	ControllerAction.new().constructor("move_down", InputEventKey.new(), KEY_S).register(controller)
+	ControllerAction.new().constructor("move_left", InputEventKey.new(), KEY_A).register(controller)
+	ControllerAction.new().constructor("move_right", InputEventKey.new(), KEY_D).register(controller)
+	ControllerAction.new().constructor("dash", InputEventKey.new(), KEY_SPACE).register(controller)
+	ControllerAction.new().constructor("attack_range", InputEventMouseButton.new(), MOUSE_BUTTON_LEFT).register(controller)
+	ControllerAction.new().constructor("attack_melee", InputEventMouseButton.new(), MOUSE_BUTTON_RIGHT).register(controller)
+	
+	ControllerAction.new().constructor("ui_up", InputEventKey.new(), KEY_UP).register(controller)
+	ControllerAction.new().constructor("ui_down", InputEventKey.new(), KEY_DOWN).register(controller)
+	ControllerAction.new().constructor("ui_left", InputEventKey.new(), KEY_LEFT).register(controller)
+	ControllerAction.new().constructor("ui_right", InputEventKey.new(), KEY_RIGHT).register(controller)
+	
+	ControllerAction.new().constructor("ui_accept", InputEventMouseButton.new(), MOUSE_BUTTON_LEFT).register(controller)
+	return controller
 	
 	
 func register_joypad(controller : Controller):

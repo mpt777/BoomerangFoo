@@ -35,16 +35,20 @@ func render_state():
 		
 func _input(event):
 	for controller in self.controllers:
-		if event.is_action_pressed(controller.action("ui_accept")):
-			emit_signal("ControllerPressed", controller)
-		if event.is_action_pressed(controller.action("ui_left")):
-			move_focus(SIDE_LEFT, controller)
-		if event.is_action_pressed(controller.action("ui_right")):
-			move_focus(SIDE_RIGHT, controller)
-		if event.is_action_pressed(controller.action("ui_up")):
-			move_focus(SIDE_TOP, controller)
-		if event.is_action_pressed(controller.action("ui_down")):
-			move_focus(SIDE_BOTTOM, controller)
+		process_input(event, controller)
+			
+			
+func process_input(event : InputEvent, controller: Controller):
+	if event.is_action_pressed(controller.action("ui_accept")):
+		emit_signal("ControllerPressed", controller)
+	if event.is_action_pressed(controller.action("ui_left")):
+		move_focus(SIDE_LEFT, controller)
+	if event.is_action_pressed(controller.action("ui_right")):
+		move_focus(SIDE_RIGHT, controller)
+	if event.is_action_pressed(controller.action("ui_up")):
+		move_focus(SIDE_TOP, controller)
+	if event.is_action_pressed(controller.action("ui_down")):
+		move_focus(SIDE_BOTTOM, controller)
 		
 	#if not GameState.controllers[0].current_button:
 		#GameState.controllers[0].current_button = self
@@ -70,6 +74,19 @@ func _on_controller_added(controller : Controller):
 func _on_controller_removed(controller : Controller):
 	self.remove_controller(controller)
 	self.render_state()
-	
 
-		
+
+func _on_mouse_entered():
+	emit_signal("ControllerAdded", GameState.controllers[64])
+
+
+func _on_mouse_exited():
+	emit_signal("ControllerRemoved", GameState.controllers[64])
+
+
+func _on_pressed():
+	print("pressed")
+
+
+func _on_focus_entered():
+	print("focues")
