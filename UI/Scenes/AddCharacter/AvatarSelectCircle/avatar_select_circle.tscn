@@ -1,25 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://gfjepopki4k2"]
+[gd_scene load_steps=4 format=3 uid="uid://gfjepopki4k2"]
 
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelectCircle/avatar_select_circle.gd" id="1_xb5t3"]
 [ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="2_3krrv"]
-[ext_resource type="Shader" path="res://UI/MultiLayerButton/border.gdshader" id="3_dfsw4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nx41"]
-shader = ExtResource("3_dfsw4")
-shader_parameter/color = Color(0.430594, 0.326902, 0.542849, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_anoc3"]
-resource_local_to_scene = true
-shader = ExtResource("3_dfsw4")
-shader_parameter/color = Color(0.809614, 0.287768, 0.534774, 0)
-shader_parameter/width = 28.984
-shader_parameter/pattern = 2
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [sub_resource type="ImageTexture" id="ImageTexture_cgtp4"]
 
@@ -30,7 +12,7 @@ mouse_filter = 2
 script = ExtResource("1_xb5t3")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_6nx41")
+z_index = 2
 layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
@@ -47,7 +29,6 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="MultiLayerButton" parent="." instance=ExtResource("2_3krrv")]
-material = SubResource("ShaderMaterial_anoc3")
 layout_mode = 2
 icon = SubResource("ImageTexture_cgtp4")
 

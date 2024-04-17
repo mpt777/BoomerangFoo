@@ -1,9 +1,10 @@
-extends Control
+extends EtContainer
 class_name AvatarSelect
 
-@onready var n_grid = $GridContainer
+@onready var n_grid = $VBoxContainer/AvatarGrid
 var AVATAR_SELECT_CIRCLE := preload("res://UI/Scenes/AddCharacter/AvatarSelectCircle/avatar_select_circle.tscn")
 
+@export var ready_button_node : EtContainer
 
 func _ready():
 	add_avatar_selects()

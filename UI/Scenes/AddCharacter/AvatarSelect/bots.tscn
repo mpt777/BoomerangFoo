@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc7k2x4ohlq0f"]
+
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_4ljc4"]
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelect/Bots.gd" id="1_egwjj"]
+
+[node name="Bots" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_egwjj")
+
+[node name="Bots" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Container" type="Control" parent="Bots"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bots"]
+layout_mode = 2
+alignment = 1
+
+[node name="RemoveBot" type="Button" parent="Bots/HBoxContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="Label" type="Label" parent="Bots/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_4ljc4")
+text = "0"
+
+[node name="AddBot" type="Button" parent="Bots/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="AddBots" type="Button" parent="Bots"]
+layout_mode = 2
+text = "Add Bots"

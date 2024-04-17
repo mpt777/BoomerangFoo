@@ -1,9 +1,11 @@
 shader_type canvas_item;
 
-// Expose 'my_color' to the editor with default value of gray (r, g, b, alpha).
-uniform vec4 color : source_color = vec4(.5, .5, .5, 1.0);
-// This function is run on every pixel.
-void fragment(){
-    vec4 texture_color = texture(TEXTURE, UV);
-    COLOR = texture_color * color;
+uniform float amt:hint_range(0.0, 1.0);
+
+void fragment() 
+{
+	if (distance(UV, vec2(0.5,0.5)) > amt/2.0) 
+	{
+		discard;
+	}
 }

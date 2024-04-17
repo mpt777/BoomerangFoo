@@ -27,4 +27,3 @@ func _init():
 	
 	self.range_spell = range_spell
 	self.melee_spell = melee_spell
-	print(self)

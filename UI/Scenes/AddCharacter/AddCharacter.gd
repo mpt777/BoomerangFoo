@@ -48,9 +48,7 @@ func remove_player(controller: Controller) -> void:
 			child.queue_free()
 			return
 	
-func add_bot() -> void:
-	var enemy_data = EnemyData.new()
-	add_character(enemy_data)
+
 	
 func add_character(character_data : CharacterData) -> void:
 	var character_circle = CHARACTER_CIRCLE.instantiate() as CharacterCircle
@@ -76,13 +74,7 @@ func _on_ready_pressed():
 	hide_containers()
 	bots_container.visible=true
 	
-func _on_remove_bot_pressed():
-	var last_child_data = character_list.get_child(character_list.get_child_count() - 1) as CharacterCircle
-	if last_child_data.character_data is EnemyData:
-		remove_character(last_child_data.character_data)
 
-func _on_add_bot_pressed():
-	add_bot()
 
 func _on_add_bots_pressed():
 	SceneManager.switch_scene("game")

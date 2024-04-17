@@ -1,30 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctbijeuq2vi17"]
+[gd_scene load_steps=6 format=3 uid="uid://ctbijeuq2vi17"]
 
 [ext_resource type="Shader" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gdshader" id="1_wdrc3"]
-[ext_resource type="Texture2D" uid="uid://divgl04q66p38" path="res://Assets/Inkscape/circle.svg" id="2_qb8ug"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gd" id="3_387nu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25lxc"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dni3b"]
 shader = ExtResource("1_wdrc3")
-shader_parameter/color = Color(0.7914, 0.719943, 0.972415, 1)
+shader_parameter/amt = 0.0
 
-[node name="TextureRect" type="TextureRect"]
-material = SubResource("ShaderMaterial_25lxc")
-size_flags_vertical = 4
-texture = ExtResource("2_qb8ug")
-stretch_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7w5to"]
+shader = ExtResource("1_wdrc3")
+shader_parameter/amt = 1.0
+
+[sub_resource type="Environment" id="Environment_u8tan"]
+background_mode = 1
+
+[node name="PanelContainer" type="PanelContainer"]
+material = SubResource("ShaderMaterial_dni3b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1720.0
+offset_bottom = -880.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_387nu")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_7w5to")
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
+size = Vector2i(200, 200)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.988)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.98293)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.926548, 0.0973615, 0.363358, 0, -0.965926, 0.258819, 0.376176, -0.239808, -0.894977, 0, 0, 0)
@@ -32,3 +48,6 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="AvatarContainer" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_u8tan")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cft8qo4snyk1j"]
+[gd_scene load_steps=8 format=3 uid="uid://cft8qo4snyk1j"]
 
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_gdsw6"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AddCharacter.gd" id="2_k76w2"]
 [ext_resource type="PackedScene" uid="uid://c6oxb2keq06f5" path="res://UI/Scenes/AddCharacter/AvatarSelect/avatar_select.tscn" id="3_npwls"]
 [ext_resource type="PackedScene" uid="uid://bi0deab8cyp3b" path="res://UI/Scenes/AddCharacter/CharacterList/character_list.tscn" id="3_w46pa"]
+[ext_resource type="PackedScene" uid="uid://dc7k2x4ohlq0f" path="res://UI/Scenes/AddCharacter/AvatarSelect/bots.tscn" id="5_btym3"]
 
 [sub_resource type="Gradient" id="Gradient_pyc2h"]
 colors = PackedColorArray(0.637843, 0.637843, 0.637843, 1, 1, 1, 1, 1)
@@ -47,9 +48,12 @@ theme = ExtResource("1_gdsw6")
 texture = SubResource("GradientTexture2D_yutof")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
@@ -61,40 +65,15 @@ layout_mode = 2
 [node name="CharacterList" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_w46pa")]
 layout_mode = 2
 
-[node name="AvatarSelect" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_npwls")]
+[node name="AvatarSelect" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("ready_button_node") instance=ExtResource("3_npwls")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+ready_button_node = NodePath("../Bots")
 
-[node name="Bots" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Bots" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_btym3")]
 visible = false
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/Bots"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Bots"]
-layout_mode = 2
-alignment = 1
-
-[node name="RemoveBot" type="Button" parent="MarginContainer/VBoxContainer/Bots/HBoxContainer"]
-layout_mode = 2
-text = "-"
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Bots/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_gdsw6")
-text = "0"
-
-[node name="AddBot" type="Button" parent="MarginContainer/VBoxContainer/Bots/HBoxContainer"]
-layout_mode = 2
-text = "+"
-
-[node name="AddBots" type="Button" parent="MarginContainer/VBoxContainer/Bots"]
-layout_mode = 2
-text = "Add Bots"
 
 [node name="GameSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
@@ -122,7 +101,4 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Start Game"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/HBoxContainer/RemoveBot" to="." method="_on_remove_bot_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/HBoxContainer/AddBot" to="." method="_on_add_bot_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Bots/AddBots" to="." method="_on_add_bots_pressed"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/StartGame/StartGame" to="." method="_on_button_button_up"]

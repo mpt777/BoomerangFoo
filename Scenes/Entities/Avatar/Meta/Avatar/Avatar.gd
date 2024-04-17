@@ -6,5 +6,5 @@ var n_body_model : Node3D
 @onready var r_hand : Node3D = $Right
 @onready var r_hand_remote : Node3D = $Right/RemoteTransform3D
 
-func _ready():
-	print("here")
+#func _ready():
+	#print("here")
