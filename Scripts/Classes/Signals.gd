@@ -25,3 +25,6 @@ signal avatar_selected(controller : Controller, avatar_data: AvatarData)
 signal avatar_attached_to_character(character : CharacterData)
 signal add_bot()
 signal remove_bot()
+
+#PointScreen
+signal game_over_points_achieved()

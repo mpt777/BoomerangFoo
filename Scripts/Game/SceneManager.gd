@@ -4,10 +4,15 @@ extends Node
 var VIGNETTE = preload("res://UI/Vignette/vignette.tscn")
 
 @export var scenes : Dictionary = {
+	"main":"res://UI/Scenes/MainMenu/MainMenu.tscn",
+	"add_character": "res://UI/Scenes/AddCharacter/AddCharacter.tscn",
+	
+	"settings": "",
+	
 	"game": "res://Scenes/GameLoop/GameLoop.tscn",
 	"points": "res://UI/Scenes/Points/points.tscn",
-	"add_character": "res://UI/Scenes/AddCharacter/AddCharacter.tscn",
-	"settings": "",
+	"gameover": "res://UI/Scenes/GameOver/GameOver.tscn",
+	
 	"credits": "",
 }
 

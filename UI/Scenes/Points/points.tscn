@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://705wmfl20keu"]
 
-[ext_resource type="Script" path="res://UI/Scenes/Points/points.gd" id="1_4j83h"]
+[ext_resource type="Script" path="res://UI/Scenes/Points/Points.gd" id="1_4j83h"]
 
 [node name="Points" type="Control"]
 layout_mode = 3

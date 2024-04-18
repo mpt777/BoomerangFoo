@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfaho8h1whd80"]
+
+[ext_resource type="Script" path="res://UI/Scenes/GameOver/GameOver.gd" id="1_nld63"]
+[ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="2_hbh07"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nld63")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.581289, 0.332726, 0.730656, 1)
+
+[node name="MultiLayerButton" parent="." instance=ExtResource("2_hbh07")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -110.0
+offset_right = 176.0
+offset_bottom = 98.0
+text = "Thanks for Playing"
+
+[connection signal="ControllerPressed" from="MultiLayerButton" to="." method="_on_multi_layer_button_controller_pressed"]
+[connection signal="pressed" from="MultiLayerButton" to="." method="_on_multi_layer_button_pressed"]

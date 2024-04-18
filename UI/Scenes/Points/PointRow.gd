@@ -57,3 +57,8 @@ func add_new_points() -> void:
 			child.emit()
 			await get_tree().create_timer(0.5).timeout
 		index += 1
+		
+func has_won() -> bool:
+	var _initial_points = self.initial_points()
+	var _new_points = _initial_points + self.new_points()
+	return _initial_points + _new_points >= GameState.settings.points_per_round
