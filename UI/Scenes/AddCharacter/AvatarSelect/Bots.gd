@@ -1,13 +1,21 @@
 extends EtContainer
 
-func add_bot() -> void:
-	var enemy_data = EnemyData.new()
-	add_character(enemy_data)
+@export var next_et_container : EtContainer
+@onready var n_remove_bot : Button = $Bots/HBoxContainer/RemoveBot
+
+func enter():
+	super.enter()
+	
+	
+func _on_add_bot_pressed():
+	$"/root/Signals".emit_signal("add_bot")
 	
 func _on_remove_bot_pressed():
-	var last_child_data = character_list.get_child(character_list.get_child_count() - 1) as CharacterCircle
-	if last_child_data.character_data is EnemyData:
-		remove_character(last_child_data.character_data)
+	$"/root/Signals".emit_signal("remove_bot")
 
-func _on_add_bot_pressed():
-	add_bot()
+func _on_add_bots_controller_pressed(args):
+	self._on_add_bots_pressed()
+	
+func _on_add_bots_pressed():
+	self.next_et_container.enter()
+	self.exit()

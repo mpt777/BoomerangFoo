@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Enviroment/Objects/Wall.tscn" id="3_jrjor"]
 [ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Enviroment/PickupSpawner/PickupSpawner.tscn" id="6_muvuk"]
 [ext_resource type="Script" path="res://Scenes/Enviroment/StageElements/MyScatter.gd" id="7_tilfs"]
-[ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Enviroment/StageElements/character_spawner.tscn" id="8_vg2xa"]
+[ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Enviroment/StageElements/CharacterSpawner.tscn" id="8_vg2xa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
 sky_top_color = Color(1, 1, 1, 1)

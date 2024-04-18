@@ -1,8 +1,11 @@
 extends Button
 class_name MultiLayerButton
 
+#@onready var n_border : ColorRect = $Border2
+
 @onready var n_margin : MarginContainer = $MarginContainer
 @onready var n_border : ColorRect = $MarginContainer/Border
+
 
 var controllers := []
 
@@ -36,8 +39,10 @@ func set_border_width(width: int) -> void:
 	
 func set_color(color: Color) -> void:
 	n_border.color = color
+	#n_border.material.set_shader_parameter("color", color)
 
 func render_state():
+	#var color : Color = n_border.material.get_shader_parameter("color")
 	var color : Color = n_border.color
 	if not self.controllers:
 		color.a = 0
@@ -47,6 +52,10 @@ func render_state():
 	
 		
 func _input(event):
+	if not self.controllers:
+		return
+	if not self.is_visible_in_tree():
+		self.controllers = []
 	for controller in self.controllers:
 		process_input(event, controller)
 			
@@ -85,8 +94,14 @@ func _on_controller_removed(controller : Controller):
 
 
 func _on_mouse_entered():
-	emit_signal("ControllerAdded", GameState.controllers[64])
+	emit_signal("ControllerAdded", GameState.get_keyboard_controller())
 
 
 func _on_mouse_exited():
-	emit_signal("ControllerRemoved", GameState.controllers[64])
+	emit_signal("ControllerRemoved", GameState.get_keyboard_controller())
+
+
+#func _on_resized():
+	#if not n_border:
+		#return
+	#n_border.material.set_shader_parameter("size", self.size)

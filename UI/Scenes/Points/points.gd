@@ -1,6 +1,6 @@
 extends Control
 
-var POINT_ROW := preload("res://UI/Scenes/Points/point_row.tscn")
+var POINT_ROW := preload("res://UI/Scenes/Points/PointRow.tscn")
 @onready var v_box_container = $VBoxContainer
 @onready var color_rect = $ColorRect
 
@@ -9,7 +9,7 @@ var POINT_ROW := preload("res://UI/Scenes/Points/point_row.tscn")
 func _ready():
 	color_rect.color = GameState.settings.background_color
 	
-	for character in GameState.players :
+	for character in GameState.players:
 		var point_row = POINT_ROW.instantiate().constructor(character as CharacterData)
 		v_box_container.add_child(point_row)
 	for child in v_box_container.get_children():

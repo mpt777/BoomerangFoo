@@ -12,10 +12,8 @@ var round_index := 0
 
 
 func _ready():
-	#players = GameStateDebug.default_character_data()
-	
-	#initialize_controller()
-	add_controller(0, false)
+	if self.settings.use_keyboard:
+		add_controller(0, false)
 	$"/root/Signals".connect("add_event", add_event)
 	$"/root/Signals".connect("start_round", start_round)
 	
@@ -50,6 +48,12 @@ func _input(event):
 			if get_viewport().gui_get_focus_owner():
 				ui.emit_signal("pressed")
 		
+func get_keyboard_controller() -> Controller:
+	for index in self.controllers:
+		var controller = self.controllers[index]
+		if not controller.is_joypad:
+			return controller
+	return self.controllers[0]
 		
 func add_character(character_data : CharacterData) -> void:
 	self.players.append(character_data)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci8nhfuwyfmxg"]
 
-[ext_resource type="PackedScene" uid="uid://dr436lni2ke1x" path="res://Scenes/Entities/StandardCharacter/standard_character.tscn" id="1_n1jng"]
+[ext_resource type="PackedScene" uid="uid://dr436lni2ke1x" path="res://Scenes/Entities/StandardCharacter/StandardCharacter.tscn" id="1_n1jng"]
 [ext_resource type="Script" path="res://Scenes/Entities/Players/Player.gd" id="1_x8lru"]
 
 [node name="Player" instance=ExtResource("1_n1jng")]

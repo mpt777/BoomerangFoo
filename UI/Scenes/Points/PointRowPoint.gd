@@ -1,4 +1,5 @@
 extends Control
+class_name PointRowPoint
 
 @onready var gpu_particles_2d = $GPUParticles2D
 @onready var point_row_point = $PointRowPoint

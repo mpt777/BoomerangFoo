@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyi4r3fgtmin"]
 
 [ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_i7bvu"]
-[ext_resource type="PackedScene" uid="uid://ce607ksxbron2" path="res://Scenes/Entities/Avatar/Witch/witch_mesh.tscn" id="2_xe3eo"]
+[ext_resource type="PackedScene" uid="uid://ce607ksxbron2" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="2_xe3eo"]
 
 [node name="Avatar" instance=ExtResource("1_i7bvu")]
 

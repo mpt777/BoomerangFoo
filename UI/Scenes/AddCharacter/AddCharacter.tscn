@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cft8qo4snyk1j"]
+[gd_scene load_steps=9 format=3 uid="uid://cft8qo4snyk1j"]
 
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_gdsw6"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AddCharacter.gd" id="2_k76w2"]
-[ext_resource type="PackedScene" uid="uid://c6oxb2keq06f5" path="res://UI/Scenes/AddCharacter/AvatarSelect/avatar_select.tscn" id="3_npwls"]
-[ext_resource type="PackedScene" uid="uid://bi0deab8cyp3b" path="res://UI/Scenes/AddCharacter/CharacterList/character_list.tscn" id="3_w46pa"]
+[ext_resource type="PackedScene" uid="uid://c6oxb2keq06f5" path="res://UI/Scenes/AddCharacter/AvatarSelect/AvatarSelect.tscn" id="3_npwls"]
+[ext_resource type="PackedScene" uid="uid://bi0deab8cyp3b" path="res://UI/Scenes/AddCharacter/CharacterList/CharacterList.tscn" id="3_w46pa"]
 [ext_resource type="PackedScene" uid="uid://dc7k2x4ohlq0f" path="res://UI/Scenes/AddCharacter/AvatarSelect/bots.tscn" id="5_btym3"]
+[ext_resource type="PackedScene" uid="uid://dk5u1rhx47v6r" path="res://UI/Scenes/AddCharacter/GameSettings/GameSettings.tscn" id="6_pl2lr"]
 
 [sub_resource type="Gradient" id="Gradient_pyc2h"]
 colors = PackedColorArray(0.637843, 0.637843, 0.637843, 1, 1, 1, 1, 1)
@@ -62,43 +63,21 @@ theme_override_constants/margin_bottom = 100
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="CharacterList" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_w46pa")]
+[node name="CharacterList" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("avatar_select") instance=ExtResource("3_w46pa")]
 layout_mode = 2
+avatar_select = NodePath("../AvatarSelect")
 
-[node name="AvatarSelect" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("ready_button_node") instance=ExtResource("3_npwls")]
+[node name="AvatarSelect" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_et_container") instance=ExtResource("3_npwls")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-ready_button_node = NodePath("../Bots")
+next_et_container = NodePath("../Bots")
 
-[node name="Bots" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_btym3")]
+[node name="Bots" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_et_container") instance=ExtResource("5_btym3")]
 visible = false
 layout_mode = 2
+next_et_container = NodePath("../GameSettings")
 
-[node name="GameSettings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="GameSettings" parent="MarginContainer/VBoxContainer" instance=ExtResource("6_pl2lr")]
 visible = false
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/GameSettings"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Ready" type="Button" parent="MarginContainer/VBoxContainer/GameSettings"]
-layout_mode = 2
-text = "Ready"
-
-[node name="StartGame" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/StartGame"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/StartGame"]
-layout_mode = 2
-text = "Start Game"
-
-[connection signal="button_up" from="MarginContainer/VBoxContainer/StartGame/StartGame" to="." method="_on_button_button_up"]

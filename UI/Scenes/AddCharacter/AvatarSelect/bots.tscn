@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc7k2x4ohlq0f"]
+[gd_scene load_steps=4 format=3 uid="uid://dc7k2x4ohlq0f"]
 
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_4ljc4"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelect/Bots.gd" id="1_egwjj"]
+[ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="3_y2nd0"]
 
 [node name="Bots" type="Control"]
 layout_mode = 3
@@ -42,6 +43,11 @@ text = "0"
 layout_mode = 2
 text = "+"
 
-[node name="AddBots" type="Button" parent="Bots"]
+[node name="AddBots" parent="Bots" instance=ExtResource("3_y2nd0")]
 layout_mode = 2
 text = "Add Bots"
+
+[connection signal="pressed" from="Bots/HBoxContainer/RemoveBot" to="." method="_on_remove_bot_pressed"]
+[connection signal="pressed" from="Bots/HBoxContainer/AddBot" to="." method="_on_add_bot_pressed"]
+[connection signal="ControllerPressed" from="Bots/AddBots" to="." method="_on_add_bots_controller_pressed"]
+[connection signal="pressed" from="Bots/AddBots" to="." method="_on_add_bots_pressed"]

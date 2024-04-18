@@ -1,7 +1,7 @@
 extends Area3D
 class_name Pickup
 
-var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/character_message_text.tscn")
+var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/CharacterMessageText.tscn")
 
 var SPELL_RESOURCES = [
 	preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/FireProjectile.tres"),

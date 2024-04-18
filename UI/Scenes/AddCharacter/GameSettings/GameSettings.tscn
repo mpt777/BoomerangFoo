@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk5u1rhx47v6r"]
+
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/GameSettings/GameSettings.gd" id="1_3sgup"]
+[ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="1_y55bv"]
+
+[node name="Container" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_3sgup")
+
+[node name="GameSettings" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MultiLayerButton" parent="GameSettings" instance=ExtResource("1_y55bv")]
+layout_mode = 2
+text = "Bash!"
+
+[connection signal="ControllerPressed" from="GameSettings/MultiLayerButton" to="." method="_on_multi_layer_button_controller_pressed"]
+[connection signal="pressed" from="GameSettings/MultiLayerButton" to="." method="_on_multi_layer_button_pressed"]

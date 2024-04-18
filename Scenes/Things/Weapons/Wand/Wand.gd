@@ -8,7 +8,7 @@ var melee_spell : Spell
 
 var current_spell : Spell
 
-var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/character_message_text.tscn")
+var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/CharacterMessageText.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

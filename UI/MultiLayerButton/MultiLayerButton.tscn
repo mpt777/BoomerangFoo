@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcgwtpk6myift"]
+[gd_scene load_steps=5 format=3 uid="uid://dcgwtpk6myift"]
 
 [ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/GameTheme.tres" id="1_nafk8"]
+[ext_resource type="Shader" path="res://UI/MultiLayerButton/border.gdshader" id="1_oqvmf"]
 [ext_resource type="Script" path="res://UI/MultiLayerButton/MultiLayerButton.gd" id="1_vk46m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3c2a0"]
+resource_local_to_scene = true
+shader = ExtResource("1_oqvmf")
+shader_parameter/color = Color(0.9, 0.351, 0.4059, 0)
+shader_parameter/size = Vector2(1920, 1080)
+shader_parameter/width = 10.0
 
 [node name="MultiLayerButton" type="Button"]
 anchors_preset = 15
@@ -10,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nafk8")
-text = "Testasdf asdf sadf asdf asdf sadf "
+text = "Banshee Bash!"
 script = ExtResource("1_vk46m")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -31,5 +39,19 @@ layout_mode = 2
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 
+[node name="Border2" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+material = SubResource("ShaderMaterial_3c2a0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
 [connection signal="ControllerAdded" from="." to="." method="_on_controller_added"]
 [connection signal="ControllerRemoved" from="." to="." method="_on_controller_removed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

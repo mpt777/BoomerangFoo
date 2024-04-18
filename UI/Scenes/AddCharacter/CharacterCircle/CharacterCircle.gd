@@ -22,4 +22,5 @@ func set_avatar(avatar_data : AvatarData):
 	for child in avatar_container.get_children():
 		child.queue_free()
 	avatar_container.add_child(self.character_data.avatar.avatar.instantiate())
+	$"/root/Signals".emit_signal("avatar_attached_to_character", self.character_data)
 	#self.set_color(self.character_data.avatar.color)

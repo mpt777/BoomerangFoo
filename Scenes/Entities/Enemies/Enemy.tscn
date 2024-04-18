@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dykxprnbbymbc"]
 
-[ext_resource type="PackedScene" uid="uid://dr436lni2ke1x" path="res://Scenes/Entities/StandardCharacter/standard_character.tscn" id="1_g18f2"]
+[ext_resource type="PackedScene" uid="uid://dr436lni2ke1x" path="res://Scenes/Entities/StandardCharacter/StandardCharacter.tscn" id="1_g18f2"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Enemy.gd" id="1_n83qt"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="6_2qefy"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/States/StateMachine.gd" id="7_04g71"]

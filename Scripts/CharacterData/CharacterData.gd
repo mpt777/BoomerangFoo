@@ -4,7 +4,7 @@ class_name CharacterData
 var character_name : String
 var max_health := 1
 var color : Color = Color(randf(),randf(),randf(),1)
-var avatar : AvatarData = preload("res://Scenes/Entities/Avatar/Witch/witch_data.tres")
+var avatar : AvatarData
 
 var melee_spell : ResourceSpell
 var range_spell : ResourceSpell

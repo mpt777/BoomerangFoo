@@ -17,4 +17,4 @@ func _ready():
 	self.button.set_color(self.avatar_data.color)
 
 func _on_multi_layer_button_controller_pressed(controller : Controller) -> void:
-	$"/root/Signals".emit_signal("select_avatar", controller, self.avatar_data)
+	$"/root/Signals".emit_signal("avatar_selected", controller, self.avatar_data)

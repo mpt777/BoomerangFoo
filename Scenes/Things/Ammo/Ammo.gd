@@ -1,7 +1,7 @@
 extends Node3D
 class_name Ammo
 
-var AMMO_ITEM = preload("res://Scenes/Things/Ammo/ammo_item.tscn")
+var AMMO_ITEM = preload("res://Scenes/Things/Ammo/AmmoItem.tscn")
 
 var READY_TRES = preload("res://Scenes/Things/Ammo/ammo_item_ready.tres")
 var RELOAD_TRES = preload("res://Scenes/Things/Ammo/ammo_item_reload.tres")

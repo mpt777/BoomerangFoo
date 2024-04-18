@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6oxb2keq06f5"]
 
-[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelect/avatar_select.gd" id="1_rkpr2"]
+[ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AvatarSelect/AvatarSelect.gd" id="1_rkpr2"]
 [ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="2_pw8nn"]
 
 [node name="AvatarSelect" type="Control"]
@@ -28,6 +28,9 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="MultiLayerButton" parent="VBoxContainer" instance=ExtResource("2_pw8nn")]
+[node name="ReadyButton" parent="VBoxContainer" instance=ExtResource("2_pw8nn")]
+visible = false
 layout_mode = 2
 text = "Ready!"
+
+[connection signal="ControllerPressed" from="VBoxContainer/ReadyButton" to="." method="_on_ready_button_controller_pressed"]
