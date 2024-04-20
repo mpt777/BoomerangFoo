@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellProjectile" load_steps=3 format=3 uid="uid://ol40l1jynm4d"]
 
 [ext_resource type="PackedScene" uid="uid://kny21vt2uvdv" path="res://Scenes/Things/Projectile/FireSpell/FireProjectile.tscn" id="1_bh0nb"]
-[ext_resource type="Script" path="res://Scenes/Things/Spells/ResourceSpell/SpellProjectile.gd" id="2_0m1c3"]
+[ext_resource type="Script" path="res://Scenes/Things/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="2_0m1c3"]
 
 [resource]
 script = ExtResource("2_0m1c3")

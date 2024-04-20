@@ -1,8 +1,10 @@
 extends Spell
 class_name ResourceSpell
 
-var spell_cast : SpellCast
+#var spell_cast : SpellCast
 var spell_projectile : SpellProjectile
+
+var modifiers : Array
 	
 func constructor() -> Spell:
 	return self
@@ -16,14 +18,36 @@ func attack(weapon : Weapon) -> Attack:
 	a.character = weapon.weapon_owner.data
 	return a
 	
-func cast(weapon: Weapon) -> void:
-	self.spell_cast.process(self, weapon)
+#func cast(weapon: Weapon) -> void:
+	#self.spell_cast.process(self, weapon)
 	
-func apply_resource(spell_resource : SpellResource) -> void:
-	if spell_resource is SpellCast:
-		self.spell_cast = spell_resource
-	if spell_resource is SpellProjectile:
-		self.spell_projectile = spell_resource
-		
 func spell_type():
 	return spell_projectile.spell_type
+	
+	
+#func get_count() -> int:
+	#return_count = count
+	#for modifier in self.modifiers
+		#if modifier is 
+	#
+func cast(weapon: Weapon) -> void:
+	var count = 1
+	
+	var spread_angle_degrees = 20
+	var start_angle = -spread_angle_degrees / 2.0
+	var angle_increment = spread_angle_degrees / (count - 1.0)
+
+	
+	for i in range(count):
+		var bullet := projectile()
+		
+		bullet.position = weapon.spawn_node().global_position
+		bullet.rotation = weapon.spawn_node().global_rotation
+		bullet.attack = attack(weapon)
+
+		if count > 1:
+			bullet.rotate_y(deg_to_rad(start_angle + i * angle_increment))
+
+		weapon.get_node("/root/Signals").emit_signal("add_projectile", bullet)
+		
+

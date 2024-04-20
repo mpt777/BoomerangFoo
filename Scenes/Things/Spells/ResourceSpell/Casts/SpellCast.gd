@@ -1,5 +1,6 @@
 extends SpellResource
 class_name SpellCast
+# Old, don't know what to do........................
 
 @export var count : int = 1
 
