@@ -1,13 +1,12 @@
 extends Area3D
 class_name Pickup
 
-var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/CharacterMessageText.tscn")
-
 var SPELL_RESOURCES = [
 	preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/FireProjectile.tres"),
 	preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/IceProjectile.tres"),
 	preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/RockWallProjectile.tres"),
 	preload("res://Scenes/Things/Spells/ResourceSpell/SpellCasts/MultiSpell.tres"),
+	preload("res://Scenes/Things/Effects/Speed.tres")
 ]
 #
 #func random_spell() -> Spell:
@@ -22,35 +21,32 @@ var SPELL_RESOURCES = [
 	#
 	#queue_free()
 	
-func random_resource() -> SpellResource:
+func random_resource() -> Effect:
 	return SPELL_RESOURCES[randi() % SPELL_RESOURCES.size()]
 	
+	
+func valid_resources(character : Character) -> Array:
+	var resources = []
+	for resource in SPELL_RESOURCES:
+		if resource == character.data.melee_projectile:
+			continue
+		if resource == character.data.range_projectile:
+			continue
+		if resource in character.data.modifiers:
+			continue
+		resources.append(resource)
+	return resources
+	
+	
 func pickup(character : Character) -> void:
-	var new_resource : SpellResource = random_resource()
-	
-	var range_spell : ResourceSpell = character.range_spell()
-	var melee_spell : ResourceSpell = character.melee_spell()
-	
-	if new_resource is SpellProjectile:
-		if new_resource.spell_type == new_resource.SPELL_TYPES.RANGE:
-			range_spell.apply_resource(new_resource)
-		else:
-			melee_spell.apply_resource(new_resource)
-	else:
-		range_spell.apply_resource(new_resource)
-		melee_spell.apply_resource(new_resource)
-	
-	character.signals.emit_signal("Wand.ChangeSpell", range_spell)
-	character.signals.emit_signal("Wand.ChangeSpell", melee_spell)
-	
-	emit_message(character, new_resource)
+	var new_resource : Effect = random_resource()
+	var resources = self.valid_resources(character)
+	if resources:
+		new_resource = resources[randi() % resources.size()]
+		
+	new_resource.apply(character)		
 	refill_mana(character)
 	queue_free()
-	
-func emit_message(character : Character, new_resource : SpellResource):
-	var message : CharacterMessageText = CHARACTER_MESSAGE.instantiate()
-	message.constructor(new_resource.name, new_resource.color)
-	character.signals.emit_signal("Message.AddMessage", message)
 
 func refill_mana(character : Character):
 	var spell := Spell.new()

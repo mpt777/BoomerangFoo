@@ -8,4 +8,4 @@ script = ExtResource("2_0m1c3")
 PROJECTILE = ExtResource("1_bh0nb")
 spell_type = 0
 name = "Fireball"
-color = Color(0.897093, 0.242756, 0.235124, 1)
+color = Color(0.752422, 0.247166, 0.232498, 1)

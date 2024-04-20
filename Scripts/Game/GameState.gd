@@ -17,6 +17,9 @@ func _ready():
 	$"/root/Signals".connect("add_event", add_event)
 	$"/root/Signals".connect("start_round", start_round)
 	
+	#for controller_id in Input.get_connected_joypads():
+		#add_controller(controller_id, true)
+	
 	Input.connect("joy_connection_changed", _joy_connection_changed)
 
 func _joy_connection_changed(id, connected):
@@ -47,6 +50,8 @@ func _input(event):
 			var ui = get_viewport().gui_get_focus_owner()
 			if get_viewport().gui_get_focus_owner():
 				ui.emit_signal("pressed")
+				
+		print(Input.get_connected_joypads())
 		
 func get_keyboard_controller() -> Controller:
 	for index in self.controllers:

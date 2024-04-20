@@ -24,8 +24,6 @@ func constructor(enemy_data : EnemyData):
 func _ready():
 	super._ready()
 	ai = AI.new().constructor(self)
-	signals.emit_signal("Wand.ChangeSpell", self.data.range_spell)
-	signals.emit_signal("Wand.ChangeSpell", self.data.melee_spell)
 	$AvatarWrapper.constructor(self)
 	
 func _physics_process(delta):

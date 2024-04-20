@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_0amnc")
 PROJECTILE = ExtResource("1_akdom")
-name = "Ice Shard"
-color = Color(0.53956, 0.768106, 0.932445, 1)
+spell_type = 0
+name = "IceShard"
+color = Color(0.28428, 0.750937, 0.928313, 1)

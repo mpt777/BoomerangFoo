@@ -18,8 +18,6 @@ func constructor(player_data : PlayerData):
 	
 func _ready():
 	super._ready()
-	signals.emit_signal("Wand.ChangeSpell", data.range_spell)
-	signals.emit_signal("Wand.ChangeSpell", data.melee_spell)
 	$AvatarWrapper.constructor(self)
 	#n_wand.change_spell(data.range_spell)
 	#n_wand.change_spell(data.melee_spell)

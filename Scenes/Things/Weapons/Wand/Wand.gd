@@ -3,38 +3,17 @@ class_name Wand
 
 @export var mana_component : ManaComponent
 
-var range_spell : Spell
-var melee_spell : Spell
-
 var current_spell : Spell
-
-var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/CharacterMessageText.tscn")
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	weapon_owner.signals.register("Wand.ChangeSpell", change_spell)
+	#weapon_owner.signals.register("Wand.ChangeSpell", change_spell)
 	weapon_owner.signals.register("Wand.Attack", use)
-	$"/root/Signals".connect("start_round", initialize)
 	
-func initialize():
-	emit_message(range_spell.spell_projectile)
-	emit_message(range_spell.spell_cast)
-	emit_message(melee_spell.spell_projectile)
-	
-
 func _physics_process(delta):
 	return
 	global_transform = weapon_owner.anchors.anchor("RightHand").global_transform
 	#global_rotation = weapon_owner.anchors.anchor("RightHand").global_rotation
-	#
-
-func emit_message(spell_resource : SpellResource):
-	if !spell_resource.name:
-		return
-	var message : CharacterMessageText = CHARACTER_MESSAGE.instantiate()
-	message.constructor(spell_resource.name, spell_resource.color)
-	weapon_owner.signals.emit_signal("Message.AddMessage", message)
 	
 func use(type : String):
 	current_spell = spell_lookup(type)
@@ -51,16 +30,10 @@ func _on_reloading_reloaded():
 	weapon_owner.signals.emit_signal("Wand.Reloaded")
 	
 func spell_lookup(lookup_string : String) -> Spell:
-	var lookup := {
-		"range": range_spell,
-		"melee": melee_spell
-	}
-	return lookup[lookup_string]
-	
-func change_spell(spell : Spell):
-	if spell.spell_type() == spell.SPELL_TYPES.RANGE:
-		range_spell = spell
-		weapon_owner.data.range_spell = spell
-	else:
-		melee_spell = spell
-		weapon_owner.data.melee_spell = spell
+	var spell := ResourceSpell.new()
+	spell.spell_cast = SpellCast.new()
+	for modifier in weapon_owner.data.modifiers:
+		if modifier is SpellCast:
+			spell.spell_cast = modifier
+	spell.spell_projectile = weapon_owner.data.melee_projectile  if lookup_string == "melee" else weapon_owner.data.range_projectile
+	return spell

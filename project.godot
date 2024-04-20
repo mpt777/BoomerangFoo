@@ -48,6 +48,13 @@ Pickup=""
 FollowCamera=""
 Character=""
 
+[input]
+
+Test={
+"deadzone": 0.5,
+"events": []
+}
+
 [layer_names]
 
 3d_physics/layer_1="World"

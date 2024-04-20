@@ -7,5 +7,5 @@
 script = ExtResource("2_iwtnx")
 PROJECTILE = ExtResource("1_plhsw")
 spell_type = 1
-name = "RockWall"
-color = Color(0.43, 0.277708, 0.0645, 1)
+name = "Rockwall"
+color = Color(0.318177, 0.190984, 0.0141927, 1)

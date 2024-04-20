@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_w8beh")
 count = 3
-name = "Multi Spell"
-color = Color(0.895883, 0.782404, 0.213455, 1)
+name = "MultiSpell"
+color = Color(0.964791, 0.345232, 0.74924, 1)
