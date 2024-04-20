@@ -16,8 +16,8 @@ var modifiers : Array
 #var melee_spell : ResourceSpellA
 #var range_spell : ResourceSpell
 
-var RANGE = preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/IceProjectile.tres")
-var MELEE = preload("res://Scenes/Things/Spells/ResourceSpell/SpellProjectiles/RockWallProjectile.tres")
+var RANGE = preload("res://Scenes/Things/Spells/ResourceSpell/Projectiles/IceProjectile.tres")
+var MELEE = preload("res://Scenes/Things/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres")
 
 func instantiate_scene() -> Character:
 	return 

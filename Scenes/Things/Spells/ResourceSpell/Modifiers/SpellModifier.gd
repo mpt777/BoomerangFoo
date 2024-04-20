@@ -1,6 +1,6 @@
 extends SpellResource
-class_name MultiSpell
+class_name SpellModifier
 
-@export var spell_cast : SpellCast
-@export var key : String
-@export var value : int
+
+@export var count := 1
+@export var speed := 1
