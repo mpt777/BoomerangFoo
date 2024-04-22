@@ -8,8 +8,7 @@ var weapon: Weapon
 var weapon_owner: Node
 var attack : Attack
 
-
-signal ToBeDeleted
+signal queue_freed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,5 +39,11 @@ func _on_attack_component_body_entered(body):
 	if body is Character:
 		if body.data == attack.character:
 			return
-	ToBeDeleted.emit()
+	delete()
+
+func _on_attack_component_attacked():
+	delete()
+	
+func delete() -> void:
+	queue_freed.emit()
 	queue_free()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc75lgf464fw6"]
 
-[ext_resource type="PackedScene" uid="uid://dq14756wa0bxi" path="res://Scenes/Enviroment/CharaterMessage/CharacterMessage.tscn" id="1_4wpgj"]
-[ext_resource type="Script" path="res://Scenes/Enviroment/CharaterMessage/CharacterMessageText.gd" id="2_3vbbg"]
+[ext_resource type="PackedScene" uid="uid://dq14756wa0bxi" path="res://Scenes/Enviroment/CharacterMessage/CharacterMessage.tscn" id="1_4wpgj"]
+[ext_resource type="Script" path="res://Scenes/Enviroment/CharacterMessage/CharacterMessageText.gd" id="2_3vbbg"]
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="2_htfht"]
 [ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/GameTheme.tres" id="4_5n5id"]
 

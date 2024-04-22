@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dq14756wa0bxi"]
 
-[ext_resource type="Script" path="res://Scenes/Enviroment/CharaterMessage/CharacterMessage.gd" id="1_x8xxn"]
+[ext_resource type="Script" path="res://Scenes/Enviroment/CharacterMessage/CharacterMessage.gd" id="1_x8xxn"]
 
 [node name="CharacterMessage" type="MarginContainer"]
 script = ExtResource("1_x8xxn")

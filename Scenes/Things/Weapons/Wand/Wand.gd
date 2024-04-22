@@ -16,9 +16,10 @@ func _physics_process(delta):
 	#global_rotation = weapon_owner.anchors.anchor("RightHand").global_rotation
 	
 func use(type : String):
-	current_spell = create_spell(type)
-	if mana_component.is_able_to_cast(current_spell):
+	var new_spell = create_spell(type)
+	if mana_component.is_able_to_cast(new_spell):
 		if ($StateMachine.current_state.has_method("attack")):
+			current_spell = new_spell
 			$StateMachine.current_state.attack()
 			
 func attack() -> void:

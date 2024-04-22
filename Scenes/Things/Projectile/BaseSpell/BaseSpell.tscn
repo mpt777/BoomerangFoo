@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://boe8tbm6ek6gr"]
+
+[ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Things/Projectile/Projectile.tscn" id="1_gr34g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7vyx"]
+albedo_color = Color(2.40654e-07, 0.617191, 0.284941, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_otgub"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2qytn"]
+
+[node name="Projectile" instance=ExtResource("1_gr34g")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(9.55343e-16, -2.18557e-08, 0.5, -0.5, -2.18557e-08, 0, 2.18557e-08, -0.5, -2.18557e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_s7vyx")
+mesh = SubResource("CapsuleMesh_otgub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
+transform = Transform3D(9.55343e-16, -2.18557e-08, 0.5, -0.5, -2.18557e-08, 0, 2.18557e-08, -0.5, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_2qytn")

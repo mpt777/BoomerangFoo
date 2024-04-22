@@ -7,7 +7,8 @@ var SPELL_RESOURCES = [
 	preload("res://Scenes/Things/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres"),
 	preload("res://Scenes/Things/Spells/ResourceSpell/Modifiers/MultiSpell.tres"),
 	preload("res://Scenes/Things/Spells/ResourceSpell/Modifiers/SpeedySpells.tres"),
-	preload("res://Scenes/Things/Effects/Speed.tres")
+	preload("res://Scenes/Things/Spells/ResourceSpell/Modifiers/DoubleSpell.tres"),
+	preload("res://Scenes/Things/Effects/Speed.tres"),
 ]
 #
 #func random_spell() -> Spell:

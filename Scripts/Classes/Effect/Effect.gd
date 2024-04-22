@@ -1,7 +1,7 @@
 extends Resource
 class_name Effect
 
-var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharaterMessage/CharacterMessageText.tscn")
+var CHARACTER_MESSAGE = preload("res://Scenes/Enviroment/CharacterMessage/CharacterMessageText.tscn")
 
 @export var name : String
 @export var color : Color

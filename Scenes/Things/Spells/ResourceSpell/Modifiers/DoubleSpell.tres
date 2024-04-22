@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellModifier" load_steps=2 format=3 uid="uid://cctq6qkyaxgqn"]
+
+[ext_resource type="Script" path="res://Scenes/Things/Spells/ResourceSpell/Modifiers/SpellModifier.gd" id="1_yeix4"]
+
+[resource]
+script = ExtResource("1_yeix4")
+count = 1
+speed = 1
+tap_count = 2
+name = "Double Spell"
+color = Color(0.439598, 0.427602, 0.434511, 1)

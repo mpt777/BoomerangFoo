@@ -16,13 +16,10 @@ var modifiers : Array
 #var melee_spell : ResourceSpellA
 #var range_spell : ResourceSpell
 
-var RANGE = preload("res://Scenes/Things/Spells/ResourceSpell/Projectiles/IceProjectile.tres")
-var MELEE = preload("res://Scenes/Things/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres")
-
 func instantiate_scene() -> Character:
 	return 
 
 func _init():
 	self.max_health = GameState.settings.character_max_health
-	self.range_projectile = RANGE
-	self.melee_projectile = MELEE
+	self.range_projectile = GameState.settings.character_default_range
+	self.melee_projectile = GameState.settings.character_default_melee

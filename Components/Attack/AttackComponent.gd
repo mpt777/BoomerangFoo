@@ -6,6 +6,10 @@ class_name AttackComponent
 
 var attack : Attack
 
+#when this attack component attacks somthing, this is emitted
+signal attacked
+signal collided
+
 func base_attack() -> Attack:
 	var a = Attack.new()
 	a.damage = damage
@@ -24,5 +28,11 @@ func _on_area_entered(area):
 		if area.owner is Character:
 			if area.owner.data != a.character:
 				area.damage(a)
+				attacked.emit()
 		else:
 			area.damage(a)
+			attacked.emit()
+
+
+func _on_body_entered(body):
+	collided.emit()

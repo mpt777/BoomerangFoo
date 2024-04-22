@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfvydv0ig7eqr"]
+[gd_scene load_steps=6 format=3 uid="uid://bfvydv0ig7eqr"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Things/Projectile/Projectile.tscn" id="1_gsrc0"]
 [ext_resource type="Script" path="res://Scenes/Things/Projectile/IceSpell/IceProjectile.gd" id="2_8la0v"]
-[ext_resource type="PackedScene" uid="uid://dw7km8i2ybx15" path="res://Components/Attack/AttackComponent.tscn" id="3_4s2wa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uewg"]
 transparency = 1
@@ -20,8 +19,6 @@ script = ExtResource("2_8la0v")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("PrismMesh_it2ru")
 
-[node name="AttackComponent" parent="." index="1" instance=ExtResource("3_4s2wa")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
 shape = SubResource("SphereShape3D_xfj30")
 
@@ -30,5 +27,4 @@ wait_time = 0.25
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="AttackComponent" to="." method="_on_attack_component_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

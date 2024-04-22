@@ -8,6 +8,3 @@ func release() -> void:
 
 func _on_finished():
 	self.queue_free()
-
-func _on_fire_projectile_to_be_deleted():
-	release()

@@ -3,7 +3,6 @@ class_name ResourceSpell
 
 #var spell_cast : SpellCast
 var spell_projectile : SpellProjectile
-
 var modifiers : Array
 	
 func constructor() -> Spell:
@@ -18,19 +17,19 @@ func attack(weapon : Weapon) -> Attack:
 	a.character = weapon.weapon_owner.data
 	return a
 	
-#func cast(weapon: Weapon) -> void:
-	#self.spell_cast.process(self, weapon)
-	
 func spell_type():
 	return spell_projectile.spell_type
 	
-	
-#func get_count() -> int:
-	#return_count = count
-	#for modifier in self.modifiers
-		#if modifier is 
-	#
 func cast(weapon: Weapon) -> void:
+	var tap_count := 1
+	for modifier in self.modifiers:
+		tap_count *= modifier.tap_count
+		
+	for count in tap_count:
+		instance_projectiles(weapon)
+		await GameState.get_tree().create_timer(0.3).timeout
+	
+func instance_projectiles(weapon : Weapon) -> void:
 	var count = 1
 	var bullet_speed = 1
 	for modifier in self.modifiers:
