@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dr436lni2ke1x"]
+[gd_scene load_steps=20 format=3 uid="uid://dr436lni2ke1x"]
 
 [ext_resource type="PackedScene" uid="uid://krjr1lv4wprt" path="res://Scenes/Entities/Character/Character.tscn" id="1_3nbfc"]
 [ext_resource type="Script" path="res://Scenes/Entities/StandardCharacter/StandardCharacter.gd" id="2_5anm4"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b3036qp4hmjcv" path="res://Scenes/Things/Ammo/ammo.tscn" id="14_e5rh7"]
 [ext_resource type="PackedScene" uid="uid://0jxcydlgsw6n" path="res://Scenes/Enviroment/CharacterMessage/CharacterMessageManager.tscn" id="15_5x71x"]
 [ext_resource type="PackedScene" uid="uid://dx6k0tyu2yyrd" path="res://Scenes/Entities/Avatar/Meta/Wrapper/AvatarWrapper.tscn" id="15_6ieq7"]
+[ext_resource type="Script" path="res://Scenes/Entities/StandardCharacter/Pointer.gd" id="16_6lrw1"]
+[ext_resource type="Texture2D" uid="uid://cubqsjj8fed3g" path="res://Assets/Images/chevron.png" id="17_f81kq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ldlm"]
 
@@ -77,6 +79,15 @@ spawn_point = NodePath("SpawnPoint")
 anchor = "RightHand"
 
 [node name="AvatarWrapper" parent="." index="10" instance=ExtResource("15_6ieq7")]
+
+[node name="Pointer" type="Node3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+script = ExtResource("16_6lrw1")
+
+[node name="Sprite" type="Sprite3D" parent="Pointer" index="0"]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
+modulate = Color(0, 0.517226, 0.770907, 1)
+texture = ExtResource("17_f81kq")
 
 [connection signal="area_shape_entered" from="PickUpComponent" to="PickUpComponent" method="_on_area_shape_entered"]
 [connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_component_end_dash"]

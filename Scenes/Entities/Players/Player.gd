@@ -41,12 +41,14 @@ func get_input_direction() -> Vector3:
 func _input(event):
 	#if event.is_action_pressed(controller.action("thow_weapon")):
 		#n_hand.throw()
-	if event.is_action_pressed(controller.action("attack_range")):
-		#n_hand.use("range")
+	if event.is_action_pressed(controller.action("attack_range")) or event.is_action_pressed(controller.action("attack_melee")):
+		n_pointer.start()
+	if event.is_action_released(controller.action("attack_range")):
 		signals.emit_signal("Wand.Attack", "range")
-	if event.is_action_pressed(controller.action("attack_melee")):
-		#n_hand.use("melee")
+		n_pointer.reset()
+	if event.is_action_released(controller.action("attack_melee")):
 		signals.emit_signal("Wand.Attack", "melee")
+		n_pointer.reset()
 	if event.is_action_pressed(controller.action("dash")):
 		signals.emit_signal("Movement.dash")
 		
