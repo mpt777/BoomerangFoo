@@ -7,3 +7,6 @@ default_font = ExtResource("1_a5ty5")
 Button/font_sizes/font_size = 60
 Label/font_sizes/font_size = 60
 Label/fonts/font = ExtResource("1_a5ty5")
+TabBar/font_sizes/font_size = 24
+TabBar/fonts/font = ExtResource("1_a5ty5")
+TabContainer/font_sizes/font_size = 60

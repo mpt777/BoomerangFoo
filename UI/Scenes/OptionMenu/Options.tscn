@@ -1,0 +1,169 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckdym2ev5hfud"]
+
+[ext_resource type="Script" path="res://UI/Scenes/OptionMenu/Options.gd" id="1_ku1u2"]
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="2_8pe6x"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ku1u2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.499684, 0.270455, 0.165558, 1)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8pe6x")
+current_tab = 1
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8pe6x")
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Audio/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_8pe6x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/ScrollContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Sound" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Sound"]
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+text = "Sound"
+
+[node name="Spacer" type="Control" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Sound"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="Music" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+text = "Music"
+
+[node name="Spacer" type="Control" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider2" type="HSlider" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Music"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="SoundEffects" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/SoundEffects"]
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+text = "Effects"
+
+[node name="Spacer" type="Control" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/SoundEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider2" type="HSlider" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/SoundEffects"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8pe6x")
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Video/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_8pe6x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/ScrollContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+text = "VSync"
+
+[node name="Spacer" type="Control" parent="TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_8pe6x")
+
+[node name="Accessibility" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_8pe6x")

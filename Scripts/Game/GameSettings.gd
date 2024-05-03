@@ -16,6 +16,15 @@ var background_color : Color = Color(0.14, 0.14, 0.14)
 var points_per_round = 5
 
 
+var settings = {
+	"sound": (func(): 
+		var x = Setting.new()
+		x.updated = func():
+			print(x)
+		return x).call()
+}
+
+
 var attrs = [
 	"settings_name",
 	"character_max_health",
