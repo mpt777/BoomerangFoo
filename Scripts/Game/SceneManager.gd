@@ -7,7 +7,7 @@ var VIGNETTE = preload("res://UI/Vignette/vignette.tscn")
 	"main":"res://UI/Scenes/MainMenu/MainMenu.tscn",
 	"add_character": "res://UI/Scenes/AddCharacter/AddCharacter.tscn",
 	
-	"settings": "",
+	"settings": "res://UI/Scenes/OptionMenu/Options.tscn",
 	
 	"game": "res://Scenes/GameLoop/GameLoop.tscn",
 	"points": "res://UI/Scenes/Points/points.tscn",

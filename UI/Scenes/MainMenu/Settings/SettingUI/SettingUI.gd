@@ -1,6 +1,6 @@
 @tool
 extends HBoxContainer
-class_name OptionControl
+class_name SettingControl
 
 @onready var n_label = $Label
 var n_input

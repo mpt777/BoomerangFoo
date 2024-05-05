@@ -18,7 +18,7 @@ var points_per_round = 5
 
 var settings := SettingRegister.new() 
 
-func constructor() -> GameSetting:
+func constructor() -> GameSettings:
 	self.settings.register(
 		Setting.new().constructor("Sound", "sound", 50, 
 		func(setting : Setting): 
@@ -54,7 +54,7 @@ func settings_path() -> String:
 	
 func save_to_disk():
 	var data = {}
-	for attr in self.settings:
+	for attr in self.settings.settings():
 		var setting : Setting = self.settings[attr]
 		data[setting.code] = setting.get_value()
 	Serializer.write_json(Serializer.user(settings_path()), data)
@@ -62,7 +62,7 @@ func save_to_disk():
 func load_from_disk():
 	var data = Serializer.read_json(Serializer.user(settings_path()))
 	for attr in data:
-		var setting : Setting = self.settings.get(attr, null)
+		var setting : Setting = self.settings.settings().get(attr, null)
 		if setting:
 			setting.set_value(data[setting.code])
 			

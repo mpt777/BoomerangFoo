@@ -26,5 +26,4 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Bash!"
 
-[connection signal="ControllerPressed" from="GameSettings/MultiLayerButton" to="." method="_on_multi_layer_button_controller_pressed"]
 [connection signal="pressed" from="GameSettings/MultiLayerButton" to="." method="_on_multi_layer_button_pressed"]
