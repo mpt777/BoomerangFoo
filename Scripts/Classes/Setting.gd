@@ -6,23 +6,23 @@ var code : String
 var updated : Callable
 var default
 var value
-var bound
 
-func constructor():
-	pass
+func constructor(label: String, code: String, default, updated: Callable) -> Setting:
+	self.label = label
+	self.code = code
+	self.updated = updated
+	self.default = default
+	return self
 	
-func load_from_save():
-	pass
+func set_value(value):
+	self.value = value
+	self.updated.call(self)
+	
+func get_value():
+	if self.value != null:
+		return self.value
+	return self.default
 	
 func _update(value):
 	self.value = value
-	self.updated.call()
-	
-func bind(node : Control):
-	self.bound = node
-	
-	if self.bound is HSlider:
-		self.bound.value_changed.connect(self._update)
-	elif self.bound is CheckButton:
-		self.bound.toggled.connect(self._update)
-		
+	self.updated.call(self)

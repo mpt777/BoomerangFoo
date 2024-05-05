@@ -5,7 +5,7 @@ extends Node
 var players := []
 var controllers := {}
 var events := []
-var settings := GameSettings.new()
+var settings : GameSettings = GameSettings.new().constructor()
 
 var played_stages : Array
 var round_index := 0

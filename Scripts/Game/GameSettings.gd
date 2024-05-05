@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name GameSettings
 
@@ -15,39 +16,53 @@ var character_default_melee = preload("res://Scenes/Things/Spells/ResourceSpell/
 var background_color : Color = Color(0.14, 0.14, 0.14)
 var points_per_round = 5
 
+var settings := SettingRegister.new() 
 
-var settings = {
-	"sound": (func(): 
-		var x = Setting.new()
-		x.updated = func():
-			print(x)
-		return x).call()
-}
-
-
-var attrs = [
-	"settings_name",
-	"character_max_health",
-	"character_default_range",
-	"character_default_melee",
-]
-
-
-func ready():
-	save_to_disk()
+func constructor() -> GameSetting:
+	self.settings.register(
+		Setting.new().constructor("Sound", "sound", 50, 
+		func(setting : Setting): 
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), setting.get_value())
+	))
+	self.settings.register(
+		Setting.new().constructor("SFX", "sfx", 50, 
+		func(setting : Setting): 
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), setting.get_value())
+	))
+	self.settings.register(
+		Setting.new().constructor("Music", "music", 50,
+		func(setting : Setting): 
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), setting.get_value())
+	))
+	self.settings.register(
+		Setting.new().constructor("Full Screen", "full_screen", false,
+		func(setting : Setting): 
+			var value = DisplayServer.WINDOW_MODE_WINDOWED
+			if setting.value:
+				value = DisplayServer.WINDOW_MODE_FULLSCREEN 
+			DisplayServer.window_set_mode(value)
+	))
+	self.settings.register(
+		Setting.new().constructor("Can Enemies Attack", "enemy_attack", true,
+		func(setting : Setting): 
+			pass
+	))
+	return self
 
 func settings_path() -> String:
 	return "settings_{0}.save".format([settings_index])
 	
 func save_to_disk():
 	var data = {}
-	for attr in attrs:
-		data[attr] = get(attr)
+	for attr in self.settings:
+		var setting : Setting = self.settings[attr]
+		data[setting.code] = setting.get_value()
 	Serializer.write_json(Serializer.user(settings_path()), data)
 	
 func load_from_disk():
 	var data = Serializer.read_json(Serializer.user(settings_path()))
-	for key in data:
-		if key in attrs:
-			set(key, data[key])
+	for attr in data:
+		var setting : Setting = self.settings.get(attr, null)
+		if setting:
+			setting.set_value(data[setting.code])
 			
