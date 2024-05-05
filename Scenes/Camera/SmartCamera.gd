@@ -102,13 +102,8 @@ func _set_position_center() -> void:
 	var center : Vector3 = (_min_bound + _max_bound) / 2
 	center.y = 0
 	
-	var world_center : Vector2 = camera.unproject_position(center)
-	var screen_center := Vector2(_screen_size/2)
-	
-	var difference = world_center - screen_center
-	
-	position.x = lerp(position.x, position.x + (difference.x / _screen_size.x * 50), MOVE_SPEED)
-	position.z = lerp(position.z, position.z + (difference.y / _screen_size.y * 50), MOVE_SPEED)
+	position.x = lerp(position.x, center.x, MOVE_SPEED)
+	position.z = lerp(position.z, center.z, MOVE_SPEED)
 	
 func _set_fov() -> void:
 	var min_p_s : Vector2 = camera.unproject_position(_min_bound_margin)
@@ -118,11 +113,11 @@ func _set_fov() -> void:
 	r = r.expand(min_p_s)
 	r = r.expand(max_p_s)
 	
-	var z
-	if r.size.x > r.size.y * _screen_size.aspect():
-		z = r.size.x / _screen_size.x
-	else:
-		z = r.size.y / _screen_size.y
+	var base_screen_size = Vector2(1920, 1080)
+	
+	var z = max(r.size.x / base_screen_size.x, r.size.y / base_screen_size.y)
+	
+	camera.fov = 23
 	
 	camera.fov = lerp(camera.fov, clamp(camera.fov * z, minFOV, maxFOV), ZOOM_SPEED)
 	
@@ -167,5 +162,4 @@ func _physics_process(delta):
 	_set_bounds()
 	_set_position_center()
 	_set_fov()
-	#debug()
 
