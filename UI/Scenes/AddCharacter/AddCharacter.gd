@@ -1,6 +1,6 @@
 extends EtContainer
 
-
+@export var exit_container : EtContainer
 @onready var character_list = $MarginContainer/VBoxContainer/CharacterList
 
 var containers := []

@@ -5,7 +5,7 @@ class_name GameSettings
 
 var debug := true
 
-var use_keyboard=false
+var use_keyboard=true
 var settings_name := "Default Settings"
 var settings_index := 1
 

@@ -12,8 +12,8 @@ var round_index := 0
 
 
 func _ready():
-	if self.settings.use_keyboard:
-		add_controller(0, false)
+	#if self.settings.use_keyboard:
+	process_keyboard()
 	$"/root/Signals".connect("add_event", add_event)
 	$"/root/Signals".connect("start_round", start_round)
 	
@@ -27,7 +27,21 @@ func _joy_connection_changed(id, connected):
 		add_controller(id)
 	else:
 		remove_controller(id)
+	process_keyboard()
 	$"/root/Signals".emit_signal("controllers_changed", self.controllers[id], connected)
+	
+func process_keyboard():
+	if Input.get_connected_joypads():
+		self.settings.use_keyboard = false
+		for attr in self.controllers:
+			var _controller : Controller = self.controllers[attr]
+			if _controller.is_joypad:
+				remove_controller(attr)
+				return
+	else:
+		self.settings.use_keyboard = true
+		add_controller(0, false)
+		return
 	
 	
 func add_controller(id : int, is_joypad: bool = true) -> void:

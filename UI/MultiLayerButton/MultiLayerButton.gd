@@ -61,15 +61,15 @@ func _input(event):
 			
 			
 func process_input(event : InputEvent, controller: Controller):
-	if event.is_action_pressed(controller.action("ui_accept")):
+	if event.is_action_released(controller.action("ui_accept")):
 		emit_signal("ControllerPressed", controller)
-	if event.is_action_pressed(controller.action("ui_left")):
+	if event.is_action_released(controller.action("ui_left")):
 		move_focus(SIDE_LEFT, controller)
-	if event.is_action_pressed(controller.action("ui_right")):
+	if event.is_action_released(controller.action("ui_right")):
 		move_focus(SIDE_RIGHT, controller)
-	if event.is_action_pressed(controller.action("ui_up")):
+	if event.is_action_released(controller.action("ui_up")):
 		move_focus(SIDE_TOP, controller)
-	if event.is_action_pressed(controller.action("ui_down")):
+	if event.is_action_released(controller.action("ui_down")):
 		move_focus(SIDE_BOTTOM, controller)
 		
 		

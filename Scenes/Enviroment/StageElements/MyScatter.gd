@@ -41,7 +41,7 @@ extends Marker3D
 
 var multimesh : MultiMesh
 var mesh_library : MeshLibrary = preload("res://Assets/Blender/Tree/tree.meshlib")
-var TREE := preload("res://Scenes/Enviroment/Decorations/Tree/Tree.tscn")
+var TREE := preload("res://Scenes/Decorations/Tree/Tree.tscn")
 var transforms := []
 
 var rng : RandomNumberGenerator

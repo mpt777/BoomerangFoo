@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cft8qo4snyk1j"]
+[gd_scene load_steps=7 format=3 uid="uid://cft8qo4snyk1j"]
 
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="1_gdsw6"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/AddCharacter.gd" id="2_k76w2"]
@@ -6,16 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bi0deab8cyp3b" path="res://UI/Scenes/AddCharacter/CharacterList/CharacterList.tscn" id="3_w46pa"]
 [ext_resource type="PackedScene" uid="uid://dc7k2x4ohlq0f" path="res://UI/Scenes/AddCharacter/AvatarSelect/bots.tscn" id="5_btym3"]
 [ext_resource type="PackedScene" uid="uid://dk5u1rhx47v6r" path="res://UI/Scenes/AddCharacter/GameSettings/GameSettings.tscn" id="6_pl2lr"]
-
-[sub_resource type="Gradient" id="Gradient_pyc2h"]
-colors = PackedColorArray(0.637843, 0.637843, 0.637843, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yutof"]
-gradient = SubResource("Gradient_pyc2h")
-width = 1920
-height = 1080
-fill_from = Vector2(0.29745, 1)
-fill_to = Vector2(0.388102, 0)
 
 [node name="AddCharacter" type="Control"]
 layout_mode = 3
@@ -27,26 +17,6 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_gdsw6")
 script = ExtResource("2_k76w2")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0.499684, 0.270455, 0.165558, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme = ExtResource("1_gdsw6")
-texture = SubResource("GradientTexture2D_yutof")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

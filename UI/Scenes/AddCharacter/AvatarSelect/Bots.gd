@@ -3,9 +3,6 @@ extends EtContainer
 @export var next_et_container : EtContainer
 @onready var n_remove_bot : Button = $Bots/HBoxContainer/RemoveBot
 
-func enter():
-	super.enter()
-	
 	
 func _on_add_bot_pressed():
 	$"/root/Signals".emit_signal("add_bot")
