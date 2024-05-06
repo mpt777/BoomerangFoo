@@ -68,6 +68,8 @@ func clear():
 			
 func get_random_point() -> Vector3:
 	if not cull_size:
+		if not rng:
+			return Vector3(0,0,0)
 		return Vector3(
 			rng.randf_range(transform.origin.x - (placement_size.x/2), transform.origin.x + (placement_size.x/2)),
 			0,
