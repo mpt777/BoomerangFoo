@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dwtbut4pjsxew"]
+
+[resource]
+resource_name = "Inner"
+cull_mode = 2
+albedo_color = Color(0.458277, 0.444257, 0.432206, 1)
+roughness = 0.5

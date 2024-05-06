@@ -43,8 +43,7 @@ func physics_update(_delta : float):
 	movement.move(body.target_direction)
 	
 	if GameState.settings.settings.get_value("enemy_attack", true) and body.target_player:
-		body.n_hand.target_position = body.target_player.global_position
-		body.n_hand.use("range")
+		body.signals.emit_signal("Wand.Attack", "range")
 
 func _on_navigation_agent_3d_target_reached():
 	select_new_position()

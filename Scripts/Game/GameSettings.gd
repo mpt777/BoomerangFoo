@@ -55,14 +55,14 @@ func settings_path() -> String:
 func save_to_disk():
 	var data = {}
 	for attr in self.settings.settings():
-		var setting : Setting = self.settings[attr]
+		var setting : Setting = self.settings.setting(attr)
 		data[setting.code] = setting.get_value()
 	Serializer.write_json(Serializer.user(settings_path()), data)
 	
 func load_from_disk():
 	var data = Serializer.read_json(Serializer.user(settings_path()))
 	for attr in data:
-		var setting : Setting = self.settings.settings().get(attr, null)
+		var setting : Setting = self.settings.setting(attr)
 		if setting:
 			setting.set_value(data[setting.code])
 			

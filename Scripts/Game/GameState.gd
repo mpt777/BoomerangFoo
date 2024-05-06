@@ -51,7 +51,6 @@ func _input(event):
 			if get_viewport().gui_get_focus_owner():
 				ui.emit_signal("pressed")
 				
-		print(Input.get_connected_joypads())
 		
 func get_keyboard_controller() -> Controller:
 	for index in self.controllers:

@@ -46,5 +46,4 @@ func physics_update(_delta : float):
 	movement.move(body.target_direction)
 	
 	if body.target_player:
-		body.n_hand.target_position = body.target_player.global_position
-		body.n_hand.use("range")
+		body.signals.emit_signal("Wand.Attack", "range")

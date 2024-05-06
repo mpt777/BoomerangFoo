@@ -1,5 +1,7 @@
 extends EtContainer
 
+@export var settings_container : EtContainer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$VBoxContainer/Debug.grab_focus()
@@ -13,7 +15,8 @@ func _on_start_pressed():
 
 
 func _on_settings_pressed():
-	SceneManager.switch_scene("settings")
+	exit()
+	settings_container.enter()
 
 
 func _on_credits_pressed():

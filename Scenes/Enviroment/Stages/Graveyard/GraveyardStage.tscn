@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enviroment/Stages/Graveyard/GraveyardStage.gd" id="1_318dh"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_gvqjs"]
-[ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Assets/Blender/Decorations/Cross/cross_gravestone.tscn" id="3_bink5"]
+[ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Scenes/Decorations/Gravestones/cross_gravestone.tscn" id="3_bink5"]
 [ext_resource type="Script" path="res://Scenes/Enviroment/StageElements/MyScatter.gd" id="4_2dgcp"]
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Enviroment/Objects/Box.tscn" id="4_ehjwh"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Enviroment/Objects/Wall.tscn" id="5_47l66"]

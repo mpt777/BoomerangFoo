@@ -7,7 +7,7 @@ func register(setting: Setting) -> void:
 	self._settings[setting.code] = setting
 	
 func setting(code : String) -> Setting:
-	return self._settings[code]
+	return self._settings.get(code, null)
 	
 func get_value(code : String, default):
 	var _setting : Setting = self._settings.get(code, null)
@@ -17,4 +17,11 @@ func get_value(code : String, default):
 	
 func settings() -> Dictionary:
 	return self._settings
-		
+
+func reset(code: String) -> void:
+	var _setting : Setting = self.setting(code)
+	_setting.reset()
+
+func reset_all() -> void:
+	for attr in self._settings:
+		self.reset(attr)

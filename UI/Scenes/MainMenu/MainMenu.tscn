@@ -1,8 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqelfp0irs4d0"]
+[gd_scene load_steps=13 format=3 uid="uid://bqelfp0irs4d0"]
 
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/MainMenu.gd" id="1_w4qpc"]
 [ext_resource type="PackedScene" uid="uid://dpdx8stfsfj3i" path="res://UI/Scenes/MainMenu/Menu/MenuUI.tscn" id="3_1rm68"]
+[ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Scenes/Decorations/Gravestones/cross_gravestone.tscn" id="3_mf4f1"]
 [ext_resource type="PackedScene" uid="uid://doggv7pbbru50" path="res://UI/Scenes/MainMenu/Settings/SettingsUI.tscn" id="3_x1ulu"]
+[ext_resource type="PackedScene" uid="uid://dyi4r3fgtmin" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="4_2ngju"]
+[ext_resource type="PackedScene" uid="uid://b0bwtxur4gqo6" path="res://Scenes/Decorations/Gravestones/large_gravestone.tscn" id="4_fqbu6"]
+[ext_resource type="PackedScene" uid="uid://cjxmh3d4a8dob" path="res://Scenes/Decorations/Tree/Tree.tscn" id="5_f3cv3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
+sky_top_color = Color(0.126072, 0.487347, 0.638106, 1)
+
+[sub_resource type="Sky" id="Sky_y02jq"]
+sky_material = SubResource("ProceduralSkyMaterial_007d0")
+
+[sub_resource type="Environment" id="Environment_875do"]
+background_mode = 2
+sky = SubResource("Sky_y02jq")
+ambient_light_source = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtvym"]
+albedo_color = Color(0.358903, 0.50381, 0.394587, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jec86"]
+material = SubResource("StandardMaterial3D_rtvym")
+size = Vector3(32.555, 1, 23.405)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,21 +35,229 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w4qpc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.499684, 0.270455, 0.165558, 1)
 
-[node name="MainMenu" parent="." instance=ExtResource("3_1rm68")]
-layout_mode = 1
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
-[node name="SettingsUI" parent="." instance=ExtResource("3_x1ulu")]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.990913, 0, 0.134505, 0, 1, 0, -0.134505, 0, 0.990913, 0, 0.63331, 1)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_875do")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776526, -0.950423, -2.31179)
+mesh = SubResource("BoxMesh_jec86")
+skeleton = NodePath("")
+
+[node name="Avatar" parent="SubViewportContainer/SubViewport/MeshInstance3D" instance=ExtResource("4_2ngju")]
+transform = Transform3D(-0.962451, 0, -0.271457, 0, 1, 0, 0.271457, 0, -0.962451, -0.014926, 0.420602, 1.52429)
+
+[node name="cross_gravestone" parent="SubViewportContainer/SubViewport/MeshInstance3D" instance=ExtResource("3_mf4f1")]
+transform = Transform3D(-0.242791, 0.0881381, -0.772987, -0.026697, 0.808333, 0.100554, 0.777538, 0.0552761, -0.237918, 1.68765, -0.00634313, 0.00845575)
+
+[node name="cross_gravestone2" parent="SubViewportContainer/SubViewport/MeshInstance3D" instance=ExtResource("3_mf4f1")]
+transform = Transform3D(0.0255468, -0.0793503, -0.810725, -0.0823048, 0.806722, -0.0815519, 0.810431, 0.0844295, 0.017274, -0.792293, -0.00634313, -2.64894)
+
+[node name="large_gravestone" parent="SubViewportContainer/SubViewport/MeshInstance3D" instance=ExtResource("4_fqbu6")]
+transform = Transform3D(0.419975, 0, -0.907536, 0, 1, 0, 0.907536, 0, 0.419975, -2.03912, 0.381762, 0)
+
+[node name="large_gravestone2" parent="SubViewportContainer/SubViewport/MeshInstance3D" instance=ExtResource("4_fqbu6")]
+transform = Transform3D(0.0236032, 0.07244, -0.997094, 0.00755341, 0.99733, 0.072636, 0.999693, -0.00924592, 0.0229931, 0.966145, 0.381762, -2.05289)
+
+[node name="Trees" type="Node3D" parent="SubViewportContainer/SubViewport/MeshInstance3D"]
+
+[node name="tree" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.921511, 0, -0.388352, 0, 1, 0, 0.388352, 0, 0.921511, 3.48888, 0, -3.421)
+
+[node name="tree2" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.819972, 0, -0.572404, 0, 1, 0, 0.572404, 0, 0.819972, -1.56625, 0, -3.421)
+
+[node name="tree3" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.819972, 0, -0.572404, 0, 1, 0, 0.572404, 0, 0.819972, -4.08916, 0, -6.14106)
+
+[node name="tree4" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.989165, 0.0319219, 0.143298, -0.0325257, 0.999469, 0.00187257, -0.143162, -0.00651314, 0.989678, 4.58726, -0.824058, -9.54931)
+
+[node name="tree5" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.997266, 0.0319219, -0.0666411, -0.0314157, 0.999469, 0.00863031, 0.0668812, -0.00651314, 0.99774, 0.260704, -0.668866, -6.93951)
+
+[node name="tree6" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.997266, 0.0319219, -0.0666411, -0.0314157, 0.999469, 0.00863031, 0.0668812, -0.00651314, 0.99774, -3.30268, -0.561748, -7.96646)
+
+[node name="tree7" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.987865, 0, 0.155314, 0, 1, 0, -0.155314, 0, 0.987865, -2.36877, 0, -5.73613)
+
+[node name="tree8" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.998507, 0, -0.054619, 0, 1, 0, 0.054619, 0, 0.998507, -6.66569, 0, -3.07328)
+
+[node name="tree9" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.998507, 0, -0.054619, 0, 1, 0, 0.054619, 0, 0.998507, -10.243, 0, -4.05638)
+
+[node name="tree10" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.76539, 0.0237031, 0.643131, -0.0325257, 0.999469, 0.00187257, -0.642745, -0.0223515, 0.765754, -4.66329, -0.824058, -11.5239)
+
+[node name="tree11" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.882919, 0.0237031, 0.468927, -0.0314157, 0.999469, 0.00863031, -0.468473, -0.0223515, 0.883195, -6.96617, -0.668866, -7.02642)
+
+[node name="tree12" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.882919, 0.0237031, 0.468927, -0.0314157, 0.999469, 0.00863031, -0.468473, -0.0223515, 0.883195, -10.5361, -0.561748, -6.02228)
+
+[node name="tree13" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.791778, 0, -0.610809, 0, 1, 0, 0.610809, 0, 0.791778, 9.30757, 0, -2.59705)
+
+[node name="tree14" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.646603, 0, -0.762826, 0, 1, 0, 0.762826, 0, 0.646603, 4.42006, 0, -3.88801)
+
+[node name="tree15" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.646603, 0, -0.762826, 0, 1, 0, 0.762826, 0, 0.646603, 2.67545, 0, -7.16217)
+
+[node name="tree16" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.992926, 0.0325267, -0.114196, -0.0325257, 0.999469, 0.00187257, 0.114196, 0.00185498, 0.993456, 11.9346, -0.824058, -8.24164)
+
+[node name="tree17" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.947118, 0.0325267, -0.319232, -0.0314157, 0.999469, 0.00863031, 0.319344, 0.00185497, 0.947637, 7.08498, -0.668866, -6.82328)
+
+[node name="tree18" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.947118, 0.0325267, -0.319232, -0.0314157, 0.999469, 0.00863031, 0.319344, 0.00185497, 0.947637, 3.90202, -0.561748, -8.72619)
+
+[node name="Trees2" type="Node3D" parent="SubViewportContainer/SubViewport/MeshInstance3D"]
+transform = Transform3D(0.093726, 0, 0.995598, 0, 1, 0, -0.995598, 0, 0.093726, -6.60318, 0, 0)
+
+[node name="tree" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.921511, 0, -0.388352, 0, 1, 0, 0.388352, 0, 0.921511, 3.48888, 0, -3.421)
+
+[node name="tree2" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.819972, 0, -0.572404, 0, 1, 0, 0.572404, 0, 0.819972, -1.56625, 0, -3.421)
+
+[node name="tree3" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.819972, 0, -0.572404, 0, 1, 0, 0.572404, 0, 0.819972, -4.08916, 0, -6.14106)
+
+[node name="tree4" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.989165, 0.0319219, 0.143298, -0.0325257, 0.999469, 0.00187257, -0.143162, -0.00651314, 0.989678, 4.58726, -0.824058, -9.54931)
+
+[node name="tree5" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.997266, 0.0319219, -0.0666411, -0.0314157, 0.999469, 0.00863031, 0.0668812, -0.00651314, 0.99774, 0.260704, -0.668866, -6.93951)
+
+[node name="tree6" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.997266, 0.0319219, -0.0666411, -0.0314157, 0.999469, 0.00863031, 0.0668812, -0.00651314, 0.99774, -3.30268, -0.561748, -7.96646)
+
+[node name="tree7" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.987865, 0, 0.155314, 0, 1, 0, -0.155314, 0, 0.987865, -2.36877, 0, -5.73613)
+
+[node name="tree8" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.998507, 0, -0.054619, 0, 1, 0, 0.054619, 0, 0.998507, -6.66569, 0, -3.07328)
+
+[node name="tree9" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.998507, 0, -0.054619, 0, 1, 0, 0.054619, 0, 0.998507, -10.243, 0, -4.05638)
+
+[node name="tree10" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.76539, 0.0237031, 0.643131, -0.0325257, 0.999469, 0.00187257, -0.642745, -0.0223515, 0.765754, -4.66329, -0.824058, -11.5239)
+
+[node name="tree11" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.882919, 0.0237031, 0.468927, -0.0314157, 0.999469, 0.00863031, -0.468473, -0.0223515, 0.883195, -6.96617, -0.668866, -7.02642)
+
+[node name="tree12" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.882919, 0.0237031, 0.468927, -0.0314157, 0.999469, 0.00863031, -0.468473, -0.0223515, 0.883195, -10.5361, -0.561748, -6.02228)
+
+[node name="tree13" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.791778, 0, -0.610809, 0, 1, 0, 0.610809, 0, 0.791778, 9.30757, 0, -2.59705)
+
+[node name="tree14" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.646603, 0, -0.762826, 0, 1, 0, 0.762826, 0, 0.646603, 4.42006, 0, -3.88801)
+
+[node name="tree15" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.646603, 0, -0.762826, 0, 1, 0, 0.762826, 0, 0.646603, 2.67545, 0, -7.16217)
+
+[node name="tree16" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.992926, 0.0325267, -0.114196, -0.0325257, 0.999469, 0.00187257, 0.114196, 0.00185498, 0.993456, 11.9346, -0.824058, -8.24164)
+
+[node name="tree17" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.947118, 0.0325267, -0.319232, -0.0314157, 0.999469, 0.00863031, 0.319344, 0.00185497, 0.947637, 7.08498, -0.668866, -6.82328)
+
+[node name="tree18" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees2" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.947118, 0.0325267, -0.319232, -0.0314157, 0.999469, 0.00863031, 0.319344, 0.00185497, 0.947637, 3.90202, -0.561748, -8.72619)
+
+[node name="Trees3" type="Node3D" parent="SubViewportContainer/SubViewport/MeshInstance3D"]
+transform = Transform3D(0.093726, 0, 0.995598, 0, 1, 0, -0.995598, 0, 0.093726, 22.2014, 0, 0)
+
+[node name="tree" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.921511, 0, -0.388352, 0, 1, 0, 0.388352, 0, 0.921511, 3.48888, 0, -3.421)
+
+[node name="tree2" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.819972, 0, -0.572404, 0, 1, 0, 0.572404, 0, 0.819972, -1.56625, 0, -3.421)
+
+[node name="tree3" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.819972, 0, -0.572404, 0, 1, 0, 0.572404, 0, 0.819972, -4.08916, 0, -6.14106)
+
+[node name="tree4" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.989165, 0.0319219, 0.143298, -0.0325257, 0.999469, 0.00187257, -0.143162, -0.00651314, 0.989678, 4.58726, -0.824058, -9.54931)
+
+[node name="tree5" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.997266, 0.0319219, -0.0666411, -0.0314157, 0.999469, 0.00863031, 0.0668812, -0.00651314, 0.99774, 0.260704, -0.668866, -6.93951)
+
+[node name="tree6" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.997266, 0.0319219, -0.0666411, -0.0314157, 0.999469, 0.00863031, 0.0668812, -0.00651314, 0.99774, -3.30268, -0.561748, -7.96646)
+
+[node name="tree7" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.987865, 0, 0.155314, 0, 1, 0, -0.155314, 0, 0.987865, -2.36877, 0, -5.73613)
+
+[node name="tree8" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.998507, 0, -0.054619, 0, 1, 0, 0.054619, 0, 0.998507, -6.66569, 0, -3.07328)
+
+[node name="tree9" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.998507, 0, -0.054619, 0, 1, 0, 0.054619, 0, 0.998507, -10.243, 0, -4.05638)
+
+[node name="tree10" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.76539, 0.0237031, 0.643131, -0.0325257, 0.999469, 0.00187257, -0.642745, -0.0223515, 0.765754, -4.66329, -0.824058, -11.5239)
+
+[node name="tree11" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.882919, 0.0237031, 0.468927, -0.0314157, 0.999469, 0.00863031, -0.468473, -0.0223515, 0.883195, -6.96617, -0.668866, -7.02642)
+
+[node name="tree12" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.882919, 0.0237031, 0.468927, -0.0314157, 0.999469, 0.00863031, -0.468473, -0.0223515, 0.883195, -10.5361, -0.561748, -6.02228)
+
+[node name="tree13" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.791778, 0, -0.610809, 0, 1, 0, 0.610809, 0, 0.791778, 9.30757, 0, -2.59705)
+
+[node name="tree14" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.646603, 0, -0.762826, 0, 1, 0, 0.762826, 0, 0.646603, 4.42006, 0, -3.88801)
+
+[node name="tree15" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.646603, 0, -0.762826, 0, 1, 0, 0.762826, 0, 0.646603, 2.67545, 0, -7.16217)
+
+[node name="tree16" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.992926, 0.0325267, -0.114196, -0.0325257, 0.999469, 0.00187257, 0.114196, 0.00185498, 0.993456, 11.9346, -0.824058, -8.24164)
+
+[node name="tree17" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.947118, 0.0325267, -0.319232, -0.0314157, 0.999469, 0.00863031, 0.319344, 0.00185497, 0.947637, 7.08498, -0.668866, -6.82328)
+
+[node name="tree18" parent="SubViewportContainer/SubViewport/MeshInstance3D/Trees3" instance=ExtResource("5_f3cv3")]
+transform = Transform3D(0.947118, 0.0325267, -0.319232, -0.0314157, 0.999469, 0.00863031, 0.319344, 0.00185497, 0.947637, 3.90202, -0.561748, -8.72619)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.244823, -0.836322, 0.490538, 0.967836, -0.180579, 0.175168, -0.0579157, 0.517646, 0.853633, -5.69695, 2.51593, 0)
+shadow_enabled = true
+
+[node name="MainMenu" parent="." node_paths=PackedStringArray("settings_container") instance=ExtResource("3_1rm68")]
 layout_mode = 1
-offset_left = 98.0
-offset_top = 423.0
-offset_right = -560.0
-offset_bottom = -124.0
+settings_container = NodePath("../SettingsUI")
+
+[node name="SettingsUI" parent="." node_paths=PackedStringArray("exit_container") instance=ExtResource("3_x1ulu")]
+visible = false
+layout_mode = 1
+offset_left = 322.0
+offset_top = 289.0
+offset_right = -336.0
+offset_bottom = -258.0
+exit_container = NodePath("../MainMenu")

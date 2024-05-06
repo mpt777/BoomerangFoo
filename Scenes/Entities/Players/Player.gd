@@ -19,8 +19,6 @@ func constructor(player_data : PlayerData):
 func _ready():
 	super._ready()
 	$AvatarWrapper.constructor(self)
-	#n_wand.change_spell(data.range_spell)
-	#n_wand.change_spell(data.melee_spell)
 	
 func _physics_process(delta):
 	rotate_character(delta)

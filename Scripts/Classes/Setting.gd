@@ -7,6 +7,8 @@ var updated : Callable
 var default
 var value
 
+signal Updated
+
 func constructor(label: String, code: String, default, updated: Callable) -> Setting:
 	self.label = label
 	self.code = code
@@ -14,15 +16,19 @@ func constructor(label: String, code: String, default, updated: Callable) -> Set
 	self.default = default
 	return self
 	
-func set_value(value):
-	self.value = value
-	self.updated.call(self)
-	
 func get_value():
 	if self.value != null:
 		return self.value
 	return self.default
 	
-func _update(value):
+func _update(value) -> void:
 	self.value = value
 	self.updated.call(self)
+	self.Updated.emit(self.value)
+	
+func reset() -> void:
+	if self.default != null:
+		self._update(self.default)
+		
+func set_value(value) -> void:
+	self._update(value)

@@ -21,7 +21,10 @@ func mount(setting : Setting) -> void:
 	
 	if self.n_input is HSlider:
 		self.n_input.value_changed.connect(self.setting._update)
+		self.setting.Updated.connect(self.n_input.set_value_no_signal)
 		self.n_input.set_value_no_signal(self.setting.get_value())
+		
 	elif self.n_input is CheckButton:
 		self.n_input.toggled.connect(self.setting._update)
+		self.setting.Updated.connect(self.n_input.set_pressed_no_signal)
 		self.n_input.set_pressed_no_signal(self.setting.get_value())

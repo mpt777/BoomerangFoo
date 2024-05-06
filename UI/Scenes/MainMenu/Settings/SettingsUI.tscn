@@ -1,30 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://doggv7pbbru50"]
+[gd_scene load_steps=6 format=3 uid="uid://doggv7pbbru50"]
 
 [ext_resource type="PackedScene" uid="uid://b6unoux6lpd32" path="res://UI/ETContainer/ETContainer.tscn" id="1_gte6u"]
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/Settings/SettingsUI.gd" id="2_31kx4"]
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="2_rw36i"]
-[ext_resource type="PackedScene" uid="uid://bdv4j6jo6rfv4" path="res://UI/Scenes/MainMenu/Settings/SettingUI/SettingUI.tscn" id="3_wfc1s"]
+[ext_resource type="PackedScene" uid="uid://bdv4j6jo6rfv4" path="res://UI/Scenes/MainMenu/Settings/SettingControl/SettingControl.tscn" id="3_wfc1s"]
+[ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/GameTheme.tres" id="5_haioo"]
 
 [node name="SettingsUI" instance=ExtResource("1_gte6u")]
 script = ExtResource("2_31kx4")
 reload = false
 
-[node name="TabContainer" type="TabContainer" parent="." index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_rw36i")
-current_tab = 1
 
-[node name="Audio" type="TabBar" parent="TabContainer" index="1"]
-visible = false
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rw36i")
+
+[node name="Audio" type="TabBar" parent="VBoxContainer/TabContainer" index="1"]
 layout_mode = 2
 theme = ExtResource("2_rw36i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Audio" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Audio" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,46 +38,47 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_rw36i")
 
-[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Audio/ScrollContainer" index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/TabContainer/Audio/ScrollContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_rw36i")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/ScrollContainer/CenterContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer" index="0"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="Sound" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer" index="0" instance=ExtResource("3_wfc1s")]
+[node name="Sound" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer" index="0" instance=ExtResource("3_wfc1s")]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Sound" index="2"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Sound" index="2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="Music" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer" index="1" instance=ExtResource("3_wfc1s")]
+[node name="Music" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer" index="1" instance=ExtResource("3_wfc1s")]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Music" index="2"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Music" index="2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="SFX" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer" index="2" instance=ExtResource("3_wfc1s")]
+[node name="SFX" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer" index="2" instance=ExtResource("3_wfc1s")]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/SFX" index="2"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/SFX" index="2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="Video" type="TabBar" parent="TabContainer" index="2"]
+[node name="Video" type="TabBar" parent="VBoxContainer/TabContainer" index="2"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_rw36i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Video" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Video" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,39 +89,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_rw36i")
 
-[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Video/ScrollContainer" index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/TabContainer/Video/ScrollContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_rw36i")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/ScrollContainer/CenterContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Video/ScrollContainer/CenterContainer" index="0"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="FullScreen" parent="TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer" index="0" instance=ExtResource("3_wfc1s")]
+[node name="FullScreen" parent="VBoxContainer/TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer" index="0" instance=ExtResource("3_wfc1s")]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/FullScreen" index="2"]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/FullScreen" index="2"]
 layout_mode = 2
 
-[node name="Controls" type="TabBar" parent="TabContainer" index="3"]
+[node name="Controls" type="TabBar" parent="VBoxContainer/TabContainer" index="3"]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_rw36i")
 
-[node name="Accessibility" type="TabBar" parent="TabContainer" index="4"]
+[node name="Accessibility" type="TabBar" parent="VBoxContainer/TabContainer" index="4"]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_rw36i")
 
-[node name="Debug" type="TabBar" parent="TabContainer" index="5"]
+[node name="Debug" type="TabBar" parent="VBoxContainer/TabContainer" index="5"]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_rw36i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Debug" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Debug" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,19 +132,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_rw36i")
 
-[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Debug/ScrollContainer" index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/TabContainer/Debug/ScrollContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_rw36i")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Debug/ScrollContainer/CenterContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer" index="0"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="EnemyAttack" parent="TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer" index="0" instance=ExtResource("3_wfc1s")]
+[node name="EnemyAttack" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer" index="0" instance=ExtResource("3_wfc1s")]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/EnemyAttack" index="2"]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/EnemyAttack" index="2"]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="Save & Exit" type="Button" parent="VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("5_haioo")
+text = "Save & Exit
+"
+
+[node name="Default" type="Button" parent="VBoxContainer/HBoxContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("5_haioo")
+text = "Reset to Default
+"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Save & Exit" to="." method="_on_save__exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Default" to="." method="_on_default_pressed"]
