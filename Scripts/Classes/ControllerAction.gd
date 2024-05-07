@@ -7,12 +7,12 @@ var button_index : int
 var axis_value : int
 var deadzone : float
 
-func constructor(action_name : String, input_event : InputEvent, button_index : int, axis_value : int = 0, deadzone : float = 0) -> ControllerAction:
-	self.action_name = action_name
-	self.input_event = input_event
-	self.button_index = button_index
-	self.axis_value = axis_value
-	self.deadzone = deadzone
+func constructor(p_action_name : String, p_input_event : InputEvent, p_button_index : int, p_axis_value : int = 0, p_deadzone : float = 0) -> ControllerAction:
+	self.action_name = p_action_name
+	self.input_event = p_input_event
+	self.button_index = p_button_index
+	self.axis_value = p_axis_value
+	self.deadzone = p_deadzone
 	return self
 	
 func register(controller) -> void:

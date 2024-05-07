@@ -8,8 +8,8 @@ class_name AvatarSelectCircle
 
 var avatar_data : AvatarData
 
-func constructor(avatar_data) -> AvatarSelectCircle:
-	self.avatar_data = avatar_data
+func constructor(p_avatar_data) -> AvatarSelectCircle:
+	self.avatar_data = p_avatar_data
 	return self
 	
 func _ready():

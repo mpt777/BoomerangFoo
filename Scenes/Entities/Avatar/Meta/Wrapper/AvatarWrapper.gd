@@ -6,8 +6,8 @@ var character : Character
 var avatar : Avatar
 var original_rotation : Vector3
 
-func constructor(character : Character) -> AvatarWrapper:
-	self.character = character
+func constructor(_character : Character) -> AvatarWrapper:
+	self.character = _character
 	#self.character.anchors.register("RightHand", r_hand_remote)
 	self.avatar = self.character.data.avatar.avatar.instantiate()
 	self.add_child(avatar)
@@ -22,7 +22,7 @@ func mount():
 	avatar.n_body.rotation.x = deg_to_rad(-30)
 	original_rotation = avatar.n_body_model.global_rotation
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position_hand()
 	avatar.r_hand.rotation.x = 0
 	

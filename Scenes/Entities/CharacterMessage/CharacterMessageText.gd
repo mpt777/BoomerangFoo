@@ -10,9 +10,9 @@ var n_color : ColorRect = $ColorRect
 var _text := ""
 var _color : Color = Color.REBECCA_PURPLE
 
-func constructor(text: String, color : Color):
-	self._text = text
-	self._color = color
+func constructor(p_text: String, p_color : Color):
+	self._text = p_text
+	self._color = p_color
 
 func _ready():
 	self.set_color(self._color)
@@ -22,8 +22,8 @@ func _ready():
 func set_text(text: String) -> void:
 	n_label.set_text(text)
 
-func set_color(color: Color) -> void:
-	n_color.color = color
+func set_color(p_color: Color) -> void:
+	n_color.color = p_color
 	#var gradient_data := {
 		#0.0: Color.RED,
 		#0.5: Color.GREEN,

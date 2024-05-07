@@ -10,7 +10,7 @@ func _on_add_bot_pressed():
 func _on_remove_bot_pressed():
 	$"/root/Signals".emit_signal("remove_bot")
 
-func _on_add_bots_controller_pressed(args):
+func _on_add_bots_controller_pressed(_args):
 	self._on_add_bots_pressed()
 	
 func _on_add_bots_pressed():

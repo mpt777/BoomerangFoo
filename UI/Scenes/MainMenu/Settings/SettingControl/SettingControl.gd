@@ -9,8 +9,8 @@ var setting : Setting
 func set_text(text : String) -> void:
 	n_label.text = text
 	
-func mount(setting : Setting) -> void:
-	self.setting = setting
+func mount(p_setting : Setting) -> void:
+	self.setting = p_setting
 	
 	set_text(self.setting.label)
 	

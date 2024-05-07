@@ -12,8 +12,8 @@ class_name Movement
 
 var current_speed := SPEED
 
-func constructor(body): 
-	self.body = body
+func constructor(_body): 
+	self.body = _body
 	
 func move(direction : Vector3) -> void:
 	direction *= self.get_speed()

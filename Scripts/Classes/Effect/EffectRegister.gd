@@ -3,7 +3,7 @@ class_name EffectRegister
 
 var _effects = []
 
-func register(key : String, effect: Effect, replace:=true) -> void:
+func register(_key : String, effect: Effect, replace:=true) -> void:
 	if replace:
 		_effects = []
 	_effects.append(effect)
@@ -14,5 +14,5 @@ func has_effect(effect_type) -> bool:
 			return true
 	return false
 	
-func clear(key : String) -> void:
+func clear(_key : String) -> void:
 	_effects = []

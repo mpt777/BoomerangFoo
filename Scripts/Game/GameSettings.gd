@@ -44,7 +44,7 @@ func constructor() -> GameSettings:
 	))
 	self.settings.register(
 		Setting.new().constructor("Can Enemies Attack", "enemy_attack", true,
-		func(setting : Setting): 
+		func(_setting : Setting): 
 			pass
 	))
 	return self

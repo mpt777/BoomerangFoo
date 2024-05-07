@@ -6,8 +6,8 @@ class_name AI
 var character : Enemy
 const distance_bounds = Vector2(10, 30)
 
-func constructor(character) -> AI:
-	self.character = character
+func constructor(p_character) -> AI:
+	self.character = p_character
 	return self
 
 func pick_random_direction() -> Vector3:

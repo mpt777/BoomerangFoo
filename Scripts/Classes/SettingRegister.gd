@@ -3,8 +3,8 @@ class_name SettingRegister
 
 var _settings = {}
 
-func register(setting: Setting) -> void:
-	self._settings[setting.code] = setting
+func register(p_setting: Setting) -> void:
+	self._settings[p_setting.code] = p_setting
 	
 func setting(code : String) -> Setting:
 	return self._settings.get(code, null)

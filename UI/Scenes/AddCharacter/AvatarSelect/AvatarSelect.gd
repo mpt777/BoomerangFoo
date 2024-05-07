@@ -21,7 +21,7 @@ func random_avatar() -> AvatarSelectCircle:
 	var count := n_grid.get_child_count()
 	return n_grid.get_child(randi() % count) as AvatarSelectCircle
 	
-func avatar_attached_to_character(character : CharacterData):
+func avatar_attached_to_character(_character : CharacterData):
 	for player in GameState.players:
 		if not player.avatar:
 			hide_button()
@@ -34,7 +34,7 @@ func show_button() -> void:
 func hide_button() -> void:
 	n_ready_button.visible = false
 
-func _on_ready_button_controller_pressed(controller : Controller):
+func _on_ready_button_controller_pressed(_controller : Controller):
 	self.next_et_container.enter()
 	self.exit()
 

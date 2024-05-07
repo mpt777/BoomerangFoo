@@ -14,7 +14,8 @@ func exit():
 	
 	
 func select_new_position() -> void:
-	var method := randi_range(0,2)
+	#var method := randi_range(0,2)
+	var method = 2
 	var position := Vector3.ZERO 
 	if method == 0:
 		position = body.ai.pick_random_position()

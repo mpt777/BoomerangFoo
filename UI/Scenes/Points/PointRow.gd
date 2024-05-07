@@ -13,8 +13,8 @@ func _ready():
 	self.add_initial_points()
 	#self.add_new_points()
 	
-func constructor(character_data : CharacterData) -> PointRow:
-	self.character_data = character_data
+func constructor(_character_data : CharacterData) -> PointRow:
+	self.character_data = _character_data
 	return self
 	
 func set_color() -> void:
