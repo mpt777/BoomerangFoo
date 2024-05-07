@@ -11,11 +11,11 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func process_dodge():
-	var best_direction = Vector3.ZERO
+	var _best_direction = Vector3.ZERO
 
 func _on_area_entered(area):
 	if area is Projectile:

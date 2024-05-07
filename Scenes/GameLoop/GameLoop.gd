@@ -60,8 +60,8 @@ func end_vignette():
 	$"/root/Signals".emit_signal("set_follow_camera_active", false)
 	var characters := get_tree().get_nodes_in_group("Character").filter(func(x): return not x.is_queued_for_deletion())
 	if characters:
-		var position := get_viewport().get_camera_3d().unproject_position(characters[0].global_position) as Vector2
-		ui_vignette.circle_in(ui_vignette.screen_to_uv(position))
+		var character_position := get_viewport().get_camera_3d().unproject_position(characters[0].global_position) as Vector2
+		ui_vignette.circle_in(ui_vignette.screen_to_uv(character_position))
 	else:
 		ui_vignette.circle_in(ui_vignette.screen_center())
 		

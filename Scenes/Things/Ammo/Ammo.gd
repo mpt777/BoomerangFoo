@@ -70,15 +70,15 @@ func _physics_process(delta):
 	self.current_rotation = self.wrap_rotation(self.current_rotation + delta * self.rotation_speed)
 	self.set_rotation_y(self.current_rotation)
 	
-func wrap_rotation(rotation: float) -> float:
-	if rotation > pi2:
-		rotation -= pi2
-	if rotation < 0:
-		rotation += pi2
-	return rotation
+func wrap_rotation(p_rotation: float) -> float:
+	if p_rotation > pi2:
+		p_rotation -= pi2
+	if p_rotation < 0:
+		p_rotation += pi2
+	return p_rotation
 	
-func set_rotation_y(rotation: float) -> void:
-	global_rotation.y = rotation
+func set_rotation_y(p_rotation: float) -> void:
+	global_rotation.y = p_rotation
 	global_rotation.y = self.wrap_rotation(global_rotation.y)
 	global_rotation.x = 0
 	global_rotation.z = 0

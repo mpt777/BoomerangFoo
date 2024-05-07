@@ -11,10 +11,10 @@ var is_joypad = false
 var current_button : MultiLayerButton
 	
 
-func constructor(id: int, is_joypad: bool = false) -> Controller:
+func constructor(id: int, p_is_joypad: bool = false) -> Controller:
 	self.device_number = id
 	self.controller_number = id
-	self.is_joypad = is_joypad
+	self.is_joypad = p_is_joypad
 	return self
 
 # Description, public API to expose namespaced action

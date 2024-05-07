@@ -24,7 +24,6 @@ func _on_area_entered(area):
 	if area is HitboxComponent:
 		var a := get_attack()
 		#print(area.owner.data, a.character, area.owner.data==a.character)
-		var x = area.owner
 		if area.owner is Character:
 			if area.owner.data != a.character:
 				area.damage(a)
@@ -34,5 +33,5 @@ func _on_area_entered(area):
 			attacked.emit()
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	collided.emit()

@@ -9,11 +9,11 @@ var value
 
 signal Updated
 
-func constructor(label: String, code: String, default, updated: Callable) -> Setting:
-	self.label = label
-	self.code = code
-	self.updated = updated
-	self.default = default
+func constructor(p_label: String, p_code: String, p_default, p_updated: Callable) -> Setting:
+	self.label = p_label
+	self.code = p_code
+	self.updated = p_updated
+	self.default = p_default
 	return self
 	
 func get_value():
@@ -21,8 +21,8 @@ func get_value():
 		return self.value
 	return self.default
 	
-func _update(value) -> void:
-	self.value = value
+func _update(p_value) -> void:
+	self.value = p_value
 	self.updated.call(self)
 	self.Updated.emit(self.value)
 	
@@ -30,5 +30,5 @@ func reset() -> void:
 	if self.default != null:
 		self._update(self.default)
 		
-func set_value(value) -> void:
-	self._update(value)
+func set_value(p_value) -> void:
+	self._update(p_value)

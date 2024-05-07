@@ -43,8 +43,8 @@ func _ready():
 func refresh_follow_camera() -> void:
 	nodes = get_tree().get_nodes_in_group("FollowCamera")
 	
-func set_active(active: bool):
-	self.active = active
+func set_active(p_active: bool):
+	self.active = p_active
 		
 func initialize() -> void:
 	refresh_follow_camera()
@@ -152,7 +152,7 @@ func debug() -> void:
 	
 	debugger.draw_line()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not active: 
 		return
 	_screen_size = get_viewport().size

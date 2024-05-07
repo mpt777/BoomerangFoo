@@ -14,14 +14,13 @@ func _ready():
 	color = GameState.settings.background_color
 	self.set_shader_color(GameState.settings.background_color)
 	
-func set_shader_color(color : Color):
-	color = GameState.settings.background_color
-	get_material().set_shader_parameter("color", color)
+func set_shader_color(p_color : Color):
+	get_material().set_shader_parameter("color", p_color)
 
 func screen_to_uv(center : Vector2) -> Vector2:
 	return center / get_viewport_rect().size
 	
-func screen_center(center : Vector2) -> Vector2:
+func screen_center() -> Vector2:
 	return get_viewport_rect().size / 2
 
 func set_center(center: Vector2 = Vector2(0.5, 0.5)) -> void:

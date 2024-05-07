@@ -3,10 +3,10 @@ class_name AnchorRegister
 
 var anchors = {}
 
-func register(name : String, node_3d : Node3D) -> void:
-	anchors[name] = node_3d
+func register(code : String, node_3d : Node3D) -> void:
+	anchors[code] = node_3d
 	
-func anchor(name : String) -> Node3D:
-	return anchors[name]
+func anchor(code : String) -> Node3D:
+	return anchors[code]
 	
 

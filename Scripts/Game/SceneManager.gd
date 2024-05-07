@@ -10,7 +10,7 @@ var VIGNETTE = preload("res://UI/Vignette/vignette.tscn")
 	"settings": "res://UI/Scenes/OptionMenu/Options.tscn",
 	
 	"game": "res://Scenes/GameLoop/GameLoop.tscn",
-	"points": "res://UI/Scenes/Points/points.tscn",
+	"points": "res://UI/Scenes/Points/Points.tscn",
 	"gameover": "res://UI/Scenes/GameOver/GameOver.tscn",
 	
 	"credits": "",

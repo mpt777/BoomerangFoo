@@ -10,8 +10,8 @@ func _physics_process(delta):
 func update_initial_rotation(initial_rotation: float) -> void:
 	self.initial_rotation = initial_rotation
 	
-func set_mesh_position(position: float) -> void:
-	$MeshInstance3D.position.z = position
+func set_mesh_position(p_position: float) -> void:
+	$MeshInstance3D.position.z = p_position
 	
-func set_mesh_material(material: Material) -> void:
-	$MeshInstance3D.mesh.material = material
+func set_mesh_material(p_material: Material) -> void:
+	$MeshInstance3D.mesh.material = p_material
