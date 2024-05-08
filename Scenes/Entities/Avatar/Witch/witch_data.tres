@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AvatarData" load_steps=3 format=3 uid="uid://b3pjxvohrr6qk"]
 
-[ext_resource type="PackedScene" uid="uid://dyi4r3fgtmin" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="1_w735o"]
+[ext_resource type="PackedScene" uid="uid://dyi4r3fgtmin" path="res://Scenes/Entities/Avatar/Witch/WitchOld.tscn" id="1_w735o"]
 [ext_resource type="Script" path="res://Scenes/Entities/Avatar/AvatarData.gd" id="2_igcsm"]
 
 [resource]

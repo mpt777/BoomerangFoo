@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyi4r3fgtmin"]
+
+[ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_yyuab"]
+[ext_resource type="PackedScene" uid="uid://ce607ksxbron2" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="2_adnq3"]
+
+[node name="Avatar" instance=ExtResource("1_yyuab")]
+
+[node name="witch" parent="Body" index="0" instance=ExtResource("2_adnq3")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.219262, 0)

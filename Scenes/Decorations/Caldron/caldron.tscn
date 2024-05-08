@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbbulycfkko2l"]
+
+[ext_resource type="PackedScene" uid="uid://267m88sjf0wi" path="res://Assets/Blender/Decorations/Caldron/caldron.dae" id="1_1wb8u"]
+
+[node name="caldron" instance=ExtResource("1_1wb8u")]

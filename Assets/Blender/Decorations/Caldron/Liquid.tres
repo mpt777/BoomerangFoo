@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8xx8i4mchlqd"]
+
+[resource]
+resource_name = "Liquid"
+cull_mode = 2
+albedo_color = Color(0.375905, 0.688676, 0.340993, 1)
+metallic_specular = 0.03
+roughness = 0.0764706

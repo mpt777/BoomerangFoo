@@ -1,9 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyi4r3fgtmin"]
+[gd_scene load_steps=7 format=3 uid="uid://cy8hqcoov4owr"]
 
-[ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_i7bvu"]
-[ext_resource type="PackedScene" uid="uid://ce607ksxbron2" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="2_xe3eo"]
+[ext_resource type="PackedScene" uid="uid://cw7q0l37u57ui" path="res://Assets/Blender/Avatars/Witch/witch_smooth.dae" id="1_fk1hd"]
+[ext_resource type="Material" uid="uid://ckvn7xeprgtdl" path="res://Assets/Blender/Avatars/Witch/Materials/Accent.tres" id="2_j35wh"]
+[ext_resource type="Material" uid="uid://1xfih6nhxtdm" path="res://Assets/Blender/Avatars/Witch/Materials/Buckle.tres" id="2_qhge2"]
+[ext_resource type="Material" uid="uid://dl1t1kfb2ly0c" path="res://Assets/Blender/Avatars/Witch/Materials/Fabric.tres" id="3_v42we"]
+[ext_resource type="Material" uid="uid://tuguxhiuujbw" path="res://Assets/Blender/Avatars/Witch/Materials/Skin.tres" id="5_8abur"]
+[ext_resource type="Material" uid="uid://d2m52tjhveeuo" path="res://Assets/Blender/Avatars/Witch/Materials/Hair.tres" id="6_8d8xw"]
 
-[node name="Avatar" instance=ExtResource("1_i7bvu")]
+[node name="witch_smooth" instance=ExtResource("1_fk1hd")]
 
-[node name="witch" parent="Body" index="0" instance=ExtResource("2_xe3eo")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.219262, 0)
+[node name="BeltBuckle" parent="." index="0"]
+material_override = ExtResource("2_qhge2")
+
+[node name="Dress" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_j35wh")
+surface_material_override/1 = ExtResource("3_v42we")
+
+[node name="Buckle" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_qhge2")
+
+[node name="Sphere" parent="." index="3"]
+material_override = ExtResource("2_j35wh")
+
+[node name="Nose" parent="." index="4"]
+material_override = ExtResource("5_8abur")
+
+[node name="Hair" parent="." index="5"]
+material_override = ExtResource("6_8d8xw")
+
+[node name="Hat" parent="." index="6"]
+surface_material_override/0 = ExtResource("3_v42we")
+surface_material_override/1 = ExtResource("2_j35wh")
+
+[node name="Head" parent="." index="7"]
+material_override = ExtResource("5_8abur")

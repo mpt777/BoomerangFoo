@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctq0aptk8du4j"]
 
 [ext_resource type="Script" path="res://Scenes/GameLoop/GameLoop.gd" id="1_tt455"]
-[ext_resource type="Script" path="res://Scenes/Enviroment/StageElements/ProjectileSpawner.gd" id="2_7kjie"]
+[ext_resource type="Script" path="res://Scenes/Stage/StageElements/ProjectileSpawner.gd" id="2_7kjie"]
 [ext_resource type="PackedScene" uid="uid://bdp65u0b86yw6" path="res://UI/Vignette/vignette.tscn" id="2_hxeik"]
 
 [node name="GameLoop" type="Node3D"]

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwdxeuvjmrv1k"]
+
+[resource]
+resource_name = "Buckle"
+cull_mode = 2
+albedo_color = Color(0.8, 0.328053, 0.0314241, 1)
+roughness = 0.0764706

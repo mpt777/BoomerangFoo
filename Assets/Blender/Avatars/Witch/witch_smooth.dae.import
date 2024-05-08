@@ -1,0 +1,66 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cw7q0l37u57ui"
+path="res://.godot/imported/witch_smooth.dae-838acbefeb545f411ca6bb9b9c1ebaec.scn"
+
+[deps]
+
+source_file="res://Assets/Blender/Avatars/Witch/witch_smooth.dae"
+dest_files=["res://.godot/imported/witch_smooth.dae-838acbefeb545f411ca6bb9b9c1ebaec.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Accent": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Witch/SmoothMaterials/Accent.tres"
+},
+"Buckle": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Witch/SmoothMaterials/Buckle.tres"
+},
+"Eyes": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Witch/SmoothMaterials/Eyes.tres"
+},
+"Fabric": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Witch/SmoothMaterials/Fabric.tres"
+},
+"Hair": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Witch/SmoothMaterials/Hair.tres"
+},
+"Skin": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Blender/Avatars/Witch/SmoothMaterials/Skin.tres"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1

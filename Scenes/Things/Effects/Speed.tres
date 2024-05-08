@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SpeedEffect" load_steps=2 format=3 uid="uid://c1x3xinwk36s3"]
-
-[ext_resource type="Script" path="res://Scenes/Things/Effects/Speed.gd" id="1_b3pdj"]
-
-[resource]
-script = ExtResource("1_b3pdj")
-ratio = 1.2
-name = "Berserk Brew"
-color = Color(3.80233e-06, 0.719653, 0.268679, 1)

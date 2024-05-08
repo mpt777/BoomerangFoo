@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6unoux6lpd32" path="res://UI/ETContainer/ETContainer.tscn" id="1_yaeg7"]
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/Menu/MenuUI.gd" id="2_jtqsb"]
 [ext_resource type="FontFile" uid="uid://cw1n407ockhoc" path="res://Assets/Fonts/Frijole-Regular.ttf" id="3_d80db"]
-[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/MenuTheme.tres" id="3_dw6lg"]
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/Theme/MenuTheme.tres" id="3_dw6lg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fjcn"]
 font = ExtResource("3_d80db")

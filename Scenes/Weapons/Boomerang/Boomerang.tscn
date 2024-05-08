@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3jnswub0ulkl"]
+
+[ext_resource type="PackedScene" uid="uid://bv8binjy2oxbh" path="res://Scenes/Weapons/Weapon.tscn" id="1_5wa56"]
+[ext_resource type="PackedScene" uid="uid://dw7km8i2ybx15" path="res://Components/Attack/AttackComponent.tscn" id="2_4qpmk"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Boomerang/Boomerang.gd" id="2_ee4nm"]
+[ext_resource type="PackedScene" uid="uid://cw6s6ggs4358j" path="res://Components/ItemDrop/ItemDropComponent.tscn" id="4_hmn53"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4klj"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_83e6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3r174"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lek8f"]
+size = Vector3(2, 2, 2)
+
+[node name="Boomerang" instance=ExtResource("1_5wa56")]
+freeze = true
+script = ExtResource("2_ee4nm")
+VELOCITY = 20.0
+
+[node name="AttackComponent" parent="." index="0" instance=ExtResource("2_4qpmk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
+shape = SubResource("BoxShape3D_l4klj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_83e6k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("BoxShape3D_3r174")
+disabled = true
+
+[node name="ItemDropComponent" parent="." index="3" instance=ExtResource("4_hmn53")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemDropComponent" index="0"]
+shape = SubResource("BoxShape3D_lek8f")

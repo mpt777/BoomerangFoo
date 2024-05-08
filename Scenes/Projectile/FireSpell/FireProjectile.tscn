@@ -1,0 +1,31 @@
+[gd_scene load_steps=9 format=3 uid="uid://kny21vt2uvdv"]
+
+[ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_etn0s"]
+[ext_resource type="Script" path="res://Scenes/Projectile/FireSpell/FireProjectile.gd" id="2_ycvgo"]
+[ext_resource type="Material" uid="uid://b2lnkdqcl2hwm" path="res://Scenes/Projectile/FireSpell/FireProjectileProcess.tres" id="4_sji5h"]
+[ext_resource type="PackedScene" uid="uid://dfbog3ow5y1tk" path="res://Components/Particle/SmartGPUParticles3D.tscn" id="6_2sjm4"]
+[ext_resource type="SphereMesh" uid="uid://ddqcpkvcq1o3a" path="res://Scenes/Projectile/FireSpell/FireProjectilePass.tres" id="6_klede"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7qgy"]
+albedo_color = Color(0.670588, 0.180392, 0.0705882, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qp3xy"]
+material = SubResource("StandardMaterial3D_b7qgy")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a1sca"]
+
+[node name="FireProjectile" instance=ExtResource("1_etn0s")]
+script = ExtResource("2_ycvgo")
+speed = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("SphereMesh_qp3xy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
+shape = SubResource("SphereShape3D_a1sca")
+
+[node name="SmartGpuParticles3d" parent="." index="2" instance=ExtResource("6_2sjm4")]
+amount = 20
+lifetime = 0.5
+process_material = ExtResource("4_sji5h")
+draw_pass_1 = ExtResource("6_klede")

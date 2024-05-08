@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcgwtpk6myift"]
 
-[ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/GameTheme.tres" id="1_nafk8"]
+[ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/Theme/GameTheme.tres" id="1_nafk8"]
 [ext_resource type="Shader" path="res://UI/MultiLayerButton/border.gdshader" id="1_oqvmf"]
 [ext_resource type="Script" path="res://UI/MultiLayerButton/MultiLayerButton.gd" id="1_vk46m"]
 

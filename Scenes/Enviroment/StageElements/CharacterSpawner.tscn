@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c57in0in03hxu"]
-
-[ext_resource type="Script" path="res://Scenes/Enviroment/StageElements/CharacterSpawner.gd" id="1_75q3l"]
-
-[node name="CharacterSpawner" type="Node3D"]
-script = ExtResource("1_75q3l")
