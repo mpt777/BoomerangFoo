@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cj6ubdkusjaur"]
+
+[resource]
+resource_name = "cross"
+cull_mode = 2
+albedo_color = Color(0.23555, 0.23555, 0.23555, 1)
+metallic_specular = 0.21
+roughness = 0.5

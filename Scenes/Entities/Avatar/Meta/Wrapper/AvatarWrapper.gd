@@ -5,12 +5,13 @@ class_name AvatarWrapper
 var character : Character
 var avatar : Avatar
 var original_rotation : Vector3
+@onready var n_anchor = $Anchor
 
-func constructor(_character : Character) -> AvatarWrapper:
-	self.character = _character
+func constructor(p_character : Character) -> AvatarWrapper:
+	self.character = p_character
 	#self.character.anchors.register("RightHand", r_hand_remote)
 	self.avatar = self.character.data.avatar.avatar.instantiate()
-	self.add_child(avatar)
+	self.n_anchor.add_child(avatar)
 	self.mount()
 	return self
 

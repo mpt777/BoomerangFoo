@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AvatarData" load_steps=3 format=3 uid="uid://b3pjxvohrr6qk"]
 
-[ext_resource type="PackedScene" uid="uid://dyi4r3fgtmin" path="res://Scenes/Entities/Avatar/Witch/WitchOld.tscn" id="1_w735o"]
+[ext_resource type="PackedScene" uid="uid://d30hisabwo1dl" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="1_0hk5i"]
 [ext_resource type="Script" path="res://Scenes/Entities/Avatar/AvatarData.gd" id="2_igcsm"]
 
 [resource]
 script = ExtResource("2_igcsm")
 name = "Witch"
 color = Color(0.698669, 0.374358, 0.804225, 1)
-avatar = ExtResource("1_w735o")
+avatar = ExtResource("1_0hk5i")

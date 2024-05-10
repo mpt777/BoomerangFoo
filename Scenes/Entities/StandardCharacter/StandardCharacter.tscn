@@ -34,12 +34,14 @@ collision_mask = 259
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_3ldlm")
 
 [node name="PickUpComponent" parent="." index="3" node_paths=PackedStringArray("character") instance=ExtResource("7_6aj05")]
 character = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_jsy4v")
 
 [node name="ManaComponent" parent="." index="4" node_paths=PackedStringArray("character") instance=ExtResource("8_5chou")]
@@ -66,13 +68,14 @@ dash = NodePath("DashComponent")
 [node name="DashComponent" parent="MovementFSM/Dash" index="0" instance=ExtResource("13_0wu5i")]
 
 [node name="Ammo" parent="." index="7" node_paths=PackedStringArray("character") instance=ExtResource("14_e5rh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535, 0)
 character = NodePath("..")
 
 [node name="CharacterMessageManager" parent="." index="8" instance=ExtResource("15_5x71x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Wand" parent="." index="9" node_paths=PackedStringArray("mana_component", "weapon_owner", "spawn_point") instance=ExtResource("6_vgmne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mana_component = NodePath("../ManaComponent")
 weapon_owner = NodePath("..")
 spawn_point = NodePath("SpawnPoint")
@@ -81,7 +84,7 @@ anchor = "RightHand"
 [node name="AvatarWrapper" parent="." index="10" instance=ExtResource("15_6ieq7")]
 
 [node name="Pointer" type="Node3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 script = ExtResource("16_6lrw1")
 
 [node name="Sprite" type="Sprite3D" parent="Pointer" index="0"]

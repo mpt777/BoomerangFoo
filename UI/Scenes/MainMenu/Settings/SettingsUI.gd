@@ -15,10 +15,12 @@ func mount():
 	$VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Sound.mount(GameState.settings.settings.setting("sound"))
 	$VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/Music.mount(GameState.settings.settings.setting("music"))
 	$VBoxContainer/TabContainer/Audio/ScrollContainer/CenterContainer/VBoxContainer/SFX.mount(GameState.settings.settings.setting("sfx"))
+	
 	$VBoxContainer/TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/FullScreen.mount(GameState.settings.settings.setting("full_screen"))
+	$VBoxContainer/TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/VSYNC.mount(GameState.settings.settings.setting("vsync"))
 	
 	$VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/EnemyAttack.mount(GameState.settings.settings.setting("enemy_attack"))
-
+	
 
 func _on_save__exit_pressed():
 	exit()

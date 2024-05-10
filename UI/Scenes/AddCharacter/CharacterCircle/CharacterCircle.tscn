@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctbijeuq2vi17"]
+[gd_scene load_steps=8 format=3 uid="uid://ctbijeuq2vi17"]
 
 [ext_resource type="Shader" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gdshader" id="1_wdrc3"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gd" id="3_387nu"]
@@ -11,8 +11,18 @@ shader_parameter/amt = 0.0
 shader = ExtResource("1_wdrc3")
 shader_parameter/amt = 1.0
 
-[sub_resource type="Environment" id="Environment_u8tan"]
-background_mode = 1
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oe3u2"]
+sky_top_color = Color(0.0597648, 0.0516715, 0.174463, 1)
+sky_horizon_color = Color(0.495202, 0.455327, 0.742701, 1)
+ground_horizon_color = Color(0.521777, 0.492725, 0.887234, 1)
+
+[sub_resource type="Sky" id="Sky_y02jq"]
+sky_material = SubResource("ProceduralSkyMaterial_oe3u2")
+
+[sub_resource type="Environment" id="Environment_eboie"]
+background_mode = 2
+sky = SubResource("Sky_y02jq")
+ambient_light_source = 3
 
 [node name="PanelContainer" type="PanelContainer"]
 material = SubResource("ShaderMaterial_dni3b")
@@ -40,7 +50,8 @@ size = Vector2i(200, 200)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.98293)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, -1.98293)
+current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.926548, 0.0973615, 0.363358, 0, -0.965926, 0.258819, 0.376176, -0.239808, -0.894977, 0, 0, 0)
@@ -50,4 +61,4 @@ sky_mode = 1
 [node name="AvatarContainer" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
-environment = SubResource("Environment_u8tan")
+environment = SubResource("Environment_eboie")

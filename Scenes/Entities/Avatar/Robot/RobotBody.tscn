@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d00b4u3r04iyd"]
-
-[ext_resource type="PackedScene" uid="uid://chtph0gtivs27" path="res://Assets/Blender/Avatars/Robot/robot_body.dae" id="1_t3vvy"]
-
-[node name="robot_body" instance=ExtResource("1_t3vvy")]

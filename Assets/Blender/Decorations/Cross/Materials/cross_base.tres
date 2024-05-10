@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dp3p6o1jmpnt6"]
+
+[resource]
+resource_name = "cross_base"
+cull_mode = 2
+albedo_color = Color(0.0933282, 0.0933282, 0.0933282, 1)
+roughness = 0.5

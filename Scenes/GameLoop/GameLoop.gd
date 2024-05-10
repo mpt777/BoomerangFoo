@@ -2,7 +2,7 @@ extends Node3D
 class_name GameLoop
 
 @export var stages : Dictionary = {
-	"dev": "res://Scenes/Stage/StageElements/Stage.tscn",
+	#"dev": "res://Scenes/Stage/StageElements/Stage.tscn",
 	"graveyard": "res://Scenes/Stage/Stages/Graveyard/GraveyardStage.tscn"
 }
 

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://fh4015omtsd1"]
+
+[ext_resource type="PackedScene" uid="uid://c3mrbvsj5w2ix" path="res://Assets/Blender/Avatars/Robot/robot_body_smooth.dae" id="1_pdsgc"]
+[ext_resource type="Material" uid="uid://6qck4xt3ye1j" path="res://Assets/Blender/Avatars/Robot/Materials/Body.tres" id="2_8gskp"]
+[ext_resource type="Material" uid="uid://8c5ar4qbas8e" path="res://Assets/Blender/Avatars/Robot/Materials/BlueAccent.tres" id="3_gk162"]
+[ext_resource type="Material" uid="uid://dknk7hi3yk8so" path="res://Assets/Blender/Avatars/Robot/Materials/Accent.tres" id="4_vu11u"]
+[ext_resource type="Material" uid="uid://dyhaa5s7rmgvm" path="res://Assets/Blender/Avatars/Robot/Materials/Lights.tres" id="5_o3qbt"]
+
+[node name="robot_body_smooth" instance=ExtResource("1_pdsgc")]
+
+[node name="Neck" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8gskp")
+
+[node name="Body" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_8gskp")
+surface_material_override/1 = ExtResource("3_gk162")
+
+[node name="Ears" parent="." index="2"]
+material_override = ExtResource("4_vu11u")
+
+[node name="Spring" parent="." index="3"]
+material_override = ExtResource("3_gk162")
+
+[node name="Head" parent="." index="4"]
+material_override = ExtResource("2_8gskp")
+
+[node name="Sphere" parent="." index="5"]
+material_override = ExtResource("5_o3qbt")
+
+[node name="Circle" parent="." index="6"]
+material_override = ExtResource("4_vu11u")
+
+[node name="Lights" parent="." index="8"]
+material_override = ExtResource("5_o3qbt")

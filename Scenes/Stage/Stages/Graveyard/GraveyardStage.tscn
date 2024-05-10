@@ -24,12 +24,20 @@ sky = SubResource("Sky_4sfdv")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 3
+ssr_fade_in = 0.439226
+fog_light_energy = 0.09
+fog_sun_scatter = 0.63
+fog_density = 0.0157
+fog_sky_affect = 0.703
+fog_height = 1024.0
+volumetric_fog_detail_spread = 4.54715
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oj7i5"]
 albedo_color = Color(0.839216, 0.568627, 0.321569, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4djhl"]
 resource_local_to_scene = true
+lightmap_size_hint = Vector2i(2224, 1116)
 material = SubResource("StandardMaterial3D_oj7i5")
 size = Vector3(222, 0, 222)
 
@@ -53,14 +61,17 @@ script = ExtResource("1_318dh")
 environment = SubResource("Environment_jxvoy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
-transform = Transform3D(0.999922, 0.00408568, -0.0118429, 0.00905517, -0.888978, 0.45786, -0.00865739, -0.457931, -0.888946, 0, 21.6531, 0)
+transform = Transform3D(0.999922, 0.00408564, -0.0118428, 0.00905512, -0.888978, 0.45786, -0.00865737, -0.457931, -0.888946, 0, 21.6531, 0)
 shadow_enabled = true
-directional_shadow_max_distance = 200.0
+shadow_blur = 0.0
+directional_shadow_max_distance = 300.0
 
 [node name="CameraAnchor" parent="Enviroment" instance=ExtResource("2_gvqjs")]
-transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, -5.065)
+_minimum_distance = Vector2(5, 5)
 
 [node name="World" type="Node3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
 [node name="Decorations" type="Node3D" parent="World"]
 
@@ -118,6 +129,7 @@ visible = false
 mesh = SubResource("PlaneMesh_xnwqk")
 
 [node name="Functional" type="Node3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
 [node name="PickupSpawner" parent="Functional" instance=ExtResource("7_pu82f")]
 

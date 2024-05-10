@@ -43,6 +43,22 @@ func constructor() -> GameSettings:
 			DisplayServer.window_set_mode(value)
 	))
 	self.settings.register(
+		Setting.new().constructor("Full Screen", "full_screen", false,
+		func(setting : Setting): 
+			var value = DisplayServer.WINDOW_MODE_WINDOWED
+			if setting.value:
+				value = DisplayServer.WINDOW_MODE_FULLSCREEN 
+			DisplayServer.window_set_mode(value)
+	))
+	self.settings.register(
+		Setting.new().constructor("VSYNC", "vsync", false,
+		func(setting : Setting): 
+			var value = DisplayServer.VSYNC_DISABLED
+			if setting.value:
+				value = DisplayServer.VSYNC_ENABLED  
+			DisplayServer.window_set_vsync_mode(value)
+	))
+	self.settings.register(
 		Setting.new().constructor("Can Enemies Attack", "enemy_attack", true,
 		func(_setting : Setting): 
 			pass
@@ -53,16 +69,8 @@ func settings_path() -> String:
 	return "settings_{0}.save".format([settings_index])
 	
 func save_to_disk():
-	var data = {}
-	for attr in self.settings.settings():
-		var setting : Setting = self.settings.setting(attr)
-		data[setting.code] = setting.get_value()
-	Serializer.write_json(Serializer.user(settings_path()), data)
+	self.settings.save_to_disk(self.settings_path())
 	
 func load_from_disk():
-	var data = Serializer.read_json(Serializer.user(settings_path()))
-	for attr in data:
-		var setting : Setting = self.settings.setting(attr)
-		if setting:
-			setting.set_value(data[setting.code])
-			
+	self.settings.load_from_disk(self.settings_path())
+	
