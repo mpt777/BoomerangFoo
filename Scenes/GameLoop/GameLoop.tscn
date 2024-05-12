@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctq0aptk8du4j"]
+[gd_scene load_steps=5 format=3 uid="uid://ctq0aptk8du4j"]
 
 [ext_resource type="Script" path="res://Scenes/GameLoop/GameLoop.gd" id="1_tt455"]
 [ext_resource type="Script" path="res://Scenes/Stage/StageElements/ProjectileSpawner.gd" id="2_7kjie"]
 [ext_resource type="PackedScene" uid="uid://bdp65u0b86yw6" path="res://UI/Vignette/vignette.tscn" id="2_hxeik"]
+[ext_resource type="PackedScene" uid="uid://d4el72dtw34kt" path="res://UI/Scenes/PauseMenu/PauseMenu.tscn" id="4_kd7oa"]
 
 [node name="GameLoop" type="Node3D"]
 script = ExtResource("1_tt455")
@@ -21,6 +22,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Vignette" parent="UIContainer" instance=ExtResource("2_hxeik")]
+z_index = 1
 layout_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_kd7oa")]
+z_index = 99
 
 [connection signal="end_vignette_end" from="UIContainer/Vignette" to="." method="_on_vignette_end_vignette_end"]

@@ -1,36 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://b75g4uvj03jg7"]
+[gd_scene load_steps=15 format=3 uid="uid://b75g4uvj03jg7"]
 
 [ext_resource type="Script" path="res://Scenes/Stage/Stages/Graveyard/GraveyardStage.gd" id="1_318dh"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_gvqjs"]
+[ext_resource type="Environment" uid="uid://cj6gk6l0qfma5" path="res://Assets/Theme/Enviroment.tres" id="2_oxlq4"]
 [ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Scenes/Decorations/Gravestones/cross_gravestone.tscn" id="3_bink5"]
 [ext_resource type="Script" path="res://Scenes/Stage/StageElements/MyScatter.gd" id="4_2dgcp"]
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Stage/Objects/Box.tscn" id="4_ehjwh"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Stage/Objects/Wall.tscn" id="5_47l66"]
 [ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Stage/PickupSpawner/PickupSpawner.tscn" id="7_pu82f"]
 [ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Stage/StageElements/CharacterSpawner.tscn" id="8_p1sje"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsf1p"]
-sky_top_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.258824, 0.560784, 0.729412, 1)
-
-[sub_resource type="Sky" id="Sky_4sfdv"]
-sky_material = SubResource("ProceduralSkyMaterial_wsf1p")
-
-[sub_resource type="Environment" id="Environment_jxvoy"]
-resource_local_to_scene = true
-background_mode = 2
-background_color = Color(0.376471, 0.647059, 0.690196, 1)
-sky = SubResource("Sky_4sfdv")
-ambient_light_source = 3
-reflected_light_source = 2
-tonemap_mode = 3
-ssr_fade_in = 0.439226
-fog_light_energy = 0.09
-fog_sun_scatter = 0.63
-fog_density = 0.0157
-fog_sky_affect = 0.703
-fog_height = 1024.0
-volumetric_fog_detail_spread = 4.54715
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oj7i5"]
 albedo_color = Color(0.839216, 0.568627, 0.321569, 1)
@@ -58,7 +36,7 @@ script = ExtResource("1_318dh")
 [node name="Enviroment" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment"]
-environment = SubResource("Environment_jxvoy")
+environment = ExtResource("2_oxlq4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
 transform = Transform3D(0.999922, 0.00408564, -0.0118428, 0.00905512, -0.888978, 0.45786, -0.00865737, -0.457931, -0.888946, 0, 21.6531, 0)

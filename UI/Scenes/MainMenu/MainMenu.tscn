@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqelfp0irs4d0"]
+[gd_scene load_steps=18 format=3 uid="uid://bqelfp0irs4d0"]
 
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/MainMenu.gd" id="1_w4qpc"]
 [ext_resource type="PackedScene" uid="uid://dpdx8stfsfj3i" path="res://UI/Scenes/MainMenu/Menu/MenuUI.tscn" id="3_1rm68"]
 [ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Scenes/Decorations/Gravestones/cross_gravestone.tscn" id="3_mf4f1"]
-[ext_resource type="PackedScene" uid="uid://doggv7pbbru50" path="res://UI/Scenes/MainMenu/Settings/SettingsUI.tscn" id="3_x1ulu"]
+[ext_resource type="PackedScene" uid="uid://doggv7pbbru50" path="res://UI/Scenes/Settings/SettingsUI.tscn" id="3_x1ulu"]
 [ext_resource type="PackedScene" uid="uid://b0bwtxur4gqo6" path="res://Scenes/Decorations/Gravestones/large_gravestone.tscn" id="4_fqbu6"]
 [ext_resource type="PackedScene" uid="uid://cjxmh3d4a8dob" path="res://Scenes/Decorations/Tree/Tree.tscn" id="5_f3cv3"]
 [ext_resource type="PackedScene" uid="uid://267m88sjf0wi" path="res://Assets/Blender/Decorations/Caldron/caldron.dae" id="6_hjemn"]
 [ext_resource type="PackedScene" uid="uid://b2jyu1mn7nium" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="7_8qhh5"]
 [ext_resource type="PackedScene" uid="uid://dkns54ro34fn5" path="res://Scenes/Decorations/Campfire/Campfile.tscn" id="7_428y1"]
 [ext_resource type="PackedScene" uid="uid://cft8qo4snyk1j" path="res://UI/Scenes/AddCharacter/AddCharacter.tscn" id="8_6jygg"]
+[ext_resource type="PackedScene" uid="uid://dqbn42bewnksk" path="res://UI/Scenes/MainMenu/Credits/Credits.tscn" id="11_i8rv8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_007d0"]
 sky_top_color = Color(0.0597648, 0.0516715, 0.174463, 1)
@@ -23,6 +24,15 @@ sky_material = SubResource("ProceduralSkyMaterial_007d0")
 background_mode = 2
 sky = SubResource("Sky_ede2g")
 ambient_light_source = 3
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_mode = 1
+fog_density = 0.5086
+fog_height_density = 0.1829
+fog_depth_curve = 1.07177
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtvym"]
 albedo_color = Color(0.237332, 0.532471, 0.351078, 1)
@@ -295,21 +305,27 @@ shadow_enabled = true
 [node name="Campfile" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_428y1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162085, -0.401896, -0.83511)
 
-[node name="MainMenu" parent="." node_paths=PackedStringArray("settings_container", "add_character_container") instance=ExtResource("3_1rm68")]
+[node name="MainMenu" parent="." node_paths=PackedStringArray("settings_container", "credits_container", "add_character_container") instance=ExtResource("3_1rm68")]
 layout_mode = 1
 settings_container = NodePath("../SettingsUI")
+credits_container = NodePath("../Credits")
 add_character_container = NodePath("../AddCharacter")
 
 [node name="SettingsUI" parent="." node_paths=PackedStringArray("exit_container") instance=ExtResource("3_x1ulu")]
 visible = false
 layout_mode = 1
-offset_left = 322.0
-offset_top = 289.0
-offset_right = -336.0
-offset_bottom = -258.0
+offset_left = 377.0
+offset_top = 218.0
+offset_right = -325.0
+offset_bottom = -177.0
 exit_container = NodePath("../MainMenu")
 
 [node name="AddCharacter" parent="." node_paths=PackedStringArray("exit_container") instance=ExtResource("8_6jygg")]
+visible = false
+layout_mode = 1
+exit_container = NodePath("../MainMenu")
+
+[node name="Credits" parent="." node_paths=PackedStringArray("exit_container") instance=ExtResource("11_i8rv8")]
 visible = false
 layout_mode = 1
 exit_container = NodePath("../MainMenu")

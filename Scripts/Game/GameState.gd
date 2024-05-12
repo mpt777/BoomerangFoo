@@ -116,6 +116,7 @@ func register_keyboard(controller : Controller):
 	ControllerAction.new().constructor("attack_melee", InputEventMouseButton.new(), MOUSE_BUTTON_RIGHT).register(controller)
 	
 	ControllerAction.new().constructor("ui_up", InputEventKey.new(), KEY_UP).register(controller)
+	ControllerAction.new().constructor("escape", InputEventKey.new(), KEY_ESCAPE).register(controller)
 	ControllerAction.new().constructor("ui_down", InputEventKey.new(), KEY_DOWN).register(controller)
 	ControllerAction.new().constructor("ui_left", InputEventKey.new(), KEY_LEFT).register(controller)
 	ControllerAction.new().constructor("ui_right", InputEventKey.new(), KEY_RIGHT).register(controller)

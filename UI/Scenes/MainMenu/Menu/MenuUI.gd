@@ -1,6 +1,7 @@
 extends EtContainer
 
 @export var settings_container : EtContainer
+@export var credits_container : EtContainer
 @export var add_character_container : EtContainer
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +23,8 @@ func _on_settings_pressed():
 
 
 func _on_credits_pressed():
-	pass # Replace with function body.
+	exit()
+	credits_container.enter()
 
 
 func _on_quit_pressed():

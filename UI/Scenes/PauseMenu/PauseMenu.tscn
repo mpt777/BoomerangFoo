@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4el72dtw34kt"]
+
+[ext_resource type="Script" path="res://UI/Scenes/PauseMenu/PauseMenu.gd" id="1_b7f7l"]
+[ext_resource type="PackedScene" uid="uid://b6unoux6lpd32" path="res://UI/ETContainer/ETContainer.tscn" id="2_aa2bj"]
+[ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="2_clgne"]
+[ext_resource type="PackedScene" uid="uid://doggv7pbbru50" path="res://UI/Scenes/Settings/SettingsUI.tscn" id="4_skl03"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EtContainer" parent="." node_paths=PackedStringArray("settings_container") instance=ExtResource("2_aa2bj")]
+visible = false
+layout_mode = 1
+script = ExtResource("1_b7f7l")
+settings_container = NodePath("../SettingsUI")
+
+[node name="CenterContainer" type="CenterContainer" parent="EtContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EtContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Resume" parent="EtContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_clgne")]
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" parent="EtContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_clgne")]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Title" parent="EtContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_clgne")]
+layout_mode = 2
+text = "Quit to Title"
+
+[node name="Desktop" parent="EtContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_clgne")]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[node name="SettingsUI" parent="." node_paths=PackedStringArray("exit_container") instance=ExtResource("4_skl03")]
+visible = false
+layout_mode = 1
+exit_container = NodePath("../EtContainer")
+
+[connection signal="ControllerPressed" from="EtContainer/CenterContainer/VBoxContainer/Resume" to="EtContainer" method="_on_resume_controller_pressed"]
+[connection signal="ControllerPressed" from="EtContainer/CenterContainer/VBoxContainer/Settings" to="EtContainer" method="_on_settings_controller_pressed"]
+[connection signal="ControllerPressed" from="EtContainer/CenterContainer/VBoxContainer/Title" to="EtContainer" method="_on_title_controller_pressed"]
+[connection signal="ControllerPressed" from="EtContainer/CenterContainer/VBoxContainer/Desktop" to="EtContainer" method="_on_desktop_controller_pressed"]

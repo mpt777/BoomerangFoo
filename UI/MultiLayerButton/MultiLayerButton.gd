@@ -19,7 +19,7 @@ func _ready():
 func add_controller(controller : Controller) -> void:
 	controller.current_button = self
 	self.controllers.append(controller)
-	print(self.text, self.controllers)
+	#print(self.text, self.controllers)
 	
 func remove_controller(controller : Controller) -> void:
 	var to_remove := -1

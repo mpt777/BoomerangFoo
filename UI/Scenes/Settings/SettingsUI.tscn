@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://doggv7pbbru50"]
 
 [ext_resource type="PackedScene" uid="uid://b6unoux6lpd32" path="res://UI/ETContainer/ETContainer.tscn" id="1_gte6u"]
-[ext_resource type="Script" path="res://UI/Scenes/MainMenu/Settings/SettingsUI.gd" id="2_31kx4"]
+[ext_resource type="Script" path="res://UI/Scenes/Settings/SettingsUI.gd" id="2_31kx4"]
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/Theme/MenuTheme.tres" id="2_rw36i"]
-[ext_resource type="PackedScene" uid="uid://bdv4j6jo6rfv4" path="res://UI/Scenes/MainMenu/Settings/SettingControl/SettingControl.tscn" id="3_wfc1s"]
+[ext_resource type="PackedScene" uid="uid://bdv4j6jo6rfv4" path="res://UI/Scenes/Settings/SettingControl/SettingControl.tscn" id="3_wfc1s"]
 [ext_resource type="Theme" uid="uid://bixhckho7hwcg" path="res://Assets/Theme/GameTheme.tres" id="5_haioo"]
 
 [node name="SettingsUI" instance=ExtResource("1_gte6u")]
+process_mode = 3
 script = ExtResource("2_31kx4")
 reload = false
 

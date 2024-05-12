@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqbn42bewnksk"]
+
+[ext_resource type="PackedScene" uid="uid://b6unoux6lpd32" path="res://UI/ETContainer/ETContainer.tscn" id="1_3i25f"]
+[ext_resource type="Script" path="res://UI/Scenes/MainMenu/Credits/Credits.gd" id="2_iqog5"]
+[ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/Theme/MenuTheme.tres" id="3_l8p28"]
+
+[node name="Credits" instance=ExtResource("1_3i25f")]
+script = ExtResource("2_iqog5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/PanelContainer" index="0"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HSplitContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("3_l8p28")
+text = "Credits
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/HSplitContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Creator
+Marshal Taylor (Empty Text)
+
+Special Thanks
+Rachel Taylor"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="Exit" type="Button" parent="VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]

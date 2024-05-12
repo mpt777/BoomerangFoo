@@ -87,9 +87,9 @@ func unfreeze_characters():
 func set_can_move_characters(can_move : bool) -> void:
 	for character in get_tree().get_nodes_in_group("Character"):
 		if can_move:
-			character.process_mode = PROCESS_MODE_ALWAYS
+			character.process_mode = Node.PROCESS_MODE_INHERIT
 		else:
-			character.process_mode = PROCESS_MODE_DISABLED
+			character.process_mode = Node.PROCESS_MODE_DISABLED
 		#character.set_can_move(can_move)
 	
 
