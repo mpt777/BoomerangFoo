@@ -12,3 +12,6 @@ var target_position : Vector3
 func kill() -> void:
 	queue_free()
 	$"/root/Signals".emit_signal("update_character")
+
+func avatar() -> Avatar:
+	return $AvatarWrapper.avatar

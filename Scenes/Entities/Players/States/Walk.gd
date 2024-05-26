@@ -8,7 +8,7 @@ func _ready():
 
 func enter():
 	pass
-	
+		
 func exit():
 	pass
 	
@@ -16,7 +16,10 @@ func update(_delta : float):
 	pass
 	
 func physics_update(_delta : float):
-	pass
+	if (body.velocity.length() > 0.05):
+		body.avatar().travel("Walk")
+	else:
+		body.avatar().travel("Idle")
 	#movement.move(body.get_input_direction())
 	
 #func _input(event):

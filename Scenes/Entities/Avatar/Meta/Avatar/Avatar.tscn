@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://mtjq6g0iyxj5"]
+[gd_scene load_steps=14 format=3 uid="uid://mtjq6g0iyxj5"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.gd" id="1_a3jv1"]
 
@@ -8,23 +8,137 @@ script/source = "extends RemoteTransform3D
 
 "
 
+[sub_resource type="Animation" id="Animation_utn5l"]
+resource_name = "Cast"
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_3cegn"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/CameraFix/Body:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.523599, 0), Vector3(0, 0, 0), Vector3(0, 0.523599, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2tueo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/CameraFix/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_adl6h"]
+resource_name = "Walk"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/CameraFix/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.261799), Vector3(0, 0, -1.49012e-08), Vector3(0, 0, 0.261799), Vector3(0, 0, 0), Vector3(0, 0, -0.261799)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4g10k"]
+_data = {
+"Cast": SubResource("Animation_utn5l"),
+"Idle": SubResource("Animation_3cegn"),
+"RESET": SubResource("Animation_2tueo"),
+"Walk": SubResource("Animation_adl6h")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mglp8"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_024bt"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i0eyq"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ruvou"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pv743"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_v4dgl"]
+states/End/position = Vector2(1012, 105)
+states/Idle/node = SubResource("AnimationNodeAnimation_mglp8")
+states/Idle/position = Vector2(357, 88)
+states/Start/position = Vector2(201, 100)
+states/Walk/node = SubResource("AnimationNodeAnimation_024bt")
+states/Walk/position = Vector2(351, 206)
+transitions = ["Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_i0eyq"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_ruvou"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pv743")]
+
 [node name="Avatar" type="Node3D"]
 script = ExtResource("1_a3jv1")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Animation" type="Node3D" parent="."]
 
-[node name="Right" type="Node3D" parent="."]
+[node name="CameraFix" type="Node3D" parent="Animation"]
+
+[node name="Body" type="Node3D" parent="Animation/CameraFix"]
+
+[node name="Right" type="Node3D" parent="Animation/CameraFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606081, 0.741573, 0)
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Right"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Animation/CameraFix/Right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.163375)
 script = SubResource("GDScript_shfsh")
 
-[node name="Left" type="Node3D" parent="."]
+[node name="Left" type="Node3D" parent="Animation/CameraFix"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.653593, 0.768859, -0.189732)
 
-[node name="LeftFoot" type="Node3D" parent="."]
+[node name="LeftFoot" type="Node3D" parent="Animation/CameraFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0898381, 0, 0)
 
-[node name="RightFoot" type="Node3D" parent="."]
+[node name="RightFoot" type="Node3D" parent="Animation/CameraFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201583, 0, -5.96046e-08)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4g10k")
+}
+autoplay = "Walk"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_v4dgl")
+anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 0.0
+parameters/current_position = 0.0
+parameters/current_delta = 0.0
+parameters/End/current_length = 0.0
+parameters/End/current_position = 0.0
+parameters/End/current_delta = 0.0
+parameters/Idle/current_length = 3.0
+parameters/Idle/current_position = 2.64793
+parameters/Idle/current_delta = 0.0166667
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/Walk/current_length = 1.0
+parameters/Walk/current_position = 0.694053
+parameters/Walk/current_delta = 0.0166233
