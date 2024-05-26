@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdy4aryvcr8ye"]
+
+[ext_resource type="PackedScene" uid="uid://brh77ho1adpld" path="res://Assets/Blender/Decorations/Cross/cross.gravestone.glb" id="1_bp6rn"]
+
+[node name="cross_gravestone" instance=ExtResource("1_bp6rn")]

@@ -45,6 +45,7 @@ func instance_projectiles(weapon : Weapon) -> void:
 		var bullet := projectile()
 		
 		bullet.position = weapon.spawn_node().global_position
+		bullet.position.y = 1 
 		bullet.rotation = weapon.spawn_node().global_rotation
 		bullet.attack = attack(weapon)
 		bullet.speed *= bullet_speed

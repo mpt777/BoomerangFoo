@@ -12,7 +12,7 @@ albedo_color = Color(2.40654e-07, 0.617191, 0.284941, 1)
 [node name="Projectile" instance=ExtResource("1_gr34g")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(9.55343e-16, -2.18557e-08, 0.5, -0.5, -2.18557e-08, 0, 2.18557e-08, -0.5, -2.18557e-08, 0, 0, 0)
+transform = Transform3D(1.43301e-15, -3.27835e-08, 0.75, -0.75, -3.27835e-08, -1.58819e-22, 3.27835e-08, -0.75, -3.27835e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_s7vyx")
 mesh = SubResource("CapsuleMesh_otgub")
 

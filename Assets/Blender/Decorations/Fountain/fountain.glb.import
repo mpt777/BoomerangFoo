@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://csh7g6sgq0ere"
-path="res://.godot/imported/fountain.dae-8db90b9dce178aaef7ef68859bd10928.scn"
+uid="uid://brcybkgg2e3o4"
+path="res://.godot/imported/fountain.glb-e2f806a4c611032a95df20bec05fc4ed.scn"
 
 [deps]
 
-source_file="res://Assets/Blender/Decorations/Fountain/fountain.dae"
-dest_files=["res://.godot/imported/fountain.dae-8db90b9dce178aaef7ef68859bd10928.scn"]
+source_file="res://Assets/Blender/Decorations/Fountain/fountain.glb"
+dest_files=["res://.godot/imported/fountain.glb-e2f806a4c611032a95df20bec05fc4ed.scn"]
 
 [params]
 

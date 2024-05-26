@@ -26,7 +26,6 @@ _data = {
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.86844, 0.636431, 0.438784, 1)
-light_energy = 1.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OmniLight3D"]
 libraries = {

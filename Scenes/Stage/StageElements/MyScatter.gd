@@ -45,7 +45,6 @@ extends Marker3D
 		process_wrapper()
 
 var multimesh : MultiMesh
-var mesh_library : MeshLibrary = preload("res://Assets/Blender/Tree/tree.meshlib")
 
 var transforms := []
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Stage/Objects/Box.tscn" id="1_7t2de"]
 [ext_resource type="Script" path="res://Scenes/Stage/StageElements/Stage.gd" id="1_itxcq"]
-[ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Scenes/Decorations/Gravestones/cross_gravestone.tscn" id="2_v7qyl"]
+[ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Assets/Blender/Decorations/Cross/cross_gravestone.tscn" id="2_v7qyl"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_xm1ef"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Stage/Objects/Wall.tscn" id="3_jrjor"]
 [ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Stage/PickupSpawner/PickupSpawner.tscn" id="6_muvuk"]

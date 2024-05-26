@@ -4,13 +4,15 @@
 size = Vector3(40, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nguk5"]
-albedo_color = Color(0.317647, 0.247059, 0.184314, 1)
+albedo_color = Color(0.423529, 0.372549, 0.294118, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_oe01l"]
 material = SubResource("StandardMaterial3D_nguk5")
 size = Vector3(40, 1, 1)
 
 [node name="Wall" type="StaticBody3D"]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_sd378")

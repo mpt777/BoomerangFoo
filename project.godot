@@ -59,6 +59,7 @@ Test={
 
 3d_physics/layer_1="World"
 3d_physics/layer_2="Character"
+3d_physics/layer_4="Hitbox"
 3d_physics/layer_9="Projectile"
 3d_physics/layer_10="Pickup"
 3d_physics/layer_13="MouseRayLayer"

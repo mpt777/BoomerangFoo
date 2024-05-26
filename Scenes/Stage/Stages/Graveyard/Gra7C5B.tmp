@@ -3,35 +3,37 @@
 [ext_resource type="Script" path="res://Scenes/Stage/Stages/Graveyard/GraveyardStage.gd" id="1_318dh"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_gvqjs"]
 [ext_resource type="Environment" uid="uid://cj6gk6l0qfma5" path="res://Assets/Theme/Enviroment.tres" id="2_oxlq4"]
+[ext_resource type="PackedScene" uid="uid://cabu0lnkkctm5" path="res://Scenes/Decorations/Gravestones/cross_gravestone.tscn" id="3_bink5"]
 [ext_resource type="Script" path="res://Scenes/Stage/StageElements/MyScatter.gd" id="4_2dgcp"]
 [ext_resource type="PackedScene" uid="uid://dlb62y2do7mt" path="res://Scenes/Stage/Objects/Box.tscn" id="4_ehjwh"]
 [ext_resource type="PackedScene" uid="uid://bqotfpswysapn" path="res://Scenes/Stage/Objects/Wall.tscn" id="5_47l66"]
 [ext_resource type="PackedScene" uid="uid://d3g2ctx2ifat6" path="res://Assets/Blender/Decorations/Fountain/fountain.tscn" id="6_8adw2"]
 [ext_resource type="PackedScene" uid="uid://cr2vlr71kinhj" path="res://Assets/Blender/Tree/TreeOrange.tscn" id="6_42666"]
 [ext_resource type="PackedScene" uid="uid://bw34gqoxhebja" path="res://Assets/Blender/Tree/Tree.tscn" id="6_b12td"]
-[ext_resource type="PackedScene" uid="uid://bdy4aryvcr8ye" path="res://Assets/Blender/Decorations/Cross/CrossGravestone.tscn" id="7_gs3at"]
 [ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Stage/PickupSpawner/PickupSpawner.tscn" id="7_pu82f"]
 [ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Stage/StageElements/CharacterSpawner.tscn" id="8_p1sje"]
-[ext_resource type="Material" uid="uid://bxian2evsffcs" path="res://Assets/Shaders/Ground/grass.tres" id="9_tobu3"]
 [ext_resource type="PackedScene" uid="uid://d30hisabwo1dl" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="13_clae7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oj7i5"]
+albedo_color = Color(0.662745, 0.705882, 0.34902, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4djhl"]
 resource_local_to_scene = true
 lightmap_size_hint = Vector2i(2224, 1116)
-material = ExtResource("9_tobu3")
+material = SubResource("StandardMaterial3D_oj7i5")
 size = Vector3(222, 0, 222)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l6qs"]
 size = Vector3(100, 0, 100)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ojoqf"]
-vertices = PackedVector3Array(-2, 0.406946, -5.75, 0, 0.406946, -5.75, 0, 0.406946, -18.75, -20.75, 0.406946, 0, -5.75, 0.406946, 0, -5.75, 0.406946, -2, -5, 0.406946, -3.5, -2, 0.406946, -5.75, 0, 0.406946, -18.75, -20.75, 0.406946, 0, -5.75, 0.406946, -2, -5, 0.406946, -3.5, 0, 0.406946, -18.75, -20.25, 0.406946, -18.75, -20.25, 0.406946, -18.75, -20.75, 0.406946, -19.5, -20.75, 0.406946, 0, 0, 0.406946, -18.75, 0, 0.406946, -5.75, 2, 0.406946, -5.75, 0, 0.406946, -18.75, 2, 0.406946, -5.75, 3.5, 0.406946, -5, 5.75, 0.406946, -2, 5.75, 0.406946, -0.5, 21, 0.406946, -0.75, 0, 0.406946, -18.75, 3.5, 0.406946, -5, 5, 0.406946, -3.5, 5, 0.406946, -3.5, 5.75, 0.406946, -2, 21, 0.406946, -0.75, 20.25, 0.406946, -18.75, 0, 0.406946, -18.75, 21, 0.406946, -0.75, 21, 0.406946, -19.5, 20.25, 0.406946, -18.75, 2, 0.406946, 5.75, 0.5, 0.406946, 5.75, 0.75, 0.406946, 19, 21, 0.406946, -0.75, 5.75, 0.406946, -0.5, 5.75, 0.406946, 2, 5, 0.406946, 3.5, 2, 0.406946, 5.75, 0.75, 0.406946, 19, 21, 0.406946, -0.75, 5.75, 0.406946, 2, 5, 0.406946, 3.5, 0.75, 0.406946, 19, 20.5, 0.406946, 19, 20.5, 0.406946, 19, 21, 0.406946, 19.5, 21, 0.406946, -0.75, 0.75, 0.406946, 19, 0.5, 0.406946, 5.75, -2, 0.406946, 5.75, 0.75, 0.406946, 19, -2, 0.406946, 5.75, -3.5, 0.406946, 5, -5.75, 0.406946, 2, -5.75, 0.406946, 0, -20.75, 0.406946, 0, -3.5, 0.406946, 5, -5.75, 0.406946, 2, -20.75, 0.406946, 0, -20.25, 0.406946, 19, 0.75, 0.406946, 19, -20.75, 0.406946, 0, -20.75, 0.406946, 19.5, -20.25, 0.406946, 19)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 13), PackedInt32Array(11, 13, 12), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(22, 21, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(42, 41, 40), PackedInt32Array(45, 44, 43), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 50), PackedInt32Array(48, 50, 49), PackedInt32Array(53, 52, 51), PackedInt32Array(56, 55, 54), PackedInt32Array(59, 58, 57), PackedInt32Array(62, 61, 60), PackedInt32Array(63, 67, 64), PackedInt32Array(64, 67, 66), PackedInt32Array(64, 66, 65), PackedInt32Array(70, 69, 68)]
+vertices = PackedVector3Array(-2.5, 0.368672, -5.25, 0, 0.368672, -5.5, 0, 0.368672, -18.75, -4.5, 0.368672, -3.75, -2.5, 0.368672, -5.25, 0, 0.368672, -18.75, -5.5, 0.368672, -1.75, -4.5, 0.368672, -3.75, 0, 0.368672, -18.75, -28.75, 0.368672, -18.75, -28.75, 0.368672, -1.90735e-06, -28.75, 0.368672, -1.90735e-06, -5.5, 0.368672, -1.90735e-06, -5.5, 0.368672, -1.75, 0, 0.368672, -18.75, 0, 0.368672, -5.5, 1.75, 0.368672, -5.5, 0, 0.368672, -18.75, 1.75, 0.368672, -5.5, 3.75, 0.368672, -4.5, 0, 0.368672, -18.75, 3.75, 0.368672, -4.5, 5.25, 0.368672, -2.5, 29, 0.368672, -1.90735e-06, 29, 0.368672, -18.75, 5.25, 0.368672, -2.5, 5.75, 0.368672, -1.90735e-06, 29, 0.368672, -1.90735e-06, 0, 0.368672, 19, 0, 0.368672, 5.75, -2.5, 0.368672, 5.25, 0, 0.368672, 19, -2.5, 0.368672, 5.25, -4.5, 0.368672, 3.75, 0, 0.368672, 19, -4.5, 0.368672, 3.75, -5.5, 0.368672, 1.75, -28.75, 0.368672, -1.90735e-06, -28.75, 0.368672, 19, -5.5, 0.368672, 1.75, -5.5, 0.368672, -1.90735e-06, -28.75, 0.368672, -1.90735e-06, 3.75, 0.368672, 4.5, 0, 0.368672, 5.75, 0, 0.368672, 19, 5.25, 0.368672, 2.5, 3.75, 0.368672, 4.5, 0, 0.368672, 19, 29, 0.368672, 19, 29, 0.368672, -1.90735e-06, 29, 0.368672, -1.90735e-06, 5.75, 0.368672, -1.90735e-06, 5.25, 0.368672, 2.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(25, 27, 26), PackedInt32Array(30, 29, 28), PackedInt32Array(33, 32, 31), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 38), PackedInt32Array(36, 38, 37), PackedInt32Array(41, 40, 39), PackedInt32Array(44, 43, 42), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(48, 45, 49), PackedInt32Array(52, 51, 50)]
 agent_max_climb = 0.0
 region_min_size = 100.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xnwqk"]
-size = Vector2(45, 40)
+size = Vector2(60, 40)
 
 [node name="GraveyardStage" type="Node3D"]
 script = ExtResource("1_318dh")
@@ -42,7 +44,7 @@ script = ExtResource("1_318dh")
 environment = ExtResource("2_oxlq4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
-transform = Transform3D(0.97614, -0.212152, -0.0462768, -0.0547854, -0.446851, 0.892929, -0.210115, -0.869089, -0.447812, 0, 21.6531, 0)
+transform = Transform3D(0.999922, 0.00408564, -0.0118428, 0.00905512, -0.888978, 0.45786, -0.00865737, -0.457931, -0.888946, 0, 21.6531, 0)
 shadow_enabled = true
 shadow_blur = 0.0
 directional_shadow_max_distance = 300.0
@@ -50,19 +52,18 @@ directional_shadow_max_distance = 300.0
 [node name="CameraAnchor" parent="Enviroment" instance=ExtResource("2_gvqjs")]
 transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, -5.065)
 
-[node name="ShakeableCamera" parent="Enviroment/CameraAnchor" index="1" node_paths=PackedStringArray("camera")]
-camera = NodePath("../SmartCamera")
-
 [node name="World" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000436306, 0.0159941, 9.34601e-05)
 
 [node name="Decorations" type="Node3D" parent="World"]
+
+[node name="cross_gravestone" parent="World/Decorations" instance=ExtResource("3_bink5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.90055, -0.219395, -8.17078)
 
 [node name="Orange" type="Marker3D" parent="World/Decorations"]
 script = ExtResource("4_2dgcp")
 instance_amount = 700
 placement_size = Vector3(150, 5, 150)
-cull_size = Vector3(50, 1, 34)
+cull_size = Vector3(60, 1, 40)
 show_placement = false
 run = false
 TREE = ExtResource("6_42666")
@@ -72,12 +73,9 @@ script = ExtResource("4_2dgcp")
 instance_amount = 700
 seed = 2
 placement_size = Vector3(150, 5, 150)
-cull_size = Vector3(50, 1, 34)
+cull_size = Vector3(60, 1, 40)
 show_placement = false
 TREE = ExtResource("6_b12td")
-
-[node name="cross_gravestone" parent="World/Decorations" instance=ExtResource("7_gs3at")]
-transform = Transform3D(-0.00110508, 0.000634116, -0.999999, -9.04055e-06, 1, 0.000634127, 0.999999, 9.761e-06, -0.00110508, -15.4704, 0, -6.15997)
 
 [node name="Items" type="Node3D" parent="World"]
 
@@ -110,16 +108,16 @@ navigation_mesh = SubResource("NavigationMesh_ojoqf")
 [node name="Walls" type="Node3D" parent="World/NavigationRegion3D"]
 
 [node name="Wall" parent="World/NavigationRegion3D/Walls" instance=ExtResource("5_47l66")]
-transform = Transform3D(1.262, 0, 0, 0, 1.262, 0, 0, 0, 1.262, 0, 0.5, -17)
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -20)
 
 [node name="Wall2" parent="World/NavigationRegion3D/Walls" instance=ExtResource("5_47l66")]
-transform = Transform3D(1.275, 0, 0, 0, 1.275, 0, 0, 0, 1.275, 0, 0.5, 17)
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 20)
 
 [node name="Wall3" parent="World/NavigationRegion3D/Walls" instance=ExtResource("5_47l66")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30, 0.5, 0)
 
 [node name="Wall4" parent="World/NavigationRegion3D/Walls" instance=ExtResource("5_47l66")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30, 0.5, 0)
 
 [node name="NavFloor" type="MeshInstance3D" parent="World/NavigationRegion3D"]
 visible = false
@@ -157,6 +155,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1202, 1.60839, 13.4168)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6095, 1.60839, 15.1251)
 
 [node name="Avatar" parent="." instance=ExtResource("13_clae7")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -13.8531, 0.334535, -6.18617)
-
-[editable path="Enviroment/CameraAnchor"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.228787, 0.326753, 0.367142)

@@ -1,20 +1,25 @@
 [gd_resource type="Environment" load_steps=3 format=3 uid="uid://cj6gk6l0qfma5"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wsf1p"]
-sky_top_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.258824, 0.560784, 0.729412, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3anpa"]
+sky_top_color = Color(0.431373, 0.698039, 0.952941, 1)
+sky_horizon_color = Color(0.999074, 0.951921, 0.908881, 1)
+ground_bottom_color = Color(0.898039, 0.92549, 0.643137, 1)
+ground_horizon_color = Color(0.964629, 0.884842, 0.951065, 1)
 
-[sub_resource type="Sky" id="Sky_4sfdv"]
-sky_material = SubResource("ProceduralSkyMaterial_wsf1p")
+[sub_resource type="Sky" id="Sky_c6te1"]
+sky_material = SubResource("ProceduralSkyMaterial_3anpa")
 
 [resource]
 resource_local_to_scene = true
 background_mode = 2
 background_color = Color(0.376471, 0.647059, 0.690196, 1)
-sky = SubResource("Sky_4sfdv")
-ambient_light_source = 3
+sky = SubResource("Sky_c6te1")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.5
 reflected_light_source = 2
 tonemap_mode = 3
+tonemap_exposure = 0.7
 ssr_fade_in = 0.439226
 fog_light_energy = 0.09
 fog_sun_scatter = 0.63
