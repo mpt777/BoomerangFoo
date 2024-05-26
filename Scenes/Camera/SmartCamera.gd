@@ -113,9 +113,10 @@ func _set_fov() -> void:
 	r = r.expand(min_p_s)
 	r = r.expand(max_p_s)
 	
-	#var base_screen_size = Vector2(1920, 1080)
+	var base_screen_size = Vector2(1920, 1080)
 	
-	var z = max(r.size.x / _screen_size.x, r.size.y / _screen_size.y)
+	#var z = max(r.size.x / _screen_size.x, r.size.y / _screen_size.y)
+	var z = max(r.size.x / base_screen_size.x, r.size.y / base_screen_size.y)
 	
 	camera.fov = lerp(camera.fov, clamp(camera.fov * z, minFOV, maxFOV), ZOOM_SPEED)
 	

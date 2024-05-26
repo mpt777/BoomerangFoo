@@ -5,17 +5,10 @@
 
 [node name="Avatar" instance=ExtResource("1_o1nh2")]
 
-[node name="Body" parent="Animation/CameraFix" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="Body_CameraFix#witch_smooth" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("2_5g6vm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.298155, 0)
 
 [node name="AnimationTree" parent="." index="2"]
-parameters/current_length = 1.0
-parameters/current_position = 0.97211
-parameters/current_delta = 0.0731614
-parameters/Idle/current_length = 3.0
 parameters/Idle/current_position = 0.199998
 parameters/Walk/current_position = 0.97211
 parameters/Walk/current_delta = 0.0731614

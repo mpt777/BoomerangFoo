@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=4 uid="uid://b2jyu1mn7nium"]
+[gd_scene load_steps=30 format=4 uid="uid://b2jyu1mn7nium"]
 
 [ext_resource type="PackedScene" uid="uid://cw7q0l37u57ui" path="res://Assets/Blender/Avatars/Witch/witch_smooth.dae" id="1_dut7p"]
 [ext_resource type="Material" uid="uid://1xfih6nhxtdm" path="res://Assets/Blender/Avatars/Witch/Materials/Buckle.tres" id="2_tfatj"]
 [ext_resource type="Material" uid="uid://ckvn7xeprgtdl" path="res://Assets/Blender/Avatars/Witch/Materials/Accent.tres" id="3_l2k03"]
 [ext_resource type="Material" uid="uid://dl1t1kfb2ly0c" path="res://Assets/Blender/Avatars/Witch/Materials/Fabric.tres" id="4_3543h"]
+[ext_resource type="Material" uid="uid://cftf6nnh8ql6t" path="res://Assets/Blender/Avatars/Witch/Materials/Eyes.tres" id="5_32f5w"]
 [ext_resource type="Material" uid="uid://tuguxhiuujbw" path="res://Assets/Blender/Avatars/Witch/Materials/Skin.tres" id="5_gy2v2"]
 [ext_resource type="Material" uid="uid://d2m52tjhveeuo" path="res://Assets/Blender/Avatars/Witch/Materials/Hair.tres" id="6_8f77s"]
 
@@ -371,8 +372,8 @@ material_override = ExtResource("2_tfatj")
 mesh = SubResource("ArrayMesh_n5gr0")
 
 [node name="Sphere" parent="." index="3"]
-material_override = ExtResource("3_l2k03")
 mesh = SubResource("ArrayMesh_k5vbf")
+surface_material_override/0 = ExtResource("5_32f5w")
 
 [node name="Nose" parent="." index="4"]
 material_override = ExtResource("5_gy2v2")

@@ -16,7 +16,9 @@ func update(_delta : float):
 	pass
 	
 func physics_update(_delta : float):
-	if (body.velocity.length() > 0.05):
+	if (body.velocity.y > 0.05):
+		body.avatar().travel("Idle")
+	elif (body.velocity.length() > 0.05):
 		body.avatar().travel("Walk")
 	else:
 		body.avatar().travel("Idle")

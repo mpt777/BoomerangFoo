@@ -39,15 +39,7 @@ func constructor() -> GameSettings:
 		func(setting : Setting): 
 			var value = DisplayServer.WINDOW_MODE_WINDOWED
 			if setting.value:
-				value = DisplayServer.WINDOW_MODE_FULLSCREEN 
-			DisplayServer.window_set_mode(value)
-	))
-	self.settings.register(
-		Setting.new().constructor("Full Screen", "full_screen", false,
-		func(setting : Setting): 
-			var value = DisplayServer.WINDOW_MODE_WINDOWED
-			if setting.value:
-				value = DisplayServer.WINDOW_MODE_FULLSCREEN 
+				value = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 			DisplayServer.window_set_mode(value)
 	))
 	self.settings.register(
