@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cuv7c7pyrcnx"
-path="res://.godot/imported/tree_j.glb-72af5b89b19ec049c54efbfd70deee68.scn"
+uid="uid://csh7g6sgq0ere"
+path="res://.godot/imported/fountain.dae-8db90b9dce178aaef7ef68859bd10928.scn"
 
 [deps]
 
-source_file="res://Assets/Blender/Tree/tree_j.glb"
-dest_files=["res://.godot/imported/tree_j.glb-72af5b89b19ec049c54efbfd70deee68.scn"]
+source_file="res://Assets/Blender/Decorations/Fountain/fountain.dae"
+dest_files=["res://.godot/imported/fountain.dae-8db90b9dce178aaef7ef68859bd10928.scn"]
 
 [params]
 
@@ -17,6 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -28,18 +29,11 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Bark": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Blender/Tree/Bark.tres"
-},
-"Leaves": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Blender/Tree/Leaves.tres"
-}
-}
-}
+_subresources={}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
 gltf/naming_version=1
 gltf/embedded_image_handling=1

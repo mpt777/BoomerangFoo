@@ -1,5 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjxmh3d4a8dob"]
+[gd_scene load_steps=3 format=3 uid="uid://cjxmh3d4a8dob"]
 
 [ext_resource type="PackedScene" uid="uid://b2rffsava3sfb" path="res://Assets/Blender/Tree/tree.glb" id="1_au8nc"]
+[ext_resource type="Material" uid="uid://bh5tahfiuu2q6" path="res://Assets/Blender/Tree/Leaves.tres" id="2_q8gko"]
 
 [node name="tree" instance=ExtResource("1_au8nc")]
+
+[node name="Icosphere" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_q8gko")
+
+[node name="Icosphere_001" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_q8gko")
+
+[node name="Icosphere_002" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_q8gko")
+
+[node name="Icosphere_003" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_q8gko")

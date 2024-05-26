@@ -78,3 +78,5 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07986, 0)
 shape = SubResource("CylinderShape3D_6ebsu")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

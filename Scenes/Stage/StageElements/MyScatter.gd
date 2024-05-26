@@ -8,8 +8,8 @@ extends Marker3D
 			
 @export var seed := 1:
 	set(value):
+		seed = value
 		if rng:
-			seed = value
 			rng.seed = seed
 		process_wrapper()
 			
@@ -38,10 +38,15 @@ extends Marker3D
 				rng.randomize()
 				seed = rng.seed
 		process_wrapper()
+		
+@export var TREE : PackedScene:
+	set(value):
+		TREE = value
+		process_wrapper()
 
 var multimesh : MultiMesh
 var mesh_library : MeshLibrary = preload("res://Assets/Blender/Tree/tree.meshlib")
-var TREE := preload("res://Scenes/Decorations/Tree/Tree.tscn")
+
 var transforms := []
 
 var rng : RandomNumberGenerator
@@ -58,7 +63,7 @@ func process():
 	var tree := TREE.instantiate()
 	for child_node in tree.get_children():
 		if child_node is MeshInstance3D:
-			process_mesh(child_node.mesh, child_node.transform)
+			process_mesh(preprocess_mesh_instance(child_node), child_node.transform)
 		
 func clear():
 	transforms = []
@@ -104,15 +109,23 @@ func set_transforms():
 		transform_3d.origin = get_random_point()
 		transform_3d.basis = transform_3d.basis.rotated(Vector3(0, 1, 0), rng.randf_range(-3, 3))
 		transforms.append(transform_3d)
+		
+func preprocess_mesh_instance(mesh_instance : MeshInstance3D) -> Mesh:
+	var mesh = mesh_instance.mesh.duplicate()
+	for i in range(mesh_instance.get_surface_override_material_count()):
+		var override = mesh_instance.get_surface_override_material(i)
+		if override:
+			mesh.surface_set_material(i, override)
+	return mesh
 
 func process_mesh(mesh: Mesh, transform_3d : Transform3D):
 	if not transforms:
 		return
 	multimesh = MultiMesh.new()
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	multimesh.mesh = mesh
 	multimesh.instance_count = instance_amount
-
+	multimesh.mesh = mesh
+	
 	# Populate the multimesh with instances
 	for i in range(instance_amount): # Example: 100
 		multimesh.set_instance_transform(i, transforms[i] * transform_3d)
@@ -141,16 +154,16 @@ func render_placement():
 	if not show_placement:
 		return
 			
-	var mesh_instance := MeshInstance3D.new()
-	var mesh = BoxMesh.new()
-	var material := StandardMaterial3D.new()
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color = Color(0.68,0.31,0.07,0.45)
-	mesh.size = placement_size
-	
-	mesh.material = material
-	mesh_instance.mesh = mesh
-	add_child(mesh_instance)
+	#var mesh_instance := MeshInstance3D.new()
+	#var mesh = BoxMesh.new()
+	#var material := StandardMaterial3D.new()
+	#material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	##material.albedo_color = Color(0.68,0.31,0.07,0.45)
+	#mesh.size = placement_size
+	#
+	#mesh.material = material
+	#mesh_instance.mesh = mesh
+	#add_child(mesh_instance)
 	
 	
 	

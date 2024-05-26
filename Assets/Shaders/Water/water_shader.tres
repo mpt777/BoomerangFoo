@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://pvee1wxa5kqy"]
+
+[ext_resource type="Shader" path="res://Assets/Blender/Decorations/Fountain/water.gdshader" id="1_efydc"]
+[ext_resource type="Texture2D" uid="uid://dvobr86nim178" path="res://Assets/Shaders/Water/Caustic_Free_0.jpg" id="2_wul1b"]
+
+[sub_resource type="Gradient" id="Gradient_rfc3h"]
+offsets = PackedFloat32Array(0.362369, 0.825784)
+colors = PackedColorArray(0.0739254, 0.602259, 0.773798, 1, 0.708102, 0.879421, 0.951848, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_akarf"]
+gradient = SubResource("Gradient_rfc3h")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xessl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g2pu7"]
+noise = SubResource("FastNoiseLite_xessl")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_efydc")
+shader_parameter/flow_speed = 0.3
+shader_parameter/vignette_size = 0.3
+shader_parameter/vignette_blend = 0.1
+shader_parameter/distort_strength = 0.1
+shader_parameter/disc_speed = 0.0
+shader_parameter/caustics_texture = ExtResource("2_wul1b")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_akarf")
+shader_parameter/distort_noise = SubResource("NoiseTexture2D_g2pu7")
