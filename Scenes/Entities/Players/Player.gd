@@ -22,7 +22,6 @@ func _ready():
 	
 func _physics_process(delta):
 	rotate_character(delta)
-	n_movement.move(get_input_direction())
 	
 func get_input_direction() -> Vector3:
 	var direction := Vector3.ZERO
@@ -37,16 +36,12 @@ func get_input_direction() -> Vector3:
 	return direction.normalized()
 	
 func _input(event):
-	#if event.is_action_pressed(controller.action("thow_weapon")):
-		#n_hand.throw()
 	if event.is_action_pressed(controller.action("attack_range")) or event.is_action_pressed(controller.action("attack_melee")):
-		n_pointer.start()
+		signals.emit_signal("Attack.Start")
 	if event.is_action_released(controller.action("attack_range")):
-		signals.emit_signal("Wand.Attack", "range")
-		n_pointer.reset()
+		signals.emit_signal("Attack.Attack", "range")
 	if event.is_action_released(controller.action("attack_melee")):
-		signals.emit_signal("Wand.Attack", "melee")
-		n_pointer.reset()
+		signals.emit_signal("Attack.Attack", "melee")
 	if event.is_action_pressed(controller.action("dash")):
 		signals.emit_signal("Movement.dash")
 		

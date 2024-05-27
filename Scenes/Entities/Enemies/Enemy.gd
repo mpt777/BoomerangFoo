@@ -41,3 +41,6 @@ func move_hand(delta):
 func current_movement_state() -> String:
 	return $MovementFSM.current_state_name()
 	
+func get_input_direction() -> Vector3:
+	return self.target_direction
+	

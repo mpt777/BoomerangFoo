@@ -15,6 +15,8 @@ func initialize():
 	
 	for modifier in self.data.modifiers:
 		modifier.emit_message(self)
+		
+	anchors.anchor("RightHand").add($Wand.n_mesh)
 	
 func range_spell() -> Spell:
 	return self.data.range_spell

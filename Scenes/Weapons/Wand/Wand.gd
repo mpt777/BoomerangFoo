@@ -2,6 +2,7 @@ extends Weapon
 class_name Wand
 
 @export var mana_component : ManaComponent
+@onready var n_mesh = $Node3D
 
 var current_spell : Spell
 
@@ -12,7 +13,6 @@ func _ready():
 	
 func _physics_process(delta):
 	return
-	global_transform = weapon_owner.anchors.anchor("RightHand").global_transform
 	#global_rotation = weapon_owner.anchors.anchor("RightHand").global_rotation
 	
 func use(type : String):

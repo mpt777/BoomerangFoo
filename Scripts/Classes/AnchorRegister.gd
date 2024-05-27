@@ -4,9 +4,9 @@ class_name AnchorRegister
 var anchors : Dictionary
 
 func register(anchor: Anchor) -> void:
-	anchors[code].add(node_3d)
+	anchors[anchor.alias]= anchor
 	
-func anchor(code : String) -> Array[Node3D]:
+func anchor(code : String) -> Anchor:
 	return anchors[code]
 	
 
