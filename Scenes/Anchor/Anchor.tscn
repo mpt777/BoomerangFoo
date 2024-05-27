@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckw1ohlj8xrtk"]
+
+[ext_resource type="Script" path="res://Scenes/Anchor/Anchor.gd" id="1_bkmch"]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D"]
+script = ExtResource("1_bkmch")

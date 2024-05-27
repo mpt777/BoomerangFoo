@@ -12,6 +12,7 @@ func constructor(p_character : Character) -> AvatarWrapper:
 	#self.character.anchors.register("RightHand", r_hand_remote)
 	self.avatar = self.character.data.avatar.avatar.instantiate()
 	self.n_anchor.add_child(avatar)
+	#self.character.anchors.register("RightHand", )
 	self.mount()
 	return self
 

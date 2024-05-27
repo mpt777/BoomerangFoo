@@ -8,6 +8,21 @@
 [node name="Body_CameraFix#witch_smooth" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("2_5g6vm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.298155, 0)
 
+[node name="Right" parent="Animation/CameraFix" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407918, 0.450382, 0)
+
+[node name="Left" parent="Animation/CameraFix" index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.338024, 0.47401, -0.000113547)
+
+[node name="LeftFoot" parent="Animation/CameraFix" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202358, -0.00388727, 6.84261e-05)
+
+[node name="MeshInstance3D" parent="Animation/CameraFix/LeftFoot" index="0"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.014669, 0, 0)
+
+[node name="MeshInstance3D" parent="Animation/CameraFix/RightFoot" index="0"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.274303, -0.00321686, 0.000724077)
+
 [node name="AnimationTree" parent="." index="2"]
 parameters/Idle/current_position = 0.199998
 parameters/Walk/current_position = 0.97211

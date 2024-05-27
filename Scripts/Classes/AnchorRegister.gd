@@ -1,12 +1,12 @@
 extends Node
 class_name AnchorRegister
 
-var anchors = {}
+var anchors : Dictionary
 
-func register(code : String, node_3d : Node3D) -> void:
-	anchors[code] = node_3d
+func register(anchor: Anchor) -> void:
+	anchors[code].add(node_3d)
 	
-func anchor(code : String) -> Node3D:
+func anchor(code : String) -> Array[Node3D]:
 	return anchors[code]
 	
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx6k0tyu2yyrd"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Avatar/Meta/Wrapper/AvatarWrapper.gd" id="1_bvias"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mktf4"]
+
+[node name="AvatarWrapper" type="CollisionShape3D"]
+transform = Transform3D(1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mktf4")
+script = ExtResource("1_bvias")
+
+[node name="Anchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
