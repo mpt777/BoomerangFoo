@@ -6,6 +6,7 @@ func _ready() -> void:
 	body.signals.register("Attack.Attack", attack)
 
 func enter():
+	#await get_tree().process_frame
 	body.n_pointer.start()
 	body.avatar().cast("PreCast")
 		

@@ -18,7 +18,24 @@ character = NodePath("..")
 [node name="Movement" parent="." index="5" node_paths=PackedStringArray("body")]
 body = NodePath("..")
 
-[node name="MovementFSM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
+[node name="Ammo" parent="." index="6" node_paths=PackedStringArray("character")]
+character = NodePath("..")
+
+[node name="Wand" parent="." index="8" node_paths=PackedStringArray("mana_component", "weapon_owner", "spawn_point")]
+mana_component = NodePath("../ManaComponent")
+weapon_owner = NodePath("..")
+spawn_point = NodePath("SpawnPoint")
+
+[node name="AttackFSM" parent="." index="11" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" parent="AttackFSM" index="0" node_paths=PackedStringArray("body")]
+body = NodePath("../..")
+
+[node name="Attack" parent="AttackFSM" index="1" node_paths=PackedStringArray("body")]
+body = NodePath("../..")
+
+[node name="MovementFSM" parent="." index="12" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Walk")
 
 [node name="Idle" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
@@ -37,22 +54,5 @@ dash = NodePath("DashComponent")
 [node name="Attack" parent="MovementFSM" index="4" node_paths=PackedStringArray("movement", "body")]
 movement = NodePath("../../Movement")
 body = NodePath("../..")
-
-[node name="AttackFSM" parent="." index="7" node_paths=PackedStringArray("initial_state")]
-initial_state = NodePath("Idle")
-
-[node name="Idle" parent="AttackFSM" index="0" node_paths=PackedStringArray("body")]
-body = NodePath("../..")
-
-[node name="Attack" parent="AttackFSM" index="1" node_paths=PackedStringArray("body")]
-body = NodePath("../..")
-
-[node name="Ammo" parent="." index="8" node_paths=PackedStringArray("character")]
-character = NodePath("..")
-
-[node name="Wand" parent="." index="10" node_paths=PackedStringArray("mana_component", "weapon_owner", "spawn_point")]
-mana_component = NodePath("../ManaComponent")
-weapon_owner = NodePath("..")
-spawn_point = NodePath("SpawnPoint")
 
 [connection signal="ManaChanged" from="ManaComponent" to="Ammo" method="_on_mana_component_mana_changed"]

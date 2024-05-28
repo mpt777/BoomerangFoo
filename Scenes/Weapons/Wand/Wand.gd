@@ -3,6 +3,7 @@ class_name Wand
 
 @export var mana_component : ManaComponent
 @onready var n_mesh = $Node3D
+@onready var n_state : StateMachine = $StateMachine
 
 var current_spell : Spell
 

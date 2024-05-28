@@ -4,7 +4,8 @@ class_name SignalRegister
 var signals = []
 
 func register(signal_name : String, function : Callable) -> void:
-	add_user_signal(signal_name)
+	if not has_user_signal(signal_name):
+		add_user_signal(signal_name)
 	connect(signal_name, function)
 	signals.append(signal_name)
 	#signals.push({

@@ -8,7 +8,6 @@ func _ready():
 
 func enter():
 	(func(): body.avatar().walk_idle(0)).call_deferred()
-	#body.call_deferred("avatar".walk_idle(0)
 		
 func exit():
 	pass

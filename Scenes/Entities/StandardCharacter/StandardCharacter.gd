@@ -1,7 +1,9 @@
 extends Character
 class_name StandardCharacter
 
-@onready var n_pointer = $Pointer
+@onready var n_pointer : CharacterPointer = $Pointer
+@onready var n_wand : Wand = $Wand
+@onready var n_mana : ManaComponent = $ManaComponent
 
 func _ready():
 	signals.register("Character.Kill", kill)
@@ -16,7 +18,7 @@ func initialize():
 	for modifier in self.data.modifiers:
 		modifier.emit_message(self)
 		
-	anchors.anchor("RightHand").add($Wand.n_mesh)
+	anchors.anchor("RightHand").add(n_wand.n_mesh)
 	
 func range_spell() -> Spell:
 	return self.data.range_spell

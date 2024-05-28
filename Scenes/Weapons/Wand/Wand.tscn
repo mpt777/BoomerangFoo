@@ -34,6 +34,7 @@ initial_state = NodePath("Idle")
 
 [node name="Reloading" type="Node" parent="StateMachine" index="0"]
 script = ExtResource("4_b81xa")
+alias = "Reloading"
 
 [node name="Timer" type="Timer" parent="StateMachine/Reloading" index="0"]
 one_shot = true
