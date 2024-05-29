@@ -5,8 +5,11 @@
 
 [node name="Avatar" instance=ExtResource("1_o1nh2")]
 
+[node name="Body" parent="Animation/CameraFix" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Body_CameraFix#witch_smooth" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("2_5g6vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.298155, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026, -0.2, -0.0685781)
 
 [node name="Right" parent="Animation/CameraFix" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.45, 0)
@@ -18,11 +21,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.45, 0)
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.014669, 0, 0)
 
 [node name="AnimationTree" parent="." index="2"]
-active = true
-parameters/current_position = 2.09862
-parameters/current_delta = 0.0163326
-parameters/Idle/current_position = 2.09862
-parameters/Idle/current_delta = 0.0163326
+parameters/current_position = 1.10758
+parameters/Idle/current_position = 1.10758
 parameters/Walk/current_length = null
 parameters/Walk/current_position = null
 parameters/Walk/current_delta = null
+
+[node name="BlendTree" parent="." index="3"]
+parameters/current_position = 0.0889074
+parameters/current_delta = 0.0152778
+parameters/AttackMove/current_position = 0.0889074
+parameters/AttackMove/current_delta = 0.0152778
+parameters/Idle/current_position = 0.0
+parameters/Walk/current_position = 0.0889074
+parameters/Walk/current_delta = 0.0152778
+parameters/WalkIdle/current_position = 0.0889074
+parameters/WalkIdle/current_delta = 0.0152778
+parameters/output/current_position = 0.0889074
+parameters/output/current_delta = 0.0152778

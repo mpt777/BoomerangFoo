@@ -18,15 +18,19 @@ class_name Avatar
 #func _ready():
 	#print("here")
 	
+var tween = EtTween.new()
+	
 func travel(state : String) -> void:
 	state_machine.travel(state)
 	
 
-
-
-
 func walk_idle(value : float) -> void:
-	n_blend_tree.set("parameters/WalkIdle/blend_amount", value)
+	create_tween().tween_method(
+		func(v: float) -> void: n_blend_tree.set("parameters/WalkIdle/blend_amount", v),
+		n_blend_tree.get("parameters/WalkIdle/blend_amount"),
+		value, 0.3
+	)
+	#n_blend_tree.set("parameters/WalkIdle/blend_amount", value)
 	
 func cast(travel : String) -> void:
 	n_blend_tree.get("parameters/Cast/playback").travel(travel)

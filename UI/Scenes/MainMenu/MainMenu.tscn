@@ -59,7 +59,6 @@ environment = ExtResource("2_i8sy2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.155238, -0.616325, -0.77204, 0.408144, -0.751709, 0.518027, -0.899621, -0.234686, 0.368244, -5.69695, 2.51593, 0)
-light_color = Color(0.800491, 0.800491, 0.800491, 1)
 shadow_enabled = true
 
 [node name="witch_smooth" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_8qhh5")]

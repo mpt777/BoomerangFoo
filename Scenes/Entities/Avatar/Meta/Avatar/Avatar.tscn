@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://mtjq6g0iyxj5"]
+[gd_scene load_steps=28 format=3 uid="uid://mtjq6g0iyxj5"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.gd" id="1_a3jv1"]
+[ext_resource type="PackedScene" uid="uid://b2jyu1mn7nium" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="2_cp2bm"]
 [ext_resource type="PackedScene" uid="uid://ckw1ohlj8xrtk" path="res://Scenes/Anchor/Anchor.tscn" id="2_lj3me"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7qiqf"]
@@ -119,9 +120,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Animation/CameraFix/LeftFoot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Animation/CameraFix/RightFoot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_adl6h"]
 resource_name = "Walk"
+length = 0.6
 loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
@@ -131,10 +157,34 @@ tracks/0/path = NodePath("Animation/CameraFix/Body:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.261799), Vector3(0, 0, -1.49012e-08), Vector3(0, 0, 0.261799), Vector3(0, 0, 0), Vector3(0, 0, -0.261799)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.174533), Vector3(0, 0, -1.49012e-08), Vector3(0, 0, 0.174533), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/CameraFix/LeftFoot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.2, 0, 0), Vector3(-0.2, 0.05, -0.2), Vector3(-0.2, 0, 0), Vector3(-0.2, 0.05, 0.2), Vector3(-0.2, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation/CameraFix/RightFoot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.2, 0, 0), Vector3(0.2, 0.05, 0.2), Vector3(0.2, 0, 0), Vector3(0.2, 0.05, -0.2), Vector3(0.2, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4g10k"]
@@ -204,7 +254,6 @@ animation = &"Walk"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wcfkd"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2dwy1"]
-graph_offset = Vector2(-244.016, 292.246)
 nodes/AttackMove/node = SubResource("AnimationNodeAdd2_ca4gr")
 nodes/AttackMove/position = Vector2(744.05, 358.458)
 nodes/Cast/node = SubResource("AnimationNodeStateMachine_kk3gc")
@@ -226,6 +275,9 @@ script = ExtResource("1_a3jv1")
 [node name="CameraFix" type="Node3D" parent="Animation"]
 
 [node name="Body" type="Node3D" parent="Animation/CameraFix"]
+
+[node name="witch_smooth" parent="Animation/CameraFix/Body" instance=ExtResource("2_cp2bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00902183, -0.157996, 0)
 
 [node name="Right" type="Node3D" parent="Animation/CameraFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, 0)
@@ -270,14 +322,14 @@ active = false
 tree_root = SubResource("AnimationNodeStateMachine_v4dgl")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 3.0
-parameters/current_position = 0.235209
-parameters/current_delta = 0.0166667
+parameters/current_position = 2.50754
+parameters/current_delta = 0.01666
 parameters/End/current_length = 0.0
 parameters/End/current_position = 0.0
 parameters/End/current_delta = 0.0
 parameters/Idle/current_length = 3.0
-parameters/Idle/current_position = 0.235209
-parameters/Idle/current_delta = 0.0166667
+parameters/Idle/current_position = 2.50754
+parameters/Idle/current_delta = 0.01666
 parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
@@ -288,15 +340,15 @@ parameters/Walk/current_delta = 0.0170703
 [node name="BlendTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_2dwy1")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 3.0
-parameters/current_position = 2.04443
+parameters/current_length = 0.6
+parameters/current_position = 0.0750806
 parameters/current_delta = 0.0166667
-parameters/AttackMove/current_length = 3.0
-parameters/AttackMove/current_position = 2.04443
+parameters/AttackMove/current_length = 0.6
+parameters/AttackMove/current_position = 0.0750806
 parameters/AttackMove/current_delta = 0.0166667
 parameters/AttackMove/add_amount = 1.0
-parameters/Cast/current_length = 0.25
-parameters/Cast/current_position = 0.25
+parameters/Cast/current_length = 0.0
+parameters/Cast/current_position = 0.0
 parameters/Cast/current_delta = 0.0
 parameters/Cast/Cast/current_length = 0.25
 parameters/Cast/Cast/current_position = 0.25
@@ -311,15 +363,15 @@ parameters/Cast/Start/current_length = 0.0
 parameters/Cast/Start/current_position = 0.0
 parameters/Cast/Start/current_delta = 0.0
 parameters/Idle/current_length = 3.0
-parameters/Idle/current_position = 2.04443
-parameters/Idle/current_delta = 0.0166667
-parameters/Walk/current_length = 1.0
-parameters/Walk/current_position = 0.490838
-parameters/Walk/current_delta = 0.0
-parameters/WalkIdle/current_length = 3.0
-parameters/WalkIdle/current_position = 2.04443
+parameters/Idle/current_position = 1.61944
+parameters/Idle/current_delta = 0.0
+parameters/Walk/current_length = 0.6
+parameters/Walk/current_position = 0.0750806
+parameters/Walk/current_delta = 0.0166667
+parameters/WalkIdle/current_length = 0.6
+parameters/WalkIdle/current_position = 0.0750806
 parameters/WalkIdle/current_delta = 0.0166667
-parameters/WalkIdle/blend_amount = 1.0
-parameters/output/current_length = 3.0
-parameters/output/current_position = 2.04443
+parameters/WalkIdle/blend_amount = 0.0
+parameters/output/current_length = 0.6
+parameters/output/current_position = 0.0750806
 parameters/output/current_delta = 0.0166667
