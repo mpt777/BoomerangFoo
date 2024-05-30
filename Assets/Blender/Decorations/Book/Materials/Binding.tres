@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d18solhilgf1y"]
+
+[resource]
+resource_name = "Binding"
+cull_mode = 2
+albedo_color = Color(0.999704, 0.737119, 0.347734, 1)
+roughness = 0.5

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddeg7m7pgouwp"]
+
+[ext_resource type="PackedScene" uid="uid://dyqky6rrm8bh1" path="res://Assets/Blender/Decorations/Book/book.glb" id="1_x7ifu"]
+
+[node name="book" instance=ExtResource("1_x7ifu")]

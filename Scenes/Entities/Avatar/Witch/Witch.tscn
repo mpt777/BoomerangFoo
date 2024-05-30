@@ -5,9 +5,6 @@
 
 [node name="Avatar" instance=ExtResource("1_o1nh2")]
 
-[node name="Body" parent="Animation/CameraFix" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="Body_CameraFix#witch_smooth" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("2_5g6vm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026, -0.2, -0.0685781)
 

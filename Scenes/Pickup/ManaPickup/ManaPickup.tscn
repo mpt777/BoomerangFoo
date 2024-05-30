@@ -1,21 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkq2bwb21srha"]
+[gd_scene load_steps=7 format=3 uid="uid://dkq2bwb21srha"]
 
 [ext_resource type="PackedScene" uid="uid://dqipuvo1mt2lh" path="res://Scenes/Pickup/Pickup.tscn" id="1_6f7xk"]
 [ext_resource type="Script" path="res://Scenes/Pickup/ManaPickup/ManaPickup.gd" id="2_ce80f"]
+[ext_resource type="PackedScene" uid="uid://cyui484tpfk77" path="res://Assets/Blender/Decorations/Bottle/Bottle.tscn" id="3_wtv30"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y7ecu"]
-height = 1.0
-radius = 1.0
+height = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu5mg"]
-albedo_color = Color(0.305396, 0.55907, 0.752885, 1)
+[sub_resource type="Animation" id="Animation_abjpx"]
+resource_name = "Rotate"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bottle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.436332, 0, 0), Vector3(0.436332, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bottle:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.319666, 0), Vector3(0, 0.54, 0), Vector3(0, 0.319666, 0)]
+}
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_02b7i"]
-material = SubResource("StandardMaterial3D_uu5mg")
-height = 1.0
-radial_segments = 8
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7t0q"]
+_data = {
+"Rotate": SubResource("Animation_abjpx")
+}
 
 [node name="ManaPickup" instance=ExtResource("1_6f7xk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 collision_mask = 512
 script = ExtResource("2_ce80f")
 
@@ -23,6 +51,12 @@ script = ExtResource("2_ce80f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_y7ecu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("CylinderMesh_02b7i")
+[node name="bottle" parent="." index="1" instance=ExtResource("3_wtv30")]
+transform = Transform3D(0.00142449, 0.149606, 0.32083, 0, 0.320833, -0.149607, -0.353997, 0.000602014, 0.00129102, 0, 0.42941, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_l7t0q")
+}
+autoplay = "Rotate"
+speed_scale = 0.5

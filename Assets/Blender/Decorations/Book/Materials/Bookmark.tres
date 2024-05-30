@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbryf7sogx1pn"]
+
+[resource]
+resource_name = "Bookmark"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.155322, 0.128389, 1)
+roughness = 0.5

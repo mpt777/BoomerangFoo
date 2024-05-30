@@ -4,7 +4,7 @@ class_name Movement
 
 @export var body : Character
 
-@export var SPEED := 12.0
+@export var SPEED := 10.0
 @export var DASH_SPEED := 50.0
 @export var ACCELERATION := 0.8
 @export var FRICTION := 0.5

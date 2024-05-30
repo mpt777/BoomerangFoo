@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://beqhgg6h5wja5"]
+
+[resource]
+resource_name = "Cork"
+cull_mode = 2
+albedo_color = Color(0.568884, 0.391707, 0.0929987, 1)
+roughness = 0.5

@@ -92,6 +92,8 @@ func get_random_point_culled() -> Vector3:
 	)
 	var x := 0.0
 	var z := 0.0
+	if not rng:
+		return Vector3(0, 0, 0)
 	for i in range(100):
 		x = rng.randf_range(transform.origin.x - (placement_size.x/2), transform.origin.x + (placement_size.x/2))
 		z = rng.randf_range(transform.origin.z - (placement_size.z/2), transform.origin.z + (placement_size.z/2))

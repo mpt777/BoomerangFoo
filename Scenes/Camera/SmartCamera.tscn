@@ -11,7 +11,7 @@ script = ExtResource("1_v4yot")
 [node name="SmartCamera" type="Camera3D" parent="." groups=["Camera"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 80, 0)
 fov = 20.0
-near = 60.0
+near = 30.0
 far = 100.0
 
 [node name="ShakeableCamera" type="Area3D" parent="." node_paths=PackedStringArray("camera")]

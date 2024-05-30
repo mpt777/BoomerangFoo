@@ -1,25 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://djuy1cmua7638"]
+[gd_scene load_steps=7 format=3 uid="uid://djuy1cmua7638"]
 
 [ext_resource type="PackedScene" uid="uid://dqipuvo1mt2lh" path="res://Scenes/Pickup/Pickup.tscn" id="1_vh4qe"]
+[ext_resource type="PackedScene" uid="uid://ddeg7m7pgouwp" path="res://Assets/Blender/Decorations/Book/Book.tscn" id="2_ng37g"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nyu4c"]
-height = 1.0
-radius = 1.0
+height = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yhwf"]
-albedo_color = Color(0.845101, 0.312019, 0.530442, 1)
+[sub_resource type="Animation" id="Animation_45hbt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_bur1w"]
-material = SubResource("StandardMaterial3D_8yhwf")
-height = 1.0
-radial_segments = 8
+[sub_resource type="Animation" id="Animation_ni4xj"]
+resource_name = "Rotate"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1.03526, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.5, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6now"]
+_data = {
+"RESET": SubResource("Animation_45hbt"),
+"Rotate": SubResource("Animation_ni4xj")
+}
 
 [node name="SpellPickup" instance=ExtResource("1_vh4qe")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_nyu4c")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("CylinderMesh_bur1w")
+[node name="book" parent="." index="1" instance=ExtResource("2_ng37g")]
+transform = Transform3D(-8.87895e-09, 3.13962e-09, -0.14, -0.0699999, 0.121244, 7.15847e-09, 0.121244, 0.0699999, -6.11959e-09, 0, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_x6now")
+}
+autoplay = "Rotate"
+speed_scale = 0.25

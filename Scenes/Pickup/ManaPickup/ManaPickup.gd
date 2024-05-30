@@ -1,6 +1,8 @@
 extends Pickup
 class_name ManaPickup
 
+@onready var n_bottle = $bottle
+
 func pickup(character : Character) -> void:
 	var spell := Spell.new()
 	spell.cost = 3
