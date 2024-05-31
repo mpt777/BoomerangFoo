@@ -9,29 +9,25 @@ var attack : Attack
 #when this attack component attacks somthing, this is emitted
 signal attacked
 signal collided
-
-func base_attack() -> Attack:
+	
+func set_attack(character : CharacterData) -> Attack:
 	var a = Attack.new()
 	a.damage = damage
-	return a
+	a.character = character
+	self.attack = a
+	return self.attack
 	
-func get_attack() -> Attack:
-	if self.attack:
-		return self.attack
-	return self.base_attack()
-
 func _on_area_entered(area):
 	if area is HitboxComponent:
-		var a := get_attack()
 		#print(area.owner.data, a.character, area.owner.data==a.character)
 		if area.owner is Character:
-			if area.owner.data != a.character:
-				area.damage(a)
+			if area.owner.data != self.attack.character:
+				area.damage(self.attack)
 				attacked.emit()
 		else:
-			area.damage(a)
+			area.damage(self.attack)
 			attacked.emit()
 
 
-func _on_body_entered(_body):
+func _on_body_entered(body: Node3D) -> void:
 	collided.emit()

@@ -2,14 +2,14 @@ extends Node3D
 
 var nodes : Array
 
-@export var MOVE_SPEED := 0.1
-@export var RESIZE_SPEED := 0.1
-@export var ZOOM_SPEED : float = 0.1
+@export var MOVE_SPEED := 0.07
+@export var RESIZE_SPEED := 0.07
+@export var ZOOM_SPEED : float = 0.07
 
-@export var MARGIN := Vector4(3, 5, 5, 5)
-@export var _minimum_distance := Vector2(20,20)
+@export var MARGIN := Vector4(3, 3, 3, 3)
+@export var _minimum_distance := Vector2(15, 15)
 
-var minFOV : float = 1.0
+var minFOV : float = 0.5
 var maxFOV : float = 100.0
 
 
@@ -161,4 +161,5 @@ func _physics_process(_delta):
 	_set_bounds()
 	_set_position_center()
 	_set_fov()
+	#debug()
 

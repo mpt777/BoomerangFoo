@@ -24,7 +24,7 @@ func mount():
 	hand_rot = avatar.n_right_hand.global_rotation
 	
 	#original rotation offser
-	avatar.n_animation.rotation.x = deg_to_rad(-30)
+	avatar.n_animation.rotation.x = deg_to_rad(-35)
 	original_rotation = avatar.n_camera_fix.global_rotation
 	
 	

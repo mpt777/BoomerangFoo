@@ -4,46 +4,37 @@ class_name Projectile
 
 #var direction: Vector3 = Vector3.ZERO
 @export var speed: float = 30.0
-var weapon: Weapon
-var weapon_owner: Node
-var attack : Attack
+@onready var n_attack : AttackComponent = $AttackComponent
+var character_data : CharacterData
 
-signal queue_freed
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	set_attack_component()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _ready() -> void:
+	self.construct_attack()
 	
+func construct_attack() -> void:
+	n_attack.set_attack(self.character_data)
+	
+func set_character_data(character_data : CharacterData) -> void:
+	self.character_data = character_data
+
+
+
+
 func _physics_process(delta):
 	position += -transform.basis.z * speed * delta
 	
 func direction() -> Vector3:
 	return rotation
 	
-# Description
-# Current Hack to set attacks ez
-func set_attack_component() -> void:
-	for child in get_children():
-		if child is AttackComponent:
-			child.attack = self.attack
-	
-
-func _on_attack_component_body_entered(body):
-	# todo, peircing, damage
-	if not attack:
-		return
-	if body is Character:
-		if body.data == attack.character:
-			return
-	delete()
-
-func _on_attack_component_attacked():
-	delete()
-	
 func delete() -> void:
-	queue_freed.emit()
 	queue_free()
+	
+
+
+
+func _on_attack_component_area_entered(area: Area3D) -> void:
+	delete()
+
+
+func _on_attack_component_body_entered(body: Node3D) -> void:
+	delete()

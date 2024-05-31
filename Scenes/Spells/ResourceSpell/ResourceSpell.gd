@@ -11,11 +11,11 @@ func constructor() -> Spell:
 func projectile() -> Projectile:
 	return self.spell_projectile.projectile()
 	
-func attack(weapon : Weapon) -> Attack:
-	var a := Attack.new()
-	a.damage = 1
-	a.character = weapon.weapon_owner.data
-	return a
+#func attack(weapon : Weapon) -> Attack:
+	#var a := Attack.new()
+	#a.damage = 1
+	#a.character = weapon.weapon_owner.data
+	#return a
 	
 func spell_type():
 	return spell_projectile.spell_type
@@ -47,7 +47,7 @@ func instance_projectiles(weapon : Weapon) -> void:
 		bullet.position = weapon.spawn_node().global_position
 		bullet.position.y = 1 
 		bullet.rotation = weapon.spawn_node().global_rotation
-		bullet.attack = attack(weapon)
+		bullet.set_character_data(weapon.weapon_owner.data)
 		bullet.speed *= bullet_speed
 
 		if count > 1:

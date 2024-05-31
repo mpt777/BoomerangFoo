@@ -25,3 +25,7 @@ func range_spell() -> Spell:
 	
 func melee_spell() -> Spell:
 	return self.data.melee_spell
+	
+func _on_health_component_killed(attack : Attack) -> void:
+	$"/root/Signals".emit_signal("add_event", KillEvent.new().constructor(self.data, attack.character))
+	signals.emit_signal("Character.Kill")

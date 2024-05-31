@@ -15,11 +15,15 @@ material = SubResource("StandardMaterial3D_b7qgy")
 [sub_resource type="SphereShape3D" id="SphereShape3D_a1sca"]
 
 [node name="FireProjectile" instance=ExtResource("1_etn0s")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_ycvgo")
-speed = 50.0
+speed = 40.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 mesh = SubResource("SphereMesh_qp3xy")
+
+[node name="AttackComponent" parent="." index="1"]
+damage = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
 shape = SubResource("SphereShape3D_a1sca")

@@ -16,9 +16,9 @@ func split() -> void:
 		var bullet : IceProjectile = load(self.scene_file_path).instantiate()
 		bullet.position = self.global_position
 		bullet.rotation = self.global_rotation
-		bullet.attack = attack
 		bullet.has_split = true
 		bullet.speed = self.speed
+		bullet.set_character_data(self.character_data)
 
 		bullet.rotate_y(deg_to_rad(start_angle + i * angle_increment))
 

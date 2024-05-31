@@ -5,7 +5,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mktf4"]
 
 [node name="AvatarWrapper" type="CollisionShape3D"]
-transform = Transform3D(1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mktf4")
 script = ExtResource("1_bvias")
 

@@ -26,6 +26,9 @@ mana_component = NodePath("../ManaComponent")
 weapon_owner = NodePath("..")
 spawn_point = NodePath("SpawnPoint")
 
+[node name="Pointer" parent="." index="10"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.2, 0)
+
 [node name="AttackFSM" parent="." index="11" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 

@@ -120,5 +120,6 @@ script = ExtResource("13_o6g16")
 movement = NodePath("../../Movement")
 body = NodePath("../..")
 
+[connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
 [connection signal="area_shape_entered" from="PickUpComponent" to="PickUpComponent" method="_on_area_shape_entered"]
 [connection signal="EndDash" from="MovementFSM/Dash/DashComponent" to="MovementFSM/Dash" method="_on_dash_component_end_dash"]

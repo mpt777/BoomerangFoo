@@ -11,6 +11,3 @@ script = ExtResource("1_8lgq1")
 [node name="AttackComponent" parent="." instance=ExtResource("2_2iok7")]
 collision_layer = 256
 collision_mask = 8
-
-[connection signal="area_entered" from="AttackComponent" to="." method="_on_attack_component_area_entered"]
-[connection signal="body_entered" from="AttackComponent" to="." method="_on_attack_component_body_entered"]

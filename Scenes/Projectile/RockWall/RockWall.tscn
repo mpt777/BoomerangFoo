@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://blyee6oowmxyb"]
+[gd_scene load_steps=9 format=3 uid="uid://blyee6oowmxyb"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_iqdvg"]
+[ext_resource type="PackedScene" uid="uid://danrhd6yvhfmw" path="res://Assets/Blender/Decorations/Rock/Rock.tscn" id="2_se41r"]
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="3_df7bu"]
+[ext_resource type="PackedScene" uid="uid://jb5v7c5pd4a0" path="res://Components/Hitbox/Hitbox.tscn" id="3_svktc"]
 
 [sub_resource type="GDScript" id="GDScript_hhr6k"]
 script/source = "extends Projectile
@@ -19,6 +22,9 @@ func position_elements(pos : Vector3) -> void:
 func delete():
 	queue_free()
 "
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8c4m6"]
+size = Vector3(2, 2, 1)
 
 [sub_resource type="Animation" id="Animation_t8yvs"]
 resource_name = "Build"
@@ -43,38 +49,41 @@ tracks/1/enabled = true
 tracks/1/path = NodePath("StaticBody3D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.1, 1, 0, 0.5, 0, 0.2, 1, 0, 1, 0, 4.8, 1, 0, 1, 0, 5, 1, 0, -1, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.1, 1, 0, 0.5, 0, 0.2, 1, 0, 1, 0, 4.8, 1, 0, 1, 0, 4.995, 1, 0, -1, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.0999, 1, 0, 0.5, 0, 0.1998, 1, 0, 1, 0, 4.7952, 1, 0, 1, 0, 4.995, 1, 0, -1, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8lcmh"]
 _data = {
 "Build": SubResource("Animation_t8yvs")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8c4m6"]
-size = Vector3(2, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4bi5"]
-albedo_color = Color(0.28, 0.23716, 0.2296, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qno27"]
-material = SubResource("StandardMaterial3D_m4bi5")
-size = Vector3(2, 2, 1)
-
 [node name="RockWall" instance=ExtResource("1_iqdvg")]
 script = SubResource("GDScript_hhr6k")
 speed = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="HealthComponent" parent="." index="2" instance=ExtResource("3_df7bu")]
+max_health = 10.0
+
+[node name="Hitbox" parent="." index="3" node_paths=PackedStringArray("health_component") instance=ExtResource("3_svktc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("BoxShape3D_8c4m6")
+
+[node name="Rock" parent="Hitbox" index="1" instance=ExtResource("2_se41r")]
+transform = Transform3D(0.675, 0, 0, 0, 0.69, 0, 0, 0, 0.32, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_8lcmh")
 }
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_8c4m6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" index="1"]
-mesh = SubResource("BoxMesh_qno27")
-skeleton = NodePath("../..")
