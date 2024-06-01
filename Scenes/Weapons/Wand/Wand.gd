@@ -33,6 +33,7 @@ func _on_reloading_reloaded():
 	
 func create_spell(lookup_string : String) -> Spell:
 	var spell := ResourceSpell.new()
-	spell.modifiers = weapon_owner.data.modifiers.filter(func(x):return x is SpellModifier)
-	spell.spell_projectile = weapon_owner.data.melee_projectile  if lookup_string == "melee" else weapon_owner.data.range_projectile
+	#spell.modifiers = weapon_owner.data.modifiers.filter(func(x):return x is SpellModifier)
+	spell.stats = weapon_owner.data.stats
+	spell.spell_projectile = weapon_owner.data.stats.get_value("p.melee") if lookup_string == "melee" else weapon_owner.data.stats.get_value("p.range")
 	return spell

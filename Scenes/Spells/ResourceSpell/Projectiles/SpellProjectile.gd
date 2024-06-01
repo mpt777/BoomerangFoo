@@ -11,7 +11,7 @@ func apply(character : Character):
 		character.data.range_projectile = self
 	else: 
 		character.data.melee_projectile = self
-	self.emit_message(character)
+	#self.emit_message(character)
 		
 func projectile() -> Projectile:
 	return PROJECTILE.instantiate()

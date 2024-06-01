@@ -24,10 +24,12 @@ func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
 		
-func _on_child_transitioned(state, new_state_name: String):
+func _on_child_transitioned(state, new_state_name: String) -> void:
 	if state != current_state:
 		return
-		
+	self.transition(new_state_name)
+	
+func transition(new_state_name: String) -> void:
 	var new_state = states.get(new_state_name.to_lower())
 	if not new_state:
 		return

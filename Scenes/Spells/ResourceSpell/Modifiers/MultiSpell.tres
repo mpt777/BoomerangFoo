@@ -1,9 +1,20 @@
-[gd_resource type="Resource" script_class="SpellModifier" load_steps=2 format=3 uid="uid://54axodl6yqv7"]
+[gd_resource type="Resource" script_class="MessageModifier" load_steps=6 format=3 uid="uid://dgdihh2x55hqw"]
 
-[ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Modifiers/SpellModifier.gd" id="1_5icha"]
+[ext_resource type="Script" path="res://Components/Modifier/ModifierFloat.gd" id="1_rd103"]
+[ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_ynxpl"]
+[ext_resource type="Script" path="res://Components/Modifier/MessageModifier.gd" id="3_nc4bm"]
+
+[sub_resource type="Resource" id="Resource_5cnd2"]
+script = ExtResource("1_ynxpl")
+name = "MultiSpell"
+color = Color(0.776094, 0.457196, 0.773596, 1)
+
+[sub_resource type="Resource" id="Resource_lknd7"]
+script = ExtResource("1_rd103")
+value = 1.0
+stat = "p.count"
 
 [resource]
-script = ExtResource("1_5icha")
-count = 3
-name = "MultiSpell"
-color = Color(0.964706, 0.345098, 0.74902, 1)
+script = ExtResource("3_nc4bm")
+modifier = SubResource("Resource_lknd7")
+message = SubResource("Resource_5cnd2")

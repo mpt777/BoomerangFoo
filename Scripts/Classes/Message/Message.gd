@@ -1,5 +1,5 @@
 extends Resource
-class_name Effect
+class_name Message
 
 var CHARACTER_MESSAGE = preload("res://Scenes/Entities/CharacterMessage/CharacterMessageText.tscn")
 

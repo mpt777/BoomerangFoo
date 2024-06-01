@@ -7,7 +7,6 @@ class_name Projectile
 @onready var n_attack : AttackComponent = $AttackComponent
 var character_data : CharacterData
 
-
 func _ready() -> void:
 	self.construct_attack()
 	
@@ -17,14 +16,11 @@ func construct_attack() -> void:
 func set_character_data(character_data : CharacterData) -> void:
 	self.character_data = character_data
 
-
-
-
 func _physics_process(delta):
 	position += -transform.basis.z * speed * delta
 	
-func direction() -> Vector3:
-	return rotation
+#func direction() -> Vector3:
+	#return rotation
 	
 func delete() -> void:
 	queue_free()
@@ -34,7 +30,6 @@ func delete() -> void:
 
 func _on_attack_component_area_entered(area: Area3D) -> void:
 	delete()
-
 
 func _on_attack_component_body_entered(body: Node3D) -> void:
 	delete()

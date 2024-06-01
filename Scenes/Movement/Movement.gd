@@ -34,7 +34,5 @@ func end_dash() -> void:
 	
 func get_speed() -> float:
 	var speed = current_speed
-	for modifier in self.body.data.modifiers:
-		if modifier is SpeedEffect:
-			speed *= modifier.ratio
+	speed *= self.body.data.stats.get_value("speed", 1)
 	return speed

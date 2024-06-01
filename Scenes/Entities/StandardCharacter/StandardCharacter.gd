@@ -12,11 +12,11 @@ func _ready():
 	n_pointer.set_color(self.data.avatar.color)
 	
 func initialize():
-	self.data.range_projectile.emit_message(self)
-	self.data.melee_projectile.emit_message(self)
-	
-	for modifier in self.data.modifiers:
-		modifier.emit_message(self)
+	#self.data.range_projectile.emit_message(self)
+	#self.data.melee_projectile.emit_message(self)
+	#
+	#for modifier in self.data.modifiers:
+		#modifier.emit_message(self)
 		
 	anchors.anchor("RightHand").add(n_wand.n_mesh)
 	

@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://blyee6oowmxyb"]
+[gd_scene load_steps=12 format=3 uid="uid://blyee6oowmxyb"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_iqdvg"]
 [ext_resource type="PackedScene" uid="uid://danrhd6yvhfmw" path="res://Assets/Blender/Decorations/Rock/Rock.tscn" id="2_se41r"]
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="3_df7bu"]
 [ext_resource type="PackedScene" uid="uid://jb5v7c5pd4a0" path="res://Components/Hitbox/Hitbox.tscn" id="3_svktc"]
+[ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="5_b4lwh"]
+[ext_resource type="PackedScene" uid="uid://b1nnumkd8805g" path="res://Scenes/MaterialOverrides/Idle/Idle.tscn" id="6_2j4hh"]
+[ext_resource type="PackedScene" uid="uid://doilm61no5ssu" path="res://Scenes/MaterialOverrides/Damaged/Damaged.tscn" id="6_57on1"]
 
 [sub_resource type="GDScript" id="GDScript_hhr6k"]
 script/source = "extends Projectile
@@ -21,6 +24,10 @@ func position_elements(pos : Vector3) -> void:
 
 func delete():
 	queue_free()
+
+
+func _on_hitbox_damaged() -> void:
+	$OverlayStateMachine.transition(\"damaged\")
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8c4m6"]
@@ -87,3 +94,13 @@ transform = Transform3D(0.675, 0, 0, 0, 0.69, 0, 0, 0, 0.32, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_8lcmh")
 }
+
+[node name="OverlayStateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state") instance=ExtResource("5_b4lwh")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" parent="OverlayStateMachine" index="0" instance=ExtResource("6_2j4hh")]
+
+[node name="Damaged" parent="OverlayStateMachine" index="1" node_paths=PackedStringArray("mesh") instance=ExtResource("6_57on1")]
+mesh = NodePath("../../Hitbox/Rock/Cube")
+
+[connection signal="damaged" from="Hitbox" to="." method="_on_hitbox_damaged"]
