@@ -1,3 +1,0 @@
-extends MessageModifier
-class_name SpellResource
-

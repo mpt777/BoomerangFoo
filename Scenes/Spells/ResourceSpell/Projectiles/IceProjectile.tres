@@ -1,11 +1,21 @@
-[gd_resource type="Resource" script_class="SpellProjectile" load_steps=3 format=3 uid="uid://cm5jiodi0vjps"]
+[gd_resource type="Resource" script_class="SpellProjectile" load_steps=7 format=3 uid="uid://keh58uxfm6te"]
 
 [ext_resource type="PackedScene" uid="uid://bfvydv0ig7eqr" path="res://Scenes/Projectile/IceSpell/IceProjectile.tscn" id="1_akdom"]
+[ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_m7trr"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="2_0amnc"]
+[ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/SpellCast.gd" id="4_e005g"]
+
+[sub_resource type="Resource" id="Resource_5fwfb"]
+script = ExtResource("1_m7trr")
+name = "Ice Shard"
+color = Color(0.530679, 0.787149, 0.905889, 1)
+
+[sub_resource type="Resource" id="Resource_mfonk"]
+script = ExtResource("4_e005g")
 
 [resource]
 script = ExtResource("2_0amnc")
 PROJECTILE = ExtResource("1_akdom")
-spell_type = 0
-name = "IceShard"
-color = Color(0.28428, 0.750937, 0.928313, 1)
+spell_cast = SubResource("Resource_mfonk")
+message = SubResource("Resource_5fwfb")
+stat = "p.range"

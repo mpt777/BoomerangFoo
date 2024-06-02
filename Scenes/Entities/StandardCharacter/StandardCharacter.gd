@@ -15,7 +15,11 @@ func initialize():
 	#self.data.range_projectile.emit_message(self)
 	#self.data.melee_projectile.emit_message(self)
 	#
-	#for modifier in self.data.modifiers:
+	for alias in self.data.stats._stats:
+		var stat := self.data.stats.get_stat(alias)
+		for modifier in stat.modifiers:
+			if modifier is MessageModifier:
+				modifier.message.emit_message(self)
 		#modifier.emit_message(self)
 		
 	anchors.anchor("RightHand").add(n_wand.n_mesh)

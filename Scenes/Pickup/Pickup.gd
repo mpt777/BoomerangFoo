@@ -2,13 +2,13 @@ extends Area3D
 class_name Pickup
 
 var SPELL_RESOURCES = [
-	#preload("res://Scenes/Spells/ResourceSpell/Projectiles/FireProjectile.tres"),
-	#preload("res://Scenes/Spells/ResourceSpell/Projectiles/IceProjectile.tres"),
-	#preload("res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres"),
+	preload("res://Scenes/Spells/ResourceSpell/Projectiles/FireProjectile.tres"),
+	preload("res://Scenes/Spells/ResourceSpell/Projectiles/IceProjectile.tres"),
+	preload("res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres"),
 	preload("res://Scenes/Spells/ResourceSpell/Modifiers/MultiSpell.tres"),
 	#preload("res://Scenes/Things/Spells/ResourceSpell/Modifiers/SpeedySpells.tres"),
-	#preload("res://Scenes/Spells/ResourceSpell/Modifiers/DoubleSpell.tres"),
-	#preload("res://Scenes/Effects/Speed.tres"),
+	preload("res://Scenes/Spells/ResourceSpell/Modifiers/DoubleSpell.tres"),
+	preload("res://Scenes/Entities/Modifiers/Speed.tres"),
 ]
 #
 #func random_spell() -> Spell:
@@ -46,7 +46,7 @@ func pickup(character : Character) -> void:
 	#if resources:
 		#new_resource = resources[randi() % resources.size()]
 	
-	character.data.stats.apply(new_resource.modifier)
+	character.data.stats.apply(new_resource)
 	#new_resource.apply(character)
 	new_resource.message.emit_message(character)
 	refill_mana(character)

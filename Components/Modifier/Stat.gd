@@ -14,12 +14,12 @@ func remove_modifier(modifier : Modifier) -> void:
 	if Utils.remove_item(self.modifiers, modifier):
 		modifier.remove(self)
 		
-func get_value(default=null):
+func get_value(m_default=null):
 	if self.value:
 		return self.value
 	if self.default:
 		return self.default
-	return default
+	return m_default
 	
 func constructor(m_title : String, m_default) -> Stat:
 	self.title = m_title

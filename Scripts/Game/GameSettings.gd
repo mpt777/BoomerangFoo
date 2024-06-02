@@ -10,7 +10,7 @@ var settings_name := "Default Settings"
 var settings_index := 1
 
 var character_max_health := 1
-var character_default_range := load("res://Scenes/Spells/ResourceSpell/Projectiles/BaseSpell.tres")
+var character_default_range := load("res://Scenes/Spells/ResourceSpell/Projectiles/BaseProjectile.tres")
 var character_default_melee = load("res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres")
 
 var background_color : Color = Color(0.14, 0.14, 0.14)

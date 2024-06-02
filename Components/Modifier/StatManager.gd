@@ -24,7 +24,7 @@ func apply(modifier: Modifier) -> void:
 	var stat : Stat = self.get_stat(modifier.stat)
 	if not stat: 
 		return
-	modifier.add(stat)
+	stat.add_modifier(modifier)
 	
 
 	

@@ -1,17 +1,11 @@
-extends SpellResource
+extends MessageModifier
 class_name SpellProjectile
 
-enum SPELL_TYPES {RANGE, MELEE}
-
 @export var PROJECTILE : PackedScene
-@export var spell_type : SPELL_TYPES = SPELL_TYPES.RANGE
+@export var spell_cast : SpellCast
 
-func apply(character : Character):
-	if self.spell_type == SPELL_TYPES.RANGE:
-		character.data.range_projectile = self
-	else: 
-		character.data.melee_projectile = self
-	#self.emit_message(character)
-		
+func add(stat : Stat):
+	stat.value = self
+
 func projectile() -> Projectile:
 	return PROJECTILE.instantiate()

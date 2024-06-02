@@ -26,11 +26,6 @@ character = NodePath("..")
 
 [node name="Movement" parent="." index="5" node_paths=PackedStringArray("body")]
 body = NodePath("..")
-SPEED = 7.0
-DASH_SPEED = 36.0
-ACCELERATION = 0.8
-FRICTION = 0.5
-GRAVITY = 9.8
 
 [node name="Ammo" parent="." index="6" node_paths=PackedStringArray("character")]
 character = NodePath("..")

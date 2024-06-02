@@ -90,6 +90,9 @@ shape = SubResource("BoxShape3D_8c4m6")
 [node name="Rock" parent="Hitbox" index="1" instance=ExtResource("2_se41r")]
 transform = Transform3D(0.675, 0, 0, 0, 0.69, 0, 0, 0, 0.32, 0, 0, 0)
 
+[node name="Rock2" parent="Hitbox" index="2" instance=ExtResource("2_se41r")]
+transform = Transform3D(0.305, 0, 0, 0, 0.312, 0, 0, 0, 0.145, 0, 0, -0.632879)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_8lcmh")
