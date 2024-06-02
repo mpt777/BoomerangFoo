@@ -12,7 +12,7 @@ func _ready():
 	n_pointer.set_color(self.data.avatar.color)
 	
 func initialize():
-	self.data.pickups.emit_messages()
+	self.data.pickups.initialize()
 		#modifier.emit_message(self)
 		
 	anchors.anchor("RightHand").add(n_wand.n_mesh)

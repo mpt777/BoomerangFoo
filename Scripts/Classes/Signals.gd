@@ -13,6 +13,7 @@ signal add_particle(particle : SmartGPUParticles3D)
 
 signal add_event(event : Event)
 signal camera_shake(camera_shake : CameraShake)
+signal add_camera_point(cm : CameraPoint)
 
 
 #Usually when a new controller is added or removed

@@ -1,53 +1,56 @@
 extends Resource
 class_name PickupManager
 
-var charater_data : CharacterData
-var _pickups : Array[MessageModifier]
+var character_data : CharacterData
+var _pickups : Array[EffectInstance]
 var max_pickups := 3
 
-var melee : MessageModifier
-var range : MessageModifier
+var melee : EffectInstance
+var range : EffectInstance
 
-func add(modifier : MessageModifier) -> void:
-	self._apply(modifier)
-	if modifier is SpellProjectile:
-		if "range" in modifier.stat:
-			self.range = modifier
+func add(effect : Effect) -> void:
+	var efi = EffectInstance.new().constructor(self.character_data, effect)
+	efi.apply()
+	if effect.modifier is SpellProjectile:
+		if "range" in effect.modifier.stat:
+			self.range = efi
 			return
-		elif "melee" in modifier.stat:
-			self.melee = modifier
+		elif "melee" in effect.modifier.stat:
+			self.melee = efi
 			return
 		
-	self._pickups.append(modifier)
+	self._pickups.append(efi)
 	while len(self._pickups) > self.max_pickups:
 		self.remove(self._pickups[0])
-		
-func _apply(modifer : MessageModifier) -> void:
-	if self.charater_data.character:
-		modifer.message.emit_message(self.charater_data.character)
-	self.charater_data.stats.apply(modifer)
 	
-func remove(modifier : MessageModifier) -> void:
-	for stat in self.charater_data.character.data.stats.stats:
-		if modifier in stat.modifiers:
-			stat.remove_modifier(modifier)
+func remove(efi : EffectInstance) -> void:
+	efi.remove()
 	self._pickups.remove_at(0)
+	
+func initialize() -> void:
+	self.emit_messages()
+	self.add_nodes()
+	
+func add_nodes() -> void:
+	for efi in self._pickups:
+		efi.add_node()
 		
 func emit_messages() -> void:
-	if not self.charater_data.character:
+	if not self.character_data.character:
 		return
-	for modifier in self._pickups:
-		modifier.message.emit_message(self.charater_data.character)
-	self.melee.message.emit_message(self.charater_data.character)
-	self.range.message.emit_message(self.charater_data.character)
+	for efi in self.all_pickups():
+		efi.effect.message.emit_message(self.character_data.character)
 	
-func constructor(m_charater_data : CharacterData, m_max_pickups : int = 3) -> PickupManager:
-	self.charater_data = m_charater_data
+func constructor(m_character_data : CharacterData, m_max_pickups : int = 3) -> PickupManager:
+	self.character_data = m_character_data
 	self.max_pickups = m_max_pickups
 	return self
 	
-func all_pickups() -> Array[MessageModifier]:
+func all_pickups() -> Array[EffectInstance]:
 	var _p = self._pickups.duplicate()
 	_p.append_array([self.melee, self.range])
 	return _p
+	
+func all_effects(): # -> Array[Effect]
+	return self.all_pickups().map(func(x): return x.effect) as Array[Effect]
 	

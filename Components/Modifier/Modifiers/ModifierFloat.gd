@@ -1,4 +1,4 @@
-extends MessageModifier
+extends Modifier
 class_name ModifierFloat
 
 @export var value : float

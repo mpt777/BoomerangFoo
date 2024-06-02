@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://mtjq6g0iyxj5"]
+[gd_scene load_steps=27 format=3 uid="uid://mtjq6g0iyxj5"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.gd" id="1_a3jv1"]
-[ext_resource type="PackedScene" uid="uid://b2jyu1mn7nium" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="2_cp2bm"]
 [ext_resource type="PackedScene" uid="uid://ckw1ohlj8xrtk" path="res://Scenes/Anchor/Anchor.tscn" id="2_lj3me"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7qiqf"]
@@ -276,9 +275,6 @@ script = ExtResource("1_a3jv1")
 
 [node name="Body" type="Node3D" parent="Animation/CameraFix"]
 
-[node name="witch_smooth" parent="Animation/CameraFix/Body" instance=ExtResource("2_cp2bm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00902183, -0.157996, 0)
-
 [node name="Right" type="Node3D" parent="Animation/CameraFix"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, 0)
 
@@ -341,10 +337,10 @@ parameters/Walk/current_delta = 0.0170703
 tree_root = SubResource("AnimationNodeBlendTree_2dwy1")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.6
-parameters/current_position = 0.0868727
+parameters/current_position = 0.0996738
 parameters/current_delta = 0.0166667
 parameters/AttackMove/current_length = 0.6
-parameters/AttackMove/current_position = 0.0868727
+parameters/AttackMove/current_position = 0.0996738
 parameters/AttackMove/current_delta = 0.0166667
 parameters/AttackMove/add_amount = 1.0
 parameters/Cast/current_length = 0.0
@@ -366,12 +362,12 @@ parameters/Idle/current_length = 3.0
 parameters/Idle/current_position = 0.0
 parameters/Idle/current_delta = 0.0
 parameters/Walk/current_length = 0.6
-parameters/Walk/current_position = 0.0868727
+parameters/Walk/current_position = 0.0996738
 parameters/Walk/current_delta = 0.0166667
 parameters/WalkIdle/current_length = 0.6
-parameters/WalkIdle/current_position = 0.0868727
+parameters/WalkIdle/current_position = 0.0996738
 parameters/WalkIdle/current_delta = 0.0166667
 parameters/WalkIdle/blend_amount = 0.0
 parameters/output/current_length = 0.6
-parameters/output/current_position = 0.0868727
+parameters/output/current_position = 0.0996738
 parameters/output/current_delta = 0.0166667

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmfqtroplf3rk"]
+
+[ext_resource type="PackedScene" uid="uid://dfbog3ow5y1tk" path="res://Components/Particle/SmartGPUParticles3D.tscn" id="1_5fxqj"]
+[ext_resource type="Material" uid="uid://ceu80ca13tua3" path="res://Scenes/Entities/Modifiers/BerserkBrew/process_material.tres" id="2_pe5hu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aaxpw"]
+transparency = 4
+albedo_color = Color(0.2808, 0.72, 0.47112, 0.447059)
+grow_amount = 0.26
+
+[sub_resource type="SphereMesh" id="SphereMesh_15c4v"]
+material = SubResource("StandardMaterial3D_aaxpw")
+radial_segments = 8
+rings = 4
+
+[node name="BerserkBrew" type="Node3D"]
+
+[node name="SmartGpuParticles3d" parent="." instance=ExtResource("1_5fxqj")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+amount = 4
+process_material = ExtResource("2_pe5hu")
+draw_pass_1 = SubResource("SphereMesh_15c4v")

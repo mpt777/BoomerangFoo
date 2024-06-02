@@ -1,0 +1,21 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://ceu80ca13tua3"]
+
+[sub_resource type="Curve" id="Curve_noylj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.603255), 0.0, 0.0, 0, 0, Vector2(0.992674, 0.0518796), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ad740"]
+curve = SubResource("Curve_noylj")
+
+[resource]
+emission_shape_offset = Vector3(0, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, -3, 0)
+scale_curve = SubResource("CurveTexture_ad740")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.0

@@ -1,4 +1,4 @@
-extends MessageModifier
+extends Modifier
 class_name SpellProjectile
 
 @export var PROJECTILE : PackedScene

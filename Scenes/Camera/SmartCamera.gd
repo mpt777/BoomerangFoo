@@ -36,9 +36,14 @@ func _ready():
 	
 	debugger = Draw3D.new()
 	add_child(debugger)
+	$"/root/Signals".connect("add_camera_point", add_camera_point)
 	$"/root/Signals".connect("update_character", refresh_follow_camera)
 	$"/root/Signals".connect("set_follow_camera_active", set_active)
 	$"/root/Signals".connect("start_round", initialize)
+	
+	
+func add_camera_point(cm : CameraPoint):
+	add_child(cm)
 	
 func refresh_follow_camera() -> void:
 	nodes = get_tree().get_nodes_in_group("FollowCamera")
@@ -122,6 +127,7 @@ func _set_fov() -> void:
 	
 	
 func debug() -> void:
+	#refresh_follow_camera()
 	debugger.reset()
 
 	var pointA = Vector3(_min_bound.x, 1, _min_bound.z)
@@ -162,4 +168,5 @@ func _physics_process(_delta):
 	_set_position_center()
 	_set_fov()
 	#debug()
+	
 

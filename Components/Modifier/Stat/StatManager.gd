@@ -8,6 +8,9 @@ func _ready() -> void:
 	for stat in self.stats:
 		self.register(stat)
 		
+func constructor() -> StatManager:
+	return self
+		
 func register(stat: Stat) -> void:
 	self._stats[stat.title.to_lower()] = stat
 	self.stats.append(stat)

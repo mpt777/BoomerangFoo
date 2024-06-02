@@ -9,8 +9,11 @@ var character : Character
 var stats : StatManager = StatManager.new()
 var pickups : PickupManager = PickupManager.new().constructor(self, 2)
 
+var signals := SignalRegister.new()
+
 func set_character(m_character : Character) -> void:
 	self.character = m_character
+	
 
 func instantiate_scene() -> Character:
 	return 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b75g4uvj03jg7"]
+[gd_scene load_steps=20 format=3 uid="uid://b75g4uvj03jg7"]
 
 [ext_resource type="Script" path="res://Scenes/Stage/Stages/Graveyard/GraveyardStage.gd" id="1_318dh"]
 [ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_gvqjs"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://danrhd6yvhfmw" path="res://Assets/Blender/Decorations/Rock/Rock.tscn" id="8_btaiy"]
 [ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Stage/StageElements/CharacterSpawner.tscn" id="8_p1sje"]
 [ext_resource type="Material" uid="uid://bxian2evsffcs" path="res://Assets/Shaders/Ground/grass.tres" id="9_tobu3"]
+[ext_resource type="PackedScene" uid="uid://bpu7i4aywxj2h" path="res://Scenes/Camera/CameraPoint.tscn" id="15_6ta8e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4djhl"]
 resource_local_to_scene = true
@@ -198,3 +199,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1202, 1.60839, 13.4168)
 
 [node name="Marker3D8" type="Marker3D" parent="Functional/CharacterSpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6095, 1.60839, 15.1251)
+
+[node name="CameraPoint" parent="." instance=ExtResource("15_6ta8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3256, 1.4635, -19.3721)

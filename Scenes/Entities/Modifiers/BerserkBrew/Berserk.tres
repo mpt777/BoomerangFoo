@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=9 format=3 uid="uid://bauds8t44ugal"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_dswcj"]
+[ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="1_s40e6"]
+[ext_resource type="Script" path="res://Components/Modifier/Modifiers/ModifierFloat.gd" id="2_k713q"]
+[ext_resource type="PackedScene" uid="uid://dmfqtroplf3rk" path="res://Scenes/Entities/Modifiers/BerserkBrew/BerserkBrew.tscn" id="3_5jqle"]
+[ext_resource type="Script" path="res://Components/Modifier/Modifiers/NodeModifier.gd" id="4_mptaf"]
+
+[sub_resource type="Resource" id="Resource_ti7sl"]
+script = ExtResource("1_dswcj")
+name = "Berserk Brew"
+color = Color(0.382014, 0.782777, 0.49165, 1)
+
+[sub_resource type="Resource" id="Resource_dhxrj"]
+script = ExtResource("2_k713q")
+value = 0.5
+stat = "speed"
+
+[sub_resource type="Resource" id="Resource_ddjp2"]
+script = ExtResource("4_mptaf")
+node = ExtResource("3_5jqle")
+
+[resource]
+script = ExtResource("1_s40e6")
+modifier = SubResource("Resource_dhxrj")
+message = SubResource("Resource_ti7sl")
+node = SubResource("Resource_ddjp2")
