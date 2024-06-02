@@ -10,6 +10,7 @@ func _ready() -> void:
 		
 func register(stat: Stat) -> void:
 	self._stats[stat.title.to_lower()] = stat
+	self.stats.append(stat)
 
 func get_stat(stat_name : String) -> Stat:
 	return self._stats[stat_name.to_lower()]

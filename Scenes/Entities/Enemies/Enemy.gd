@@ -16,6 +16,7 @@ var rotation_speed := 10
 
 func constructor(enemy_data : EnemyData):
 	self.data = enemy_data
+	self.data.set_character(self)
 	$HealthComponent.max_health = self.data.stats.get_value("max_health")
 	
 	#$MeshInstance3D.mesh.material = StandardMaterial3D.new()

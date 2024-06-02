@@ -12,6 +12,8 @@ func closest_node_in_group(origin: Vector3, group_name: String) -> Node3D:
 	return closest_player
 	
 func remove_item(array, item) -> bool:
+	if not item in array:
+		return false
 	var to_remove := -1
 	for index in len(array):
 		if array[index] == item:

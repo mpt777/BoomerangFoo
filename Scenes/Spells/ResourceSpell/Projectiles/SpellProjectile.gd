@@ -5,6 +5,8 @@ class_name SpellProjectile
 @export var spell_cast : SpellCast
 
 func add(stat : Stat):
+	super(stat)
+	stat.clear_modifiers()
 	stat.value = self
 
 func projectile() -> Projectile:

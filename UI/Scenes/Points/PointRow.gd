@@ -59,4 +59,4 @@ func add_new_points() -> void:
 		index += 1
 		
 func has_won() -> bool:
-	return self.initial_points() + self.new_points() > GameState.settings.points_per_round
+	return self.initial_points() + self.new_points() >= GameState.settings.points_per_round

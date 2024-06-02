@@ -12,8 +12,8 @@ func rotate_offset(gt : Transform3D, degrees: float) -> Transform3D:
 
 
 func instance_projectiles(spell: ResourceSpell, weapon : Weapon) -> void:
-	#var count : int = spell.stats.get_value("p.count", 1)
-	var count = 3
+	var count : int = spell.stats.get_value("p.count", 1)
+	#var count = 3s
 	var bullet_speed : float = spell.stats.get_value("p.speed", 1)
 	
 	var spread_angle_degrees = 100

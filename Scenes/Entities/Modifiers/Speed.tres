@@ -10,6 +10,6 @@ color = Color(0.359079, 0.628543, 0.352819, 1)
 
 [resource]
 script = ExtResource("1_i1fkh")
-value = 0.2
+value = 0.5
 message = SubResource("Resource_ar2l4")
 stat = "speed"

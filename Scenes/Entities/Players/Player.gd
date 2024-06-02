@@ -11,6 +11,7 @@ var rotation_speed := 10.0
 
 func constructor(player_data : PlayerData):
 	data = player_data
+	data.set_character(self)
 	controller = data.controller
 	
 	#$MeshInstance3D.mesh.material = StandardMaterial3D.new()

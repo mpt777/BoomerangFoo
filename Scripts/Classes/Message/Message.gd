@@ -5,9 +5,6 @@ var CHARACTER_MESSAGE = preload("res://Scenes/Entities/CharacterMessage/Characte
 
 @export var name : String
 @export var color : Color
-
-func apply(_character : Character):
-	pass
 	
 func emit_message(character : Character):
 	var message : CharacterMessageText = CHARACTER_MESSAGE.instantiate()
