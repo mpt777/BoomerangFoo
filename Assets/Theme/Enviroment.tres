@@ -2,9 +2,9 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3anpa"]
 sky_top_color = Color(0.431373, 0.698039, 0.952941, 1)
-sky_horizon_color = Color(0.999074, 0.951921, 0.908881, 1)
-ground_bottom_color = Color(0.898039, 0.92549, 0.643137, 1)
-ground_horizon_color = Color(0.964629, 0.884842, 0.951065, 1)
+sky_horizon_color = Color(0.951701, 0.973299, 0.986761, 1)
+ground_bottom_color = Color(0.326826, 0.766753, 0.838628, 1)
+ground_horizon_color = Color(0.983876, 0.948422, 0.977591, 1)
 
 [sub_resource type="Sky" id="Sky_c6te1"]
 sky_material = SubResource("ProceduralSkyMaterial_3anpa")
@@ -27,3 +27,4 @@ fog_density = 0.0157
 fog_sky_affect = 0.703
 fog_height = 1024.0
 volumetric_fog_detail_spread = 4.54715
+adjustment_enabled = true

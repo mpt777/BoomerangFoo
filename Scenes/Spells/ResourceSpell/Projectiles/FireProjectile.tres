@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_3gm4t"]
 script = ExtResource("1_8m44u")
 name = "Fireball"
-color = Color(0.865426, 0.550254, 0.369494, 1)
+color = Color(0.95, 0.522817, 0.2755, 1)
 
 [sub_resource type="Resource" id="Resource_goj42"]
 script = ExtResource("4_jujtb")

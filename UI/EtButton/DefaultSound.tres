@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EtButtonResourceSound" load_steps=3 format=3 uid="uid://cxvy1nx7m0cco"]
+
+[ext_resource type="Script" path="res://UI/EtButton/EtButtonResourceSound.gd" id="1_kw1nx"]
+[ext_resource type="AudioStream" uid="uid://b5p6lot4gla6s" path="res://UI/EtButton/click.wav" id="2_4ws0f"]
+
+[resource]
+script = ExtResource("1_kw1nx")
+stream = ExtResource("2_4ws0f")

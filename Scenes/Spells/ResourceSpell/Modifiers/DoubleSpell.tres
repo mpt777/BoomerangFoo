@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_ltdvs"]
 script = ExtResource("1_b87cf")
 name = "Double Spell"
-color = Color(0.802587, 0.736547, 0.430114, 1)
+color = Color(1, 0.8625, 0.25, 1)
 
 [sub_resource type="Resource" id="Resource_qph3h"]
 script = ExtResource("2_aq50v")

@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_awip7"]
 script = ExtResource("1_m7trr")
 name = "Ice Shard"
-color = Color(0.436722, 0.737111, 0.902075, 1)
+color = Color(0.4608, 0.78528, 0.96, 1)
 
 [sub_resource type="Resource" id="Resource_qmoyk"]
 script = ExtResource("4_e005g")

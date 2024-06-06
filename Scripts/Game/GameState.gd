@@ -28,7 +28,8 @@ func _joy_connection_changed(id, connected):
 	else:
 		remove_controller(id)
 	process_keyboard()
-	$"/root/Signals".emit_signal("controllers_changed", self.controllers[id], connected)
+	if self.controllers:
+		$"/root/Signals".emit_signal("controllers_changed", self.controllers[id], connected)
 	
 func process_keyboard():
 	if Input.get_connected_joypads():

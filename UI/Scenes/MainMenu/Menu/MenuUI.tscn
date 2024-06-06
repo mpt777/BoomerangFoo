@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpdx8stfsfj3i"]
+[gd_scene load_steps=7 format=3 uid="uid://dpdx8stfsfj3i"]
 
 [ext_resource type="PackedScene" uid="uid://b6unoux6lpd32" path="res://UI/ETContainer/ETContainer.tscn" id="1_yaeg7"]
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/Menu/MenuUI.gd" id="2_jtqsb"]
 [ext_resource type="FontFile" uid="uid://cw1n407ockhoc" path="res://Assets/Fonts/Frijole-Regular.ttf" id="3_d80db"]
 [ext_resource type="Theme" uid="uid://cp5i06p51kd6i" path="res://Assets/Theme/MenuTheme.tres" id="3_dw6lg"]
+[ext_resource type="PackedScene" uid="uid://d4cwd63mg4j1j" path="res://UI/EtButton/EtButton.tscn" id="5_eivry"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fjcn"]
 font = ExtResource("3_d80db")
@@ -42,36 +43,31 @@ grow_horizontal = 0
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Debug" type="Button" parent="VBoxContainer" index="0"]
+[node name="Debug" parent="VBoxContainer" index="0" instance=ExtResource("5_eivry")]
 layout_mode = 2
-size_flags_horizontal = 8
 theme = ExtResource("3_dw6lg")
-text = "Debug
+text = "Debug"
+
+[node name="Start" parent="VBoxContainer" index="1" instance=ExtResource("5_eivry")]
+layout_mode = 2
+theme = ExtResource("3_dw6lg")
+text = "Start Game
 "
 
-[node name="Start" type="Button" parent="VBoxContainer" index="1"]
+[node name="Settings" parent="VBoxContainer" index="2" instance=ExtResource("5_eivry")]
 layout_mode = 2
-size_flags_horizontal = 8
-theme = ExtResource("3_dw6lg")
-text = "Start Game"
-
-[node name="Settings" type="Button" parent="VBoxContainer" index="2"]
-layout_mode = 2
-size_flags_horizontal = 8
 theme = ExtResource("3_dw6lg")
 text = "Settings
 "
 
-[node name="Credits" type="Button" parent="VBoxContainer" index="3"]
+[node name="Credits" parent="VBoxContainer" index="3" instance=ExtResource("5_eivry")]
 layout_mode = 2
-size_flags_horizontal = 8
 theme = ExtResource("3_dw6lg")
 text = "Credits
 "
 
-[node name="Quit" type="Button" parent="VBoxContainer" index="4"]
+[node name="Quit" parent="VBoxContainer" index="4" instance=ExtResource("5_eivry")]
 layout_mode = 2
-size_flags_horizontal = 8
 theme = ExtResource("3_dw6lg")
 text = "Quit"
 

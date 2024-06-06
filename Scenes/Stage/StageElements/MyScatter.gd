@@ -59,6 +59,8 @@ func process():
 	clear()
 
 	set_transforms()
+	if not TREE:
+		return
 	var tree := TREE.instantiate()
 	for child_node in tree.get_children():
 		if child_node is MeshInstance3D:
@@ -106,6 +108,8 @@ func get_random_point_culled() -> Vector3:
 	
 func set_transforms():
 	var transform_3d = Transform3D()
+	if not rng:
+		return
 	for i in range(instance_amount):
 		transform_3d.origin = get_random_point()
 		transform_3d.basis = transform_3d.basis.rotated(Vector3(0, 1, 0), rng.randf_range(-3, 3))

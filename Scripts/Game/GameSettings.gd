@@ -20,19 +20,19 @@ var settings := SettingRegister.new()
 
 func constructor() -> GameSettings:
 	self.settings.register(
-		Setting.new().constructor("Sound", "sound", 50, 
+		Setting.new().constructor("Sound", "sound", db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))), 
 		func(setting : Setting): 
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), setting.get_value())
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(setting.get_value()))
 	))
 	self.settings.register(
-		Setting.new().constructor("SFX", "sfx", 50, 
+		Setting.new().constructor("SFX", "sfx", db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))), 
 		func(setting : Setting): 
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), setting.get_value())
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(setting.get_value()))
 	))
 	self.settings.register(
-		Setting.new().constructor("Music", "music", 50,
+		Setting.new().constructor("Music", "music", db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))),
 		func(setting : Setting): 
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), setting.get_value())
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(setting.get_value()))
 	))
 	self.settings.register(
 		Setting.new().constructor("Full Screen", "full_screen", false,

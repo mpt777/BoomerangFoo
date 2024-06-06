@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4cwd63mg4j1j"]
+
+[ext_resource type="Script" path="res://UI/EtButton/EtButton.gd" id="1_7w0ob"]
+[ext_resource type="Resource" uid="uid://cxvy1nx7m0cco" path="res://UI/EtButton/DefaultSound.tres" id="2_md00y"]
+
+[node name="EtButton" type="Button"]
+script = ExtResource("1_7w0ob")
+sound = ExtResource("2_md00y")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
