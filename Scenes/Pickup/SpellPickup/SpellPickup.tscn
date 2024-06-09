@@ -6,6 +6,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nyu4c"]
 height = 0.5
+radius = 0.4
 
 [sub_resource type="Animation" id="Animation_45hbt"]
 length = 0.001
@@ -54,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_nyu4c")
 
 [node name="book" parent="." index="1" instance=ExtResource("2_ng37g")]
-transform = Transform3D(-8.87895e-09, 3.13962e-09, -0.14, -0.0699999, 0.121244, 7.15847e-09, 0.121244, 0.0699999, -6.11959e-09, 0, 1, 0)
+transform = Transform3D(-7.10315e-09, 2.51169e-09, -0.112, -0.0559998, 0.096995, 5.72675e-09, 0.096995, 0.0559998, -4.89568e-09, 0, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

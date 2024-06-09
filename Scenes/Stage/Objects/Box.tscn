@@ -6,16 +6,17 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q5nd"]
 albedo_texture = ExtResource("1_jd2y2")
-uv1_scale = Vector3(1.005, 1.005, 1.005)
+uv1_scale = Vector3(1.265, 1.265, 1.265)
 uv1_offset = Vector3(-1.5, 0.495, -0.5)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_hhkww"]
+size = Vector3(0.8, 0.8, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3lr3j"]
+size = Vector3(0.8, 0.8, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ejk6d"]
-size = Vector3(1.1, 1.1, 1.1)
 
 [node name="Box" type="Node3D"]
 

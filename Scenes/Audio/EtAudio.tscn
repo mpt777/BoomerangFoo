@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dunbdnq863wqx"]
+
+[ext_resource type="Script" path="res://Scenes/Audio/EtAudio.gd" id="1_fm54f"]
+
+[node name="AudioEffect" type="AudioStreamPlayer"]
+script = ExtResource("1_fm54f")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

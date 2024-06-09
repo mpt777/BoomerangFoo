@@ -5,7 +5,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aaxpw"]
 transparency = 4
-albedo_color = Color(0.2808, 0.72, 0.47112, 0.447059)
+albedo_color = Color(0.1326, 0.78, 0.41314, 0.643137)
 grow_amount = 0.26
 
 [sub_resource type="SphereMesh" id="SphereMesh_15c4v"]

@@ -3,7 +3,8 @@ class_name GameLoop
 
 @export var stages : Dictionary = {
 	#"dev": "res://Scenes/Stage/StageElements/Stage.tscn",
-	"graveyard": "res://Scenes/Stage/Stages/Graveyard/GraveyardStage.tscn"
+	#"park": "res://Scenes/Stage/Stages/Park/Park.tscn",
+	"river": "res://Scenes/Stage/Stages/River/River.tscn",
 }
 
 var current_stage : String

@@ -3,4 +3,4 @@
 [resource]
 resource_name = "Hair"
 cull_mode = 2
-albedo_color = Color(0.94902, 0.498039, 0.239216, 1)
+albedo_color = Color(0.95, 0.438583, 0.1425, 1)

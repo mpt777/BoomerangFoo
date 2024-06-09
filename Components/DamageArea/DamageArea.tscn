@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdq50umi4h7t7"]
+
+[ext_resource type="Script" path="res://Components/DamageArea/DamageArea.gd" id="1_pan1w"]
+
+[node name="KillBox" type="Area3D"]
+collision_layer = 128
+collision_mask = 8
+script = ExtResource("1_pan1w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

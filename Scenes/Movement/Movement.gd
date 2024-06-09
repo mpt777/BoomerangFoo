@@ -11,6 +11,7 @@ class_name Movement
 @export var GRAVITY := 9.8
 
 var current_speed := SPEED
+var current_gravity := GRAVITY
 
 func constructor(_body): 
 	self.body = _body
@@ -22,15 +23,17 @@ func move(direction : Vector3) -> void:
 	else:
 		body.velocity = body.velocity.lerp(Vector3.ZERO, FRICTION)
 		
-	body.velocity.y -= GRAVITY
+	body.velocity.y -= current_gravity
 
 	body.move_and_slide()
 
 func dash() -> void:
 	current_speed = DASH_SPEED
+	current_gravity = 0
 	
 func end_dash() -> void:
 	current_speed = SPEED
+	current_gravity = GRAVITY
 	
 func get_speed() -> float:
 	var speed = current_speed

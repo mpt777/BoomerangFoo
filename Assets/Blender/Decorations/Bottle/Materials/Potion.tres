@@ -3,5 +3,5 @@
 [resource]
 resource_name = "Potion"
 cull_mode = 2
-albedo_color = Color(0.174101, 0.75291, 0.84415, 1)
+albedo_color = Color(0.042, 0.7336, 0.84, 1)
 roughness = 0.5

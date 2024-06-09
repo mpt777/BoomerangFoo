@@ -4,13 +4,16 @@
 [ext_resource type="Material" uid="uid://did8620rh1fn1" path="res://Assets/Shaders/Water/toon_water_shader.tres" id="2_jlf2l"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_24vcs"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rbpwa"]
-top_radius = 5.0
+top_radius = 4.0
 bottom_radius = 0.0
 
 [node name="fountain" instance=ExtResource("1_tsc3c")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
 collision_layer = 9
@@ -21,6 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_24vcs")
 
 [node name="Water2" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(0.999985, 0, -0.00553267, 0, 1, 0, 0.00553267, 0, 0.999985, 0, -0.0930544, 0.0772014)
+transform = Transform3D(0.999985, 0, -0.00553267, 0, 1, 0, 0.00553267, 0, 0.999985, 0, -0.216911, 0.0772014)
 material_override = ExtResource("2_jlf2l")
 mesh = SubResource("CylinderMesh_rbpwa")

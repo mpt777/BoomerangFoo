@@ -17,13 +17,14 @@ config/icon="res://Assets/favicon-4.png"
 
 [autoload]
 
-Signals="*res://Scripts/Classes/Signals.gd"
+Signals="*res://Scripts/Classes/Signal/Signals.gd"
 Utils="*res://Scripts/Classes/Utils.gd"
 SceneManager="*res://Scripts/Game/SceneManager.gd"
 Serializer="*res://Scripts/Game/Serializer.gd"
 GameState="*res://Scripts/Game/GameState.gd"
 GameProfile="*res://Scripts/Game/GameProfile.gd"
 AudioManager="*res://Scenes/Audio/AudioManager.tscn"
+Enums="*res://Scripts/Classes/Enums.gd"
 
 [debug]
 
@@ -49,6 +50,7 @@ movie_writer/directional_shadow/soft_shadow_filter_quality=2
 Pickup=""
 FollowCamera=""
 Character=""
+Nav=""
 
 [input]
 
@@ -62,6 +64,7 @@ Test={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Character"
 3d_physics/layer_4="Hitbox"
+3d_physics/layer_8="KillBox"
 3d_physics/layer_9="Projectile"
 3d_physics/layer_10="Pickup"
 3d_physics/layer_13="MouseRayLayer"

@@ -17,9 +17,9 @@ func select_new_position() -> void:
 	if method == 0:
 		position = body.ai.pick_random_position()
 	if method == 1:
-		position = body.ai.pick_point_around_player(6)
+		position = body.ai.pick_point_around_player(12)
 	if method == 2:
-		position = body.ai.pick_point_around_player(10)
+		position = body.ai.pick_point_around_player(20)
 		
 	set_new_position(position)
 	
