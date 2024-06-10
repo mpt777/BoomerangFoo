@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name CameraShake
 
 var trauma := 1.0

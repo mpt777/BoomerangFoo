@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7fwbfthpi3yw"]
+
+[ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="1_i1x7l"]
+[ext_resource type="PackedScene" uid="uid://jb5v7c5pd4a0" path="res://Components/Hitbox/Hitbox.tscn" id="2_blrcn"]
+
+[node name="Breakable" type="Node3D"]
+
+[node name="Health" parent="." instance=ExtResource("1_i1x7l")]
+
+[node name="Hitbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_blrcn")]
+health_component = NodePath("../Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

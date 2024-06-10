@@ -1,11 +1,11 @@
-extends Node3D
-
+extends Resource
 class_name Controller
 
 @export var controller_number := 0
 @export var device_number := 0
 
 #List of controller actions
+
 var actions := {}
 var is_joypad = false
 var current_button : MultiLayerButton

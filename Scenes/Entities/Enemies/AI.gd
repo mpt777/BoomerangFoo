@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name AI
 
 ## To give some general functions that states can use to understand the world around the Enemy

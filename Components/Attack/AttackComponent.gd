@@ -1,5 +1,4 @@
 extends Area3D
-
 class_name AttackComponent
 
 @export var damage := 1.0

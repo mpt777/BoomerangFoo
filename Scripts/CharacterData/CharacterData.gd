@@ -14,7 +14,6 @@ var signals := SignalRegister.new()
 func set_character(m_character : Character) -> void:
 	self.character = m_character
 	
-
 func instantiate_scene() -> Character:
 	return 
 

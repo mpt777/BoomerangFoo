@@ -1,4 +1,4 @@
 extends Node
 
 
-enum AttackType { WATER }
+enum AttackType { FALLING, ENERGY }

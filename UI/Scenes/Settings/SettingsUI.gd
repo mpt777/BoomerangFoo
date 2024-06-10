@@ -20,7 +20,7 @@ func mount():
 	$VBoxContainer/TabContainer/Video/ScrollContainer/CenterContainer/VBoxContainer/VSYNC.mount(GameState.settings.settings.setting("vsync"))
 	
 	$VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/EnemyAttack.mount(GameState.settings.settings.setting("enemy_attack"))
-	
+	$VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/PrintOrphans.mount(GameState.settings.settings.setting("orphan_node"))
 
 func _on_save__exit_pressed():
 	exit()

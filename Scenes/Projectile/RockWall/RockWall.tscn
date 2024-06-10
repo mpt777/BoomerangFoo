@@ -83,6 +83,7 @@ max_health = 10.0
 [node name="Hitbox" parent="." index="3" node_paths=PackedStringArray("health_component") instance=ExtResource("3_svktc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 health_component = NodePath("../HealthComponent")
+omit_attack_types = Array[int]([0])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("BoxShape3D_8c4m6")

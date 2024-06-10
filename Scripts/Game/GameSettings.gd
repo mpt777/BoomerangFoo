@@ -55,6 +55,11 @@ func constructor() -> GameSettings:
 		func(_setting : Setting): 
 			pass
 	))
+	self.settings.register(
+		Setting.new().constructor("Print Orphan Nodes", "orphan_node", true,
+		func(_setting : Setting): 
+			Node.print_orphan_nodes()
+	))
 	return self
 
 func settings_path() -> String:

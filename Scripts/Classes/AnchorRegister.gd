@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name AnchorRegister
 
 var anchors : Dictionary

@@ -1,7 +1,11 @@
-extends Node
+extends Resource
 class_name SignalRegister
 
 var signals = []
+
+func new():
+	super.new()
+	self.name="SignalRegister"
 
 func register(signal_name : String, function : Callable) -> void:
 	if not has_user_signal(signal_name):

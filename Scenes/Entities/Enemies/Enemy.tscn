@@ -36,7 +36,10 @@ weapon_owner = NodePath("..")
 spawn_point = NodePath("SpawnPoint")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="10"]
-max_speed = 50.0
+path_max_distance = 10.01
+avoidance_enabled = true
+radius = 1.0
+debug_enabled = true
 
 [node name="DodgeArea" type="Area3D" parent="." index="11"]
 collision_mask = 256

@@ -66,9 +66,6 @@ environment = SubResource("Environment_7r7ab")
 [node name="DirectionalLight3D" parent="Enviroment" index="1"]
 transform = Transform3D(0.492119, 0.771921, -0.40244, 0.23366, 0.328201, 0.915252, 0.838584, -0.544447, -0.0188536, 0, 21.6531, 0)
 
-[node name="CameraAnchor" parent="Enviroment" index="2"]
-MARGIN = Vector4(5, 5, 5, 5)
-
 [node name="Floor" type="StaticBody3D" parent="World/Ground" index="1"]
 collision_layer = 4097
 

@@ -65,6 +65,7 @@ func process():
 	for child_node in tree.get_children():
 		if child_node is MeshInstance3D:
 			process_mesh(preprocess_mesh_instance(child_node), child_node.transform)
+	tree.queue_free()
 		
 func clear():
 	transforms = []

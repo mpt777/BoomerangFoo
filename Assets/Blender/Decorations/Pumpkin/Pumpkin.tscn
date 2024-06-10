@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://kxsdmajdjxgv"]
+
+[ext_resource type="PackedScene" uid="uid://c7fwbfthpi3yw" path="res://Scenes/Stage/Objects/Breakable/Breakable.tscn" id="1_vcd2k"]
+[ext_resource type="Script" path="res://Assets/Blender/Decorations/Pumpkin/Pumpkin.gd" id="2_cd4x5"]
+[ext_resource type="PackedScene" uid="uid://djv81lcbyhy4" path="res://Assets/Blender/Decorations/Pumpkin/Pumpkin.dae" id="2_oadom"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u1iy5"]
+height = 1.0
+radius = 0.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dysgs"]
+radius = 0.6
+
+[node name="Pumpkin" instance=ExtResource("1_vcd2k")]
+script = ExtResource("2_cd4x5")
+
+[node name="Hitbox" parent="." index="1" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../Health")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30972, 0)
+shape = SubResource("CylinderShape3D_u1iy5")
+
+[node name="Pumpkin" parent="." index="2" instance=ExtResource("2_oadom")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0739001, 0)
+shape = SubResource("SphereShape3D_dysgs")
+
+[node name="NavigationObstacle3D" parent="." index="4"]
+radius = 1.0
+vertices = PackedVector3Array(1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1)
+use_3d_avoidance = true

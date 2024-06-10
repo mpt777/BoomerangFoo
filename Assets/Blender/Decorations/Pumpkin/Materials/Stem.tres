@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chqcddqa1bcdb"]
+
+[resource]
+resource_name = "Stem"
+cull_mode = 2
+albedo_color = Color(0.43, 0.276705, 0.0301, 1)
+metallic_specular = 0.21
+roughness = 0.0
