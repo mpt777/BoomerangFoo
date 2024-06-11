@@ -15,10 +15,10 @@ class_name Avatar
 @onready var n_right_hand = $Animation/CameraFix/Right
 @onready var n_right_hand_remote = $Animation/CameraFix/Right/RemoteTransform3D
 
-#func _ready():
-	#print("here")
+func _ready():
+	self.name = "Avatar"
 	
-var tween = EtTween.new()
+#var tween = EtTween.new()
 	
 func travel(state : String) -> void:
 	state_machine.travel(state)

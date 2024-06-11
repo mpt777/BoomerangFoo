@@ -9,6 +9,9 @@ var anchors := AnchorRegister.new()
 var data : CharacterData
 
 var target_position : Vector3
+
+func _ready() -> void:
+	self.name = "Character"
 	
 func kill() -> void:
 	queue_free()

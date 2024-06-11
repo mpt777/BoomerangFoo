@@ -11,6 +11,7 @@ const RESET_DISTANCE : float = 1.0
 const TIME : float = 2
 
 func _ready():
+	#self.name="CharacterPointer"
 	reset()
 	
 func set_color(color: Color):

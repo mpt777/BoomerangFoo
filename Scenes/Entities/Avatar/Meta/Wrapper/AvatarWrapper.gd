@@ -17,7 +17,7 @@ func constructor(p_character : Character) -> AvatarWrapper:
 	return self
 
 func _ready():
-	return
+	self.name = "AvatarWrapper"
 
 func mount():
 	# Save the original global rotation

@@ -9,12 +9,8 @@ var current_spell : Spell
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
-	#weapon_owner.signals.register("Wand.ChangeSpell", change_spell)
+	self.name = "Wand"
 	weapon_owner.signals.register("Wand.Attack", use)
-	
-func _physics_process(delta):
-	return
-	#global_rotation = weapon_owner.anchors.anchor("RightHand").global_rotation
 	
 func use(type : String):
 	var new_spell = create_spell(type)
