@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7yligty16to0"]
+
+[ext_resource type="PackedScene" uid="uid://cpy5im6mduxy6" path="res://Scenes/Movement/Movement.tscn" id="1_4np0x"]
+[ext_resource type="Script" path="res://Scenes/Movement/AvoidanceMovement.gd" id="2_ryfxn"]
+
+[node name="AvoidanceMovement" instance=ExtResource("1_4np0x")]
+script = ExtResource("2_ryfxn")

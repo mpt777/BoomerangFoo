@@ -1,35 +1,51 @@
 extends StandardCharacter
 class_name Enemy
 
-@onready
-var n_movement := $Movement
-
-@onready
-var n_nav := $NavigationAgent3D
+@onready var n_movement := $AvoidanceMovement
+@onready var n_nav := $NavigationAgent3D
+@onready var n_avoidance := $ProximityArea
 
 var target_player : CharacterBody3D = null
 var target_direction : Vector3 = Vector3.ZERO
 
 var ai : AI
+var ai_map : AIMap
 var rotation_speed := 10
 #var target_location : Vector3 = Vector3.ZERO
+
+@export var _tick_counter := 0.2
+@export var tick_timer := 0.2
+var on_tick := true
 
 func constructor(enemy_data : EnemyData):
 	self.data = enemy_data
 	self.data.set_character(self)
 	$HealthComponent.max_health = self.data.stats.get_value("max_health")
 	
-	#$MeshInstance3D.mesh.material = StandardMaterial3D.new()
-	#$MeshInstance3D.mesh.material.albedo_color = enemy_data.color
-	
 func _ready():
 	super._ready()
 	ai = AI.new().constructor(self)
+	ai_map = AIMap.new().constructor(self)
 	$AvatarWrapper.constructor(self)
 	
 func _physics_process(delta):
-	target_player = Utils.closest_node_in_group(global_position, "Character")
+	self._tick(delta)
+	
+	if self.on_tick:
+		tick()
+		
 	move_hand(delta)
+	self.ai_map.update_target_direction()
+	
+func tick():
+	self.target_player = Utils.closest_node_in_group(global_position, "Character")
+	
+func _tick(delta):
+	self.on_tick = false
+	self._tick_counter += delta
+	if self._tick_counter > self.tick_timer:
+		self._tick_counter -= self.tick_timer
+		self.on_tick = true
 	
 func move_hand(delta):
 	if target_player:
@@ -44,4 +60,4 @@ func current_movement_state() -> String:
 	
 func get_input_direction() -> Vector3:
 	return self.target_direction
-	
+

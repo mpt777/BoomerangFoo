@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dr436lni2ke1x"]
+[gd_scene load_steps=24 format=3 uid="uid://dr436lni2ke1x"]
 
 [ext_resource type="PackedScene" uid="uid://krjr1lv4wprt" path="res://Scenes/Entities/Character/Character.tscn" id="1_3nbfc"]
 [ext_resource type="Script" path="res://Scenes/Entities/StandardCharacter/StandardCharacter.gd" id="2_5anm4"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bqlhcyxpijyyv" path="res://Scenes/Weapons/Wand/Wand.tscn" id="6_vgmne"]
 [ext_resource type="PackedScene" uid="uid://dfpatgn7u3h84" path="res://Components/Pickup/PickUpComponent.tscn" id="7_6aj05"]
 [ext_resource type="PackedScene" uid="uid://qifyvdfu5u8" path="res://Components/Mana/ManaComponent.tscn" id="8_5chou"]
-[ext_resource type="PackedScene" uid="uid://cpy5im6mduxy6" path="res://Scenes/Movement/Movement.tscn" id="9_wa3o3"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="10_uxf17"]
 [ext_resource type="Script" path="res://Scenes/Entities/StandardCharacter/MovementStates/Walk.gd" id="11_mtqwl"]
 [ext_resource type="Script" path="res://Scenes/Entities/StandardCharacter/MovementStates/Dash.gd" id="12_5hbh3"]
@@ -52,26 +51,23 @@ shape = SubResource("CylinderShape3D_jsy4v")
 character = NodePath("..")
 max_mana = 3.0
 
-[node name="Movement" parent="." index="5" node_paths=PackedStringArray("body") instance=ExtResource("9_wa3o3")]
-body = NodePath("..")
-
-[node name="Ammo" parent="." index="6" node_paths=PackedStringArray("character") instance=ExtResource("14_e5rh7")]
+[node name="Ammo" parent="." index="5" node_paths=PackedStringArray("character") instance=ExtResource("14_e5rh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535, 0)
 character = NodePath("..")
 
-[node name="CharacterMessageManager" parent="." index="7" instance=ExtResource("15_5x71x")]
+[node name="CharacterMessageManager" parent="." index="6" instance=ExtResource("15_5x71x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="Wand" parent="." index="8" node_paths=PackedStringArray("mana_component", "weapon_owner", "spawn_point") instance=ExtResource("6_vgmne")]
+[node name="Wand" parent="." index="7" node_paths=PackedStringArray("mana_component", "weapon_owner", "spawn_point") instance=ExtResource("6_vgmne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mana_component = NodePath("../ManaComponent")
 weapon_owner = NodePath("..")
 spawn_point = NodePath("SpawnPoint")
 anchor = "RightHand"
 
-[node name="AvatarWrapper" parent="." index="9" instance=ExtResource("15_6ieq7")]
+[node name="AvatarWrapper" parent="." index="8" instance=ExtResource("15_6ieq7")]
 
-[node name="Pointer" type="Node3D" parent="." index="10"]
+[node name="Pointer" type="Node3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 script = ExtResource("16_6lrw1")
 
@@ -80,7 +76,7 @@ transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 
 modulate = Color(0, 0.517226, 0.770907, 1)
 texture = ExtResource("17_f81kq")
 
-[node name="AttackFSM" parent="." index="11" node_paths=PackedStringArray("initial_state") instance=ExtResource("10_uxf17")]
+[node name="AttackFSM" parent="." index="10" node_paths=PackedStringArray("initial_state") instance=ExtResource("10_uxf17")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="AttackFSM" index="0" node_paths=PackedStringArray("body")]
@@ -91,22 +87,22 @@ body = NodePath("../..")
 script = ExtResource("17_adq3a")
 body = NodePath("../..")
 
-[node name="MovementFSM" parent="." index="12" node_paths=PackedStringArray("initial_state") instance=ExtResource("10_uxf17")]
+[node name="MovementFSM" parent="." index="11" node_paths=PackedStringArray("initial_state") instance=ExtResource("10_uxf17")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
 script = ExtResource("12_kud6e")
-movement = NodePath("../../Movement")
+movement = NodePath("")
 body = NodePath("../..")
 
 [node name="Walk" type="Node" parent="MovementFSM" index="1" node_paths=PackedStringArray("movement", "body")]
 script = ExtResource("11_mtqwl")
-movement = NodePath("../../Movement")
+movement = NodePath("")
 body = NodePath("../..")
 
 [node name="Dash" type="Node" parent="MovementFSM" index="2" node_paths=PackedStringArray("movement", "body", "dash")]
 script = ExtResource("12_5hbh3")
-movement = NodePath("../../Movement")
+movement = NodePath("")
 body = NodePath("../..")
 dash = NodePath("DashComponent")
 
@@ -117,7 +113,7 @@ script = ExtResource("13_8typp")
 
 [node name="Attack" type="Node" parent="MovementFSM" index="4" node_paths=PackedStringArray("movement", "body")]
 script = ExtResource("13_o6g16")
-movement = NodePath("../../Movement")
+movement = NodePath("")
 body = NodePath("../..")
 
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]

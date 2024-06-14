@@ -24,7 +24,9 @@ func move(direction : Vector3) -> void:
 		body.velocity = body.velocity.lerp(Vector3.ZERO, FRICTION)
 		
 	body.velocity.y -= current_gravity
-
+	self.move_and_slide()
+	
+func move_and_slide():
 	body.move_and_slide()
 
 func dash() -> void:

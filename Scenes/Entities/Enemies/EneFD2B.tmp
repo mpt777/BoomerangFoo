@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dykxprnbbymbc"]
+[gd_scene load_steps=11 format=3 uid="uid://dykxprnbbymbc"]
 
 [ext_resource type="PackedScene" uid="uid://dr436lni2ke1x" path="res://Scenes/Entities/StandardCharacter/StandardCharacter.tscn" id="1_g18f2"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Enemy.gd" id="1_n83qt"]
-[ext_resource type="PackedScene" uid="uid://cvr6b1a0qvob3" path="res://Components/EtArea/EtArea.tscn" id="4_i87sa"]
 [ext_resource type="PackedScene" uid="uid://b7yligty16to0" path="res://Scenes/Movement/AvoidanceMovement.tscn" id="4_slmwr"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="6_2qefy"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/States/StateMachine.gd" id="7_04g71"]
@@ -14,15 +13,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_prhpp"]
 radius = 7.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_c87bx"]
-height = 1.0
-radius = 1.5
-
 [node name="Enemy" instance=ExtResource("1_g18f2")]
-collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_n83qt")
-_tick_counter = 0.2
+_tick_counter = 0.0
 tick_timer = 0.2
 
 [node name="Hitbox" parent="." index="2" node_paths=PackedStringArray("health_component")]
@@ -48,25 +41,17 @@ avoidance_enabled = true
 debug_enabled = true
 
 [node name="DodgeArea" type="Area3D" parent="." index="11"]
-visible = false
 collision_mask = 256
 script = ExtResource("10_fqswa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DodgeArea" index="0"]
 shape = SubResource("CylinderShape3D_prhpp")
 
-[node name="ProximityArea" parent="." index="12" instance=ExtResource("4_i87sa")]
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ProximityArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_c87bx")
-
-[node name="AvoidanceMovement" parent="." index="13" node_paths=PackedStringArray("nav_agent", "body") instance=ExtResource("4_slmwr")]
+[node name="AvoidanceMovement" parent="." index="12" node_paths=PackedStringArray("nav_agent", "body") instance=ExtResource("4_slmwr")]
 nav_agent = NodePath("../NavigationAgent3D")
 body = NodePath("..")
 
-[node name="AttackFSM" parent="." index="14" node_paths=PackedStringArray("initial_state")]
+[node name="AttackFSM" parent="." index="13" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" parent="AttackFSM" index="0" node_paths=PackedStringArray("body")]
@@ -75,7 +60,7 @@ body = NodePath("../..")
 [node name="Attack" parent="AttackFSM" index="1" node_paths=PackedStringArray("body")]
 body = NodePath("../..")
 
-[node name="MovementFSM" parent="." index="15" node_paths=PackedStringArray("initial_state")]
+[node name="MovementFSM" parent="." index="14" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
@@ -99,7 +84,7 @@ body = NodePath("../..")
 movement = NodePath("../../AvoidanceMovement")
 body = NodePath("../..")
 
-[node name="BehaviourFSM" parent="." index="16" node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
+[node name="BehaviourFSM" parent="." index="15" node_paths=PackedStringArray("body", "initial_state") instance=ExtResource("6_2qefy")]
 script = ExtResource("7_04g71")
 body = NodePath("..")
 initial_state = NodePath("Attack")

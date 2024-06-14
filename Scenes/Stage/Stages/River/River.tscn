@@ -136,7 +136,7 @@ transform = Transform3D(2.38095, 0, 0, 0, 2.38095, 0, 0, 0, 2.38095, -3.45181, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5836, 0.473827, 0)
 
 [node name="PumkinPatch" type="Node3D" parent="World/NavigationRegion3D/Decorations" index="1"]
-transform = Transform3D(0.949945, 0, 0.312418, 0, 1, 0, -0.312418, 0, 0.949945, -3.16538, 0, 0)
+transform = Transform3D(0.692823, 0, 0.721108, 0, 1, 0, -0.721108, 0, 0.692823, -4.99164, 0, -3.34371)
 
 [node name="Pumpkin" parent="World/NavigationRegion3D/Decorations/PumkinPatch" index="0" instance=ExtResource("5_2i0n6")]
 transform = Transform3D(0.921764, 0.0809575, 0.379207, -0.00635034, 0.980982, -0.193995, -0.387701, 0.176409, 0.904747, -3.5997, 0.212099, -0.364207)
