@@ -12,7 +12,7 @@ func moved(enemy : Enemy) -> float:
 func decide(enemy : Enemy) -> int:
 	var _weight := 0
 	if stuck_ticks > MAX_STUCK_TICKS:
-		_weight = 50
+		_weight = 100
 		
 	if moved(enemy) <= 0.0:
 		stuck_ticks += 1

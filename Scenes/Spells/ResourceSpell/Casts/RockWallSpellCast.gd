@@ -34,7 +34,7 @@ func instance_projectiles(spell: ResourceSpell, weapon : Weapon) -> void:
 		bullet.position.y = 1 
 		
 		bullet.set_character_data(weapon.weapon_owner.data)
-		bullet.speed *= bullet_speed
+		bullet.data.SPEED *= bullet_speed
 
 		var transform = offset(n_spawn_point.global_transform, Vector3(0,0,-1))
 		bullet.transform = offset(rotate_offset(transform, start_angle + (i * angle_increment)), Vector3(0,0,3))

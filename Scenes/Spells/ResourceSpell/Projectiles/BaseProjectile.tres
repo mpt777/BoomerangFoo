@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MessageModifier" load_steps=9 format=3 uid="uid://ti8hbmerjgwc"]
+[gd_resource type="Resource" script_class="Effect" load_steps=11 format=3 uid="uid://ti8hbmerjgwc"]
 
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="1_04u1q"]
 [ext_resource type="PackedScene" uid="uid://boe8tbm6ek6gr" path="res://Scenes/Projectile/BaseSpell/BaseSpell.tscn" id="1_sjmj5"]
 [ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_sow6w"]
 [ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="1_t13mv"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="3_qk750"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/SpellCast.gd" id="4_nmiob"]
 
 [sub_resource type="Resource" id="Resource_nu0t5"]
@@ -11,12 +12,18 @@ script = ExtResource("1_sow6w")
 name = "Energy Bolt"
 color = Color(0.267768, 0.639055, 0.414608, 1)
 
+[sub_resource type="Resource" id="Resource_wq1of"]
+script = ExtResource("3_qk750")
+SPEED = 15
+DAMAGE = 2
+
 [sub_resource type="Resource" id="Resource_15kdx"]
 script = ExtResource("4_nmiob")
 
 [sub_resource type="Resource" id="Resource_v50wd"]
 script = ExtResource("1_04u1q")
 PROJECTILE = ExtResource("1_sjmj5")
+projectile_data = SubResource("Resource_wq1of")
 spell_cast = SubResource("Resource_15kdx")
 stat = "p.range"
 

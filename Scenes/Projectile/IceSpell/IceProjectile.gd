@@ -17,7 +17,7 @@ func split() -> void:
 		bullet.position = self.global_position
 		bullet.rotation = self.global_rotation
 		bullet.has_split = true
-		bullet.speed = self.speed
+		bullet.data.SPEED = self.data.SPEED
 		bullet.set_character_data(self.character_data)
 
 		bullet.rotate_y(deg_to_rad(start_angle + i * angle_increment))

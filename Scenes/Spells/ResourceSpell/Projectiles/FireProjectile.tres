@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=9 format=3 uid="uid://cioj41u0cuacn"]
+[gd_resource type="Resource" script_class="Effect" load_steps=11 format=3 uid="uid://cioj41u0cuacn"]
 
 [ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_8m44u"]
 [ext_resource type="PackedScene" uid="uid://kny21vt2uvdv" path="res://Scenes/Projectile/FireSpell/FireProjectile.tscn" id="1_bh0nb"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="2_0m1c3"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="3_nt665"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/SpellCast.gd" id="4_jujtb"]
 [ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="5_x3ead"]
 
@@ -11,12 +12,18 @@ script = ExtResource("1_8m44u")
 name = "Fireball"
 color = Color(0.95, 0.522817, 0.2755, 1)
 
+[sub_resource type="Resource" id="Resource_vgyhu"]
+script = ExtResource("3_nt665")
+SPEED = 30
+DAMAGE = 10
+
 [sub_resource type="Resource" id="Resource_goj42"]
 script = ExtResource("4_jujtb")
 
 [sub_resource type="Resource" id="Resource_16qxm"]
 script = ExtResource("2_0m1c3")
 PROJECTILE = ExtResource("1_bh0nb")
+projectile_data = SubResource("Resource_vgyhu")
 spell_cast = SubResource("Resource_goj42")
 stat = "p.range"
 

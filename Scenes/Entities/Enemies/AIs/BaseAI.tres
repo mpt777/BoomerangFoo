@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="AI" load_steps=18 format=3 uid="uid://c07erqwgvik5v"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directive.gd" id="1_5ygom"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Attacking/DRangeAttack.gd" id="2_3syfk"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/AIs/AI.gd" id="2_hpb1f"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/DirectiveLayer.gd" id="3_60j4q"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DAvoid.gd" id="4_o3r77"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DAvoidPlayer.gd" id="5_1fqfx"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DMoveToPickup.gd" id="6_d6765"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DNoStuck.gd" id="7_3kksl"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DRandom.gd" id="8_t13uy"]
+
+[sub_resource type="Resource" id="Resource_wroqk"]
+script = ExtResource("2_3syfk")
+
+[sub_resource type="Resource" id="Resource_nxila"]
+script = ExtResource("3_60j4q")
+directives = Array[ExtResource("1_5ygom")]([SubResource("Resource_wroqk")])
+
+[sub_resource type="Resource" id="Resource_f1acm"]
+script = ExtResource("4_o3r77")
+
+[sub_resource type="Resource" id="Resource_gl07s"]
+script = ExtResource("5_1fqfx")
+
+[sub_resource type="Resource" id="Resource_wsc24"]
+script = ExtResource("6_d6765")
+
+[sub_resource type="Resource" id="Resource_0yyjt"]
+script = ExtResource("7_3kksl")
+
+[sub_resource type="Resource" id="Resource_1l0k1"]
+script = ExtResource("8_t13uy")
+
+[sub_resource type="Resource" id="Resource_o2otk"]
+script = ExtResource("3_60j4q")
+directives = Array[ExtResource("1_5ygom")]([SubResource("Resource_f1acm"), SubResource("Resource_gl07s"), SubResource("Resource_wsc24"), SubResource("Resource_0yyjt"), SubResource("Resource_1l0k1")])
+
+[resource]
+script = ExtResource("2_hpb1f")
+movement_layer = SubResource("Resource_o2otk")
+attack_layer = SubResource("Resource_nxila")

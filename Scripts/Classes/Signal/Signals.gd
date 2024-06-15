@@ -15,6 +15,8 @@ signal add_event(event : Event)
 signal camera_shake(camera_shake : CameraShake)
 signal add_camera_point(cm : CameraPoint)
 
+#Gameplay
+signal physics_process(delta: float)
 
 #Usually when a new controller is added or removed
 signal players_changed()

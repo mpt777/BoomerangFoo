@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://blyee6oowmxyb"]
+[gd_scene load_steps=14 format=3 uid="uid://blyee6oowmxyb"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_iqdvg"]
 [ext_resource type="PackedScene" uid="uid://danrhd6yvhfmw" path="res://Assets/Blender/Decorations/Rock/Rock.tscn" id="2_se41r"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="2_vm0w4"]
 [ext_resource type="PackedScene" uid="uid://bvh4f51myljjf" path="res://Components/Health/Health.tscn" id="3_df7bu"]
 [ext_resource type="PackedScene" uid="uid://jb5v7c5pd4a0" path="res://Components/Hitbox/Hitbox.tscn" id="3_svktc"]
 [ext_resource type="PackedScene" uid="uid://vkbqttxc3mbb" path="res://Components/StateMachine/StateMachine.tscn" id="5_b4lwh"]
@@ -29,6 +30,11 @@ func delete():
 func _on_hitbox_damaged() -> void:
 	$OverlayStateMachine.transition(\"damaged\")
 "
+
+[sub_resource type="Resource" id="Resource_yj1us"]
+script = ExtResource("2_vm0w4")
+SPEED = 0
+DAMAGE = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8c4m6"]
 size = Vector3(2, 2, 1)
@@ -72,6 +78,7 @@ _data = {
 
 [node name="RockWall" instance=ExtResource("1_iqdvg")]
 script = SubResource("GDScript_hhr6k")
+data = SubResource("Resource_yj1us")
 speed = 0.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]

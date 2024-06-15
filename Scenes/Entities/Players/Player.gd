@@ -22,6 +22,7 @@ func _ready():
 	$AvatarWrapper.constructor(self)
 	
 func _physics_process(delta):
+	super(delta)
 	rotate_character(delta)
 	
 func get_input_direction() -> Vector3:

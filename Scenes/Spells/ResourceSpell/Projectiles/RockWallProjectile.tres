@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=9 format=3 uid="uid://d02dy2kja38gu"]
+[gd_resource type="Resource" script_class="Effect" load_steps=11 format=3 uid="uid://d02dy2kja38gu"]
 
 [ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_0cvtx"]
 [ext_resource type="PackedScene" uid="uid://blyee6oowmxyb" path="res://Scenes/Projectile/RockWall/RockWall.tscn" id="1_plhsw"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="2_iwtnx"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="3_2634d"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/RockWallSpellCast.gd" id="4_0muwg"]
 [ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="5_fh6lx"]
 
@@ -11,12 +12,18 @@ script = ExtResource("1_0cvtx")
 name = "Rock Wall"
 color = Color(0.544856, 0.621402, 0.786541, 1)
 
+[sub_resource type="Resource" id="Resource_waps6"]
+script = ExtResource("3_2634d")
+SPEED = 0
+DAMAGE = 0
+
 [sub_resource type="Resource" id="Resource_amxlh"]
 script = ExtResource("4_0muwg")
 
 [sub_resource type="Resource" id="Resource_6nyf2"]
 script = ExtResource("2_iwtnx")
 PROJECTILE = ExtResource("1_plhsw")
+projectile_data = SubResource("Resource_waps6")
 spell_cast = SubResource("Resource_amxlh")
 stat = "p.melee"
 

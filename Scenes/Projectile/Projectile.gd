@@ -1,23 +1,27 @@
 extends Area3D
-
 class_name Projectile
 
 #var direction: Vector3 = Vector3.ZERO
-@export var speed: float = 30.0
+@export var data : ProjectileData
 @onready var n_attack : AttackComponent = $AttackComponent
 var character_data : CharacterData
 
 func _ready() -> void:
 	self.construct_attack()
 	
+func constructor(m_data : ProjectileData) -> Projectile:
+	self.data = m_data
+	return self
+	
 func construct_attack() -> void:
 	n_attack.set_attack(self.character_data)
+	n_attack.attack.damage = self.data.DAMAGE
 	
 func set_character_data(character_data : CharacterData) -> void:
 	self.character_data = character_data
 
 func _physics_process(delta):
-	position += -transform.basis.z * speed * delta
+	position += -transform.basis.z * self.data.SPEED * delta
 	
 #func direction() -> Vector3:
 	#return rotation

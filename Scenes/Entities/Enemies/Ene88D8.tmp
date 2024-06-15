@@ -20,6 +20,8 @@ height = 1.0
 radius = 1.5
 
 [node name="Enemy" instance=ExtResource("1_g18f2")]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_n83qt")
 ai = ExtResource("3_62mhi")
 _tick_counter = 0.2

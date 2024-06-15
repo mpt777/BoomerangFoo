@@ -7,6 +7,9 @@
 [node name="Player" instance=ExtResource("1_n1jng")]
 script = ExtResource("1_x8lru")
 
+[node name="HealthComponent" parent="." index="1"]
+max_health = 1000.0
+
 [node name="Hitbox" parent="." index="2" node_paths=PackedStringArray("health_component")]
 health_component = NodePath("../HealthComponent")
 

@@ -168,7 +168,13 @@ layout_mode = 2
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/EnemyAttack" index="2"]
 layout_mode = 2
 
-[node name="PrintOrphans" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer" index="1" instance=ExtResource("3_wfc1s")]
+[node name="EnemyMove" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer" index="1" instance=ExtResource("3_wfc1s")]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/EnemyMove" index="2"]
+layout_mode = 2
+
+[node name="PrintOrphans" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer" index="2" instance=ExtResource("3_wfc1s")]
 layout_mode = 2
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Debug/ScrollContainer/CenterContainer/VBoxContainer/PrintOrphans" index="2"]

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=9 format=3 uid="uid://keh58uxfm6te"]
+[gd_resource type="Resource" script_class="Effect" load_steps=11 format=3 uid="uid://keh58uxfm6te"]
 
 [ext_resource type="PackedScene" uid="uid://bfvydv0ig7eqr" path="res://Scenes/Projectile/IceSpell/IceProjectile.tscn" id="1_akdom"]
 [ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_m7trr"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="2_0amnc"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="3_wbf8v"]
 [ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/SpellCast.gd" id="4_e005g"]
 [ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="5_2jfar"]
 
@@ -11,12 +12,18 @@ script = ExtResource("1_m7trr")
 name = "Ice Shard"
 color = Color(0.4608, 0.78528, 0.96, 1)
 
+[sub_resource type="Resource" id="Resource_be6lx"]
+script = ExtResource("3_wbf8v")
+SPEED = 15
+DAMAGE = 10
+
 [sub_resource type="Resource" id="Resource_qmoyk"]
 script = ExtResource("4_e005g")
 
 [sub_resource type="Resource" id="Resource_kwow7"]
 script = ExtResource("2_0amnc")
 PROJECTILE = ExtResource("1_akdom")
+projectile_data = SubResource("Resource_be6lx")
 spell_cast = SubResource("Resource_qmoyk")
 stat = "p.range"
 

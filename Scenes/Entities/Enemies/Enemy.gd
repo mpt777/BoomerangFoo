@@ -5,12 +5,12 @@ class_name Enemy
 @onready var n_nav := $NavigationAgent3D
 @onready var n_avoidance := $ProximityArea
 
-var target_player : CharacterBody3D = null
+var target_player : StandardCharacter = null
 var target_direction : Vector3 = Vector3.ZERO
 
-var ai : AI
+@export var ai : AI
 var ai_map : AIMap
-var rotation_speed := 10
+var rotation_speed := 0.2
 #var target_location : Vector3 = Vector3.ZERO
 
 @export var _tick_counter := 0.2
@@ -24,18 +24,20 @@ func constructor(enemy_data : EnemyData):
 	
 func _ready():
 	super._ready()
-	ai = AI.new().constructor(self)
+	ai = ai.duplicate(true).constructor(self)
 	ai_map = AIMap.new().constructor(self)
 	$AvatarWrapper.constructor(self)
 	
-func _physics_process(delta):
+func _physics_process(delta : float) -> void:
+	super(delta)
 	self._tick(delta)
-	
 	if self.on_tick:
 		tick()
-		
-	move_hand(delta)
+
 	self.ai_map.update_target_direction()
+	
+	move_hand(delta)
+	
 	
 func tick():
 	self.target_player = Utils.closest_node_in_group(global_position, "Character")
@@ -49,11 +51,18 @@ func _tick(delta):
 	
 func move_hand(delta):
 	if target_player:
-		if target_player.global_position != Vector3.ZERO && abs(target_player.global_position.x) > 0.99:
-			#look_at(target_player.global_position)
-			var new_transform = transform.looking_at(target_player.global_position, Vector3.UP)
-			transform = transform.interpolate_with(new_transform, rotation_speed * delta)
-		rotation.x = 0
+		self.ai.aim()
+		#self.aim_at(target_player.global_position)
+
+func aim_at(pos : Vector3, m_rotation_speed := -1.0):
+	if m_rotation_speed < 0:
+		m_rotation_speed = rotation_speed
+	if pos != Vector3.ZERO && abs(pos.x) > 0.99:
+		var new_transform = transform.looking_at(pos, Vector3.UP)
+		transform = transform.interpolate_with(new_transform, m_rotation_speed)
+	rotation.x = 0
+	
+
 	
 func current_movement_state() -> String:
 	return $MovementFSM.current_state_name()

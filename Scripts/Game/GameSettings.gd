@@ -56,6 +56,11 @@ func constructor() -> GameSettings:
 			pass
 	))
 	self.settings.register(
+		Setting.new().constructor("Can Enemies Move", "enemy_move", true,
+		func(_setting : Setting): 
+		pass
+	))
+	self.settings.register(
 		Setting.new().constructor("Print Orphan Nodes", "orphan_node", true,
 		func(_setting : Setting): 
 			Node.print_orphan_nodes()

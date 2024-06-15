@@ -19,6 +19,6 @@ func physics_update(_delta : float):
 	#self.update_target_direction()
 	
 func tick():
-	self.body.ai.movement_directive.execute()
-	self.attack()
+	self.body.ai.movement_layer.execute()
+	self.body.ai.attack_layer.execute()
 

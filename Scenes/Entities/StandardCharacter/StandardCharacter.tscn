@@ -90,19 +90,16 @@ body = NodePath("../..")
 [node name="MovementFSM" parent="." index="11" node_paths=PackedStringArray("initial_state") instance=ExtResource("10_uxf17")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MovementFSM" index="0" node_paths=PackedStringArray("movement", "body")]
+[node name="Idle" type="Node" parent="MovementFSM" index="0" node_paths=PackedStringArray("body")]
 script = ExtResource("12_kud6e")
-movement = NodePath("")
 body = NodePath("../..")
 
-[node name="Walk" type="Node" parent="MovementFSM" index="1" node_paths=PackedStringArray("movement", "body")]
+[node name="Walk" type="Node" parent="MovementFSM" index="1" node_paths=PackedStringArray("body")]
 script = ExtResource("11_mtqwl")
-movement = NodePath("")
 body = NodePath("../..")
 
-[node name="Dash" type="Node" parent="MovementFSM" index="2" node_paths=PackedStringArray("movement", "body", "dash")]
+[node name="Dash" type="Node" parent="MovementFSM" index="2" node_paths=PackedStringArray("body", "dash")]
 script = ExtResource("12_5hbh3")
-movement = NodePath("")
 body = NodePath("../..")
 dash = NodePath("DashComponent")
 
@@ -111,9 +108,8 @@ dash = NodePath("DashComponent")
 [node name="PreAttack" type="Node" parent="MovementFSM" index="3"]
 script = ExtResource("13_8typp")
 
-[node name="Attack" type="Node" parent="MovementFSM" index="4" node_paths=PackedStringArray("movement", "body")]
+[node name="Attack" type="Node" parent="MovementFSM" index="4" node_paths=PackedStringArray("body")]
 script = ExtResource("13_o6g16")
-movement = NodePath("")
 body = NodePath("../..")
 
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]

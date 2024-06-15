@@ -66,7 +66,6 @@ func _input(event):
 			if get_viewport().gui_get_focus_owner():
 				ui.emit_signal("pressed")
 				
-		
 func get_keyboard_controller() -> Controller:
 	for index in self.controllers:
 		var controller = self.controllers[index]
@@ -94,6 +93,8 @@ func start_round() -> void:
 	round_index += 1
 	
 	
+func _physics_process(delta: float) -> void:
+	$"/root/Signals".emit_signal("physics_process", delta)
 	
 	
 	

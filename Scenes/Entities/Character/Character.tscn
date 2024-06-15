@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://Scenes/Entities/Character/Statistics.gd" id="2_fi10n"]
 
 [node name="Character" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_iqhb0")
 
 [node name="Statistics" type="Node" parent="."]
