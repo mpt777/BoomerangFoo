@@ -3,6 +3,8 @@ class_name DirectiveLayer
 
 var enemy : Enemy
 @export var directives : Array[Directive]
+var best_directive : Directive
+var applied := false
 
 func constructor(m_enemy : Enemy) -> DirectiveLayer:
 	self.enemy = m_enemy
@@ -21,8 +23,11 @@ func make_unique():
 		d.ready()
 
 func execute():
+	if applied and best_directive:
+		best_directive.unapply()
+		applied = false
+		
 	var max_weight := -INF
-	var best_directive : Directive
 	for d in self.directives:
 		var _weight = d.decide(self.enemy)
 		if _weight > max_weight:
@@ -32,6 +37,7 @@ func execute():
 		#print(max_weight)
 		#print(best_directive.get_script().resource_path)
 		best_directive.apply(enemy)
+		applied = true
 	#else:
 		#print("skip")
 

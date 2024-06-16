@@ -3,10 +3,12 @@ class_name Enemy
 
 @onready var n_movement := $AvoidanceMovement
 @onready var n_nav := $NavigationAgent3D
-@onready var n_avoidance := $ProximityArea
+@onready var n_avoidance : EtArea = $ProximityArea
+@onready var n_projectiles : EtArea = $Projectiles
 
 var target_player : StandardCharacter = null
 var target_direction : Vector3 = Vector3.ZERO
+var target_rot_pos : Vector3 = Vector3.ZERO
 
 @export var ai : AI
 var ai_map : AIMap
@@ -53,16 +55,11 @@ func move_hand(delta):
 	if target_player:
 		self.ai.aim()
 		#self.aim_at(target_player.global_position)
-
-func aim_at(pos : Vector3, m_rotation_speed := -1.0):
-	if m_rotation_speed < 0:
-		m_rotation_speed = rotation_speed
-	if pos != Vector3.ZERO && abs(pos.x) > 0.99:
-		var new_transform = transform.looking_at(pos, Vector3.UP)
-		transform = transform.interpolate_with(new_transform, m_rotation_speed)
-	rotation.x = 0
-	
-
+		
+func enemy_projectiles() -> Array:
+	var x = self.n_projectiles.areas.filter(func(x): return x is AttackComponent)
+	var z = x.filter(func(x): return x.attack.character != self.data)
+	return z
 	
 func current_movement_state() -> String:
 	return $MovementFSM.current_state_name()

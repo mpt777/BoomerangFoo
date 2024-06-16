@@ -12,3 +12,6 @@ func decide(enemy : Enemy) -> int:
 func apply(enemy : Enemy) -> void:
 	return
 	
+func unapply() -> void:
+	return
+	

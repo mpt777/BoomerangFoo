@@ -20,11 +20,17 @@ func set_new_position(desired_position: Vector3) -> void:
 	
 func aim() -> void:
 	var enemy = self.character
+	var target = enemy.target_rot_pos
+	if enemy.target_rot_pos == Vector3.ZERO:
+		target = enemy.target_player.global_position
 	var speed = enemy.data.pickups.range.effect.modifier.projectile_data.SPEED
-	var dist = enemy.global_position.distance_to(enemy.target_player.global_position)
-	var pos = enemy.target_player.global_position + (enemy.target_player.velocity * (dist / speed))
+	var dist = enemy.global_position.distance_to(target)
+	var pos = target+ (enemy.target_player.velocity * (dist / speed))
 
-	pos = pos.lerp(enemy.target_player.global_position, self.aim_type.leading_weight)
+	pos = pos.lerp(target, self.aim_type.leading_weight)
+	
+	if target.distance_squared_to(pos) > self.aim_type.max_lead:
+		pos = target
 	
 	if pos != Vector3.ZERO && abs(pos.x) > 0.99:
 		var new_transform = enemy.transform.looking_at(pos, Vector3.UP)

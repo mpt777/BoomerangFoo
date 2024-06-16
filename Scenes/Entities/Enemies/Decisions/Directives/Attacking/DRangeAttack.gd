@@ -9,6 +9,7 @@ func ready() -> void:
 	self.enemy.get_tree().get_root().get_node("/root/Signals").connect("physics_process", _physics_process)
 
 func decide(enemy : Enemy) -> int:
+	return 0
 	if not GameState.settings.settings.get_value("enemy_attack", true):
 		return 0
 	if not enemy.target_player:
@@ -44,15 +45,18 @@ func ray_query(enemy : Enemy) -> bool:
 	
 func apply(enemy : Enemy) -> void:
 	var total : Vector3 = self.velocities.reduce(func(i, accum): return accum + i)
-	if total.length() > 50:
+	#print( self.enemy.target_player.velocity.length())
+	if self.enemy.target_player.velocity.length() > 20:
+		enemy.ai.aim_type = AimType.new().constructor(1, 0.9)
+		print("sprint")
+	elif total.length() > 50:
 		enemy.ai.aim_type = AimType.new().constructor(0, 0.95)
-		#print("lead")
+		print("lead")
 	else:
 		enemy.ai.aim_type = AimType.new().constructor(1, 0.8)
-		#print("straight")
+		print("straight")
 	
 	enemy.signals.emit_signal("Attack.Start")
-	#await GameState.get_tree().create_timer(0.3).timeout
 	enemy.signals.emit_signal("Attack.Attack", "range")
 
 

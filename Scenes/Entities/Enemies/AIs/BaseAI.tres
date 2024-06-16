@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="AI" load_steps=18 format=3 uid="uid://c07erqwgvik5v"]
+[gd_resource type="Resource" script_class="AI" load_steps=20 format=3 uid="uid://c07erqwgvik5v"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directive.gd" id="1_5ygom"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Attacking/DRangeAttack.gd" id="2_3syfk"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/AIs/AI.gd" id="2_hpb1f"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/DirectiveLayer.gd" id="3_60j4q"]
+[ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Attacking/DMeleeAttack.gd" id="3_waxdg"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DAvoid.gd" id="4_o3r77"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DAvoidPlayer.gd" id="5_1fqfx"]
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Decisions/Directives/Movement/DMoveToPickup.gd" id="6_d6765"]
@@ -13,9 +14,12 @@
 [sub_resource type="Resource" id="Resource_wroqk"]
 script = ExtResource("2_3syfk")
 
+[sub_resource type="Resource" id="Resource_1dyou"]
+script = ExtResource("3_waxdg")
+
 [sub_resource type="Resource" id="Resource_nxila"]
 script = ExtResource("3_60j4q")
-directives = Array[ExtResource("1_5ygom")]([SubResource("Resource_wroqk")])
+directives = Array[ExtResource("1_5ygom")]([SubResource("Resource_wroqk"), SubResource("Resource_1dyou")])
 
 [sub_resource type="Resource" id="Resource_f1acm"]
 script = ExtResource("4_o3r77")
