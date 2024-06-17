@@ -4,6 +4,7 @@ class_name D_MeleeAttack
 var MIN_ATTACK_RANGE := 5
 var MAX_ATTACK_RANGE := 1000
 var velocities : Array[Vector3]
+var projectile : AttackComponent
 
 
 func decide(enemy : Enemy) -> int:
@@ -15,18 +16,55 @@ func decide(enemy : Enemy) -> int:
 		return 0
 	if enemy.n_wand.n_state.current_state.is_alias("Reloading"):
 		return 0
-	if enemy.enemy_projectiles():
+	if self.will_be_hit():
 		return 75
-	#var dist := enemy.global_position.distance_squared_to(enemy.target_player.global_position)
-	#if dist < MIN_ATTACK_RANGE or dist > MAX_ATTACK_RANGE:
-		#return 0
 	return 0
 	
-func apply(enemy : Enemy) -> void:
-	var first = enemy.enemy_projectiles()[0]
-	enemy.target_rot_pos = first.global_position
+#func will_be_hit() -> bool:
+	## todo, might need a shapecast?
+	#var space = enemy.get_world_3d().direct_space_state
+	#for p in enemy.enemy_projectiles():
+		#p = p as AttackComponent
+		#var ray_query = PhysicsRayQueryParameters3D.new()
+		#ray_query.from = p.global_position
+		#ray_query.to = -p.global_transform.basis.z * 100
+		#ray_query.collide_with_areas = true
+		#ray_query.collide_with_bodies = false
+		#ray_query.set_collision_mask(1 << 4 - 1)
+		#var raycast_result = space.intersect_ray(ray_query)
+		#if raycast_result.is_empty():
+			#continue
+		#var proj = raycast_result.get("collider")
+		#if proj is HitboxComponent and enemy.n_hitbox == proj:
+			#self.projectile = p
+			#return true
+	#return false
 	
-	#todo, see if projectile will hit with a raycast? If so, then block it
+func will_be_hit() -> bool:
+	var space = enemy.get_world_3d().direct_space_state
+	for projectile in enemy.enemy_projectiles():
+		projectile = projectile as AttackComponent
+		var ray_query = PhysicsShapeQueryParameters3D.new()
+		ray_query.collide_with_areas = true
+		var shape = BoxShape3D.new()
+		shape.size.z = 100
+		ray_query.set_shape(shape)
+		ray_query.transform = projectile.global_transform
+		ray_query.set_collision_mask(1 << 4 - 1)
+		var raycast_result = space.intersect_shape(ray_query)
+		if raycast_result.is_empty():
+			continue
+		var result = raycast_result.filter(func(x): return x.get("collider") is HitboxComponent and x.get("collider") == enemy.n_hitbox)
+		if result:
+			self.projectile = projectile
+			return true
+	return false
+	
+func apply(enemy : Enemy) -> void:
+	enemy.target_rot_pos = self.projectile.global_position
+	
+	# todo, have wand rotate independent of player rotation
+	enemy.ai.aim()
 	enemy.signals.emit_signal("Attack.Start")
 	enemy.signals.emit_signal("Attack.Attack", "melee")
 	

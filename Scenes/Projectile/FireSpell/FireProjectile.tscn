@@ -27,6 +27,8 @@ damage = 10.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
 shape = SubResource("SphereShape3D_a1sca")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AttackComponent" index="1"]
+
 [node name="SmartGpuParticles3d" parent="." index="2" instance=ExtResource("6_2sjm4")]
 amount = 20
 lifetime = 0.5

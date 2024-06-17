@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://5acly412hw4t"]
+
+[ext_resource type="PackedScene" uid="uid://cnrqq4ue4lqqd" path="res://Assets/Blender/Decorations/Hedge/Hedge.dae" id="1_kp75u"]
+
+[node name="Hedge" instance=ExtResource("1_kp75u")]

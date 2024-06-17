@@ -3,13 +3,13 @@ class_name D_RangeAttack
 
 var MIN_ATTACK_RANGE := 5
 var MAX_ATTACK_RANGE := 1000
+var ATTACK_CHANCE := 0.5
 var velocities : Array[Vector3]
 
 func ready() -> void:
 	self.enemy.get_tree().get_root().get_node("/root/Signals").connect("physics_process", _physics_process)
 
 func decide(enemy : Enemy) -> int:
-	return 0
 	if not GameState.settings.settings.get_value("enemy_attack", true):
 		return 0
 	if not enemy.target_player:
@@ -18,7 +18,8 @@ func decide(enemy : Enemy) -> int:
 		return 0
 	if enemy.n_wand.n_state.current_state.is_alias("Reloading"):
 		return 0
-
+	if randf() < ATTACK_CHANCE:
+		return 0
 	var dist := enemy.global_position.distance_squared_to(enemy.target_player.global_position)
 	if dist < MIN_ATTACK_RANGE or dist > MAX_ATTACK_RANGE:
 		return 0
@@ -47,13 +48,13 @@ func apply(enemy : Enemy) -> void:
 	var total : Vector3 = self.velocities.reduce(func(i, accum): return accum + i)
 	#print( self.enemy.target_player.velocity.length())
 	if self.enemy.target_player.velocity.length() > 20:
-		enemy.ai.aim_type = AimType.new().constructor(1, 0.9)
+		enemy.ai.aim_type = AimType.new().constructor(1, 0.1)
 		print("sprint")
 	elif total.length() > 50:
-		enemy.ai.aim_type = AimType.new().constructor(0, 0.95)
+		enemy.ai.aim_type = AimType.new().constructor(0, 0.1)
 		print("lead")
 	else:
-		enemy.ai.aim_type = AimType.new().constructor(1, 0.8)
+		enemy.ai.aim_type = AimType.new().constructor(1, 0.1)
 		print("straight")
 	
 	enemy.signals.emit_signal("Attack.Start")

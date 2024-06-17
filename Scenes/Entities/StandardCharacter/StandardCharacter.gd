@@ -4,6 +4,7 @@ class_name StandardCharacter
 @onready var n_pointer : CharacterPointer = $Pointer
 @onready var n_wand : Wand = $Wand
 @onready var n_mana : ManaComponent = $ManaComponent
+@onready var n_hitbox : HitboxComponent = $Hitbox
 
 var _old_position : Vector3
 var MOVED : Vector3

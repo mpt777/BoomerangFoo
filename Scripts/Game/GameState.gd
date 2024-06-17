@@ -23,13 +23,14 @@ func _ready():
 	Input.connect("joy_connection_changed", _joy_connection_changed)
 
 func _joy_connection_changed(id, connected):
+	if self.controllers and id in self.controllers:
+		$"/root/Signals".emit_signal("controllers_changed", self.controllers[id], connected)
 	if connected:
 		add_controller(id)
 	else:
 		remove_controller(id)
 	process_keyboard()
-	if self.controllers:
-		$"/root/Signals".emit_signal("controllers_changed", self.controllers[id], connected)
+
 	
 func process_keyboard():
 	if Input.get_connected_joypads():
@@ -47,11 +48,12 @@ func process_keyboard():
 	
 func add_controller(id : int, is_joypad: bool = true) -> void:
 	var controller := Controller.new().constructor(id, is_joypad)
-	controllers[controller.get_controller_number()] = controller 
-	if is_joypad:
-		register_joypad(controller)
-	else:
-		register_keyboard(controller)
+	self.register_controller(controller)
+	#controllers[controller.get_controller_number()] = controller 
+	#if is_joypad:
+		#register_joypad(controller)
+	#else:
+		#register_keyboard(controller)
 	
 func remove_controller(id : int) -> void:
 	controllers.erase(id)
@@ -104,6 +106,7 @@ func _physics_process(delta: float) -> void:
 func register_controller(controller=null) -> Controller:
 	if not controller:
 		controller = Controller.new()
+	controllers[controller.get_controller_number()] = controller 
 	if controller.is_joypad:
 		return register_joypad(controller)
 	return register_keyboard(controller)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxt1on3yi3cui"]
+
+[ext_resource type="PackedScene" uid="uid://csh8fbj8it5hn" path="res://Assets/Blender/Decorations/Hedge/LongHedge.blend" id="1_lbkm8"]
+[ext_resource type="Material" uid="uid://d355bls5rwy0m" path="res://Assets/Blender/Decorations/Hedge/Materials/Hedge.tres" id="2_bk8n1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mml7"]
+size = Vector3(1, 1, 3)
+
+[node name="LongHedge" instance=ExtResource("1_lbkm8")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+surface_material_override/0 = ExtResource("2_bk8n1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 265
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_5mml7")

@@ -12,7 +12,6 @@ func _ready():
 	$"/root/Signals".connect("add_bot", add_bot)
 	$"/root/Signals".connect("remove_bot", remove_bot)
 	
-
 func initialize_players():
 	for index in GameState.controllers:
 		add_player(GameState.controllers[index])

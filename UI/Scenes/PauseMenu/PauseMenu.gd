@@ -1,18 +1,23 @@
 extends EtContainer
 
 @export var settings_container : EtContainer
-	
+@onready var settings_ui = $"../SettingsUI"
+
 func _input(event):
 	for index in GameState.controllers:
 		var controller : Controller = GameState.controllers[index]
 		process_input(event, controller)
-			
 			
 func process_input(event : InputEvent, controller: Controller):
 	if event.is_action_released(controller.action("escape")):
 		self._toggle()
 		
 func _toggle():
+	if settings_ui.visible:
+		settings_ui.exit()
+		self.enter()
+		return
+		
 	if self.visible:
 		self.quit()
 	else:

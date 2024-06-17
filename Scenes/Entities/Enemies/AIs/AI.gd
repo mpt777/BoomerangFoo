@@ -32,7 +32,8 @@ func aim() -> void:
 	if target.distance_squared_to(pos) > self.aim_type.max_lead:
 		pos = target
 	
-	if pos != Vector3.ZERO && abs(pos.x) > 0.99:
+	var y = enemy.global_position
+	if pos != Vector3.ZERO && abs(pos.x) > 0.99 && pos != enemy.global_position:
 		var new_transform = enemy.transform.looking_at(pos, Vector3.UP)
-		enemy.transform = enemy.transform.interpolate_with(new_transform,  self.aim_type.rotation_speed)
+		enemy.transform = enemy.transform.interpolate_with(new_transform, 0.8) #self.aim_type.rotation_speed
 	enemy.rotation.x = 0
