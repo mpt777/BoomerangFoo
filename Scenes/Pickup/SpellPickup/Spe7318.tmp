@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://djuy1cmua7638"]
+
+[ext_resource type="PackedScene" uid="uid://dqipuvo1mt2lh" path="res://Scenes/Pickup/Pickup.tscn" id="1_vh4qe"]
+[ext_resource type="PackedScene" uid="uid://ddeg7m7pgouwp" path="res://Assets/Blender/Decorations/Book/Book.tscn" id="2_ng37g"]
+[ext_resource type="Script" path="res://Scenes/Pickup/SpellPickup/SpellPickup.gd" id="2_xys5a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nyu4c"]
+height = 0.5
+radius = 0.4
+
+[sub_resource type="Animation" id="Animation_45hbt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ni4xj"]
+resource_name = "Rotate"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("book:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1.03526, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.5, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6now"]
+_data = {
+"RESET": SubResource("Animation_45hbt"),
+"Rotate": SubResource("Animation_ni4xj")
+}
+
+[node name="SpellPickup" instance=ExtResource("1_vh4qe")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_xys5a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_nyu4c")
+
+[node name="book" parent="." index="1" instance=ExtResource("2_ng37g")]
+transform = Transform3D(-7.10315e-09, 2.51169e-09, -0.112, -0.0559998, 0.096995, 5.72675e-09, 0.096995, 0.0559998, -4.89568e-09, 0, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_x6now")
+}
+autoplay = "Rotate"
+speed_scale = 0.25

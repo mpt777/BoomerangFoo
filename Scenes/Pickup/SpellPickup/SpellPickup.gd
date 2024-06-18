@@ -2,13 +2,14 @@ extends Pickup
 class_name SpellPickup
 
 var SPELL_RESOURCES = [
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/FireProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/IceProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres"),
+	#preload("res://Scenes/Spells/ResourceSpell/Projectiles/FireProjectile.tres"),
+	#preload("res://Scenes/Spells/ResourceSpell/Projectiles/IceProjectile.tres"),
+	preload("res://Scenes/Spells/ResourceSpell/Projectiles/SurfProjectile.tres"),
+	#preload("res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres"),
 	preload("res://Scenes/Spells/ResourceSpell/Modifiers/MultiSpell.tres"),
 	#preload("res://Scenes/Things/Spells/ResourceSpell/Modifiers/SpeedySpells.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Modifiers/DoubleSpell.tres"),
-	preload("res://Scenes/Entities/Modifiers/BerserkBrew/Berserk.tres"),
+	#preload("res://Scenes/Spells/ResourceSpell/Modifiers/DoubleSpell.tres"),
+	#preload("res://Scenes/Entities/Modifiers/BerserkBrew/Berserk.tres"),
 ]
 #
 #func random_spell() -> Spell:

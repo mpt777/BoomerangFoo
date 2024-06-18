@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://dox8amckjt0c6"]
+
+[ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_ckoi8"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Water/toon_water.gdshader" id="2_1oamh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yjuu2"]
+size = Vector3(0.5, 2, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cyvia"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7hm8v"]
+noise = SubResource("FastNoiseLite_cyvia")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4lhwb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8yk7t"]
+noise = SubResource("FastNoiseLite_4lhwb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktpoy"]
+render_priority = 0
+shader = ExtResource("2_1oamh")
+shader_parameter/beer_factor = 1.48
+shader_parameter/foam_distance = 0.67
+shader_parameter/foam_max_distance = 0.455
+shader_parameter/foam_min_distance = 1.095
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/surface_noise_tiling = Vector2(1, 4)
+shader_parameter/surface_noise_scroll = Vector3(0.03, 0.1, 0)
+shader_parameter/surface_noise_cutoff = 0.777
+shader_parameter/surface_distortion_amount = 0.43
+shader_parameter/_DepthGradientShallow = Color(0.091, 0.5579, 0.7, 1)
+shader_parameter/_DepthGradientDeep = Color(0.09, 0.4085, 1, 1)
+shader_parameter/_DepthMaxDistance = 1.0
+shader_parameter/_DepthFactor = 1.0
+shader_parameter/surfaceNoise = SubResource("NoiseTexture2D_8yk7t")
+shader_parameter/distortNoise = SubResource("NoiseTexture2D_7hm8v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4dnj"]
+size = Vector3(0.5, 2, 1)
+
+[node name="Projectile" instance=ExtResource("1_ckoi8")]
+
+[node name="AttackComponent" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackComponent" index="0"]
+mesh = SubResource("BoxMesh_yjuu2")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ktpoy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="1"]
+shape = SubResource("BoxShape3D_s4dnj")

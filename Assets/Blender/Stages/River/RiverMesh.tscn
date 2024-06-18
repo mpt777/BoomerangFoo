@@ -63,13 +63,13 @@ transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 0.444
 mesh = SubResource("BoxMesh_3t5sd")
 
 [node name="Bridge2" type="StaticBody3D" parent="." index="5"]
-transform = Transform3D(0.0208558, 0, 0.999782, 0, 1, 0, -0.999782, 0, 0.0208558, -12.312, -0.49, 11.342)
-metadata/_edit_group_ = true
+transform = Transform3D(0.122528, 0, 0.992465, 0, 1, 0, -0.992465, 0, 0.122528, -12.2994, -0.0468814, 11.9814)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge2" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, -0.45, 0)
 shape = SubResource("BoxShape3D_uwj8m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bridge2" index="1" groups=["Nav"]]
-transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, -1.04217, 0.444168, 0.13627)
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_nbnef")
 skeleton = NodePath("../../Bridge2")
