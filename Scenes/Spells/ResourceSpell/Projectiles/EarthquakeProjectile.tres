@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=11 format=3 uid="uid://dhgjultcgy1h1"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_smdr1"]
+[ext_resource type="PackedScene" uid="uid://cgqco4kpcwan6" path="res://Scenes/Projectile/Earthquake/EarthquakeSpike.tscn" id="2_4df43"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="3_qpliu"]
+[ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="4_7vmrj"]
+[ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/EarthquakeSpellCast.gd" id="5_nyi58"]
+[ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="6_7ca58"]
+
+[sub_resource type="Resource" id="Resource_20p68"]
+script = ExtResource("1_smdr1")
+name = "Earthquake"
+color = Color(0.511111, 0.573457, 0.827115, 1)
+
+[sub_resource type="Resource" id="Resource_0yth0"]
+script = ExtResource("3_qpliu")
+SPEED = 0
+DAMAGE = 2
+
+[sub_resource type="Resource" id="Resource_jf2ig"]
+script = ExtResource("5_nyi58")
+
+[sub_resource type="Resource" id="Resource_7e5ai"]
+script = ExtResource("4_7vmrj")
+PROJECTILE = ExtResource("2_4df43")
+projectile_data = SubResource("Resource_0yth0")
+spell_cast = SubResource("Resource_jf2ig")
+stat = "p.melee"
+
+[resource]
+script = ExtResource("6_7ca58")
+modifier = SubResource("Resource_7e5ai")
+message = SubResource("Resource_20p68")

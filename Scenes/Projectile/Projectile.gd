@@ -8,7 +8,7 @@ var character_data : CharacterData
 var omit : Array[Node3D]
 
 func _ready() -> void:
-	self.construct_attack()
+	pass
 	
 func constructor(m_data : ProjectileData) -> Projectile:
 	self.data = m_data
@@ -21,6 +21,7 @@ func construct_attack() -> void:
 	
 func set_character_data(character_data : CharacterData) -> void:
 	self.character_data = character_data
+	self.construct_attack()
 
 func _physics_process(delta):
 	position += -transform.basis.z * self.data.SPEED * delta

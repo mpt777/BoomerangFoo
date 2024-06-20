@@ -1,6 +1,33 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cei6n1vl8xm7v"]
+[gd_resource type="Resource" script_class="Effect" load_steps=11 format=3 uid="uid://cei6n1vl8xm7v"]
 
+[ext_resource type="Script" path="res://Scripts/Classes/Message/Message.gd" id="1_8a6ux"]
 [ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="1_ekhkn"]
+[ext_resource type="PackedScene" uid="uid://dox8amckjt0c6" path="res://Scenes/Projectile/Surf/SurfProjectile.tscn" id="2_f7ul7"]
+[ext_resource type="Script" path="res://Scenes/Projectile/ProjectileData.gd" id="3_xocmw"]
+[ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Projectiles/SpellProjectile.gd" id="4_n8bu1"]
+[ext_resource type="Script" path="res://Scenes/Spells/ResourceSpell/Casts/SurfSpellCast.gd" id="5_87clf"]
+
+[sub_resource type="Resource" id="Resource_20p68"]
+script = ExtResource("1_8a6ux")
+name = "Wave"
+color = Color(0.300235, 0.530559, 0.897743, 1)
+
+[sub_resource type="Resource" id="Resource_0yth0"]
+script = ExtResource("3_xocmw")
+SPEED = 10
+DAMAGE = 2
+
+[sub_resource type="Resource" id="Resource_qlosh"]
+script = ExtResource("5_87clf")
+
+[sub_resource type="Resource" id="Resource_7e5ai"]
+script = ExtResource("4_n8bu1")
+PROJECTILE = ExtResource("2_f7ul7")
+projectile_data = SubResource("Resource_0yth0")
+spell_cast = SubResource("Resource_qlosh")
+stat = "p.range"
 
 [resource]
 script = ExtResource("1_ekhkn")
+modifier = SubResource("Resource_7e5ai")
+message = SubResource("Resource_20p68")

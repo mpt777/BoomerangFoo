@@ -18,11 +18,12 @@ func split() -> void:
 		bullet.rotation = self.global_rotation
 		bullet.has_split = true
 		bullet.data.SPEED = self.data.SPEED
-		bullet.set_character_data(self.character_data)
+		
 
 		bullet.rotate_y(deg_to_rad(start_angle + i * angle_increment))
 
 		self.get_node("/root/Signals").emit_signal("add_projectile", bullet)
+		bullet.set_character_data(self.character_data)
 	
 	queue_free()
 

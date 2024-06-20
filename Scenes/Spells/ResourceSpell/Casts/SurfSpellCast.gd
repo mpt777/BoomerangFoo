@@ -34,11 +34,12 @@ func instance_projectiles(spell: ResourceSpell, weapon : Weapon) -> void:
 			
 			var n_spawn_node = weapon.spawn_node()
 
-			bullet.set_character_data(weapon.weapon_owner.data)
+			
 			bullet.data.SPEED *= bullet_speed
 
 			weapon.get_node("/root/Signals").emit_signal("add_projectile", bullet)
 			
+			bullet.set_character_data(weapon.weapon_owner.data)
 			bullet.global_position = n_spawn_node.global_position
 			bullet.global_rotation = n_spawn_node.global_rotation
 			

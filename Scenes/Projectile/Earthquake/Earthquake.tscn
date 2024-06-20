@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://3hlq2h4qqkje"]
+
+[ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_0a0u7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dbi6j"]
+radius = 5.0
+
+[node name="Projectile" instance=ExtResource("1_0a0u7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_dbi6j")
