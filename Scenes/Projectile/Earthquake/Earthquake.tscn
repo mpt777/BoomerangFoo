@@ -1,11 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://3hlq2h4qqkje"]
+[gd_scene load_steps=10 format=3 uid="uid://3hlq2h4qqkje"]
 
 [ext_resource type="PackedScene" uid="uid://dj7qfrnbrf332" path="res://Scenes/Projectile/Projectile.tscn" id="1_0a0u7"]
+[ext_resource type="Script" path="res://Scenes/Projectile/Earthquake/EarthquakeSpike.gd" id="2_7u6y4"]
+[ext_resource type="Material" uid="uid://dqaoku17isdid" path="res://Assets/Blender/Decorations/Rock/Materials/Rock.tres" id="3_pxbw6"]
+[ext_resource type="PackedScene" uid="uid://dfbog3ow5y1tk" path="res://Components/Particle/SmartGPUParticles3D.tscn" id="4_sj11c"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_dbi6j"]
-radius = 5.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l0ak8"]
+height = 1.0
+radius = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpx80"]
+transparency = 1
+albedo_color = Color(0.560322, 0.471525, 0.331093, 0.47451)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bcof3"]
+material = SubResource("StandardMaterial3D_bpx80")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7qkln"]
+emission_shape_scale = Vector3(4, 0, 4)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -40, 0)
+scale_min = 0.5
+scale_max = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_lvaqd"]
+material = ExtResource("3_pxbw6")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 8
 
 [node name="Projectile" instance=ExtResource("1_0a0u7")]
+script = ExtResource("2_7u6y4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
-shape = SubResource("SphereShape3D_dbi6j")
+[node name="AttackComponent" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_l0ak8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackComponent" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_bcof3")
+skeleton = NodePath("../..")
+
+[node name="SmartGpuParticles3d" parent="." index="1" instance=ExtResource("4_sj11c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0617929, 0)
+amount = 50
+lifetime = 2.0
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7qkln")
+draw_pass_1 = SubResource("SphereMesh_lvaqd")

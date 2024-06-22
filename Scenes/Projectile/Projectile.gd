@@ -6,6 +6,7 @@ class_name Projectile
 @onready var n_attack : AttackComponent = $AttackComponent
 var character_data : CharacterData
 var omit : Array[Node3D]
+var pierce : int = 1
 
 func _ready() -> void:
 	pass
@@ -31,16 +32,20 @@ func _physics_process(delta):
 	
 func delete() -> void:
 	queue_free()
-	
-
-
 
 func _on_attack_component_area_entered(area: Area3D) -> void:
 	if area in self.omit:
 		return
-	delete()
+	self.intersect()
 
 func _on_attack_component_body_entered(body: Node3D) -> void:
 	if body in self.omit:
 		return
-	delete()
+	self.intersect()
+	
+func intersect():
+	self.pierce -= 1
+	if self.pierce <= 0:
+		delete()
+	
+	
