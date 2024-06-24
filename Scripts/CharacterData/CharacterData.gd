@@ -6,6 +6,9 @@ var color : Color = Color(randf(),randf(),randf(),1)
 var avatar : AvatarData
 var character : Character
 
+var cosmetics : Array[CosmeticData] = [
+	preload("res://Scenes/Cosmetics/Data/Sunglasses.tres")
+]
 var stats : StatManager = StatManager.new()
 var pickups : PickupManager = PickupManager.new().constructor(self, 2)
 

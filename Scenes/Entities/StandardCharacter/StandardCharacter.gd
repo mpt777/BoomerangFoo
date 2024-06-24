@@ -12,14 +12,12 @@ var MOVED : Vector3
 func _ready():
 	signals.register("Character.Kill", kill)
 	$"/root/Signals".connect("start_round", initialize)
-	
 	n_pointer.set_color(self.data.avatar.color)
 	
 func initialize():
 	self.data.pickups.initialize()
-		#modifier.emit_message(self)
-		
-	anchors.anchor("RightHand").add(n_wand.n_mesh)
+	anchors.anchor(Enums.AnchorAlias.RIGHT_HAND).add(n_wand.n_mesh)
+	self._add_cosmetics()
 		
 func _physics_process(delta: float) -> void:
 	self.MOVED = self.global_position - self._old_position
@@ -37,3 +35,10 @@ func melee_spell() -> Spell:
 func _on_health_component_killed(attack : Attack) -> void:
 	$"/root/Signals".emit_signal("add_event", KillEvent.new().constructor(self.data, attack.character))
 	signals.emit_signal("Character.Kill")
+	
+func _add_cosmetics():
+	for cosmetic in self.data.cosmetics:
+		var c = cosmetic.instance_scene()
+		add_child(c)
+		anchors.add(cosmetic.alias, c)
+	

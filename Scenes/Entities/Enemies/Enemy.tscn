@@ -22,8 +22,8 @@ radius = 8.0
 [node name="Enemy" instance=ExtResource("1_g18f2")]
 script = ExtResource("1_n83qt")
 ai = ExtResource("3_62mhi")
-_tick_counter = 0.2
-tick_timer = 0.2
+_tick_counter = null
+tick_timer = null
 
 [node name="Hitbox" parent="." index="2" node_paths=PackedStringArray("health_component")]
 health_component = NodePath("../HealthComponent")

@@ -22,7 +22,7 @@ Utils="*res://Scripts/Classes/Utils.gd"
 SceneManager="*res://Scripts/Game/SceneManager.gd"
 Serializer="*res://Scripts/Game/Serializer.gd"
 GameState="*res://Scripts/Game/GameState.gd"
-GameProfile="*res://Scripts/Game/GameProfile.gd"
+GameProfile="*res://Scripts/Game/Profile/GameProfile.gd"
 AudioManager="*res://Scenes/Audio/AudioManager.tscn"
 Enums="*res://Scripts/Classes/Enums.gd"
 

@@ -24,4 +24,4 @@ func set_radius():
 	$AttackComponent/CollisionShape3D.shape.radius = self.radius
 	$AttackComponent/MeshInstance3D.mesh.top_radius = self.radius
 	$AttackComponent/MeshInstance3D.mesh.bottom_radius = self.radius
-	$SmartGpuParticles3d.process_material.emission_shape_scale = Vector3(self.radius, 0, self.radius)
+	$SmartGpuParticles3d.process_material.emission_sphere_radius = self.radius

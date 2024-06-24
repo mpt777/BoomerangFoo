@@ -14,10 +14,11 @@ class_name Avatar
 
 @onready var n_right_hand = $Animation/CameraFix/Right
 @onready var n_right_hand_remote = $Animation/CameraFix/Right/RemoteTransform3D
+@export var anchors : Array[Anchor]
 
 func _ready():
 	self.name = "Avatar"
-	
+	n_blend_tree.active = true
 #var tween = EtTween.new()
 	
 func travel(state : String) -> void:

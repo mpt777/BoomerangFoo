@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkhy1tghumx4y"]
+
+[ext_resource type="PackedScene" uid="uid://sxa7mkt07x5" path="res://Assets/Blender/Cosmetics/Sunglasses/Sunglasses.glb" id="1_ia1c1"]
+
+[node name="Sunglasses" instance=ExtResource("1_ia1c1")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -1.97726, 0.450344)
