@@ -1,18 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://d30hisabwo1dl"]
 
 [ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_o1nh2"]
-[ext_resource type="PackedScene" uid="uid://b2jyu1mn7nium" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="2_5g6vm"]
 [ext_resource type="PackedScene" uid="uid://ckw1ohlj8xrtk" path="res://Scenes/Anchor/Anchor.tscn" id="3_hgpj5"]
+[ext_resource type="PackedScene" uid="uid://8bbgkh333jkg" path="res://Assets/Blender/Avatars/Witch/Witch.tscn" id="4_j5260"]
 
 [node name="Avatar" node_paths=PackedStringArray("anchors") instance=ExtResource("1_o1nh2")]
-anchors = [NodePath("Animation/CameraFix/Body/RemoteTransform3D"), NodePath("Animation/CameraFix/Right/RemoteTransform3D")]
+anchors = [NodePath("Animation/CameraFix/Body/Mask"), NodePath("Animation/CameraFix/Body/Hat"), NodePath("Animation/CameraFix/Right/RemoteTransform3D")]
 
-[node name="Body_CameraFix#witch_smooth" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("2_5g6vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026, -0.2, -0.0685781)
+[node name="Body" parent="Animation/CameraFix" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="RemoteTransform3D" parent="Animation/CameraFix/Body" index="1" instance=ExtResource("3_hgpj5")]
+[node name="Hat" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("3_hgpj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000907838, 1.38831, 0.0365624)
+alias = 2
+
+[node name="Mask" parent="Animation/CameraFix/Body" index="1" instance=ExtResource("3_hgpj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000907838, 1.16032, -0.343245)
 alias = 1
+
+[node name="Witch" parent="Animation/CameraFix/Body" index="2" instance=ExtResource("4_j5260")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17978, 0)
 
 [node name="Right" parent="Animation/CameraFix" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.45, 0)
@@ -31,13 +38,13 @@ parameters/Walk/current_position = null
 parameters/Walk/current_delta = null
 
 [node name="BlendTree" parent="." index="3"]
-parameters/current_position = 1.91173
-parameters/current_delta = 0.0152778
-parameters/AttackMove/current_position = 1.91173
-parameters/AttackMove/current_delta = 0.0152778
-parameters/Idle/current_position = 1.91173
-parameters/Idle/current_delta = 0.0152778
-parameters/WalkIdle/current_position = 1.91173
-parameters/WalkIdle/current_delta = 0.0152778
-parameters/output/current_position = 1.91173
-parameters/output/current_delta = 0.0152778
+parameters/current_position = 1.85351
+parameters/current_delta = 0.0181818
+parameters/AttackMove/current_position = 1.85351
+parameters/AttackMove/current_delta = 0.0181818
+parameters/Idle/current_position = 1.85351
+parameters/Idle/current_delta = 0.0181818
+parameters/WalkIdle/current_position = 1.85351
+parameters/WalkIdle/current_delta = 0.0181818
+parameters/output/current_position = 1.85351
+parameters/output/current_delta = 0.0181818

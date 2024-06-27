@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://8bbgkh333jkg"]
+
+[ext_resource type="PackedScene" uid="uid://shtlad4fkegu" path="res://Assets/Blender/Avatars/Witch/Witch.glb" id="1_18nhw"]
+[ext_resource type="Material" uid="uid://tuguxhiuujbw" path="res://Assets/Blender/Avatars/Witch/Materials/Skin.tres" id="2_tfw7v"]
+[ext_resource type="Material" uid="uid://d2m52tjhveeuo" path="res://Assets/Blender/Avatars/Witch/Materials/Hair.tres" id="3_uejcd"]
+[ext_resource type="Material" uid="uid://cftf6nnh8ql6t" path="res://Assets/Blender/Avatars/Witch/Materials/Eyes.tres" id="4_4s6kq"]
+[ext_resource type="Material" uid="uid://ckvn7xeprgtdl" path="res://Assets/Blender/Avatars/Witch/Materials/Accent.tres" id="5_oke63"]
+[ext_resource type="Material" uid="uid://dl1t1kfb2ly0c" path="res://Assets/Blender/Avatars/Witch/Materials/Fabric.tres" id="6_358w0"]
+[ext_resource type="Material" uid="uid://1xfih6nhxtdm" path="res://Assets/Blender/Avatars/Witch/Materials/Buckle.tres" id="7_wynqx"]
+
+[node name="Witch" instance=ExtResource("1_18nhw")]
+
+[node name="Head" parent="." index="0"]
+material_override = ExtResource("2_tfw7v")
+
+[node name="Hair" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_uejcd")
+
+[node name="Nose" parent="." index="2"]
+material_override = ExtResource("2_tfw7v")
+
+[node name="Sphere" parent="." index="3"]
+material_override = ExtResource("4_4s6kq")
+
+[node name="Dress" parent="." index="4"]
+surface_material_override/0 = ExtResource("5_oke63")
+surface_material_override/1 = ExtResource("6_358w0")
+
+[node name="BeltBuckle" parent="." index="5"]
+surface_material_override/0 = ExtResource("7_wynqx")

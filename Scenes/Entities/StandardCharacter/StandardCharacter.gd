@@ -19,7 +19,7 @@ func initialize():
 	anchors.anchor(Enums.AnchorAlias.RIGHT_HAND).add(n_wand.n_mesh)
 	self._add_cosmetics()
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	self.MOVED = self.global_position - self._old_position
 	self._old_position = self.global_position
 	
@@ -37,8 +37,19 @@ func _on_health_component_killed(attack : Attack) -> void:
 	signals.emit_signal("Character.Kill")
 	
 func _add_cosmetics():
-	for cosmetic in self.data.cosmetics:
+	var _ac = func(cosmetic):
 		var c = cosmetic.instance_scene()
 		add_child(c)
 		anchors.add(cosmetic.alias, c)
+		
+	for cosmetic in self.data.cosmetics:
+		_ac.call(cosmetic)
+		
+	for cosmetic in self.data.avatar.default_cosmetics:
+		var anchor = anchors.anchor(cosmetic.alias)
+		if not anchor:
+			continue
+		if anchor.nodes:
+			continue
+		_ac.call(cosmetic)
 	

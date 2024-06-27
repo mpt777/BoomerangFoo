@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4nretdunm2vl"]
+[gd_scene load_steps=4 format=3 uid="uid://b4nretdunm2vl"]
 
 [ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_qhexq"]
 [ext_resource type="PackedScene" uid="uid://fh4015omtsd1" path="res://Scenes/Entities/Avatar/Robot/RobotMesh.tscn" id="2_60wct"]
+[ext_resource type="PackedScene" uid="uid://ckw1ohlj8xrtk" path="res://Scenes/Anchor/Anchor.tscn" id="3_pmuxv"]
 
-[node name="Avatar" instance=ExtResource("1_qhexq")]
+[node name="Avatar" node_paths=PackedStringArray("anchors") instance=ExtResource("1_qhexq")]
+anchors = [NodePath("Animation/CameraFix/Body/Hat"), NodePath("Animation/CameraFix/Body/Mask"), NodePath("Animation/CameraFix/Right/RemoteTransform3D")]
+
+[node name="Body" parent="Animation/CameraFix" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Body#robot_body_smooth" parent="Animation/CameraFix/Body" index="0" instance=ExtResource("2_60wct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00440669, 0)
+
+[node name="Hat" parent="Animation/CameraFix/Body" index="1" instance=ExtResource("3_pmuxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000907838, 1.67795, 0.0365624)
+alias = 2
+
+[node name="Mask" parent="Animation/CameraFix/Body" index="2" instance=ExtResource("3_pmuxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000907838, 1.32236, -0.269943)
+alias = 1

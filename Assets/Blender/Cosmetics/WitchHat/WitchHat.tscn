@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5j8rynuuivkm"]
+
+[ext_resource type="PackedScene" uid="uid://wbm4m67f3eqs" path="res://Assets/Blender/Cosmetics/WitchHat/WitchHat.glb" id="1_bbo8r"]
+[ext_resource type="Material" uid="uid://dl1t1kfb2ly0c" path="res://Assets/Blender/Avatars/Witch/Materials/Fabric.tres" id="2_5wkf6"]
+[ext_resource type="Material" uid="uid://ckvn7xeprgtdl" path="res://Assets/Blender/Avatars/Witch/Materials/Accent.tres" id="3_oa2em"]
+[ext_resource type="Material" uid="uid://1xfih6nhxtdm" path="res://Assets/Blender/Avatars/Witch/Materials/Buckle.tres" id="4_4h644"]
+
+[node name="WitchHat" instance=ExtResource("1_bbo8r")]
+
+[node name="Hat" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5wkf6")
+surface_material_override/1 = ExtResource("3_oa2em")
+
+[node name="Buckle" parent="." index="1"]
+material_override = ExtResource("4_4h644")

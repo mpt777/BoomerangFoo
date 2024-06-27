@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="AvatarData" load_steps=3 format=3 uid="uid://b3pjxvohrr6qk"]
+[gd_resource type="Resource" script_class="AvatarData" load_steps=5 format=3 uid="uid://b3pjxvohrr6qk"]
 
 [ext_resource type="PackedScene" uid="uid://d30hisabwo1dl" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="1_0hk5i"]
 [ext_resource type="Script" path="res://Scenes/Entities/Avatar/AvatarData.gd" id="2_igcsm"]
+[ext_resource type="Script" path="res://Scenes/Cosmetics/CosmeticData.gd" id="2_ume5p"]
+[ext_resource type="Resource" uid="uid://4vedpc6cqkmo" path="res://Assets/Blender/Cosmetics/WitchHat/WitchHatData.tres" id="3_hklx1"]
 
 [resource]
 script = ExtResource("2_igcsm")
 name = "Witch"
 color = Color(0.698669, 0.374358, 0.804225, 1)
 avatar = ExtResource("1_0hk5i")
+default_cosmetics = Array[ExtResource("2_ume5p")]([ExtResource("3_hklx1")])

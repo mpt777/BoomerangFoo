@@ -7,7 +7,7 @@ var avatar : AvatarData
 var character : Character
 
 var cosmetics : Array[CosmeticData] = [
-	preload("res://Scenes/Cosmetics/Data/Sunglasses.tres")
+	preload("res://Assets/Blender/Cosmetics/Sunglasses/Sunglasses.tres")
 ]
 var stats : StatManager = StatManager.new()
 var pickups : PickupManager = PickupManager.new().constructor(self, 2)

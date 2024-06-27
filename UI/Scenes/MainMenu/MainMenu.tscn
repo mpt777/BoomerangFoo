@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqelfp0irs4d0"]
+[gd_scene load_steps=18 format=3 uid="uid://bqelfp0irs4d0"]
 
 [ext_resource type="Script" path="res://UI/Scenes/MainMenu/MainMenu.gd" id="1_w4qpc"]
 [ext_resource type="Environment" uid="uid://cj6gk6l0qfma5" path="res://Assets/Theme/Enviroment.tres" id="2_i8sy2"]
@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bdy4aryvcr8ye" path="res://Assets/Blender/Decorations/Cross/CrossGravestone.tscn" id="4_n4lny"]
 [ext_resource type="PackedScene" uid="uid://bw34gqoxhebja" path="res://Assets/Blender/Tree/Tree.tscn" id="5_f3cv3"]
 [ext_resource type="PackedScene" uid="uid://267m88sjf0wi" path="res://Assets/Blender/Decorations/Caldron/caldron.dae" id="6_hjemn"]
-[ext_resource type="PackedScene" uid="uid://b2jyu1mn7nium" path="res://Scenes/Entities/Avatar/Witch/WitchMesh.tscn" id="7_8qhh5"]
 [ext_resource type="PackedScene" uid="uid://dkns54ro34fn5" path="res://Scenes/Decorations/Campfire/Campfile.tscn" id="7_428y1"]
 [ext_resource type="PackedScene" uid="uid://cft8qo4snyk1j" path="res://UI/Scenes/AddCharacter/AddCharacter.tscn" id="8_6jygg"]
+[ext_resource type="PackedScene" uid="uid://d30hisabwo1dl" path="res://Scenes/Entities/Avatar/Witch/Witch.tscn" id="9_5rb7k"]
+[ext_resource type="PackedScene" uid="uid://b5j8rynuuivkm" path="res://Assets/Blender/Cosmetics/WitchHat/WitchHat.tscn" id="10_hvdqv"]
 [ext_resource type="PackedScene" uid="uid://dqbn42bewnksk" path="res://UI/Scenes/MainMenu/Credits/Credits.tscn" id="11_i8rv8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jec86"]
@@ -60,9 +61,6 @@ environment = ExtResource("2_i8sy2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.155238, -0.616325, -0.77204, 0.408144, -0.751709, 0.518027, -0.899621, -0.234686, 0.368244, -5.69695, 2.51593, 0)
 shadow_enabled = true
-
-[node name="witch_smooth" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_8qhh5")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -0.936872, -0.732849, -0.955522)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776526, -0.950423, -2.31179)
@@ -290,6 +288,16 @@ transform = Transform3D(-0.116469, 0, -0.434667, 0, 0.45, 0, 0.434667, 0, -0.116
 [node name="Campfile" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_428y1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162085, -0.401896, -0.83511)
 
+[node name="Avatar" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("anchors") instance=ExtResource("9_5rb7k")]
+transform = Transform3D(-0.889041, 0, -0.457827, 0, 1, 0, 0.457827, 0, -0.889041, -1.15435, -0.406221, -1.00527)
+anchors = [NodePath("Animation/CameraFix/Body/Mask"), NodePath("Animation/CameraFix/Right/RemoteTransform3D")]
+
+[node name="Hat" parent="SubViewportContainer/SubViewport/Avatar/Animation/CameraFix/Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000907838, 1.38831, 0.0365624)
+
+[node name="WitchHat" parent="SubViewportContainer/SubViewport/Avatar/Animation/CameraFix/Body/Hat" index="0" instance=ExtResource("10_hvdqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000907898, -0.0204798, -0.0365624)
+
 [node name="MainMenu" parent="." node_paths=PackedStringArray("settings_container", "credits_container", "add_character_container") instance=ExtResource("3_1rm68")]
 layout_mode = 1
 settings_container = NodePath("../SettingsUI")
@@ -314,3 +322,5 @@ exit_container = NodePath("../MainMenu")
 visible = false
 layout_mode = 1
 exit_container = NodePath("../MainMenu")
+
+[editable path="SubViewportContainer/SubViewport/Avatar"]

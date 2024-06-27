@@ -1,6 +1,6 @@
 extends State
 
-signal Attacked
+#signal Attacked
 
 @export var weapon : Wand
 
