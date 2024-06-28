@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctbijeuq2vi17"]
+[gd_scene load_steps=9 format=3 uid="uid://ctbijeuq2vi17"]
 
 [ext_resource type="Shader" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gdshader" id="1_wdrc3"]
+[ext_resource type="PackedScene" uid="uid://dcgwtpk6myift" path="res://UI/MultiLayerButton/MultiLayerButton.tscn" id="3_5uktk"]
 [ext_resource type="Script" path="res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.gd" id="3_387nu"]
+[ext_resource type="Environment" uid="uid://cj6gk6l0qfma5" path="res://Assets/Theme/Enviroment.tres" id="4_rs3b5"]
+[ext_resource type="Material" uid="uid://bxian2evsffcs" path="res://Assets/Shaders/Ground/grass.tres" id="4_vt3os"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dni3b"]
 shader = ExtResource("1_wdrc3")
@@ -11,54 +14,77 @@ shader_parameter/amt = 0.0
 shader = ExtResource("1_wdrc3")
 shader_parameter/amt = 1.0
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oe3u2"]
-sky_top_color = Color(0.0597648, 0.0516715, 0.174463, 1)
-sky_horizon_color = Color(0.495202, 0.455327, 0.742701, 1)
-ground_horizon_color = Color(0.521777, 0.492725, 0.887234, 1)
-
-[sub_resource type="Sky" id="Sky_y02jq"]
-sky_material = SubResource("ProceduralSkyMaterial_oe3u2")
-
-[sub_resource type="Environment" id="Environment_eboie"]
-background_mode = 2
-sky = SubResource("Sky_y02jq")
-ambient_light_source = 3
+[sub_resource type="BoxMesh" id="BoxMesh_n62e8"]
+size = Vector3(50, 50, 1)
 
 [node name="PanelContainer" type="PanelContainer"]
 material = SubResource("ShaderMaterial_dni3b")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1720.0
-offset_bottom = -880.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 356.0
+offset_bottom = 300.0
 script = ExtResource("3_387nu")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_7w5to")
-custom_minimum_size = Vector2(200, 200)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="1" parent="HBoxContainer/Left" instance=ExtResource("3_5uktk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "<"
+
+[node name="2" parent="HBoxContainer/Left" instance=ExtResource("3_5uktk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "<"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+material = SubResource("ShaderMaterial_7w5to")
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(200, 200)
+size = Vector2i(300, 300)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, -1.98293)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.926548, 0.0973615, 0.363358, 0, -0.965926, 0.258819, 0.376176, -0.239808, -0.894977, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.0487871, 0.990926, 0.125244, 0.726561, -0.121252, 0.676319, 0.685368, 0.0580017, -0.725884, 0, 0.483534, 0)
+shadow_enabled = true
 directional_shadow_mode = 0
-sky_mode = 1
 
-[node name="AvatarContainer" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="AvatarContainer" type="Node3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
-environment = SubResource("Environment_eboie")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+environment = ExtResource("4_rs3b5")
+
+[node name="Grass" type="MeshInstance3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.258819, -0.965926, 0, -4.2222e-08, -1.13133e-08, -1, 0.965926, 0.258819, -4.37114e-08, 0, -0.655578, 8.77463)
+mesh = SubResource("BoxMesh_n62e8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_vt3os")
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="1" parent="HBoxContainer/Right" instance=ExtResource("3_5uktk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = ">"
+
+[node name="2" parent="HBoxContainer/Right" instance=ExtResource("3_5uktk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = ">"
+
+[connection signal="ControllerPressed" from="HBoxContainer/Left/1" to="." method="cycle_cosmetic" binds= [2, -1]]
+[connection signal="ControllerPressed" from="HBoxContainer/Left/2" to="." method="cycle_cosmetic" binds= [1, -1]]
+[connection signal="ControllerPressed" from="HBoxContainer/Right/1" to="." method="cycle_cosmetic" binds= [2, 1]]
+[connection signal="ControllerPressed" from="HBoxContainer/Right/2" to="." method="cycle_cosmetic" binds= [1, 1]]

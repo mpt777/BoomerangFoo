@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d30hisabwo1dl"]
+[gd_scene load_steps=6 format=3 uid="uid://d30hisabwo1dl"]
 
 [ext_resource type="PackedScene" uid="uid://mtjq6g0iyxj5" path="res://Scenes/Entities/Avatar/Meta/Avatar/Avatar.tscn" id="1_o1nh2"]
+[ext_resource type="Script" path="res://Scenes/Cosmetics/CosmeticData.gd" id="2_og6sr"]
 [ext_resource type="PackedScene" uid="uid://ckw1ohlj8xrtk" path="res://Scenes/Anchor/Anchor.tscn" id="3_hgpj5"]
+[ext_resource type="Resource" uid="uid://4vedpc6cqkmo" path="res://Assets/Blender/Cosmetics/WitchHat/WitchHatData.tres" id="3_i7vk6"]
 [ext_resource type="PackedScene" uid="uid://8bbgkh333jkg" path="res://Assets/Blender/Avatars/Witch/Witch.tscn" id="4_j5260"]
 
 [node name="Avatar" node_paths=PackedStringArray("anchors") instance=ExtResource("1_o1nh2")]
-anchors = [NodePath("Animation/CameraFix/Body/Mask"), NodePath("Animation/CameraFix/Body/Hat"), NodePath("Animation/CameraFix/Right/RemoteTransform3D")]
+default_cosmetics = Array[ExtResource("2_og6sr")]([ExtResource("3_i7vk6")])
+anchors = [NodePath("Animation/CameraFix/Body/Hat"), NodePath("Animation/CameraFix/Body/Mask"), NodePath("Animation/CameraFix/Right/RemoteTransform3D")]
 
 [node name="Body" parent="Animation/CameraFix" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

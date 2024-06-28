@@ -13,6 +13,11 @@ func add(node : Node3D, as_child : bool = false) -> void:
 	
 func remove(node : Node3D) -> void:
 	nodes.remove_at(0)
+	
+func destroy_nodes() -> void:
+	for node in self.nodes:
+		node.queue_free()
+	self.nodes = []
 
 func _physics_process(delta: float) -> void:
 	self._position()

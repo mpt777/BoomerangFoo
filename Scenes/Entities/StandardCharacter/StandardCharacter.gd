@@ -16,8 +16,8 @@ func _ready():
 	
 func initialize():
 	self.data.pickups.initialize()
-	anchors.anchor(Enums.AnchorAlias.RIGHT_HAND).add(n_wand.n_mesh)
-	self._add_cosmetics()
+	self.avatar().anchor_register.anchor(Enums.AnchorAlias.RIGHT_HAND).add(n_wand.n_mesh)
+	self.avatar().add_cosmetics(self.data.cosmetics)
 		
 func _physics_process(_delta: float) -> void:
 	self.MOVED = self.global_position - self._old_position
@@ -36,20 +36,20 @@ func _on_health_component_killed(attack : Attack) -> void:
 	$"/root/Signals".emit_signal("add_event", KillEvent.new().constructor(self.data, attack.character))
 	signals.emit_signal("Character.Kill")
 	
-func _add_cosmetics():
-	var _ac = func(cosmetic):
-		var c = cosmetic.instance_scene()
-		add_child(c)
-		anchors.add(cosmetic.alias, c)
-		
-	for cosmetic in self.data.cosmetics:
-		_ac.call(cosmetic)
-		
-	for cosmetic in self.data.avatar.default_cosmetics:
-		var anchor = anchors.anchor(cosmetic.alias)
-		if not anchor:
-			continue
-		if anchor.nodes:
-			continue
-		_ac.call(cosmetic)
+#func _add_cosmetics():
+	#var _ac = func(cosmetic):
+		#var c = cosmetic.instance_scene()
+		#add_child(c)
+		#anchors.add(cosmetic.alias, c)
+		#
+	#for cosmetic in self.data.cosmetics:
+		#_ac.call(cosmetic)
+		#
+	#for cosmetic in self.data.avatar.default_cosmetics:
+		#var anchor = anchors.anchor(cosmetic.alias)
+		#if not anchor:
+			#continue
+		#if anchor.nodes:
+			#continue
+		#_ac.call(cosmetic)
 	
