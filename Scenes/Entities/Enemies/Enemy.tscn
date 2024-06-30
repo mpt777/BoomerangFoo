@@ -45,7 +45,6 @@ spawn_point = NodePath("SpawnPoint")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="10"]
 path_max_distance = 10.01
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="ProximityArea" parent="." index="11" instance=ExtResource("4_i87sa")]
 collision_layer = 0

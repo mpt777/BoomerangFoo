@@ -63,6 +63,8 @@ func set_avatar(p_avatar_data : AvatarData):
 	#self.set_color(self.character_data.avatar.color)
 	
 func cycle_cosmetic(controller: Controller, alias : Enums.AnchorAlias, direction: int) -> void:
+	if not self.cosmetic_selectors.get(alias, null):
+		return
 	self.cosmetic_selectors[alias].increment(direction)
 	self.cosmetic_selectors[alias].apply()
 	self.set_character_cosmetics()

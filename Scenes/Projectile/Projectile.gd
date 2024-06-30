@@ -16,6 +16,7 @@ func constructor(m_data : ProjectileData) -> Projectile:
 	return self
 	
 func construct_attack() -> void:
+	# todo, previously freed
 	self.omit = [self.character_data.character.n_hitbox]
 	n_attack.set_attack(self.character_data)
 	n_attack.attack.damage = self.data.DAMAGE

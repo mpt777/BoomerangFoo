@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxxjv3gcywinv"]
+
+[ext_resource type="PackedScene" uid="uid://doq2w8x3kw61j" path="res://Assets/Blender/Cosmetics/Comedy/Comedy.glb" id="1_w64gh"]
+[ext_resource type="PackedScene" uid="uid://dkhy1tghumx4y" path="res://Assets/Blender/Cosmetics/Sunglasses/Sunglasses.tscn" id="2_rboxt"]
+
+[node name="Comedy" instance=ExtResource("1_w64gh")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(-2.66639e-08, 0, 0.61, 0, 0.61, 0, -0.61, 0, -2.66639e-08, -0.00183423, -0.0498699, -0.045)
+
+[node name="Mouth" parent="." index="1"]
+transform = Transform3D(-2.66639e-08, 0, 0.61, 0, 0.61, 0, -0.61, 0, -2.66639e-08, -0.00183423, -0.0498699, -0.045)
+
+[node name="Eye2" parent="." index="2"]
+transform = Transform3D(-2.66639e-08, 0, 0.61, 0, 0.61, 0, -0.61, 0, -2.66639e-08, -0.00183423, -0.0498699, -0.045)
+
+[node name="Sunglasses" parent="." index="3" instance=ExtResource("2_rboxt")]
+visible = false

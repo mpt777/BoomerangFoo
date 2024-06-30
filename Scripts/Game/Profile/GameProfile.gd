@@ -8,7 +8,8 @@ var avatars : Array[AvatarData] = [
 ]
 var cosmetics : Array[CosmeticData] = [
 	preload("res://Assets/Blender/Cosmetics/Sunglasses/Sunglasses.tres"),
-	preload("res://Assets/Blender/Cosmetics/WitchHat/WitchHatData.tres")
+	preload("res://Assets/Blender/Cosmetics/WitchHat/WitchHatData.tres"),
+	preload("res://Assets/Blender/Cosmetics/Comedy/Comedy.tres"),
 ]
 
 var exp : int = 0

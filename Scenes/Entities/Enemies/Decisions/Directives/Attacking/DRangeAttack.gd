@@ -45,6 +45,8 @@ func ray_query(enemy : Enemy) -> bool:
 	
 	
 func apply(enemy : Enemy) -> void:
+	if not self.velocities:
+		return
 	var total : Vector3 = self.velocities.reduce(func(i, accum): return accum + i)
 	#print( self.enemy.target_player.velocity.length())
 	if self.enemy.target_player.velocity.length() > 20:

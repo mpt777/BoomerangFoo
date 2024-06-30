@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CosmeticData" load_steps=3 format=3 uid="uid://b0c0joyi3p0dg"]
+
+[ext_resource type="PackedScene" uid="uid://dxxjv3gcywinv" path="res://Assets/Blender/Cosmetics/Comedy/Comedy.tscn" id="1_mvrfr"]
+[ext_resource type="Script" path="res://Scenes/Cosmetics/CosmeticData.gd" id="1_w1hd4"]
+
+[resource]
+script = ExtResource("1_w1hd4")
+cosmetic = ExtResource("1_mvrfr")
+alias = 1
