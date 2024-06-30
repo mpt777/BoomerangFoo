@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://diidtkeefoxku"]
+
+[ext_resource type="Script" path="res://Scenes/Stage/Stages/Base/Stage.gd" id="1_itxcq"]
+[ext_resource type="Environment" uid="uid://cj6gk6l0qfma5" path="res://Assets/Theme/Enviroment.tres" id="2_m65hr"]
+[ext_resource type="PackedScene" uid="uid://bp3krjl3ecopm" path="res://Scenes/Camera/SmartCamera.tscn" id="2_xm1ef"]
+[ext_resource type="PackedScene" uid="uid://dvnq0q2ihl12a" path="res://Scenes/Stage/PickupSpawner/PickupSpawner.tscn" id="6_muvuk"]
+[ext_resource type="PackedScene" uid="uid://c57in0in03hxu" path="res://Scenes/Stage/StageElements/CharacterSpawner.tscn" id="8_vg2xa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8n8t"]
+size = Vector3(100, 0, 100)
+
+[node name="Stage" type="Node3D"]
+script = ExtResource("1_itxcq")
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment"]
+environment = ExtResource("2_m65hr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
+transform = Transform3D(0.999922, 0.00408568, -0.0118429, 0.00905517, -0.888978, 0.45786, -0.00865739, -0.457931, -0.888946, 0, 21.6531, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+
+[node name="CameraAnchor" parent="Enviroment" instance=ExtResource("2_xm1ef")]
+transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
+MARGIN = Vector4(5, 5, 5, 5)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" type="Node3D" parent="World"]
+
+[node name="MouseFloor" type="StaticBody3D" parent="World/Ground"]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground/MouseFloor"]
+shape = SubResource("BoxShape3D_p8n8t")
+
+[node name="Functional" type="Node3D" parent="."]
+
+[node name="PickupSpawner" parent="Functional" instance=ExtResource("6_muvuk")]
+
+[node name="CharacterSpawner" parent="Functional" instance=ExtResource("8_vg2xa")]

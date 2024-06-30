@@ -1,37 +1,15 @@
 extends Pickup
 class_name SpellPickup
 
-var SPELL_RESOURCES = [
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/FireProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/IceProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/SurfProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/EarthquakeProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Modifiers/MultiSpell.tres"),
-	#preload("res://Scenes/Things/Spells/ResourceSpell/Modifiers/SpeedySpells.tres"),
-	preload("res://Scenes/Spells/ResourceSpell/Modifiers/DoubleSpell.tres"),
-	preload("res://Scenes/Entities/Modifiers/BerserkBrew/Berserk.tres"),
-]
-#
-#func random_spell() -> Spell:
-	#return SPELLS[randi() % SPELLS.size()].new()
-#
-#func pickup(character : Character) -> void:
-	#character.signals.emit_signal("Wand.ChangeSpell", random_spell())
-	#
-	#var spell := Spell.new()
-	#spell.cost = 3
-	#character.signals.emit_signal("Mana.AddMana", spell)
-	#
-	#queue_free()
+func spell_resources() -> Array[Effect]:
+	return Game.run.config.pickup_config.possible_pickups
 	
 func random_resource() -> Effect:
-	return SPELL_RESOURCES[randi() % SPELL_RESOURCES.size()]
-	
+	return self.spell_resources()[randi() % self.spell_resources().size()]
 	
 func valid_resources(character : Character) -> Array[Effect]:
 	var resources : Array[Effect] = []
-	for resource in SPELL_RESOURCES:
+	for resource in self.spell_resources():
 		if not resource in character.data.pickups.all_effects():
 			resources.append(resource)
 	return resources

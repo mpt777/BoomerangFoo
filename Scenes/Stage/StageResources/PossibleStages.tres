@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PossibleStages" load_steps=7 format=3 uid="uid://304ulo345bn8"]
+
+[ext_resource type="Script" path="res://Scenes/Stage/StageResources/PossibleStages.gd" id="1_xlty2"]
+[ext_resource type="Script" path="res://Scenes/Stage/StageResources/StageData.gd" id="2_xcbqo"]
+[ext_resource type="PackedScene" uid="uid://bl13fwtr7niwt" path="res://Scenes/Stage/Stages/Park/Park.tscn" id="3_ihwtp"]
+[ext_resource type="PackedScene" uid="uid://bnkkl0gjpur6r" path="res://Scenes/Stage/Stages/River/River.tscn" id="3_uanyk"]
+
+[sub_resource type="Resource" id="Resource_nh6nn"]
+script = ExtResource("2_xcbqo")
+title = ""
+active = true
+stage = ExtResource("3_ihwtp")
+
+[sub_resource type="Resource" id="Resource_1am1v"]
+script = ExtResource("2_xcbqo")
+title = ""
+active = true
+stage = ExtResource("3_uanyk")
+
+[resource]
+script = ExtResource("1_xlty2")
+stages = Array[ExtResource("2_xcbqo")]([SubResource("Resource_nh6nn"), SubResource("Resource_1am1v")])

@@ -1,14 +1,6 @@
 extends Node3D
 class_name GameLoop
 
-@export var stages : Dictionary = {
-	#"dev": "res://Scenes/Stage/Stages/Base/Stage.tscn",
-	"park": "res://Scenes/Stage/Stages/Park/Park.tscn",
-	"river": "res://Scenes/Stage/Stages/River/River.tscn",
-}
-
-var current_stage : String
-
 @onready var stage_container := $StageContainer
 @onready var ui_container := $UIContainer
 @onready var ui_vignette := $UIContainer/Vignette
@@ -18,10 +10,11 @@ func _ready():
 	$"/root/Signals".connect("update_character", update_character)
 	
 
-func random_stage() -> String:
-	return stages[stages.keys()[randi() % stages.size()]]
+func random_stage() -> Stage:
+	var stages : Array[StageData] = Game.run.config.stage_config.stages
+	return stages[randi() % len(stages)].stage.instantiate()
 	
-func select_new_stage() -> String:
+func select_new_stage() -> Stage:
 	return random_stage()
 	
 func set_stage() -> void:
@@ -29,8 +22,7 @@ func set_stage() -> void:
 		if child is Stage:
 			child.queue_free()
 	
-	var stage := load(select_new_stage()).instantiate() as Stage
-	stage_container.add_child(stage)
+	stage_container.add_child(self.select_new_stage())
 	
 func start_round() -> void:
 	set_stage()
@@ -41,16 +33,11 @@ func start_round() -> void:
 func end_round() -> void:
 	end_vignette()
 	
-#func _input(event):
-	#print(event)
-	#
-#func _unhandled_input(event):
-	#print(event)
-	
 
+# Vignette #####################################################################
+	
 func _on_vignette_end_vignette_end():
 	SceneManager.switch_scene("points")
-
 
 func start_vignette() -> void:
 	ui_vignette.blank_screen()

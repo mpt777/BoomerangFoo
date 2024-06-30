@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvnq0q2ihl12a"]
+
+[ext_resource type="Script" path="res://Scenes/Stage/PickupSpawner/PickupSpawner.gd" id="1_ute4q"]
+
+[node name="PickupSpawner" type="Node3D"]
+script = ExtResource("1_ute4q")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpellTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]

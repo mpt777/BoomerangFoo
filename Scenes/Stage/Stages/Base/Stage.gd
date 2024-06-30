@@ -6,6 +6,6 @@ class_name Stage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if GameState.players:
-		character_spawner.spawn(GameState.players)
+	if Game.players:
+		character_spawner.spawn(Game.players)
 		

@@ -8,7 +8,7 @@ var projectile : AttackComponent
 
 
 func decide(enemy : Enemy) -> int:
-	if not GameState.settings.settings.get_value("enemy_attack", true):
+	if not Game.settings.settings.get_value("enemy_attack", true):
 		return 0
 	if not enemy.target_player:
 		return 0

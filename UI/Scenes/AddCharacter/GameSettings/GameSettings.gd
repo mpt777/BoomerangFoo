@@ -5,8 +5,8 @@ func _on_multi_layer_button_controller_pressed(_args):
 	self._on_multi_layer_button_pressed()
 	
 func _on_multi_layer_button_pressed():
-	GameState.settings.save_to_disk()
-	SceneManager.switch_scene("game")
+	Game.settings.save_to_disk()
+	Game.start_run()
 
 
 

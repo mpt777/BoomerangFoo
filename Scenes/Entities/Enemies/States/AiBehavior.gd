@@ -11,7 +11,7 @@ func set_can_attack() -> void:
 	self.can_attack = true
 	
 func attack() -> void:
-	if not GameState.settings.settings.get_value("enemy_attack", true):
+	if not Game.settings.settings.get_value("enemy_attack", true):
 		return
 	if not body.target_player:
 		return
@@ -22,7 +22,7 @@ func attack() -> void:
 		
 	body.signals.emit_signal("Attack.Start")
 	
-	await GameState.get_tree().create_timer(0.3).timeout
+	await Game.get_tree().create_timer(0.3).timeout
 	body.signals.emit_signal("Attack.Attack", "range")
 	can_attack = false
 		

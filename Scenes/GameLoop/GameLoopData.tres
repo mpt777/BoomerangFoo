@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GameLoopData" load_steps=14 format=3 uid="uid://1mubis5o882v"]
+
+[ext_resource type="Script" path="res://Components/Modifier/Modifiers/Effect.gd" id="1_bfndr"]
+[ext_resource type="Resource" uid="uid://bauds8t44ugal" path="res://Scenes/Entities/Modifiers/BerserkBrew/Berserk.tres" id="2_ipimk"]
+[ext_resource type="Resource" uid="uid://b61ipq1cc2hnf" path="res://Scenes/Spells/ResourceSpell/Modifiers/DoubleSpell.tres" id="3_ijjrp"]
+[ext_resource type="Resource" uid="uid://bhwagessw20ep" path="res://Scenes/Spells/ResourceSpell/Modifiers/MultiSpell.tres" id="4_n3ejs"]
+[ext_resource type="Resource" uid="uid://dhgjultcgy1h1" path="res://Scenes/Spells/ResourceSpell/Projectiles/EarthquakeProjectile.tres" id="5_rx3kv"]
+[ext_resource type="Resource" uid="uid://cioj41u0cuacn" path="res://Scenes/Spells/ResourceSpell/Projectiles/FireProjectile.tres" id="6_o60al"]
+[ext_resource type="Resource" uid="uid://keh58uxfm6te" path="res://Scenes/Spells/ResourceSpell/Projectiles/IceProjectile.tres" id="7_wn2p3"]
+[ext_resource type="Resource" uid="uid://d02dy2kja38gu" path="res://Scenes/Spells/ResourceSpell/Projectiles/RockWallProjectile.tres" id="8_s7rxa"]
+[ext_resource type="Resource" uid="uid://cei6n1vl8xm7v" path="res://Scenes/Spells/ResourceSpell/Projectiles/SurfProjectile.tres" id="9_p6afr"]
+[ext_resource type="Script" path="res://Scenes/Stage/PickupSpawner/PossiblePickups.gd" id="10_c3yai"]
+[ext_resource type="Script" path="res://Scenes/GameLoop/GameLoopData.gd" id="11_og0jv"]
+[ext_resource type="Resource" uid="uid://304ulo345bn8" path="res://Scenes/Stage/StageResources/PossibleStages.tres" id="12_jlob7"]
+
+[sub_resource type="Resource" id="Resource_g37y0"]
+script = ExtResource("10_c3yai")
+possible_pickups = Array[ExtResource("1_bfndr")]([ExtResource("2_ipimk"), ExtResource("3_ijjrp"), ExtResource("4_n3ejs"), ExtResource("5_rx3kv"), ExtResource("6_o60al"), ExtResource("7_wn2p3"), ExtResource("8_s7rxa"), ExtResource("9_p6afr")])
+max_concurrent_pickups = 5
+
+[resource]
+script = ExtResource("11_og0jv")
+stage_config = ExtResource("12_jlob7")
+pickup_config = SubResource("Resource_g37y0")

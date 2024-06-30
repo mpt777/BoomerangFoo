@@ -7,11 +7,11 @@ extends EtContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	$VBoxContainer/Debug.grab_focus()
-	GameState.players = []
+	Game.players = []
 
 func _on_debug_pressed():
-	GameState.players = GameStateDebug.default_character_data()
-	SceneManager.switch_scene("game")
+	Game.players = GameStateDebug.default_character_data()
+	Game.start_run()
 	
 func _on_start_pressed():
 	exit()

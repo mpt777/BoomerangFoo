@@ -4,8 +4,8 @@ extends EtContainer
 @onready var settings_ui = $"../SettingsUI"
 
 func _input(event):
-	for index in GameState.controllers:
-		var controller : Controller = GameState.controllers[index]
+	for index in Game.controllers:
+		var controller : Controller = Game.controllers[index]
 		process_input(event, controller)
 			
 func process_input(event : InputEvent, controller: Controller):

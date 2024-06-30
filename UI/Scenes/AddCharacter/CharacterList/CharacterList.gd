@@ -13,8 +13,8 @@ func _ready():
 	$"/root/Signals".connect("remove_bot", remove_bot)
 	
 func initialize_players():
-	for index in GameState.controllers:
-		add_player(GameState.controllers[index])
+	for index in Game.controllers:
+		add_player(Game.controllers[index])
 
 func modify_player(controller : Controller, connected : bool) -> void:
 	if connected:
@@ -34,7 +34,7 @@ func add_player(controller: Controller) -> void:
 func remove_player(controller: Controller) -> void:
 	for child in get_children():
 		if child.character_data.controller == controller:
-			GameState.remove_character(child.character_data)
+			Game.remove_character(child.character_data)
 			child.queue_free()
 			return
 	
@@ -42,14 +42,14 @@ func add_character(character_data : CharacterData) -> void:
 	var character_circle = CHARACTER_CIRCLE.instantiate() as CharacterCircle
 	character_circle.constructor(character_data)
 	add_child(character_circle)
-	GameState.add_character(character_data)
+	Game.add_character(character_data)
 
 func remove_character(character_data : CharacterData):
 	for child in get_children():
 		child = child as CharacterCircle
 		if child.character_data == character_data:
 			child.queue_free()
-			GameState.remove_character(character_data)
+			Game.remove_character(character_data)
 			
 func find_character_circle(controller: Controller) -> CharacterCircle:
 	var player_character_circles = self.get_children().filter(func (x): return x.character_data is PlayerData)

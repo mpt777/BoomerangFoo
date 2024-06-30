@@ -1,21 +1,19 @@
 extends Node
-#class_name GameState
+# Game
+# Holds miscillenous game items
+
 
 # List of Player Data Objects
 var players := []
 var controllers := {}
-var events := []
 var settings : GameSettings = GameSettings.new().constructor()
 
-var played_stages : Array
-var round_index := 0
+var run : GameRun
 
 
 func _ready():
 	#if self.settings.use_keyboard:
 	process_keyboard()
-	$"/root/Signals".connect("add_event", add_event)
-	$"/root/Signals".connect("start_round", start_round)
 	
 	#for controller_id in Input.get_connected_joypads():
 		#add_controller(controller_id, true)
@@ -44,7 +42,6 @@ func process_keyboard():
 		self.settings.use_keyboard = true
 		add_controller(0, false)
 		return
-	
 	
 func add_controller(id : int, is_joypad: bool = true) -> void:
 	var controller := Controller.new().constructor(id, is_joypad)
@@ -86,20 +83,15 @@ func remove_character(character_data : CharacterData) -> void:
 			break
 	if to_remove > -1:
 		self.players.remove_at(to_remove)
-		
-func add_event(event : Event) -> void:
-	event.round_index = round_index
-	events.append(event)
-	
-func start_round() -> void:
-	round_index += 1
-	
 	
 func _physics_process(delta: float) -> void:
 	$"/root/Signals".emit_signal("physics_process", delta)
 	
 	
 	
+func start_run() -> void:
+	self.run = GameRun.new().constructor()
+	SceneManager.switch_scene("game")
 	
 	
 	

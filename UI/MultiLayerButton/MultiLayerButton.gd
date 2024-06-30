@@ -94,15 +94,15 @@ func _on_controller_removed(controller : Controller):
 
 
 func _on_mouse_entered():
-	if not GameState.settings.use_keyboard:
+	if not Game.settings.use_keyboard:
 		return
-	emit_signal("ControllerAdded", GameState.get_keyboard_controller())
+	emit_signal("ControllerAdded", Game.get_keyboard_controller())
 
 
 func _on_mouse_exited():
-	if not GameState.settings.use_keyboard:
+	if not Game.settings.use_keyboard:
 		return
-	emit_signal("ControllerRemoved", GameState.get_keyboard_controller())
+	emit_signal("ControllerRemoved", Game.get_keyboard_controller())
 
 
 #func _on_resized():

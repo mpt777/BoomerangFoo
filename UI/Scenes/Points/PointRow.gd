@@ -21,20 +21,20 @@ func set_color() -> void:
 	color_rect.color = self.character_data.color
 	
 func add_point_nodes() -> void:
-	for _i in range(GameState.settings.points_per_round):
+	for _i in range(Game.settings.points_per_round):
 		n_points_container.add_child(POINT_ROW_POINT.instantiate())
 	
 func kill_events() -> Array:
-	return GameState.events.filter(func(x): return x is KillEvent)
+	return Game.run.events.filter(func(x): return x is KillEvent)
 	
 func initial_points() -> int:
 	return len(kill_events().filter(func(event): 
-		return event.killer_character == self.character_data and event.round_index < GameState.round_index
+		return event.killer_character == self.character_data and event.round_index < Game.run.round_index
 	))
 	
 func new_points() -> int:
 	return len(kill_events().filter(func(event): 
-		return event.killer_character == self.character_data and event.round_index >= GameState.round_index
+		return event.killer_character == self.character_data and event.round_index >= Game.run.round_index
 	))
 	
 func add_initial_points() -> void:
@@ -59,4 +59,4 @@ func add_new_points() -> void:
 		index += 1
 		
 func has_won() -> bool:
-	return self.initial_points() + self.new_points() >= GameState.settings.points_per_round
+	return self.initial_points() + self.new_points() >= Game.settings.points_per_round

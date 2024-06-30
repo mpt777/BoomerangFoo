@@ -1,11 +1,14 @@
 extends Node3D
 class_name PickupSpawner
 
-@export var max_concurrent_pickups := 5
+var max_concurrent_pickups : int
 
 const MANA_PICKUP = preload("res://Scenes/Pickup/ManaPickup/ManaPickup.tscn")
 const SPELL_PICKUP = preload("res://Scenes/Pickup/SpellPickup/SpellPickup.tscn")
 
+func _ready():
+	self.max_concurrent_pickups = Game.run.config.pickup_config.max_concurrent_pickups
+	
 
 func pick_random_position() -> Vector3:
 	var map : RID = get_world_3d().get_navigation_map()
@@ -20,9 +23,8 @@ func create_new_mana_pickup():
 	
 func _on_spawn_timer_timeout():
 	var current_pickups = get_tree().get_nodes_in_group("Pickup")
-	if len(current_pickups) < max_concurrent_pickups:
+	if len(current_pickups) < self.max_concurrent_pickups:
 		create_new_mana_pickup()
-
 
 func create_new_spell_pickup():
 	var pos = pick_random_position()
@@ -32,5 +34,5 @@ func create_new_spell_pickup():
 	
 func _on_spell_timer_timeout():
 	var current_pickups = get_tree().get_nodes_in_group("Pickup")
-	if len(current_pickups) < max_concurrent_pickups:
+	if len(current_pickups) < self.max_concurrent_pickups:
 		create_new_spell_pickup()

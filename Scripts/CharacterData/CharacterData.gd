@@ -25,12 +25,12 @@ func _init():
 	
 func initialize_stats():
 	self.stats.register(Stat.new().constructor("speed", 1))
-	self.stats.register(Stat.new().constructor("max_health", GameState.settings.character_max_health))
+	self.stats.register(Stat.new().constructor("max_health", Game.settings.character_max_health))
 	self.stats.register(Stat.new().constructor("p.range", null))
 	self.stats.register(Stat.new().constructor("p.melee", null))
 	self.stats.register(Stat.new().constructor("p.tap_count", 1))
 	self.stats.register(Stat.new().constructor("p.speed", 1))
 	self.stats.register(Stat.new().constructor("p.count", 1))
 	
-	self.pickups.add(GameState.settings.character_default_range)
-	self.pickups.add(GameState.settings.character_default_melee)
+	self.pickups.add(Game.settings.character_default_range)
+	self.pickups.add(Game.settings.character_default_melee)

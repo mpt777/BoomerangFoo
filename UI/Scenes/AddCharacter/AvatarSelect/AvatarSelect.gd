@@ -22,7 +22,7 @@ func random_avatar() -> AvatarSelectCircle:
 	return n_grid.get_child(randi() % count) as AvatarSelectCircle
 	
 func avatar_attached_to_character(_character : CharacterData):
-	for player in GameState.players:
+	for player in Game.players:
 		if not player.avatar:
 			hide_button()
 			return

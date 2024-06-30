@@ -16,4 +16,4 @@ func cast(weapon: Weapon) -> void:
 		
 	for count in tap_count:
 		self.spell_projectile.spell_cast.instance_projectiles(self, weapon)
-		await GameState.get_tree().create_timer(0.3).timeout
+		await Game.get_tree().create_timer(0.3).timeout

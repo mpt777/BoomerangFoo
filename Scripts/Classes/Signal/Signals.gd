@@ -1,5 +1,8 @@
 extends Node
 
+#Validate some 
+signal validate(callable : Callable)
+
 #when a chacters is added or deleted in a stage
 signal update_character()
 #turns the camera's ability to follow "active objects" on and off

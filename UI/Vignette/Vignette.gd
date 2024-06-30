@@ -11,8 +11,8 @@ class_name Vingette
 signal end_vignette_end
 
 func _ready():
-	color = GameState.settings.background_color
-	self.set_shader_color(GameState.settings.background_color)
+	color = Game.settings.background_color
+	self.set_shader_color(Game.settings.background_color)
 	
 func set_shader_color(p_color : Color):
 	get_material().set_shader_parameter("color", p_color)
