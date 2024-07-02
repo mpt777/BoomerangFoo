@@ -1,11 +1,12 @@
 extends PanelContainer
 class_name CharacterCircle
 
-@onready
-var avatar_container = $HBoxContainer/SubViewportContainer/SubViewport/AvatarContainer
+@onready var avatar_container = $HBoxContainer/SubViewportContainer/SubViewport/AvatarContainer
 
-@onready
-var viewport_container = $HBoxContainer/SubViewportContainer
+@onready var viewport_container = $HBoxContainer/SubViewportContainer
+@onready var n_left = $HBoxContainer/Left
+@onready var n_right = $HBoxContainer/Right
+
 var character_data : CharacterData
 var cosmetic_selectors = {}
 var avatar : Avatar
@@ -48,6 +49,10 @@ class CosmeticSelector:
 func constructor(p_character_data : CharacterData):
 	self.character_data = p_character_data
 	
+func set_cosmetic_visibility(m_visible) -> void:
+	n_left.visible = m_visible
+	n_right.visible = m_visible
+
 func set_color(color : Color) -> void:
 	viewport_container.material.set_shader_parameter("color", color)
 	

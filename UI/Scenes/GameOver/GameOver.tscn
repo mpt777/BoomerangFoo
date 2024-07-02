@@ -35,4 +35,3 @@ offset_bottom = 98.0
 text = "Thanks for Playing"
 
 [connection signal="ControllerPressed" from="MultiLayerButton" to="." method="_on_multi_layer_button_controller_pressed"]
-[connection signal="pressed" from="MultiLayerButton" to="." method="_on_multi_layer_button_pressed"]

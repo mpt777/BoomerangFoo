@@ -1,5 +1,7 @@
 extends EtContainer
-class_name GameSettingsUI
+class_name RunSettingsUI
+
+@export var prev_et_container : EtContainer
 
 func _on_multi_layer_button_controller_pressed(_args):
 	self._on_multi_layer_button_pressed()

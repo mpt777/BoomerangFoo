@@ -7,5 +7,4 @@ var containers := []
 
 func _ready():
 	character_list.initialize_players()
-
-
+	

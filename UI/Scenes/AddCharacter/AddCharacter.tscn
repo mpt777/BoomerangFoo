@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c6oxb2keq06f5" path="res://UI/Scenes/AddCharacter/AvatarSelect/AvatarSelect.tscn" id="3_npwls"]
 [ext_resource type="PackedScene" uid="uid://bi0deab8cyp3b" path="res://UI/Scenes/AddCharacter/CharacterList/CharacterList.tscn" id="3_w46pa"]
 [ext_resource type="PackedScene" uid="uid://dc7k2x4ohlq0f" path="res://UI/Scenes/AddCharacter/AvatarSelect/bots.tscn" id="5_btym3"]
-[ext_resource type="PackedScene" uid="uid://dk5u1rhx47v6r" path="res://UI/Scenes/AddCharacter/GameSettings/GameSettings.tscn" id="6_pl2lr"]
+[ext_resource type="PackedScene" uid="uid://dk5u1rhx47v6r" path="res://UI/Scenes/AddCharacter/RunSettings/RunSettings.tscn" id="6_pl2lr"]
 
 [node name="AddCharacter" type="Control"]
 layout_mode = 3
@@ -43,11 +43,15 @@ size_flags_horizontal = 1
 size_flags_vertical = 3
 next_et_container = NodePath("../Bots")
 
-[node name="Bots" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_et_container") instance=ExtResource("5_btym3")]
+[node name="Bots" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("next_et_container", "prev_et_container", "character_list") instance=ExtResource("5_btym3")]
 visible = false
 layout_mode = 2
-next_et_container = NodePath("../GameSettings")
+size_flags_vertical = 3
+next_et_container = NodePath("../RunSettings")
+prev_et_container = NodePath("../AvatarSelect")
+character_list = NodePath("../CharacterList")
 
-[node name="GameSettings" parent="MarginContainer/VBoxContainer" instance=ExtResource("6_pl2lr")]
+[node name="RunSettings" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("prev_et_container") instance=ExtResource("6_pl2lr")]
 visible = false
 layout_mode = 2
+prev_et_container = NodePath("../Bots")

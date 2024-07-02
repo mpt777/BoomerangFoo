@@ -4,6 +4,8 @@ class_name CharacterList
 var CHARACTER_CIRCLE := preload("res://UI/Scenes/AddCharacter/CharacterCircle/CharacterCircle.tscn")
 
 @export var avatar_select : AvatarSelect
+var character_circles : Array[CharacterCircle] 
+var show_cosmetics : bool = true
 
 func _ready():
 	$"/root/Signals".connect("avatar_selected", select_avatar)
@@ -11,6 +13,8 @@ func _ready():
 	
 	$"/root/Signals".connect("add_bot", add_bot)
 	$"/root/Signals".connect("remove_bot", remove_bot)
+	
+	#$"/root/Signals".connect("process_add_character_state", process_add_character_state)
 	
 func initialize_players():
 	for index in Game.controllers:
@@ -34,6 +38,7 @@ func add_player(controller: Controller) -> void:
 func remove_player(controller: Controller) -> void:
 	for child in get_children():
 		if child.character_data.controller == controller:
+			Utils.remove_item(self.character_circles, child)
 			Game.remove_character(child.character_data)
 			child.queue_free()
 			return
@@ -42,8 +47,15 @@ func add_character(character_data : CharacterData) -> void:
 	var character_circle = CHARACTER_CIRCLE.instantiate() as CharacterCircle
 	character_circle.constructor(character_data)
 	add_child(character_circle)
+	self.character_circles.append(character_circle)
+	character_circle.set_cosmetic_visibility(self.show_cosmetics)
 	Game.add_character(character_data)
-
+	
+func set_cosmetic_visibility(m_visible):
+	self.show_cosmetics = m_visible
+	for child in self.character_circles:
+		child.set_cosmetic_visibility(self.show_cosmetics)
+	
 func remove_character(character_data : CharacterData):
 	for child in get_children():
 		child = child as CharacterCircle
